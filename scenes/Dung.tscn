@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://npiq72ggv33n"]
+
+[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_rhg3x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmysa"]
+
+[node name="Dung" type="CharacterBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_rhg3x")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fmysa")
