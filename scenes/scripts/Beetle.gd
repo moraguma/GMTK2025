@@ -5,9 +5,12 @@ class_name Beetle
 const DUNG_SCENE = preload("res://scenes/Dung.tscn")
 
 const NORMAL_TERMINAL_SPEED = 1800.0
+const FIRE_TERMINAL_SPEED = 2300.0
 const JUMP_SPEED = -700.0
 const SOMERSAULT_VEC = Vector2(-150, -1000)
 const THROW_SPEED = 400.0
+const CATCH_SPEED = 700.0
+const MAX_HORIZONTAL_JUMP_SPEED = 300.0
 const SPEED = {
 	false: 350.0,
 	true: 250.0
@@ -21,7 +24,6 @@ const DOWN_SLOPE_SPEED = {
 	true: 200.0
 }
 
-
 const GRAVITY = 0.01
 const AIR_ACCELERATION = 0.0
 const ACCELERATIONS = {
@@ -33,11 +35,22 @@ const DECELERATIONS = {
 	true: 0.08
 }
 
+const TIME_FOR_FIRE = 3.0
+const TIME_FOR_PRAY_PULL = 3.0
+
+const PRAY_PULL_MAX_DIST = 600.0
+const MAX_GROUNDED_THROW_ANGLE = PI / 3
+
 
 var dung: Dung
 var has_dung = true
+var on_fire = false
 var aiming = false
 var facing_dir = 1
+var time_heavy_falling_started = null
+var time_aiming_started = null
+var can_pray_pull = false
+var has_pray_pulled = false
 
 var is_grounded = true
 
@@ -45,6 +58,8 @@ var is_grounded = true
 @onready var sprite: Sprite2D = $Sprite
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
+@onready var dung_detector: RayCast2D = $DungDetector
+@onready var arrow_pivot: Node2D = $ArrowPivot
 
 
 func _ready() -> void:
@@ -60,19 +75,48 @@ func _physics_process(delta: float) -> void:
 
 func _movement_process(delta: float) -> void:
 	# Throw logic
-	if Input.is_action_just_pressed("aim") and not aiming: # TODO add aiming reticle
+	if Input.is_action_just_pressed("aim") and not aiming: # Start aim
+		time_aiming_started = Time.get_ticks_msec()
 		aiming = true
 		dung.aiming = true
-	
+		
+		if has_dung:
+			arrow_pivot.show()
+		
+		can_pray_pull = false
+		if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
+			dung_detector.target_position = dung_detector.position - position
+			dung_detector.force_raycast_update()
+			if not dung_detector.is_colliding():
+				can_pray_pull = true
 	
 	var stop_aiming = func():
 		aiming = false
 		dung.aiming = false
+		arrow_pivot.hide()
 	
 	var jumped = false
-	if aiming:
+	if aiming and can_pray_pull: # Try to pray pull
+		var time_elapsed = (Time.get_ticks_msec() - time_aiming_started) / 1000.0
+		dung.sprite.trauma = time_elapsed / TIME_FOR_PRAY_PULL
+		
+		if time_elapsed >= TIME_FOR_PRAY_PULL:
+			dung.deactivate()
+			get_dung()
+			stop_aiming.call()
+			if not is_grounded:
+				has_pray_pulled = true
+				velocity = (position - dung.position).normalized() * CATCH_SPEED
+	
+	if aiming: # Aim actions
+		var throw_dir = (get_global_mouse_position() - global_position).normalized()
+		if is_grounded:
+			var angle = clamp(Vector2(0, -1).angle_to(throw_dir), -MAX_GROUNDED_THROW_ANGLE, MAX_GROUNDED_THROW_ANGLE)
+			throw_dir = Vector2(0, -1).rotated(angle)
+		
+		arrow_pivot.rotation = Vector2(0, -1).angle_to(throw_dir)
+		
 		if Input.is_action_just_pressed("throw") and has_dung:
-			var throw_dir = (get_global_mouse_position() - global_position).normalized()
 			dung.throw(throw_dir)
 			if not is_grounded:
 				velocity = -throw_dir * THROW_SPEED
@@ -125,10 +169,13 @@ func _movement_process(delta: float) -> void:
 	if not has_dung and is_grounded and Input.is_action_just_pressed("jump"):
 		jumped = true
 		velocity[1] += JUMP_SPEED
+		velocity[0] = clamp(velocity[0], -MAX_HORIZONTAL_JUMP_SPEED, MAX_HORIZONTAL_JUMP_SPEED)
 	
 	var was_grounded = is_grounded
 	move_and_slide()
 	is_grounded = is_on_floor()
+	if is_grounded:
+		has_pray_pulled = false
 	
 	# Floor correction
 	if was_grounded and not is_on_floor() and not jumped:

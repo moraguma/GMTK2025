@@ -7,6 +7,7 @@ const NORMAL_TERMINAL_SPEED = 1800.0
 
 const PICK_TIME = 0.25
 
+const AIR_RESISTANCE = 0.012
 const GRAVITY = 0.01
 
 
@@ -18,6 +19,7 @@ var player: Beetle = null
 
 @onready var pick_timer: Timer = $PickTimer
 @onready var collection_area: Area2D = $CollectionArea
+@onready var sprite: ShakingSprite = $Sprite
 
 
 func _physics_process(delta: float) -> void:
@@ -27,6 +29,9 @@ func _physics_process(delta: float) -> void:
 func _movement_process(delta: float) -> void:
 	if not active or landed or aiming: 
 		return
+	
+	# Air resistance
+	velocity[0] = lerp(velocity[0], 0.0, AIR_RESISTANCE)
 	
 	# Gravity
 	velocity[1] = lerp(velocity[1], NORMAL_TERMINAL_SPEED, GRAVITY)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg3tc75yvlkxo"]
+[gd_scene load_steps=6 format=3 uid="uid://cg3tc75yvlkxo"]
 
+[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_3g6af"]
 [ext_resource type="Script" uid="uid://cek6gql3w0idv" path="res://scenes/scripts/Beetle.gd" id="1_df2da"]
 [ext_resource type="Texture2D" uid="uid://cqxdmapt8qno1" path="res://resources/sprites/beetle_test.png" id="2_df2da"]
 
@@ -14,11 +15,24 @@ size = Vector2(80, 40)
 collision_layer = 2
 script = ExtResource("1_df2da")
 
+[node name="ArrowPivot" type="Node2D" parent="."]
+visible = false
+
+[node name="Arrow" type="Sprite2D" parent="ArrowPivot"]
+position = Vector2(0, -80)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("1_3g6af")
+
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, -2.38419e-07)
 scale = Vector2(0.395, 0.395)
 texture = ExtResource("2_df2da")
 hframes = 2
+
+[node name="Fire" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 0.027451, 0.294118, 0.470588)
+texture = ExtResource("1_3g6af")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_df2da")
@@ -34,3 +48,5 @@ target_position = Vector2(0, 128)
 [node name="RightFeetCast" type="RayCast2D" parent="."]
 position = Vector2(40, 56)
 target_position = Vector2(0, 128)
+
+[node name="DungDetector" type="RayCast2D" parent="."]
