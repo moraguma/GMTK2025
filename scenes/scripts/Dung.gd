@@ -2,9 +2,9 @@ extends CharacterBody2D
 class_name Dung
 
 
-const THROW_SPEED = 1000.0
+const THROW_SPEED = 1500.0
 const FIRE_SPEED = 1300.0
-const NORMAL_TERMINAL_SPEED = 1800.0
+const NORMAL_TERMINAL_SPEED = 3400.0
 
 const PICK_TIME = 0.5
 

@@ -5,18 +5,18 @@ class_name Beetle
 const DUNG_SCENE = preload("res://scenes/Dung.tscn")
 
 const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
-const NORMAL_TERMINAL_SPEED = 1800.0
-const FIRE_TERMINAL_SPEED = 2300.0
-const JUMP_SPEED = -700.0
+const NORMAL_TERMINAL_SPEED = 3400.0
+const FIRE_TERMINAL_SPEED = 5500.0
+const JUMP_SPEED = -1100.0
 const ROLLING_JUMP_SPEED = -1000.0
-const SOMERSAULT_VEC = Vector2(-50, -1000)
-const FIRE_HIT_VEC = Vector2(-200, -1000)
-const THROW_SPEED = 500.0
+const SOMERSAULT_VEC = Vector2(-50, -1500)
+const FIRE_HIT_VEC = Vector2(-300, -1500)
+const THROW_SPEED = 800.0
 const FIRE_THROW_SPEED = 700.0
-const CATCH_SPEED = 850.0
+const CATCH_SPEED = 1000.0
 const MAX_HORIZONTAL_JUMP_SPEED = 200.0
-const ROLLING_SPEED = 800.0
-const UP_SLOPE_ROLLING_SPEED = 1150.0
+const ROLLING_SPEED = 1200.0
+const UP_SLOPE_ROLLING_SPEED = 1750.0
 const DOWN_SLOPE_ROLLING_SPEED = 800.0
 const SPEED = {
 	false: 420.0,
@@ -32,7 +32,7 @@ const DOWN_SLOPE_SPEED = {
 }
 
 const GRAVITY = 0.01
-const ROLLING_GRAVITY = 0.005
+const ROLLING_GRAVITY = 0.008
 const AIR_ACCELERATION = 0.0
 const ACCELERATIONS = {
 	false: 0.1,
@@ -44,10 +44,10 @@ const DECELERATIONS = {
 }
 
 
-const TIME_FOR_PRAY_PULL = 3.0
+const TIME_FOR_PRAY_PULL = 2.0
 
 const HEIGHT_FOR_FIRE = 550.0
-const PRAY_PULL_MAX_DIST = 600.0
+const PRAY_PULL_MAX_DIST = 750.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
 
@@ -61,9 +61,10 @@ var rolling = false
 var rolling_uphill = false
 var rolling_dir = 1
 var aiming = false
+var pulling = false
 var facing_dir = 1
 var heavy_falling_height = null
-var time_aiming_started = null
+var time_pulling_started = null
 var can_pray_pull = false
 var has_pray_pulled = false
 var skip_floor_correction = false
@@ -72,7 +73,7 @@ var is_grounded = true
 
 
 @onready var fire: Sprite2D = $Fire
-@onready var sprite: Sprite2D = $Sprite
+@onready var sprite: ShakingSprite = $Sprite
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
 @onready var dung_detector: RayCast2D = $DungDetector
@@ -104,7 +105,6 @@ func _movement_process(delta: float) -> void:
 	
 	# Throw logic
 	if Input.is_action_just_pressed("aim") and not aiming and not rolling: # Start aim
-		time_aiming_started = Time.get_ticks_msec()
 		aiming = true
 		dung.aiming = true
 		
@@ -122,26 +122,37 @@ func _movement_process(delta: float) -> void:
 		aiming = false
 		dung.aiming = false
 		arrow_pivot.hide()
+		pulling = false
 	
 	var jumped = false
-	if aiming and can_pray_pull: # Pray pull
-		var time_elapsed = (Time.get_ticks_msec() - time_aiming_started) / 1000.0
-		dung.sprite.trauma = time_elapsed / TIME_FOR_PRAY_PULL
+	if aiming and not has_dung: # Pray pull
+		if Input.is_action_just_pressed("throw"):
+			pulling = true
+			time_pulling_started = Time.get_ticks_msec()
+		elif Input.is_action_just_released("throw"):
+			pulling = false
 		
-		if time_elapsed >= TIME_FOR_PRAY_PULL:
-			dung.deactivate()
-			get_dung()
-			stop_aiming.call()
-			
-			var pray_dir = (position - dung.position).normalized()
-			velocity = pray_dir * CATCH_SPEED
-			
-			facing_dir = 1 if pray_dir[0] < 0 else -1
-			
-			if is_grounded:
-				velocity[1] = 0
-			else:
-				has_pray_pulled = true
+		if pulling:
+			var time_elapsed = (Time.get_ticks_msec() - time_pulling_started) / 1000.0
+			var progress = min(time_elapsed / TIME_FOR_PRAY_PULL, 1.0)
+			sprite.trauma = progress
+			if can_pray_pull:
+				dung.sprite.trauma = progress
+				
+				if time_elapsed >= TIME_FOR_PRAY_PULL:
+					dung.deactivate()
+					get_dung()
+					stop_aiming.call()
+					
+					var pray_dir = (position - dung.position).normalized()
+					velocity = pray_dir * CATCH_SPEED
+					
+					facing_dir = 1 if pray_dir[0] < 0 else -1
+					
+					if is_grounded:
+						velocity[1] = 0
+					else:
+						has_pray_pulled = true
 	
 	if aiming: # Aima actions
 		var throw_dir = (world_loader.get_global_mouse_position() - (Vector2(960, 540) + global_position - world_camera.get_screen_center_position())).normalized()
@@ -240,7 +251,6 @@ func _movement_process(delta: float) -> void:
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= beetle_mod 
-			print(velocity)
 			
 			if has_dung:
 				var throw_dir = velocity

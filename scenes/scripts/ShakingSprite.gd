@@ -9,6 +9,9 @@ const MAX_ROLL = 0.15
 const TRAUMA_POWER = 2
 
 
+@export var trauma_modifier: float = 1.0
+
+
 var trauma = 0.0
 var aim_rot = 0
 var base_rotation = 0
@@ -27,14 +30,14 @@ func _ready():
 
 func _process(delta):
 	if trauma:
-		trauma = max(trauma - DECAY * delta, 0)
+		trauma = max(trauma - DECAY * delta / trauma_modifier, 0)
 		shake()
 
 
 func shake():
 	# Based on https://kidscancode.org/godot_recipes/2d/screen_shake/
 	
-	var amount = pow(trauma, TRAUMA_POWER)
+	var amount = pow(trauma * trauma_modifier, TRAUMA_POWER)
 	
 	offset[0] = MAX_OFFSET[0] * amount * noise.get_noise_1d(noise_y)
 	offset[1] = MAX_OFFSET[1] * amount * noise.get_noise_1d(noise_y + 9999)
