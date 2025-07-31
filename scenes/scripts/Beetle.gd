@@ -46,7 +46,7 @@ const DECELERATIONS = {
 
 const TIME_FOR_PRAY_PULL = 3.0
 
-const HEIGHT_FOR_FIRE = 300
+const HEIGHT_FOR_FIRE = 350
 const PRAY_PULL_MAX_DIST = 600.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
@@ -228,7 +228,7 @@ func _movement_process(delta: float) -> void:
 	# Fire hit logic
 	if get_slide_collision_count() > 0 and on_fire:
 		var normal = get_slide_collision(0).get_normal()
-		if abs(normal[0] - 0) < TOLERANCE and not rolling: # Floor hit
+		if abs(normal[0] - 0) < TOLERANCE and not rolling or not has_dung: # Floor hit
 			jumped = true
 			on_fire = false
 			rolling = false
