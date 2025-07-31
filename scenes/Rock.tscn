@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjasm7n7ofnkr"]
+
+[ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="1_wmx41"]
+[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="2_8hfn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn4lm"]
+size = Vector2(248, 512)
+
+[node name="Rock" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_wmx41")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.75481, 0.114495, 0.405008, 1)
+position = Vector2(-3.8147e-06, 0)
+scale = Vector2(2, 4)
+texture = ExtResource("2_8hfn2")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pn4lm")

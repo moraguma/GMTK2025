@@ -12,6 +12,7 @@ radius = 40.0
 radius = 48.0
 
 [node name="Dung" type="CharacterBody2D"]
+process_physics_priority = 2
 collision_layer = 4
 script = ExtResource("1_fmysa")
 
@@ -39,4 +40,12 @@ collision_mask = 2
 [node name="Hitbox" type="CollisionShape2D" parent="CollectionArea"]
 shape = SubResource("CircleShape2D_obthd")
 
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_obthd")
+
 [connection signal="body_entered" from="CollectionArea" to="." method="collect"]
+[connection signal="body_entered" from="HitArea" to="." method="destroy_leaf"]

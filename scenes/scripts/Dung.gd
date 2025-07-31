@@ -6,7 +6,7 @@ const THROW_SPEED = 1000.0
 const FIRE_SPEED = 1300.0
 const NORMAL_TERMINAL_SPEED = 1800.0
 
-const PICK_TIME = 0.25
+const PICK_TIME = 0.5
 
 const AIR_RESISTANCE = 0.012
 const GRAVITY = 0.01
@@ -85,3 +85,7 @@ func deactivate():
 	set_collision_mask_value(1, false)
 	collection_area.set_collision_mask_value(2, false)
 	hide()
+
+
+func destroy_leaf(body: Node2D) -> void:
+	body.destroy()

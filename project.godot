@@ -78,3 +78,4 @@ aim={
 2d_physics/layer_1="Tiles"
 2d_physics/layer_2="Beetle"
 2d_physics/layer_3="Dung"
+2d_physics/layer_4="Leaves"

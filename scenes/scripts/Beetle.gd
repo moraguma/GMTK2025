@@ -9,26 +9,26 @@ const NORMAL_TERMINAL_SPEED = 1800.0
 const FIRE_TERMINAL_SPEED = 2300.0
 const JUMP_SPEED = -700.0
 const ROLLING_JUMP_SPEED = -1000.0
-const SOMERSAULT_VEC = Vector2(-150, -1000)
-const FIRE_HIT_VEC = Vector2(-150, -1000)
-const THROW_SPEED = 400.0
+const SOMERSAULT_VEC = Vector2(-50, -1000)
+const FIRE_HIT_VEC = Vector2(-200, -1000)
+const THROW_SPEED = 500.0
 const FIRE_THROW_SPEED = 700.0
-const CATCH_SPEED = 700.0
-const MAX_HORIZONTAL_JUMP_SPEED = 300.0
+const CATCH_SPEED = 850.0
+const MAX_HORIZONTAL_JUMP_SPEED = 200.0
 const ROLLING_SPEED = 800.0
 const UP_SLOPE_ROLLING_SPEED = 1150.0
 const DOWN_SLOPE_ROLLING_SPEED = 800.0
 const SPEED = {
-	false: 350.0,
+	false: 420.0,
 	true: 250.0
 }
 const UP_SLOPE_SPEED = {
-	false: 500.0,
-	true: 300.0
+	false: 600.0,
+	true: 360.0
 }
 const DOWN_SLOPE_SPEED = {
-	false: 350.0,
-	true: 200.0
+	false: 420.0,
+	true: 250.0
 }
 
 const GRAVITY = 0.01
@@ -40,19 +40,21 @@ const ACCELERATIONS = {
 }
 const DECELERATIONS = {
 	false: 0.2,
-	true: 0.08
+	true: 0.04
 }
 
 
 const TIME_FOR_PRAY_PULL = 3.0
 
-const HEIGHT_FOR_FIRE = 350
+const HEIGHT_FOR_FIRE = 550.0
 const PRAY_PULL_MAX_DIST = 600.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
 
 
 var dung: Dung
+var world_camera: WorldCamera
+var world_loader: WorldLoader
 var has_dung = true
 var on_fire = false
 var rolling = false
@@ -64,6 +66,7 @@ var heavy_falling_height = null
 var time_aiming_started = null
 var can_pray_pull = false
 var has_pray_pulled = false
+var skip_floor_correction = false
 
 var is_grounded = true
 
@@ -100,7 +103,7 @@ func _movement_process(delta: float) -> void:
 		heavy_falling_height = null
 	
 	# Throw logic
-	if Input.is_action_just_pressed("aim") and not aiming: # Start aim
+	if Input.is_action_just_pressed("aim") and not aiming and not rolling: # Start aim
 		time_aiming_started = Time.get_ticks_msec()
 		aiming = true
 		dung.aiming = true
@@ -140,8 +143,8 @@ func _movement_process(delta: float) -> void:
 			else:
 				has_pray_pulled = true
 	
-	if aiming: # Aim actions
-		var throw_dir = (get_global_mouse_position() - global_position).normalized()
+	if aiming: # Aima actions
+		var throw_dir = (world_loader.get_global_mouse_position() - (Vector2(960, 540) + global_position - world_camera.get_screen_center_position())).normalized()
 		if is_grounded:
 			var angle = clamp(Vector2(0, -1).angle_to(throw_dir), -MAX_GROUNDED_THROW_ANGLE, MAX_GROUNDED_THROW_ANGLE)
 			throw_dir = Vector2(0, -1).rotated(angle)
@@ -214,7 +217,7 @@ func _movement_process(delta: float) -> void:
 	
 	# Vertical movement
 	var gravity = ROLLING_GRAVITY if rolling else GRAVITY
-	var terminal_speed = NORMAL_TERMINAL_SPEED
+	var terminal_speed = FIRE_TERMINAL_SPEED if on_fire else NORMAL_TERMINAL_SPEED
 	velocity[1] = lerp(velocity[1], terminal_speed, gravity)
 	
 	if Input.is_action_just_pressed("jump") and is_grounded:
@@ -228,6 +231,28 @@ func _movement_process(delta: float) -> void:
 	# Fire hit logic
 	if get_slide_collision_count() > 0 and on_fire:
 		var normal = get_slide_collision(0).get_normal()
+		
+		var get_fire_hit = func(beetle_mod, dung_mod_idx):
+			jumped = true
+			on_fire = false
+			rolling = false
+			rolling_uphill = false
+			
+			velocity = FIRE_HIT_VEC
+			velocity[0] *= beetle_mod 
+			print(velocity)
+			
+			if has_dung:
+				var throw_dir = velocity
+				throw_dir[dung_mod_idx] *= -1
+				dung.throw(throw_dir.normalized())
+				lose_dung()
+			
+			var collider = get_slide_collision(0).get_collider()
+			if collider.has_method("destroy"):
+				collider.destroy()
+		
+		
 		if abs(normal[0] - 0) < TOLERANCE and not rolling or not has_dung: # Floor hit
 			jumped = true
 			on_fire = false
@@ -235,13 +260,18 @@ func _movement_process(delta: float) -> void:
 			rolling_uphill = false
 			
 			velocity = FIRE_HIT_VEC
-			velocity[0] *= facing_dir
+			velocity[0] *= facing_dir 
+			print(velocity)
 			
 			if has_dung:
 				var throw_dir = velocity
 				throw_dir[0] *= -1
 				dung.throw(throw_dir.normalized())
 				lose_dung()
+			
+			var collider = get_slide_collision(0).get_collider()
+			if collider.has_method("destroy"):
+				collider.destroy()
 		elif abs(normal[1] - 0) < TOLERANCE: # Wall hit
 			jumped = true
 			on_fire = false
@@ -249,13 +279,18 @@ func _movement_process(delta: float) -> void:
 			rolling_uphill = false
 			
 			velocity = FIRE_HIT_VEC
-			velocity[0] *= -normal[0]
+			velocity[0] *= -normal[0] 
+			print(velocity)
 			
 			if has_dung:
 				var throw_dir = velocity
 				throw_dir[1] *= -1
 				dung.throw(throw_dir.normalized())
 				lose_dung()
+			
+			var collider = get_slide_collision(0).get_collider()
+			if collider.has_method("destroy"):
+				collider.destroy()
 		elif normal[1] < 1 and not rolling: # Hill hit
 			rolling = true
 			facing_dir = -slope_dir
@@ -272,12 +307,13 @@ func _movement_process(delta: float) -> void:
 	
 	var was_grounded = is_grounded
 	move_and_slide()
-	is_grounded = is_on_floor()
+	if not skip_floor_correction:
+		is_grounded = is_on_floor()
 	if is_grounded:
 		has_pray_pulled = false
 	
 	# Floor correction
-	if was_grounded and not is_on_floor() and not jumped:
+	if was_grounded and not is_on_floor() and not jumped and not skip_floor_correction:
 		var movement_options = get_feet_raycast_movements()
 		
 		if len(movement_options) > 0:
@@ -292,6 +328,9 @@ func _movement_process(delta: float) -> void:
 			if min_movement[1] > 0:
 				position += min_movement
 				is_grounded = true
+	
+	if skip_floor_correction:
+		skip_floor_correction = false
 
 
 func _animation_process(delta: float) -> void:
@@ -318,3 +357,9 @@ func lose_dung():
 func get_dung():
 	sprite.frame = 1
 	has_dung = true
+
+
+func adjust(adjustment_vector):
+	skip_floor_correction = true
+	if heavy_falling_height != null:
+		heavy_falling_height += adjustment_vector[1]

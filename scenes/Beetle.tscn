@@ -12,7 +12,9 @@ height = 112.0
 size = Vector2(80, 40)
 
 [node name="Beetle" type="CharacterBody2D"]
+process_physics_priority = 2
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_df2da")
 
 [node name="ArrowPivot" type="Node2D" parent="."]
@@ -42,15 +44,16 @@ position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_df2da")
 
 [node name="LeftFeetCast" type="RayCast2D" parent="."]
+process_physics_priority = 2
 position = Vector2(-40, 56)
-target_position = Vector2(0, 256)
+target_position = Vector2(0, 128)
 hit_from_inside = true
 
 [node name="RightFeetCast" type="RayCast2D" parent="."]
+process_physics_priority = 2
 position = Vector2(40, 56)
-target_position = Vector2(0, 256)
+target_position = Vector2(0, 128)
 hit_from_inside = true
 
 [node name="DungDetector" type="RayCast2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+process_physics_priority = 2
