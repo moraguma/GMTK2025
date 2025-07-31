@@ -2,11 +2,13 @@ extends CharacterBody2D
 class_name Beetle
 
 
+const DUNG_SCENE = preload("res://scenes/Dung.tscn")
+
 const NORMAL_TERMINAL_SPEED = 1800.0
 const JUMP_SPEED = -700.0
 const SPEED = {
 	false: 350.0,
-	true: 200.0
+	true: 250.0
 }
 const UP_SLOPE_SPEED = {
 	false: 500.0,
@@ -22,15 +24,17 @@ const GRAVITY = 0.01
 const AIR_ACCELERATION = 0.0
 const ACCELERATIONS = {
 	false: 0.1,
-	true: 0.01
+	true: 0.04
 }
 const DECELERATIONS = {
 	false: 0.2,
-	true: 0.02
+	true: 0.08
 }
 
 
-var has_dung = false
+var dung: Dung
+var has_dung = true
+var aiming = false
 
 var is_grounded = true
 
@@ -39,7 +43,37 @@ var is_grounded = true
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
 
 
+func _ready() -> void:
+	dung = DUNG_SCENE.instantiate()
+	dung.player = self
+	get_parent().add_child.call_deferred(dung)
+	dung.deactivate.call_deferred()
+
+
 func _physics_process(delta: float) -> void:
+	_movement_process(delta)
+
+
+func _movement_process(delta: float) -> void:
+	# Throw logic
+	if Input.is_action_just_pressed("aim") and not aiming: # TODO add aiming reticle
+		aiming = true
+		dung.aiming = true
+	
+	if aiming:
+		if Input.is_action_just_pressed("throw") and has_dung:
+			dung.throw((get_global_mouse_position() - global_position).normalized())
+			lose_dung()
+			
+			aiming = false
+			dung.aiming = false
+		elif Input.is_action_just_released("aim"):
+			aiming = false
+			dung.aiming = false
+		else:
+			return
+	
+	# Movement logic
 	var dir = Input.get_vector("left", "right", "up", "down")
 	
 	# Horizontal movement
@@ -101,3 +135,11 @@ func get_feet_raycast_movements():
 		else:
 			movement_options.append(Vector2(0, -1))
 	return movement_options
+
+
+func lose_dung():
+	has_dung = false
+
+
+func get_dung():
+	has_dung = true
