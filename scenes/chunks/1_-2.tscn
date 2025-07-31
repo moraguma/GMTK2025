@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://btdc2ublusa6u"]
+[gd_scene load_steps=8 format=3 uid="uid://b8rgt86w0moxf"]
 
-[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_oqo41"]
-[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_gju02"]
-[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_obsnl"]
-[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_gju02"]
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_3kf8d"]
+[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_pinas"]
+[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_iads8"]
+[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_pinas"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
-texture = ExtResource("3_obsnl")
+texture = ExtResource("3_iads8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -377,7 +377,7 @@ texture_region_size = Vector2i(64, 64)
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx18x"]
-texture = ExtResource("4_gju02")
+texture = ExtResource("4_pinas")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, 32, 32, 32, 32, -28, -28, -28)
@@ -397,11 +397,11 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
-[node name="(-1, -1)" type="Node2D"]
-script = ExtResource("1_oqo41")
+[node name="(1, -2)" type="Node2D"]
+script = ExtResource("1_3kf8d")
 
-[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_gju02")]
+[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_pinas")]
 z_index = 25
 tile_set = SubResource("TileSet_j6121")
 format = 2
-layer_0/tile_data = PackedInt32Array(2228247, 196608, 0, 2293783, 262144, 2, 2359319, 0, 1, 2424855, 0, 2, 2293784, 65536, 0, 2359320, 65536, 1, 2424856, 65536, 2, 2293785, 65536, 0, 2359321, 65536, 1, 2424857, 65536, 2, 2293786, 65536, 0, 2359322, 65536, 1, 2424858, 65536, 2, 2293787, 65536, 0, 2359323, 65536, 1, 2424859, 65536, 2, 2293788, 65536, 0, 2359324, 65536, 1, 2424860, 65536, 2, 2293789, 131072, 0, 2359325, 327680, 2, 2424861, 393216, 1, 2490397, 0, 2, 2359326, 131072, 0, 2424862, 327680, 2, 2490398, 393216, 1, 2555934, 0, 2, 2424863, 131072, 0, 2490399, 327680, 2, 2555935, 393216, 1, 2490400, 65536, 0, 2555936, 65536, 1, 2490401, 65536, 0, 2555937, 65536, 1, 2490402, 65536, 0, 2555938, 65536, 1, 2490403, 65536, 0, 2555939, 65536, 1, 2490404, 65536, 0, 2555940, 65536, 1, 2490405, 65536, 0, 2555941, 65536, 1, 2490406, 65536, 0, 2555942, 65536, 1, 2490407, 65536, 0, 2555943, 65536, 1)
+layer_0/tile_data = PackedInt32Array(2555914, 0, 0, 2490379, 0, 0, 2555915, 393216, 2, 2424844, 0, 0, 2490380, 393216, 2, 2555916, 65536, 1, 2359309, 0, 0, 2424845, 393216, 2, 2490381, 65536, 1, 2555917, 65536, 1, 2359310, 131072, 0, 2424846, 327680, 2, 2490382, 65536, 1, 2555918, 65536, 1, 2424847, 131072, 0, 2490383, 327680, 2, 2555919, 65536, 1, 2490384, 131072, 0, 2555920, 327680, 2, 2359313, 0, 3, 2555921, 65536, 0, 2293778, 0, 0, 2359314, 393216, 3, 2555922, 65536, 0, 2228243, 0, 0, 2293779, 589824, 1, 2359315, 131072, 2, 2555923, 65536, 0, 2162708, 0, 0, 2228244, 589824, 1, 2293780, 131072, 2, 2555924, 65536, 0, 2097173, 0, 0, 2162709, 589824, 1, 2228245, 131072, 2, 2555925, 65536, 0, 2031638, 0, 0, 2097174, 589824, 1, 2162710, 131072, 2, 2555926, 65536, 0, 1966103, 0, 0, 2031639, 589824, 1, 2097175, 131072, 2, 2555927, 65536, 0, 1900568, 0, 0, 1966104, 589824, 1, 2031640, 131072, 2, 2555928, 65536, 0, 1835033, 196608, 0, 1900569, 458752, 2, 1966105, 131072, 2, 2555929, 65536, 0, 2555930, 65536, 0, 2555931, 65536, 0, 2555932, 65536, 0, 2555933, 65536, 0, 2555934, 65536, 0, 2555935, 65536, 0, 2555936, 131072, 0, 2555939, 0, 0, 2490404, 0, 0, 2555940, 393216, 2, 2490405, 65536, 0, 2555941, 65536, 1, 2490406, 65536, 0, 2555942, 65536, 1, 2490407, 65536, 0, 2555943, 65536, 1)

@@ -7,6 +7,10 @@ signal finished_transition_process
 
 const BEETLE_SCENE = preload("res://scenes/Beetle.tscn")
 
+const GAME_TIME = 90.0
+const GAME_FAKE_TIME = 60.0
+const STRESS_TIME = 10.0
+
 # ------------------------------------------------------------------------------
 # VARIABLES
 # ------------------------------------------------------------------------------
@@ -22,6 +26,8 @@ const BEETLE_SCENE = preload("res://scenes/Beetle.tscn")
 
 @onready var world_base: Node2D = $Viewport/WorldBase
 @onready var world_camera: Camera2D = $Viewport/WorldCamera
+@onready var game_timer: Timer = $GameTimer
+@onready var time_label: RichTextLabel = $TimeLabel
 
 var beetle: Beetle
 
@@ -53,6 +59,8 @@ var initialized = false
 # BUILT-INS
 # ------------------------------------------------------------------------------
 func _ready():
+	game_timer.start(GAME_TIME)
+	
 	process_physics_priority = PHYSICS_PROCESS_PRIORITY
 	
 	GlobalCamera.follow_node(view)
@@ -87,6 +95,15 @@ func _physics_process(delta: float) -> void:
 	_update_chunk_position()
 	_update_queued_chunks()
 	_shift_origin()
+
+
+func _process(delta: float) -> void:
+	var time_progress = pow((GAME_TIME - game_timer.time_left) / GAME_TIME, 0.9)
+	var fake_time_left = GAME_FAKE_TIME - time_progress * GAME_FAKE_TIME
+	if fake_time_left > STRESS_TIME:
+		time_label.text = "[center]%d" % [int(fake_time_left)]
+	else:
+		time_label.text = "[center]%.2f" % [fake_time_left]
 
 
 ## Checks if player has moved out of current chunk. If so, unloads old chunks
@@ -132,7 +149,7 @@ func _update_chunk_position():
 
 
 func _shift_origin():
-	if chunk_shift == Vector2i(0, 0):
+	if chunk_shift == Vector2i(0, 0) or not (beetle.has_dung or beetle.dung.landed) or beetle.is_grounded:
 		return
 	print("Shifted origin from %s to %s" % [current_chunk_pos - chunk_shift, current_chunk_pos])
 	

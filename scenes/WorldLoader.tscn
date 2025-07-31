@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=6 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
@@ -7,14 +7,21 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_gjsnv"]
 viewport_path = NodePath("Viewport")
 
+[sub_resource type="Theme" id="Theme_qh2w4"]
+default_font_size = 64
+
 [node name="WorldLoader" type="Node2D"]
 script = ExtResource("1_u227p")
 starting_chunk_pos = Vector2i(0, -1)
-starting_pos = Vector2(512, 1664)
+starting_pos = Vector2(192, 2368)
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
 
 [node name="View" type="Sprite2D" parent="."]
 texture = SubResource("ViewportTexture_gjsnv")
-centered = false
 script = ExtResource("2_gjsnv")
 
 [node name="Viewport" type="SubViewport" parent="."]
@@ -26,3 +33,15 @@ size = Vector2i(1920, 1080)
 [node name="WorldCamera" type="Camera2D" parent="Viewport"]
 process_priority = 2
 script = ExtResource("2_qh2w4")
+
+[node name="TimeLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -440.0
+theme = SubResource("Theme_qh2w4")
+bbcode_enabled = true
+text = "[center]dasda"
+
+[connection signal="timeout" from="GameTimer" to="." method="queue_reset"]

@@ -8,13 +8,13 @@ const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
 const NORMAL_TERMINAL_SPEED = 3400.0
 const FIRE_TERMINAL_SPEED = 5500.0
 const JUMP_SPEED = -1100.0
-const ROLLING_JUMP_SPEED = -1000.0
-const SOMERSAULT_VEC = Vector2(-50, -1500)
+const ROLLING_JUMP_SPEED = -1800.0
+const SOMERSAULT_VEC = Vector2(-200, -1500)
 const FIRE_HIT_VEC = Vector2(-300, -1500)
 const THROW_SPEED = 800.0
 const FIRE_THROW_SPEED = 700.0
 const CATCH_SPEED = 1000.0
-const MAX_HORIZONTAL_JUMP_SPEED = 200.0
+const MAX_HORIZONTAL_JUMP_SPEED = 300.0
 const ROLLING_SPEED = 1200.0
 const UP_SLOPE_ROLLING_SPEED = 1750.0
 const DOWN_SLOPE_ROLLING_SPEED = 800.0
@@ -46,7 +46,7 @@ const DECELERATIONS = {
 
 const TIME_FOR_PRAY_PULL = 2.0
 
-const HEIGHT_FOR_FIRE = 550.0
+const HEIGHT_FOR_FIRE = 620.0
 const PRAY_PULL_MAX_DIST = 750.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
@@ -78,6 +78,7 @@ var is_grounded = true
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
 @onready var dung_detector: RayCast2D = $DungDetector
 @onready var arrow_pivot: Node2D = $ArrowPivot
+@onready var ground_detectors: Array[RayCast2D] = [$GroundDetectorL, $GroundDetectorR]
 
 
 func _ready() -> void:
@@ -105,6 +106,7 @@ func _movement_process(delta: float) -> void:
 	
 	# Throw logic
 	if Input.is_action_just_pressed("aim") and not aiming and not rolling: # Start aim
+		world_loader.game_timer.paused = true
 		aiming = true
 		dung.aiming = true
 		
@@ -123,6 +125,7 @@ func _movement_process(delta: float) -> void:
 		dung.aiming = false
 		arrow_pivot.hide()
 		pulling = false
+		world_loader.game_timer.paused = false
 	
 	var jumped = false
 	if aiming and not has_dung: # Pray pull
@@ -154,8 +157,8 @@ func _movement_process(delta: float) -> void:
 					else:
 						has_pray_pulled = true
 	
-	if aiming: # Aima actions
-		var throw_dir = (world_loader.get_global_mouse_position() - (Vector2(960, 540) + global_position - world_camera.get_screen_center_position())).normalized()
+	if aiming: # Aim actions
+		var throw_dir = (world_loader.get_global_mouse_position() - (global_position - world_camera.get_screen_center_position())).normalized()
 		if is_grounded:
 			var angle = clamp(Vector2(0, -1).angle_to(throw_dir), -MAX_GROUNDED_THROW_ANGLE, MAX_GROUNDED_THROW_ANGLE)
 			throw_dir = Vector2(0, -1).rotated(angle)
@@ -179,7 +182,7 @@ func _movement_process(delta: float) -> void:
 			
 			stop_aiming.call()
 		elif Input.is_action_just_pressed("jump") and not has_dung and is_grounded:
-			jumped = false
+			jumped = true
 			is_grounded = false
 			
 			velocity = SOMERSAULT_VEC
@@ -231,10 +234,16 @@ func _movement_process(delta: float) -> void:
 	var terminal_speed = FIRE_TERMINAL_SPEED if on_fire else NORMAL_TERMINAL_SPEED
 	velocity[1] = lerp(velocity[1], terminal_speed, gravity)
 	
-	if Input.is_action_just_pressed("jump") and is_grounded:
+	var can_jump = false
+	for ground_detector in ground_detectors:
+		if ground_detector.is_colliding():
+			can_jump = true
+			break
+	
+	if Input.is_action_just_pressed("jump") and can_jump and not jumped:
 		if not has_dung:
 			jumped = true
-			velocity[1] += JUMP_SPEED
+			velocity[1] = JUMP_SPEED
 			velocity[0] = clamp(velocity[0], -MAX_HORIZONTAL_JUMP_SPEED, MAX_HORIZONTAL_JUMP_SPEED)
 		else: # TODO Add can't jump effect
 			pass
@@ -319,20 +328,24 @@ func _movement_process(delta: float) -> void:
 	move_and_slide()
 	if not skip_floor_correction:
 		is_grounded = is_on_floor()
-	if is_grounded:
+	if can_jump:
 		has_pray_pulled = false
 	
 	# Floor correction
 	if was_grounded and not is_on_floor() and not jumped and not skip_floor_correction:
 		var movement_options = get_feet_raycast_movements()
+		var effective_movement_options = []
+		for movement_option in movement_options:
+			if movement_option[1] > 0:
+				effective_movement_options.append(movement_option)
 		
-		if len(movement_options) > 0:
-			var min_movement = movement_options[0]
+		if len(effective_movement_options) > 0:
+			var min_movement = effective_movement_options[0]
 			var min_movement_length = min_movement.length()
-			for i in range(1, len(movement_options)):
-				var movement_length = movement_options[i].length()
+			for i in range(1, len(effective_movement_options)):
+				var movement_length = effective_movement_options[i].length()
 				if movement_length < min_movement_length:
-					min_movement = movement_options[i]
+					min_movement = effective_movement_options[i]
 					min_movement_length = movement_length
 			
 			if min_movement[1] > 0:
