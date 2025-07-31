@@ -43,10 +43,14 @@ shape = SubResource("RectangleShape2D_df2da")
 
 [node name="LeftFeetCast" type="RayCast2D" parent="."]
 position = Vector2(-40, 56)
-target_position = Vector2(0, 128)
+target_position = Vector2(0, 256)
+hit_from_inside = true
 
 [node name="RightFeetCast" type="RayCast2D" parent="."]
 position = Vector2(40, 56)
-target_position = Vector2(0, 128)
+target_position = Vector2(0, 256)
+hit_from_inside = true
 
 [node name="DungDetector" type="RayCast2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://cgx1aesy2y2eu" path="res://addons/jam_essentials/resources/shaders/transition/Spikes.tres" id="2_fbgqt"]
 
 [node name="GlobalCamera" type="Camera2D"]
+enabled = false
 script = ExtResource("1_uxxvl")
 
 [node name="ShaderCanvas" type="ColorRect" parent="."]

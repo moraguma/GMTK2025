@@ -3,6 +3,7 @@ class_name Dung
 
 
 const THROW_SPEED = 1000.0
+const FIRE_SPEED = 1300.0
 const NORMAL_TERMINAL_SPEED = 1800.0
 
 const PICK_TIME = 0.25
@@ -15,15 +16,18 @@ var active = false
 var landed = true
 var aiming = false
 var player: Beetle = null
+var on_fire = false
 
 
 @onready var pick_timer: Timer = $PickTimer
 @onready var collection_area: Area2D = $CollectionArea
 @onready var sprite: ShakingSprite = $Sprite
+@onready var fire: Sprite2D = $Fire
 
 
 func _physics_process(delta: float) -> void:
 	_movement_process(delta)
+	_animation_process(delta)
 
 
 func _movement_process(delta: float) -> void:
@@ -38,15 +42,21 @@ func _movement_process(delta: float) -> void:
 	
 	if move_and_slide():
 		landed = true
+		on_fire = false
+
+
+func _animation_process(delta: float) -> void:
+	fire.visible = on_fire
 
 
 ## Throws dung, starting from player, in given direction
-func throw(dir, on_fire=false):
+func throw(dir, catch_fire=false):
 	activate()
 	pick_timer.start(PICK_TIME)
+	on_fire = catch_fire
 	
 	position = player.position
-	velocity = dir * THROW_SPEED
+	velocity = dir * (FIRE_SPEED if on_fire else THROW_SPEED)
 
 
 ## Called when player enters collection area. deactivates and gives player dung
