@@ -1,23 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://npiq72ggv33n"]
 
 [ext_resource type="Script" uid="uid://5hpg8rvt41g8" path="res://scenes/scripts/Dung.gd" id="1_fmysa"]
-[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_rhg3x"]
+[ext_resource type="Texture2D" uid="uid://d2lrp0ipwlkmx" path="res://resources/sprites/ball_test.png" id="2_fmysa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmysa"]
-radius = 48.0
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obthd"]
-radius = 56.0
+radius = 48.0
 
 [node name="Dung" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_fmysa")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(1, 0.379894, 0.292627, 1)
 position = Vector2(3.8147e-06, 3.8147e-06)
-scale = Vector2(0.875, 0.875)
-texture = ExtResource("1_rhg3x")
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("2_fmysa")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fmysa")

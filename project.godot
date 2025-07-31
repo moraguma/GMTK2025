@@ -78,3 +78,7 @@ aim={
 2d_physics/layer_1="Tiles"
 2d_physics/layer_2="Beetle"
 2d_physics/layer_3="Dung"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.92549, 0.937255, 0.882353, 1)

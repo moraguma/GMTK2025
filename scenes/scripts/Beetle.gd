@@ -6,6 +6,8 @@ const DUNG_SCENE = preload("res://scenes/Dung.tscn")
 
 const NORMAL_TERMINAL_SPEED = 1800.0
 const JUMP_SPEED = -700.0
+const SOMERSAULT_VEC = Vector2(-150, -1000)
+const THROW_SPEED = 400.0
 const SPEED = {
 	false: 350.0,
 	true: 250.0
@@ -35,10 +37,12 @@ const DECELERATIONS = {
 var dung: Dung
 var has_dung = true
 var aiming = false
+var facing_dir = 1
 
 var is_grounded = true
 
 
+@onready var sprite: Sprite2D = $Sprite
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
 
@@ -60,21 +64,40 @@ func _movement_process(delta: float) -> void:
 		aiming = true
 		dung.aiming = true
 	
+	
+	var stop_aiming = func():
+		aiming = false
+		dung.aiming = false
+	
+	var jumped = false
 	if aiming:
 		if Input.is_action_just_pressed("throw") and has_dung:
-			dung.throw((get_global_mouse_position() - global_position).normalized())
+			var throw_dir = (get_global_mouse_position() - global_position).normalized()
+			dung.throw(throw_dir)
+			if not is_grounded:
+				velocity = -throw_dir * THROW_SPEED
 			lose_dung()
 			
-			aiming = false
-			dung.aiming = false
+			stop_aiming.call()
+		elif Input.is_action_just_pressed("jump") and not has_dung and is_grounded:
+			jumped = false
+			is_grounded = false
+			
+			velocity = SOMERSAULT_VEC
+			velocity[0] *= facing_dir
+			
+			stop_aiming.call()
 		elif Input.is_action_just_released("aim"):
-			aiming = false
-			dung.aiming = false
+			stop_aiming.call()
 		else:
 			return
 	
 	# Movement logic
 	var dir = Input.get_vector("left", "right", "up", "down")
+	if dir[0] > 0: 
+		facing_dir = 1
+	elif dir[0] < 0:
+		facing_dir = -1
 	
 	# Horizontal movement
 	var feet_raycast_distances = get_feet_raycast_movements()
@@ -99,7 +122,6 @@ func _movement_process(delta: float) -> void:
 	var terminal_speed = NORMAL_TERMINAL_SPEED
 	velocity[1] = lerp(velocity[1], terminal_speed, gravity)
 	
-	var jumped = false
 	if not has_dung and is_grounded and Input.is_action_just_pressed("jump"):
 		jumped = true
 		velocity[1] += JUMP_SPEED
@@ -138,8 +160,10 @@ func get_feet_raycast_movements():
 
 
 func lose_dung():
+	sprite.frame = 0
 	has_dung = false
 
 
 func get_dung():
+	sprite.frame = 1
 	has_dung = true
