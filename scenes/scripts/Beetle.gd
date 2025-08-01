@@ -8,10 +8,10 @@ const DUNG_ROLL_ANIM_TRANSMISSION = 0.012
 const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
 const NORMAL_TERMINAL_SPEED = 3400.0
 const FIRE_TERMINAL_SPEED = 5500.0
-const JUMP_SPEED = -1100.0
+const JUMP_SPEED = -1050.0
 const ROLLING_JUMP_SPEED = -1800.0
-const SOMERSAULT_VEC = Vector2(-200, -1500)
-const FIRE_HIT_VEC = Vector2(-300, -1500)
+const SOMERSAULT_VEC = Vector2(-200, -1400)
+const FIRE_HIT_VEC = Vector2(-300, -1400)
 const THROW_SPEED = 800.0
 const FIRE_THROW_SPEED = 700.0
 const CATCH_SPEED = 1000.0
@@ -48,7 +48,7 @@ const DECELERATIONS = {
 const TIME_FOR_PRAY_PULL = 2.0
 
 const HEIGHT_FOR_FIRE = 620.0
-const PRAY_PULL_MAX_DIST = 750.0
+const PRAY_PULL_MAX_DIST = 1250.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
 const ANIM_TOLERANCE = 30.0
@@ -131,12 +131,13 @@ func _movement_process(delta: float) -> void:
 		if has_dung:
 			arrow_pivot.show()
 		
-		can_pray_pull = false
-		if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
-			dung_detector.target_position = dung.position - position
-			dung_detector.force_raycast_update()
-			if not dung_detector.is_colliding():
-				can_pray_pull = true
+		can_pray_pull = true
+		#can_pray_pull = false
+		#if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
+			#dung_detector.target_position = dung.position - position
+			#dung_detector.force_raycast_update()
+			#if not dung_detector.is_colliding():
+				#can_pray_pull = true
 	
 	var stop_aiming = func():
 		aiming = false
@@ -186,7 +187,8 @@ func _movement_process(delta: float) -> void:
 		arrow_pivot.rotation = Vector2(0, -1).angle_to(throw_dir)
 		
 		if Input.is_action_just_pressed("throw") and has_dung:
-			facing_dir = throw_dir[0] / abs(throw_dir[0])
+			if not is_grounded:
+				facing_dir = throw_dir[0] / abs(throw_dir[0])
 			
 			dung.throw(throw_dir, on_fire)
 			if on_fire:
@@ -252,9 +254,9 @@ func _movement_process(delta: float) -> void:
 		velocity[0] = lerp(velocity[0], dir[0] * speed, accel)
 	else:
 		var speed = ROLLING_SPEED
-		if slope_dir * dir[0] > 0:
+		if slope_dir * rolling_dir > 0:
 			speed = UP_SLOPE_ROLLING_SPEED
-		elif slope_dir * dir[0] < 0:
+		elif slope_dir * rolling_dir < 0:
 			speed = DOWN_SLOPE_ROLLING_SPEED
 		velocity[0] = speed * rolling_dir
 	
@@ -318,6 +320,7 @@ func _movement_process(delta: float) -> void:
 				var throw_dir = velocity
 				throw_dir[1] *= -1
 				dung.throw(throw_dir.normalized())
+				dung.position[0] += throw_dir[0] / abs(throw_dir[0]) * 50
 				lose_dung()
 			
 			var collider = get_slide_collision(0).get_collider()
@@ -388,7 +391,7 @@ func _animation_process(delta: float) -> void:
 	
 	anim_floor_detector.force_raycast_update()
 	var vec_to_ground = anim_floor_detector.get_collision_point() - anim_floor_detector.global_position
-	if is_grounded:
+	if is_grounded and not aiming:
 		if anim_floor_detector.is_colliding():
 			sprite_pivot.position = sprite_base_pos + vec_to_ground
 		
@@ -397,7 +400,7 @@ func _animation_process(delta: float) -> void:
 		if floor_movements[0][1] > 0.5:
 			angle_movements = [floor_movements[0][1], vec_to_ground[1]]
 		else:
-			angle_movements = [vec_to_ground[1], floor_movements[1][1]]
+			angle_movements = [vec_to_ground[1], floor_movements[1][1] if floor_movements[1][1] >= 0.0 else 40.0]
 		var ang = atan((angle_movements[1] - angle_movements[0]) / 40.0)
 		sprite_pivot.rotation = ang
 	else:
@@ -419,6 +422,8 @@ func _animation_process(delta: float) -> void:
 				animation_player.transition_anim("ball_walk")
 			else:
 				animation_player.transition_anim("walk")
+	else:
+		animation_player.transition_anim("ball_fall" if has_dung else "fall")
 	
 	dung_particles.emitting = abs(velocity[0]) > ANIM_TOLERANCE and is_grounded and has_dung
 	dung_holder.visible = animation_player.current_animation in ["roll", "ball_walk"]

@@ -6,6 +6,7 @@ const THROW_SPEED = 1500.0
 const FIRE_SPEED = 1300.0
 const NORMAL_TERMINAL_SPEED = 3400.0
 const ROLL_TRANSMISSION = 0.03
+const THROW_ADJUST_AMOUNT = 50.0
 
 const PICK_TIME = 0.5
 
@@ -66,7 +67,7 @@ func throw(dir, catch_fire=false):
 	pick_timer.start(PICK_TIME)
 	on_fire = catch_fire
 	
-	position = player.position
+	position = player.position + dir * THROW_ADJUST_AMOUNT
 	velocity = dir * (FIRE_SPEED if on_fire else THROW_SPEED)
 
 

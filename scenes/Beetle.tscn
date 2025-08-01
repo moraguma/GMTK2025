@@ -449,7 +449,7 @@ never_transition = ["jump", "pray", "fall", "throw", "throw_air", "aim", "aim_ai
 visible = false
 
 [node name="Arrow" type="Sprite2D" parent="ArrowPivot"]
-position = Vector2(0, -80)
+position = Vector2(0, -160)
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("1_3g6af")
 

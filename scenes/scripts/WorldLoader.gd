@@ -195,4 +195,5 @@ func get_chunk_path(chunk_pos: Vector2i):
 
 ## Asks for a reset of the current level
 func queue_reset():
+	print(beetle.position)
 	SceneManager.goto_scene("res://scenes/WorldLoader.tscn")
