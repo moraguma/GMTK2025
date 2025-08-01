@@ -1,9 +1,427 @@
-[gd_scene load_steps=7 format=3 uid="uid://cg3tc75yvlkxo"]
+[gd_scene load_steps=28 format=3 uid="uid://cg3tc75yvlkxo"]
 
 [ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_3g6af"]
 [ext_resource type="Script" uid="uid://cek6gql3w0idv" path="res://scenes/scripts/Beetle.gd" id="1_df2da"]
-[ext_resource type="Texture2D" uid="uid://cqxdmapt8qno1" path="res://resources/sprites/beetle_test.png" id="2_df2da"]
+[ext_resource type="Script" uid="uid://cwbnog83wxe6f" path="res://scenes/scripts/TransitionAnimationPlayer.gd" id="2_mvssf"]
+[ext_resource type="Texture2D" uid="uid://b40i851oeyibu" path="res://resources/sprites/beetle.png" id="3_m71fs"]
+[ext_resource type="Texture2D" uid="uid://cy5vgst0kfv1" path="res://resources/sprites/dung_particles.png" id="4_20vj5"]
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="4_m71fs"]
+[ext_resource type="Texture2D" uid="uid://d2o12p575pfxl" path="res://resources/sprites/dung.png" id="4_qa3k0"]
+[ext_resource type="Texture2D" uid="uid://babbpdcxswvv3" path="res://resources/sprites/particles.png" id="5_odn6d"]
+
+[sub_resource type="Animation" id="Animation_mvssf"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_qa3k0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(93, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -21)]
+}
+
+[sub_resource type="Animation" id="Animation_odn6d"]
+resource_name = "jump"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_2ekb5"]
+resource_name = "land"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pwiwl"]
+resource_name = "fall"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ffa43"]
+resource_name = "pray"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_usmqj"]
+resource_name = "throw"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_10t1h"]
+resource_name = "throw_air"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"fall", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0xuoo"]
+resource_name = "aim"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_m2xve"]
+resource_name = "aim_air"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_lpchp"]
+resource_name = "ball_fall"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_lxgb0"]
+resource_name = "roll_fall"
+length = 0.5
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_rvsd1"]
+resource_name = "ball_idle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_a61v5"]
+resource_name = "roll"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -61)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -21)]
+}
+
+[sub_resource type="Animation" id="Animation_fket5"]
+resource_name = "ball_walk"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(93, -64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, -21)]
+}
+
+[sub_resource type="Animation" id="Animation_20vj5"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ekb5"]
+_data = {
+&"RESET": SubResource("Animation_qa3k0"),
+&"aim": SubResource("Animation_0xuoo"),
+&"aim_air": SubResource("Animation_m2xve"),
+&"ball_fall": SubResource("Animation_lpchp"),
+&"ball_idle": SubResource("Animation_rvsd1"),
+&"ball_walk": SubResource("Animation_fket5"),
+&"fall": SubResource("Animation_pwiwl"),
+&"idle": SubResource("Animation_mvssf"),
+&"jump": SubResource("Animation_odn6d"),
+&"land": SubResource("Animation_2ekb5"),
+&"pray": SubResource("Animation_ffa43"),
+&"roll": SubResource("Animation_a61v5"),
+&"roll_fall": SubResource("Animation_lxgb0"),
+&"throw": SubResource("Animation_usmqj"),
+&"throw_air": SubResource("Animation_10t1h"),
+&"walk": SubResource("Animation_20vj5")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_df2da"]
 radius = 40.0
@@ -19,6 +437,14 @@ collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_df2da")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2ekb5")
+}
+speed_scale = 2.0
+script = ExtResource("2_mvssf")
+never_transition = ["jump", "pray", "fall", "throw", "throw_air", "aim", "aim_air", "ball_fall", "roll_fall", "roll", "land"]
+
 [node name="ArrowPivot" type="Node2D" parent="."]
 visible = false
 
@@ -27,13 +453,50 @@ position = Vector2(0, -80)
 scale = Vector2(0.255, 0.255)
 texture = ExtResource("1_3g6af")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, -2.38419e-07)
-scale = Vector2(0.395, 0.395)
-texture = ExtResource("2_df2da")
-hframes = 2
+[node name="SpritePivot" type="Node2D" parent="."]
+position = Vector2(0, 57)
+
+[node name="DungParticles" type="CPUParticles2D" parent="SpritePivot"]
+visible = false
+position = Vector2(0, -21)
+emitting = false
+amount = 16
+texture = ExtResource("4_20vj5")
+direction = Vector2(0, -1)
+initial_velocity_min = 200.0
+initial_velocity_max = 400.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.5
+
+[node name="DungHolder" type="Node2D" parent="SpritePivot"]
+
+[node name="Dung" type="Sprite2D" parent="SpritePivot/DungHolder"]
+position = Vector2(93, -64)
+texture = ExtResource("4_qa3k0")
+
+[node name="Sprite" type="Sprite2D" parent="SpritePivot"]
+position = Vector2(-2.38419e-07, -117)
+texture = ExtResource("3_m71fs")
+hframes = 5
+vframes = 5
+frame = 5
 script = ExtResource("4_m71fs")
 trauma_modifier = 0.5
+
+[node name="DustParticles" type="CPUParticles2D" parent="SpritePivot"]
+position = Vector2(0, -5)
+emitting = false
+amount = 16
+texture = ExtResource("5_odn6d")
+lifetime = 0.5
+direction = Vector2(0, -1)
+gravity = Vector2(0, 1200)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.5
 
 [node name="Fire" type="Sprite2D" parent="."]
 visible = false
@@ -69,6 +532,12 @@ hit_from_inside = true
 process_physics_priority = 2
 position = Vector2(40, 56)
 target_position = Vector2(0, 16)
+hit_from_inside = true
+
+[node name="AnimFloorDetector" type="RayCast2D" parent="."]
+process_physics_priority = 2
+position = Vector2(0, 56)
+target_position = Vector2(0, 64)
 hit_from_inside = true
 
 [node name="DungDetector" type="RayCast2D" parent="."]

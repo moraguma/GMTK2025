@@ -5,6 +5,7 @@ class_name Dung
 const THROW_SPEED = 1500.0
 const FIRE_SPEED = 1300.0
 const NORMAL_TERMINAL_SPEED = 3400.0
+const ROLL_TRANSMISSION = 0.03
 
 const PICK_TIME = 0.5
 
@@ -23,6 +24,8 @@ var on_fire = false
 @onready var collection_area: Area2D = $CollectionArea
 @onready var sprite: ShakingSprite = $Sprite
 @onready var fire: Sprite2D = $Fire
+@onready var goop_pivot: Node2D = $GoopPivot
+@onready var dung_particles: CPUParticles2D = $DungParticles
 
 
 func _physics_process(delta: float) -> void:
@@ -41,12 +44,20 @@ func _movement_process(delta: float) -> void:
 	velocity[1] = lerp(velocity[1], NORMAL_TERMINAL_SPEED, GRAVITY)
 	
 	if move_and_slide():
+		goop_pivot.rotation = Vector2(0, -1).angle_to(-get_slide_collision(0).get_normal())
+		
 		landed = true
 		on_fire = false
 
 
 func _animation_process(delta: float) -> void:
+	dung_particles.emitting = not landed and active
+	goop_pivot.visible = landed and active
+	
 	fire.visible = on_fire
+	
+	if not landed:
+		sprite.rotation += velocity[0] * ROLL_TRANSMISSION * delta
 
 
 ## Throws dung, starting from player, in given direction
@@ -75,7 +86,7 @@ func activate():
 	set_collision_layer_value(3, true)
 	set_collision_mask_value(1, true)
 	collection_area.set_collision_mask_value(2, true)
-	show()
+	sprite.show()
 
 
 func deactivate():
@@ -84,7 +95,7 @@ func deactivate():
 	set_collision_layer_value(3, false)
 	set_collision_mask_value(1, false)
 	collection_area.set_collision_mask_value(2, false)
-	hide()
+	sprite.hide()
 
 
 func destroy_leaf(body: Node2D) -> void:

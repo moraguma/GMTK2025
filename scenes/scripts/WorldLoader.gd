@@ -94,7 +94,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	_update_chunk_position()
 	_update_queued_chunks()
-	_shift_origin()
+	#_shift_origin() TODO: Is this necessary?
 
 
 func _process(delta: float) -> void:

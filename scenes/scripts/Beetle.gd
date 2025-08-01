@@ -4,6 +4,7 @@ class_name Beetle
 
 const DUNG_SCENE = preload("res://scenes/Dung.tscn")
 
+const DUNG_ROLL_ANIM_TRANSMISSION = 0.012
 const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
 const NORMAL_TERMINAL_SPEED = 3400.0
 const FIRE_TERMINAL_SPEED = 5500.0
@@ -35,11 +36,11 @@ const GRAVITY = 0.01
 const ROLLING_GRAVITY = 0.008
 const AIR_ACCELERATION = 0.0
 const ACCELERATIONS = {
-	false: 0.1,
+	false: 0.08,
 	true: 0.04
 }
 const DECELERATIONS = {
-	false: 0.2,
+	false: 0.15,
 	true: 0.04
 }
 
@@ -50,6 +51,7 @@ const HEIGHT_FOR_FIRE = 620.0
 const PRAY_PULL_MAX_DIST = 750.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
+const ANIM_TOLERANCE = 30.0
 
 
 var dung: Dung
@@ -68,17 +70,26 @@ var time_pulling_started = null
 var can_pray_pull = false
 var has_pray_pulled = false
 var skip_floor_correction = false
+var animation_before_pray = "idle"
 
 var is_grounded = true
 
 
 @onready var fire: Sprite2D = $Fire
-@onready var sprite: ShakingSprite = $Sprite
+@onready var sprite: ShakingSprite = $SpritePivot/Sprite
+@onready var sprite_pivot: Node2D = $SpritePivot
+@onready var animation_player: TransitionAnimationPlayer = $AnimationPlayer
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
 @onready var dung_detector: RayCast2D = $DungDetector
 @onready var arrow_pivot: Node2D = $ArrowPivot
 @onready var ground_detectors: Array[RayCast2D] = [$GroundDetectorL, $GroundDetectorR]
+@onready var dung_holder: Node2D = $SpritePivot/DungHolder
+@onready var dung_sprite: Sprite2D = $SpritePivot/DungHolder/Dung
+@onready var anim_floor_detector: RayCast2D = $AnimFloorDetector
+@onready var sprite_base_pos: Vector2 = sprite_pivot.position
+@onready var dung_particles: CPUParticles2D = $SpritePivot/DungParticles
+@onready var dust_particles: CPUParticles2D = $SpritePivot/DustParticles
 
 
 func _ready() -> void:
@@ -106,6 +117,13 @@ func _movement_process(delta: float) -> void:
 	
 	# Throw logic
 	if Input.is_action_just_pressed("aim") and not aiming and not rolling: # Start aim
+		animation_before_pray = animation_player.current_animation
+		
+		if has_dung:
+			animation_player.play("aim" if is_grounded else "aim_air")
+		else:
+			animation_player.play("pray")
+		
 		world_loader.game_timer.paused = true
 		aiming = true
 		dung.aiming = true
@@ -154,8 +172,10 @@ func _movement_process(delta: float) -> void:
 					
 					if is_grounded:
 						velocity[1] = 0
+						animation_player.play("ball_idle")
 					else:
 						has_pray_pulled = true
+						animation_player.play("ball_fall")
 	
 	if aiming: # Aim actions
 		var throw_dir = (world_loader.get_global_mouse_position() - (global_position - world_camera.get_screen_center_position())).normalized()
@@ -166,13 +186,19 @@ func _movement_process(delta: float) -> void:
 		arrow_pivot.rotation = Vector2(0, -1).angle_to(throw_dir)
 		
 		if Input.is_action_just_pressed("throw") and has_dung:
+			facing_dir = throw_dir[0] / abs(throw_dir[0])
+			
 			dung.throw(throw_dir, on_fire)
 			if on_fire:
 				velocity += -throw_dir * FIRE_THROW_SPEED
 			else:
 				velocity = -throw_dir * THROW_SPEED
+			
 			if is_grounded:
+				animation_player.play("throw")
 				velocity[1] = 0
+			else:
+				animation_player.play("throw_air")
 			
 			rolling = false
 			rolling_uphill = false
@@ -182,6 +208,8 @@ func _movement_process(delta: float) -> void:
 			
 			stop_aiming.call()
 		elif Input.is_action_just_pressed("jump") and not has_dung and is_grounded:
+			animation_player.play("jump")
+			
 			jumped = true
 			is_grounded = false
 			
@@ -190,6 +218,7 @@ func _movement_process(delta: float) -> void:
 			
 			stop_aiming.call()
 		elif Input.is_action_just_released("aim"):
+			animation_player.play(animation_before_pray)
 			stop_aiming.call()
 		else:
 			return
@@ -242,6 +271,8 @@ func _movement_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and can_jump and not jumped:
 		if not has_dung:
+			animation_player.play("jump")
+			
 			jumped = true
 			velocity[1] = JUMP_SPEED
 			velocity[0] = clamp(velocity[0], -MAX_HORIZONTAL_JUMP_SPEED, MAX_HORIZONTAL_JUMP_SPEED)
@@ -252,27 +283,9 @@ func _movement_process(delta: float) -> void:
 	if get_slide_collision_count() > 0 and on_fire:
 		var normal = get_slide_collision(0).get_normal()
 		
-		var get_fire_hit = func(beetle_mod, dung_mod_idx):
-			jumped = true
-			on_fire = false
-			rolling = false
-			rolling_uphill = false
-			
-			velocity = FIRE_HIT_VEC
-			velocity[0] *= beetle_mod 
-			
-			if has_dung:
-				var throw_dir = velocity
-				throw_dir[dung_mod_idx] *= -1
-				dung.throw(throw_dir.normalized())
-				lose_dung()
-			
-			var collider = get_slide_collision(0).get_collider()
-			if collider.has_method("destroy"):
-				collider.destroy()
-		
-		
 		if abs(normal[0] - 0) < TOLERANCE and not rolling or not has_dung: # Floor hit
+			animation_player.play("fall")
+			
 			jumped = true
 			on_fire = false
 			rolling = false
@@ -280,7 +293,6 @@ func _movement_process(delta: float) -> void:
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= facing_dir 
-			print(velocity)
 			
 			if has_dung:
 				var throw_dir = velocity
@@ -292,6 +304,8 @@ func _movement_process(delta: float) -> void:
 			if collider.has_method("destroy"):
 				collider.destroy()
 		elif abs(normal[1] - 0) < TOLERANCE: # Wall hit
+			animation_player.play("fall")
+			
 			jumped = true
 			on_fire = false
 			rolling = false
@@ -299,7 +313,6 @@ func _movement_process(delta: float) -> void:
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= -normal[0] 
-			print(velocity)
 			
 			if has_dung:
 				var throw_dir = velocity
@@ -311,6 +324,8 @@ func _movement_process(delta: float) -> void:
 			if collider.has_method("destroy"):
 				collider.destroy()
 		elif normal[1] < 1 and not rolling: # Hill hit
+			animation_player.play("roll")
+			
 			rolling = true
 			facing_dir = -slope_dir
 			rolling_dir = facing_dir
@@ -320,6 +335,8 @@ func _movement_process(delta: float) -> void:
 		if abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) > RAYCAST_DIF_FOR_ROLLING_JUMP:
 			rolling_uphill = true
 		if rolling_uphill and abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) < RAYCAST_DIF_FOR_ROLLING_JUMP:
+			animation_player.play("roll_fall")
+			
 			rolling_uphill = false
 			velocity[1] = ROLLING_JUMP_SPEED
 			jumped = true
@@ -330,6 +347,14 @@ func _movement_process(delta: float) -> void:
 		is_grounded = is_on_floor()
 	if can_jump:
 		has_pray_pulled = false
+	
+	if not was_grounded and is_grounded:
+		if rolling:
+			animation_player.play("roll")
+		elif has_dung:
+			animation_player.play("ball_idle")
+		else:
+			animation_player.play("land")
 	
 	# Floor correction
 	if was_grounded and not is_on_floor() and not jumped and not skip_floor_correction:
@@ -357,8 +382,46 @@ func _movement_process(delta: float) -> void:
 
 
 func _animation_process(delta: float) -> void:
+	dust_particles.emitting = (facing_dir * velocity[0] < 0 and is_grounded and abs(velocity[0]) > ANIM_TOLERANCE) or animation_player.current_animation == "land"
 	sprite.flip_h = facing_dir < 0
 	fire.visible = on_fire
+	
+	anim_floor_detector.force_raycast_update()
+	var vec_to_ground = anim_floor_detector.get_collision_point() - anim_floor_detector.global_position
+	if is_grounded:
+		if anim_floor_detector.is_colliding():
+			sprite_pivot.position = sprite_base_pos + vec_to_ground
+		
+		var floor_movements = get_feet_raycast_movements()
+		var angle_movements
+		if floor_movements[0][1] > 0.5:
+			angle_movements = [floor_movements[0][1], vec_to_ground[1]]
+		else:
+			angle_movements = [vec_to_ground[1], floor_movements[1][1]]
+		var ang = atan((angle_movements[1] - angle_movements[0]) / 40.0)
+		sprite_pivot.rotation = ang
+	else:
+		sprite_pivot.rotation = 0
+	
+	
+	dung_holder.scale[0] = -1 if facing_dir < 0 else 1
+	dung_particles.position[0] = abs(dung_particles.position[0]) * dung_holder.scale[0]
+	dung_sprite.rotation += facing_dir * velocity[0] * DUNG_ROLL_ANIM_TRANSMISSION * delta
+	
+	if is_grounded:
+		if abs(velocity[0]) < ANIM_TOLERANCE:
+			if has_dung:
+				animation_player.transition_anim("ball_idle")
+			else:
+				animation_player.transition_anim("idle")
+		else:
+			if has_dung:
+				animation_player.transition_anim("ball_walk")
+			else:
+				animation_player.transition_anim("walk")
+	
+	dung_particles.emitting = abs(velocity[0]) > ANIM_TOLERANCE and is_grounded and has_dung
+	dung_holder.visible = animation_player.current_animation in ["roll", "ball_walk"]
 
 
 func get_feet_raycast_movements():
@@ -373,13 +436,13 @@ func get_feet_raycast_movements():
 
 
 func lose_dung():
-	sprite.frame = 0
 	has_dung = false
 
 
 func get_dung():
-	sprite.frame = 1
 	has_dung = true
+	
+	animation_player.play("ball_idle" if is_grounded else "ball_fall")
 
 
 func adjust(adjustment_vector):
