@@ -44,6 +44,33 @@ position = Vector2(10397, -4708)
 [node name="Leaf13" parent="Elements" instance=ExtResource("3_yooe3")]
 position = Vector2(12125, -4772)
 
+[node name="Leaf14" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(16768, -8960)
+
+[node name="Leaf15" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(17472, -9664)
+
+[node name="Leaf16" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(17792, -9984)
+
+[node name="Leaf17" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(18752, -10944)
+
+[node name="Leaf18" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(19776, -11904)
+
+[node name="Leaf19" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(20800, -12928)
+
+[node name="Leaf21" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(22080, -14208)
+
+[node name="Leaf22" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(22400, -14528)
+
+[node name="Leaf20" parent="Elements" instance=ExtResource("3_yooe3")]
+position = Vector2(20480, -12608)
+
 [node name="Leaf9" parent="Elements" instance=ExtResource("3_yooe3")]
 position = Vector2(-832, -2752)
 

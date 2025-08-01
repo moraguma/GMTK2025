@@ -1,13 +1,18 @@
-[gd_scene load_steps=28 format=3 uid="uid://cg3tc75yvlkxo"]
+[gd_scene load_steps=37 format=3 uid="uid://cg3tc75yvlkxo"]
 
-[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_3g6af"]
 [ext_resource type="Script" uid="uid://cek6gql3w0idv" path="res://scenes/scripts/Beetle.gd" id="1_df2da"]
 [ext_resource type="Script" uid="uid://cwbnog83wxe6f" path="res://scenes/scripts/TransitionAnimationPlayer.gd" id="2_mvssf"]
 [ext_resource type="Texture2D" uid="uid://b40i851oeyibu" path="res://resources/sprites/beetle.png" id="3_m71fs"]
+[ext_resource type="Texture2D" uid="uid://cbwbyhxnquckp" path="res://resources/sprites/arrow.png" id="3_pwiwl"]
 [ext_resource type="Texture2D" uid="uid://cy5vgst0kfv1" path="res://resources/sprites/dung_particles.png" id="4_20vj5"]
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="4_m71fs"]
 [ext_resource type="Texture2D" uid="uid://d2o12p575pfxl" path="res://resources/sprites/dung.png" id="4_qa3k0"]
 [ext_resource type="Texture2D" uid="uid://babbpdcxswvv3" path="res://resources/sprites/particles.png" id="5_odn6d"]
+[ext_resource type="Texture2D" uid="uid://crxt6n8dhi8ok" path="res://resources/sprites/halo.png" id="8_2ekb5"]
+[ext_resource type="Texture2D" uid="uid://bfk03vagl733i" path="res://resources/sprites/fire.png" id="10_pwiwl"]
+[ext_resource type="Texture2D" uid="uid://hfs1gnallhda" path="res://resources/sprites/ui/r.png" id="11_10t1h"]
+[ext_resource type="Texture2D" uid="uid://4aeutdjo1bpf" path="res://resources/sprites/ui/under_progress_bar.png" id="12_0xuoo"]
+[ext_resource type="Texture2D" uid="uid://fei5a8mac45n" path="res://resources/sprites/ui/progress_bar.png" id="13_m2xve"]
 
 [sub_resource type="Animation" id="Animation_mvssf"]
 resource_name = "idle"
@@ -24,6 +29,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_qa3k0"]
@@ -64,6 +81,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -21)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_odn6d"]
 resource_name = "jump"
@@ -81,6 +110,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_2ekb5"]
@@ -113,6 +154,18 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_pwiwl"]
 resource_name = "fall"
@@ -131,6 +184,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_ffa43"]
 resource_name = "pray"
@@ -148,6 +213,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_usmqj"]
@@ -180,6 +257,18 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_10t1h"]
 resource_name = "throw_air"
@@ -211,6 +300,18 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_0xuoo"]
 resource_name = "aim"
@@ -228,6 +329,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_m2xve"]
@@ -247,6 +360,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_lpchp"]
 resource_name = "ball_fall"
@@ -264,6 +389,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-72, -152)]
 }
 
 [sub_resource type="Animation" id="Animation_lxgb0"]
@@ -283,6 +420,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -256)]
+}
 
 [sub_resource type="Animation" id="Animation_rvsd1"]
 resource_name = "ball_idle"
@@ -299,6 +448,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="Animation" id="Animation_a61v5"]
@@ -342,6 +503,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -21)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -256)]
+}
 
 [sub_resource type="Animation" id="Animation_fket5"]
 resource_name = "ball_walk"
@@ -384,6 +557,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(96, -21)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
+}
 
 [sub_resource type="Animation" id="Animation_20vj5"]
 resource_name = "walk"
@@ -401,6 +586,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [18, 19, 20, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -128)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ekb5"]
@@ -422,6 +619,35 @@ _data = {
 &"throw_air": SubResource("Animation_10t1h"),
 &"walk": SubResource("Animation_20vj5")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffa43"]
+atlas = ExtResource("10_pwiwl")
+region = Rect2(0, 0, 198, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usmqj"]
+atlas = ExtResource("10_pwiwl")
+region = Rect2(198, 0, 198, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10t1h"]
+atlas = ExtResource("10_pwiwl")
+region = Rect2(396, 0, 198, 245)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xuoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffa43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usmqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10t1h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_df2da"]
 radius = 40.0
@@ -450,8 +676,7 @@ visible = false
 
 [node name="Arrow" type="Sprite2D" parent="ArrowPivot"]
 position = Vector2(0, -160)
-scale = Vector2(0.255, 0.255)
-texture = ExtResource("1_3g6af")
+texture = ExtResource("3_pwiwl")
 
 [node name="SpritePivot" type="Node2D" parent="."]
 position = Vector2(0, 57)
@@ -484,6 +709,10 @@ frame = 5
 script = ExtResource("4_m71fs")
 trauma_modifier = 0.5
 
+[node name="Halo" type="Sprite2D" parent="SpritePivot"]
+position = Vector2(0, -128)
+texture = ExtResource("8_2ekb5")
+
 [node name="DustParticles" type="CPUParticles2D" parent="SpritePivot"]
 position = Vector2(0, -5)
 emitting = false
@@ -498,10 +727,30 @@ angle_min = -45.0
 angle_max = 45.0
 scale_amount_min = 0.5
 
-[node name="Fire" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0.027451, 0.294118, 0.470588)
-texture = ExtResource("1_3g6af")
+[node name="Fire" type="AnimatedSprite2D" parent="SpritePivot"]
+position = Vector2(0, -121)
+sprite_frames = SubResource("SpriteFrames_0xuoo")
+frame_progress = 0.854497
+speed_scale = 4.0
+
+[node name="Reset" type="Node2D" parent="."]
+
+[node name="R" type="Sprite2D" parent="Reset"]
+position = Vector2(0, -175)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_10t1h")
+
+[node name="ResetProgressBar" type="TextureProgressBar" parent="Reset"]
+offset_left = -66.0
+offset_top = -242.0
+offset_right = 154.0
+offset_bottom = -22.0
+scale = Vector2(0.6, 0.6)
+max_value = 1.0
+step = 0.001
+fill_mode = 4
+texture_under = ExtResource("12_0xuoo")
+texture_progress = ExtResource("13_m2xve")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_df2da")

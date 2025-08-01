@@ -46,6 +46,7 @@ const DECELERATIONS = {
 
 
 const TIME_FOR_PRAY_PULL = 2.0
+const TIME_FOR_RESET = 1.0
 
 const HEIGHT_FOR_FIRE = 620.0
 const PRAY_PULL_MAX_DIST = 1250.0
@@ -71,11 +72,13 @@ var can_pray_pull = false
 var has_pray_pulled = false
 var skip_floor_correction = false
 var animation_before_pray = "idle"
+var reset_progress = 0.0
+var can_reset = true
 
 var is_grounded = true
 
 
-@onready var fire: Sprite2D = $Fire
+@onready var fire: AnimatedSprite2D = $SpritePivot/Fire
 @onready var sprite: ShakingSprite = $SpritePivot/Sprite
 @onready var sprite_pivot: Node2D = $SpritePivot
 @onready var animation_player: TransitionAnimationPlayer = $AnimationPlayer
@@ -88,11 +91,16 @@ var is_grounded = true
 @onready var dung_sprite: Sprite2D = $SpritePivot/DungHolder/Dung
 @onready var anim_floor_detector: RayCast2D = $AnimFloorDetector
 @onready var sprite_base_pos: Vector2 = sprite_pivot.position
+@onready var halo: Sprite2D = $SpritePivot/Halo
 @onready var dung_particles: CPUParticles2D = $SpritePivot/DungParticles
 @onready var dust_particles: CPUParticles2D = $SpritePivot/DustParticles
+@onready var reset_container: Node2D = $Reset
+@onready var reset_progress_bar: TextureProgressBar = $Reset/ResetProgressBar
 
 
 func _ready() -> void:
+	fire.play("default")
+	
 	dung = DUNG_SCENE.instantiate()
 	dung.player = self
 	get_parent().add_child.call_deferred(dung)
@@ -102,6 +110,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_movement_process(delta)
 	_animation_process(delta)
+	
+	if Input.is_action_pressed("reset") and can_reset:
+		reset_progress += delta
+		reset_container.show()
+		reset_progress_bar.value = reset_progress / TIME_FOR_RESET
+		
+		if reset_progress >= TIME_FOR_RESET:
+			can_reset = false
+			world_loader.queue_reset()
+	else:
+		reset_progress = 0.0
+		reset_container.hide()
 
 
 func _movement_process(delta: float) -> void:
@@ -385,8 +405,11 @@ func _movement_process(delta: float) -> void:
 
 
 func _animation_process(delta: float) -> void:
+	fire.rotation = Vector2(0, 1).angle_to(velocity)
 	dust_particles.emitting = (facing_dir * velocity[0] < 0 and is_grounded and abs(velocity[0]) > ANIM_TOLERANCE) or animation_player.current_animation == "land"
 	sprite.flip_h = facing_dir < 0
+	halo.offset = Vector2(-2 * halo.position[0], 0) if sprite.flip_h else Vector2(0, 0)
+	halo.visible = not has_pray_pulled
 	fire.visible = on_fire
 	
 	anim_floor_detector.force_raycast_update()
