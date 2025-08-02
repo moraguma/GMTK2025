@@ -10,9 +10,10 @@ const TRAUMA_POWER = 2
 
 
 @export var trauma_modifier: float = 1.0
+@export var trauma = 0.0
+@export var decay_trauma = true
 
 
-var trauma = 0.0
 var aim_rot = 0
 var base_rotation = 0
 @onready var noise = FastNoiseLite.new()
@@ -27,7 +28,8 @@ func _ready():
 
 func _process(delta):
 	if trauma:
-		trauma = max(trauma - DECAY * delta / trauma_modifier, 0)
+		if decay_trauma:
+			trauma = max(trauma - DECAY * delta / trauma_modifier, 0)
 		shake()
 
 

@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://brpn0rdudm732"]
+
+[ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
+[ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="2_k34yh"]
+[ext_resource type="Script" uid="uid://dacbb1cpfey06" path="res://scenes/scripts/WorldCamera.gd" id="2_qh2w4"]
+[ext_resource type="Texture2D" uid="uid://dr7l6wxd5vh47" path="res://resources/sprites/bg.PNG" id="2_ynewl"]
+[ext_resource type="Texture2D" uid="uid://ddcr3p1c6kh30" path="res://resources/sprites/clouds.PNG" id="4_k34yh"]
+[ext_resource type="Texture2D" uid="uid://c1vibkoxxj4yt" path="res://resources/sprites/ui/map.png" id="6_kqw7a"]
+[ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
+[ext_resource type="Texture2D" uid="uid://dq6febieth1va" path="res://resources/sprites/ui/map_icons.png" id="7_geuqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
+shader = ExtResource("2_k34yh")
+shader_parameter/type = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gjsnv"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yixxd"]
+shader = ExtResource("2_k34yh")
+shader_parameter/type = 2
+
+[sub_resource type="Curve" id="Curve_kqw7a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Theme" id="Theme_qh2w4"]
+default_font_size = 64
+
+[node name="WorldLoader" type="Node2D"]
+script = ExtResource("1_u227p")
+starting_chunk_pos = Vector2i(0, -1)
+starting_pos = Vector2(192, 2368)
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="BG" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rmikl")
+scale = Vector2(2, 2)
+texture = ExtResource("2_ynewl")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rmikl")
+scale = Vector2(2, 2)
+texture = ExtResource("4_k34yh")
+
+[node name="View" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_gjsnv")
+script = ExtResource("2_gjsnv")
+
+[node name="Map" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.360784)
+texture = ExtResource("6_kqw7a")
+
+[node name="Beetle" type="Sprite2D" parent="Map"]
+texture = ExtResource("7_geuqd")
+vframes = 3
+
+[node name="AirParticles" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_yixxd")
+position = Vector2(1199, -340)
+amount = 32
+texture = ExtResource("6_rmikl")
+lifetime = 2.5
+preprocess = 2.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 960)
+direction = Vector2(-1, 0)
+gravity = Vector2(-1000, 400)
+initial_velocity_min = 64.0
+initial_velocity_max = 128.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_kqw7a")
+
+[node name="Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="WorldBase" type="Node2D" parent="Viewport"]
+
+[node name="WorldCamera" type="Camera2D" parent="Viewport"]
+process_priority = 2
+script = ExtResource("2_qh2w4")
+
+[node name="TimeLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -440.0
+theme = SubResource("Theme_qh2w4")
+theme_override_constants/outline_size = 16
+bbcode_enabled = true
+text = "[center]dasda"
+
+[connection signal="timeout" from="GameTimer" to="." method="queue_reset"]

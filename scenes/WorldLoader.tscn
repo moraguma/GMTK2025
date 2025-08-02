@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=15 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://dacbb1cpfey06" path="res://scenes/scripts/WorldCamera.gd" id="2_qh2w4"]
 [ext_resource type="Texture2D" uid="uid://dr7l6wxd5vh47" path="res://resources/sprites/bg.PNG" id="2_ynewl"]
 [ext_resource type="Texture2D" uid="uid://ddcr3p1c6kh30" path="res://resources/sprites/clouds.PNG" id="4_k34yh"]
+[ext_resource type="Texture2D" uid="uid://c1vibkoxxj4yt" path="res://resources/sprites/ui/map.png" id="6_kqw7a"]
 [ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
+[ext_resource type="Texture2D" uid="uid://dq6febieth1va" path="res://resources/sprites/ui/map_icons.png" id="7_geuqd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
 shader = ExtResource("2_k34yh")
@@ -49,6 +51,56 @@ texture = ExtResource("4_k34yh")
 [node name="View" type="Sprite2D" parent="."]
 texture = SubResource("ViewportTexture_gjsnv")
 script = ExtResource("2_gjsnv")
+
+[node name="Map" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_kqw7a")
+
+[node name="Beetle" type="Sprite2D" parent="Map"]
+texture = ExtResource("7_geuqd")
+vframes = 4
+
+[node name="Throw" type="Sprite2D" parent="Map"]
+position = Vector2(459, 122)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="Somersault" type="Sprite2D" parent="Map"]
+position = Vector2(-524, 380)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="Roll" type="Sprite2D" parent="Map"]
+position = Vector2(-856, 237)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="Pray" type="Sprite2D" parent="Map"]
+position = Vector2(-318, 5)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="AirThrow" type="Sprite2D" parent="Map"]
+position = Vector2(688, -18)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="Combo" type="Sprite2D" parent="Map"]
+position = Vector2(873, -153)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 1
+
+[node name="Combo2" type="Sprite2D" parent="Map"]
+position = Vector2(848, -397)
+texture = ExtResource("7_geuqd")
+vframes = 4
+frame = 3
 
 [node name="AirParticles" type="CPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_yixxd")

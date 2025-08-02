@@ -29,6 +29,8 @@ const STRESS_TIME = 10.0
 @onready var game_timer: Timer = $GameTimer
 @onready var time_label: RichTextLabel = $TimeLabel
 
+@onready var beetle_icon: Sprite2D = $Map/Beetle
+
 var beetle: Beetle
 
 
@@ -55,10 +57,16 @@ var chunk_shift: Vector2i = Vector2i(0, 0)
 var initialized = false
 
 
+@onready var map = $Map
+
+
 # ------------------------------------------------------------------------------
 # BUILT-INS
 # ------------------------------------------------------------------------------
 func _ready():
+	for pin_name in Globals.checked_pins:
+		get_node("Map/" + pin_name).frame = 2
+	
 	SoundController.play_music("Gameplay")
 	
 	game_timer.start(GAME_TIME)
@@ -106,6 +114,12 @@ func _process(delta: float) -> void:
 		time_label.text = "[center]%d" % [int(fake_time_left)]
 	else:
 		time_label.text = "[center]%.2f" % [fake_time_left]
+	
+	beetle_icon.position = Vector2(960.0 / 19200.0 * beetle.position[0], 540.0 / 7900.0 * beetle.position[1]) + Vector2(-15, 120)
+	beetle_icon.position[0] = max(-850, beetle_icon.position[0])
+	beetle_icon.position[0] = min(850, beetle_icon.position[0])
+	beetle_icon.position[1] = max(-425, beetle_icon.position[1])
+	beetle_icon.position[1] = min(425, beetle_icon.position[1])
 
 
 ## Checks if player has moved out of current chunk. If so, unloads old chunks
@@ -200,4 +214,17 @@ func queue_reset():
 	if not game_timer.is_stopped():
 		SoundController.mute_music()
 	
-	SceneManager.goto_scene("res://scenes/WorldLoader.tscn")
+	SceneManager.goto_scene("res://scenes/ResetCutscene.tscn")
+
+
+func check_pin(pin_name):
+	Globals.check_pin(pin_name)
+	get_node("Map/" + pin_name).frame = 2
+
+
+func open_map():
+	map.show()
+
+
+func close_map():
+	map.hide()

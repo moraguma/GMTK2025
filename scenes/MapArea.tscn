@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca5cnbdxnd85t"]
+
+[ext_resource type="Script" uid="uid://dtbwvafkjwfql" path="res://scenes/scripts/MapArea.gd" id="1_8wbuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qald"]
+size = Vector2(512, 512)
+
+[node name="MapArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8wbuo")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0qald")
+
+[connection signal="body_entered" from="." to="." method="finish"]

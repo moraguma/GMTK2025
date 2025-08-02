@@ -1,0 +1,320 @@
+[gd_scene load_steps=27 format=3 uid="uid://d2bydnpb742kc"]
+
+[ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_s2l0v"]
+[ext_resource type="Texture2D" uid="uid://wgu80mbigr0u" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-BG.png" id="2_ervlc"]
+[ext_resource type="Texture2D" uid="uid://cnmccxq03uu3j" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-ART-1.png" id="4_fxt63"]
+[ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="5_07t5l"]
+[ext_resource type="Texture2D" uid="uid://djvskgj3pqjjx" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-ART-2.png" id="5_4553e"]
+[ext_resource type="Texture2D" uid="uid://bxhacoq41wy8q" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-TEXT.png" id="6_i7mfp"]
+[ext_resource type="Texture2D" uid="uid://x34ow2rpgnwf" path="res://resources/sprites/cutscenes/FINAL/2/CENA-2-BG.png" id="7_gb6ha"]
+[ext_resource type="Texture2D" uid="uid://cjconvch5sq1r" path="res://resources/sprites/cutscenes/FINAL/2/CENA-2-ART-1.png" id="8_e3t7t"]
+[ext_resource type="Texture2D" uid="uid://bbtqfmga5rei2" path="res://resources/sprites/cutscenes/FINAL/2/CENA-2-ART-2.png" id="9_4vkb1"]
+[ext_resource type="Script" uid="uid://cvt0t77v3gd8y" path="res://scenes/scripts/Squisher.gd" id="9_so8gv"]
+[ext_resource type="Texture2D" uid="uid://cycii7baus2ad" path="res://resources/sprites/cutscenes/FINAL/2/CENA-2-DETAIL.png" id="10_ann66"]
+[ext_resource type="Texture2D" uid="uid://bw4j1mq0nh5s0" path="res://resources/sprites/cutscenes/FINAL/2/CENA-2-TEXT.png" id="11_vwwvr"]
+[ext_resource type="Texture2D" uid="uid://bps13hyw37xou" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-BG.png" id="12_4vkb1"]
+[ext_resource type="Texture2D" uid="uid://c7uysa7hxujvm" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-ART-2.png" id="13_ann66"]
+[ext_resource type="Texture2D" uid="uid://ddf6bpm8fcn2a" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-ART-1.png" id="15_vwwvr"]
+[ext_resource type="Texture2D" uid="uid://d0k1sj6sjd8wr" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-DETAIL.png" id="16_ndqgw"]
+[ext_resource type="Texture2D" uid="uid://bap3e4nlbm613" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-TEXT.png" id="17_s2l0v"]
+[ext_resource type="Texture2D" uid="uid://c855oxp1pi0uy" path="res://resources/sprites/cutscenes/FINAL/CENA 4.png" id="18_4vkb1"]
+[ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="23_sipsx"]
+[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="24_ijwm0"]
+
+[sub_resource type="Animation" id="Animation_ndqgw"]
+resource_name = "0"
+length = 5.0
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("0/Squisher:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-544, -0.25, 0, 0.25, 0, -480, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("0/Squisher:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(480, -0.25, 0, 0.25, 0, 480, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("0/Squisher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.01, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"squish"
+}, {
+"args": [],
+"method": &"squish"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s2l0v"]
+resource_name = "1"
+length = 5.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("1/Squisher")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"squish"
+}, {
+"args": [],
+"method": &"squish"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dwvrt"]
+resource_name = "2"
+length = 5.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("2/2:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 160, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("2/2:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="Animation" id="Animation_0lb0h"]
+resource_name = "3"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("3")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4igll"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("0/Squisher:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-544, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("0/Squisher:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(480, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("2/2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("2/2:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6y0e"]
+_data = {
+&"0": SubResource("Animation_ndqgw"),
+&"1": SubResource("Animation_s2l0v"),
+&"2": SubResource("Animation_dwvrt"),
+&"3": SubResource("Animation_0lb0h"),
+&"RESET": SubResource("Animation_4igll")
+}
+
+[node name="Cutscene" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_s2l0v")
+next_scene_path = "res://scenes/WorldLoader.tscn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t6y0e")
+}
+
+[node name="0" type="Node2D" parent="."]
+
+[node name="0" type="Sprite2D" parent="0"]
+texture = ExtResource("2_ervlc")
+
+[node name="Squisher" type="Node2D" parent="0"]
+position = Vector2(-544, 480)
+script = ExtResource("9_so8gv")
+metadata/_custom_type_script = "uid://cvt0t77v3gd8y"
+
+[node name="1" type="Sprite2D" parent="0/Squisher"]
+position = Vector2(480, -480)
+texture = ExtResource("4_fxt63")
+
+[node name="2" type="Sprite2D" parent="0"]
+texture = ExtResource("5_4553e")
+
+[node name="3" type="Sprite2D" parent="0"]
+texture = ExtResource("6_i7mfp")
+
+[node name="1" type="Node2D" parent="."]
+visible = false
+
+[node name="0" type="Sprite2D" parent="1"]
+texture = ExtResource("7_gb6ha")
+
+[node name="Squisher" type="Node2D" parent="1"]
+position = Vector2(384, 576)
+script = ExtResource("9_so8gv")
+metadata/_custom_type_script = "uid://cvt0t77v3gd8y"
+
+[node name="1" type="Sprite2D" parent="1/Squisher"]
+position = Vector2(-384, -576)
+texture = ExtResource("8_e3t7t")
+
+[node name="2" type="Sprite2D" parent="1"]
+texture = ExtResource("9_4vkb1")
+
+[node name="3" type="Sprite2D" parent="1"]
+texture = ExtResource("10_ann66")
+
+[node name="4" type="Sprite2D" parent="1"]
+texture = ExtResource("11_vwwvr")
+
+[node name="2" type="Node2D" parent="."]
+visible = false
+
+[node name="0" type="Sprite2D" parent="2"]
+texture = ExtResource("12_4vkb1")
+
+[node name="1" type="Sprite2D" parent="2"]
+texture = ExtResource("13_ann66")
+script = ExtResource("5_07t5l")
+trauma = 0.2
+decay_trauma = false
+
+[node name="2" type="Sprite2D" parent="2"]
+texture = ExtResource("15_vwwvr")
+script = ExtResource("5_07t5l")
+trauma = 0.1
+decay_trauma = false
+
+[node name="3" type="Sprite2D" parent="2"]
+texture = ExtResource("16_ndqgw")
+script = ExtResource("5_07t5l")
+trauma = 0.2
+decay_trauma = false
+
+[node name="4" type="Sprite2D" parent="2"]
+texture = ExtResource("17_s2l0v")
+
+[node name="3" type="Node2D" parent="."]
+visible = false
+
+[node name="0" type="Sprite2D" parent="3"]
+texture = ExtResource("18_4vkb1")
+
+[node name="Skip" type="Node2D" parent="."]
+position = Vector2(-960, -562)
+
+[node name="Tutorial" parent="Skip" instance=ExtResource("23_sipsx")]
+offset_left = 1604.0
+offset_top = 985.0
+offset_right = 1829.0
+offset_bottom = 1085.0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 48
+text = "[center]Next"
+
+[node name="ButtonPrompts" parent="Skip" instance=ExtResource("24_ijwm0")]
+position = Vector2(1838, 1015)
+frame = 12

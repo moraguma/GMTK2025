@@ -146,6 +146,8 @@ var skip_floor_correction = false
 var animation_before_pray = "idle"
 var reset_progress = 0.0
 var can_reset = true
+var is_map_open = false
+var dung_map_state = false
 
 var is_grounded = true
 var camera_aim = Vector2(0, 0)
@@ -190,6 +192,24 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("map") and not aiming:
+		if is_map_open:
+			world_loader.game_timer.paused = false
+			animation_player.speed_scale = 2.0
+			dung.active = dung_map_state
+			SoundController.set_music_paused(false)
+			world_loader.close_map()
+		else:
+			world_loader.game_timer.paused = true
+			animation_player.speed_scale = 0.0
+			dung_map_state = dung.active
+			dung.active = false
+			SoundController.set_music_paused(true)
+			world_loader.open_map()
+		is_map_open = !is_map_open
+	if is_map_open:
+		return
+	
 	_movement_process(delta)
 	_animation_process(delta)
 	
@@ -269,6 +289,7 @@ func _movement_process(delta: float) -> void:
 		
 		SoundController.set_music_paused(false)
 		SoundController.play_sfx("StopAim")
+		SoundController.stop_sfx("PrayPull")
 	
 	var jumped = false
 	if aiming and not has_dung: # Pray pull
@@ -588,10 +609,10 @@ func _palette_process(delta: float) -> void:
 
 func _sound_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec()
-	fire_loop_audio.volume_db = -5.0 if on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
-	aim_loop_audio.volume_db = 0.0 if aiming else -80.0
-	push_loop_audio.volume_db = 0.0 if animation_player.current_animation == "ball_walk" else -80.0
-	roll_loop_audio.volume_db = 0.0 if animation_player.current_animation == "roll" else -80.0
+	fire_loop_audio.volume_db = -5.0 if not is_map_open and on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
+	aim_loop_audio.volume_db = 0.0 if not is_map_open and aiming or is_map_open else -80.0
+	push_loop_audio.volume_db = 0.0 if not is_map_open and animation_player.current_animation == "ball_walk" else -80.0
+	roll_loop_audio.volume_db = 0.0 if not is_map_open and animation_player.current_animation == "roll" else -80.0
 	
 	push_loop_audio.pitch_scale = max(0.01, abs(velocity[0]) / SPEED[true])
 
@@ -636,3 +657,7 @@ func change_area(area):
 
 func finish():
 	pass
+
+
+func check_pin(pin_name):
+	world_loader.check_pin(pin_name)
