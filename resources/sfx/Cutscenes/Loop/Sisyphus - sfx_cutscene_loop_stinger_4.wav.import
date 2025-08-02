@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chu1ja5jdt0u3"
+path="res://.godot/imported/Sisyphus - sfx_cutscene_loop_stinger_4.wav-ff235014683f9e7b0475d65c34c3ad0b.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_4.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_cutscene_loop_stinger_4.wav-ff235014683f9e7b0475d65c34c3ad0b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

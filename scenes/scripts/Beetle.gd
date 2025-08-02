@@ -194,12 +194,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("map") and not aiming:
 		if is_map_open:
+			SoundController.play_sfx("MapClose")
 			world_loader.game_timer.paused = false
 			animation_player.speed_scale = 2.0
 			dung.active = dung_map_state
 			SoundController.set_music_paused(false)
 			world_loader.close_map()
 		else:
+			SoundController.play_sfx("MapOpen")
 			world_loader.game_timer.paused = true
 			animation_player.speed_scale = 0.0
 			dung_map_state = dung.active
@@ -609,10 +611,10 @@ func _palette_process(delta: float) -> void:
 
 func _sound_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec()
-	fire_loop_audio.volume_db = -5.0 if not is_map_open and on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
-	aim_loop_audio.volume_db = 0.0 if not is_map_open and aiming or is_map_open else -80.0
-	push_loop_audio.volume_db = 0.0 if not is_map_open and animation_player.current_animation == "ball_walk" else -80.0
-	roll_loop_audio.volume_db = 0.0 if not is_map_open and animation_player.current_animation == "roll" else -80.0
+	fire_loop_audio.volume_db = -8.0 if not is_map_open and on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
+	aim_loop_audio.volume_db = 3.0 if not is_map_open and aiming or is_map_open else -80.0
+	push_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "ball_walk" else -80.0
+	roll_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "roll" else -80.0
 	
 	push_loop_audio.pitch_scale = max(0.01, abs(velocity[0]) / SPEED[true])
 

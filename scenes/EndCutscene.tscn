@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2bydnpb742kc"]
+[gd_scene load_steps=31 format=3 uid="uid://d2bydnpb742kc"]
 
 [ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_s2l0v"]
 [ext_resource type="Texture2D" uid="uid://wgu80mbigr0u" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-BG.png" id="2_ervlc"]
@@ -18,7 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://d0k1sj6sjd8wr" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-DETAIL.png" id="16_ndqgw"]
 [ext_resource type="Texture2D" uid="uid://bap3e4nlbm613" path="res://resources/sprites/cutscenes/FINAL/3/CENA-3-TEXT.png" id="17_s2l0v"]
 [ext_resource type="Texture2D" uid="uid://c855oxp1pi0uy" path="res://resources/sprites/cutscenes/FINAL/CENA 4.png" id="18_4vkb1"]
+[ext_resource type="AudioStream" uid="uid://b2ve8km33is2i" path="res://resources/sfx/Cutscenes/Final/Sisyphus - sfx_cutscene_final_stinger_1.wav" id="21_s2l0v"]
+[ext_resource type="AudioStream" uid="uid://dy4v1dqt0c54" path="res://resources/sfx/Cutscenes/Final/Sisyphus - sfx_cutscene_final_stinger_2.wav" id="22_dwvrt"]
+[ext_resource type="AudioStream" uid="uid://bui2dugtp5qce" path="res://resources/sfx/Cutscenes/Final/Sisyphus - sfx_cutscene_final_stinger_3.wav" id="23_0lb0h"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="23_sipsx"]
+[ext_resource type="AudioStream" uid="uid://c8x3qyne5xhtn" path="res://resources/sfx/Cutscenes/Final/Sisyphus - sfx_cutscene_final_stinger_4.wav" id="24_4igll"]
 [ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="24_ijwm0"]
 
 [sub_resource type="Animation" id="Animation_ndqgw"]
@@ -34,7 +38,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-544, -0.25, 0, 0.25, 0, -480, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 4)
+"times": PackedFloat32Array(0, 5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -45,7 +49,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(480, -0.25, 0, 0.25, 0, 480, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 4)
+"times": PackedFloat32Array(0, 5)
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -54,15 +58,9 @@ tracks/2/path = NodePath("0/Squisher")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4.01, 4.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"squish"
-}, {
-"args": [],
-"method": &"squish"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_s2l0v"]
@@ -318,3 +316,17 @@ text = "[center]Next"
 [node name="ButtonPrompts" parent="Skip" instance=ExtResource("24_ijwm0")]
 position = Vector2(1838, 1015)
 frame = 12
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="0" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("21_s2l0v")
+
+[node name="1" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("22_dwvrt")
+
+[node name="2" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("23_0lb0h")
+
+[node name="3" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("24_4igll")

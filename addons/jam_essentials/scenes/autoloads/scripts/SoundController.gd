@@ -2,7 +2,11 @@ extends Node
 
 
 const OFF_DB = -80.0
-const ON_DB = -5.0
+@onready var ON_DB = {
+	$Music/Gameplay: -5.0,
+	$Music/Menu: -5.0,
+	$Music/Cutscene: -15.0
+}
 
 
 const LERP_WEIGHT = 0.05
@@ -24,7 +28,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for music in musics:
 		if music == current_music:
-			music.volume_db = lerp(music.volume_db, ON_DB, LERP_WEIGHT)
+			music.volume_db = lerp(music.volume_db, ON_DB[music], LERP_WEIGHT)
 		elif music.playing:
 			music.volume_db = lerp(music.volume_db, OFF_DB, LERP_WEIGHT)
 			if abs(music.volume_db - OFF_DB) < VOLUME_TOLERANCE:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpf03w2pi4ape"]
+[gd_scene load_steps=17 format=3 uid="uid://cpf03w2pi4ape"]
 
 [ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_ea1jp"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="2_65fvd"]
@@ -8,10 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://b6jxs0yxd658a" path="res://resources/sprites/cutscenes/LOOP/LOOP-1.png" id="4_1yflk"]
 [ext_resource type="Texture2D" uid="uid://bjfdhbcc6lj3e" path="res://resources/sprites/cutscenes/LOOP/LOOP-2.png" id="5_p2qee"]
 [ext_resource type="Texture2D" uid="uid://bx5epq2uaculf" path="res://resources/sprites/cutscenes/LOOP/LOOP-3.png" id="6_d0051"]
+[ext_resource type="AudioStream" uid="uid://d3ieljljf1rhw" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_thunder_earthquake.wav" id="9_oht0b"]
+[ext_resource type="AudioStream" uid="uid://bj2c7y1ykkare" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_1.wav" id="10_rto5t"]
+[ext_resource type="AudioStream" uid="uid://w1frvfxhp40d" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_2.wav" id="11_cofj3"]
+[ext_resource type="AudioStream" uid="uid://0368enoik4uu" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_3.wav" id="12_40yuo"]
+[ext_resource type="AudioStream" uid="uid://chu1ja5jdt0u3" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_4.wav" id="13_0u1fw"]
 
 [sub_resource type="Animation" id="Animation_du6q1"]
 resource_name = "0"
-length = 5.0
+length = 4.0
 step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -20,7 +25,7 @@ tracks/0/path = NodePath("1")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -34,7 +39,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.5, 2.5, 3.5),
+"times": PackedFloat32Array(1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
@@ -54,7 +59,7 @@ tracks/2/path = NodePath("2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.6),
+"times": PackedFloat32Array(1.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -68,7 +73,7 @@ tracks/3/path = NodePath("3")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(2.5),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -82,7 +87,7 @@ tracks/4/path = NodePath("4")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.5),
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -98,7 +103,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1.5, 2)
+"times": PackedFloat32Array(1, 1.5)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -109,7 +114,7 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1.5, 2)
+"times": PackedFloat32Array(1, 1.5)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
@@ -120,7 +125,7 @@ tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1.5, 2)
+"times": PackedFloat32Array(1, 1.5)
 }
 tracks/8/type = "bezier"
 tracks/8/imported = false
@@ -131,7 +136,77 @@ tracks/8/loop_wrap = true
 tracks/8/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1.5, 2)
+"times": PackedFloat32Array(1, 1.5)
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sound/1")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sound/Thunder")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sound/2")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sound/3")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sound/4")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0xuf1"]
@@ -191,6 +266,7 @@ _data = {
 position = Vector2(960, 540)
 script = ExtResource("1_ea1jp")
 next_scene_path = "res://scenes/WorldLoader.tscn"
+play_menu = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -231,3 +307,20 @@ text = "[center]Next"
 [node name="ButtonPrompts" parent="Skip" instance=ExtResource("3_eavbo")]
 position = Vector2(1838, 1015)
 frame = 12
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Thunder" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("9_oht0b")
+
+[node name="1" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("10_rto5t")
+
+[node name="2" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("11_cofj3")
+
+[node name="3" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("12_40yuo")
+
+[node name="4" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("13_0u1fw")
