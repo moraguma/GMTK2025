@@ -776,6 +776,7 @@ z_index = 24
 position = Vector2(1483, 626)
 collision_mask = 0
 script = ExtResource("7_0y4yu")
+sound = "Rock"
 
 [node name="TallAreaEnter10" type="Area2D" parent="." instance=ExtResource("8_4g36q")]
 position = Vector2(1753, 392)

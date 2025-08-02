@@ -58,6 +58,7 @@ var initialized = false
 
 
 @onready var map = $Map
+@onready var finish_timer: Timer = $FinishTimer
 
 
 # ------------------------------------------------------------------------------
@@ -228,3 +229,8 @@ func open_map():
 
 func close_map():
 	map.hide()
+
+
+func finish():
+	finish_timer.timeout.connect(SceneManager.goto_scene.bind("res://scenes/EndCutscene.tscn"))
+	finish_timer.start(5.0)

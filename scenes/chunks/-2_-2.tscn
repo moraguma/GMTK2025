@@ -779,6 +779,7 @@ position = Vector2(2304, 2368)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("7_xu6el")
+sound = "Bush"
 
 [node name="AreaEnter4" type="Area2D" parent="." instance=ExtResource("8_rumn8")]
 position = Vector2(1899, 2308)

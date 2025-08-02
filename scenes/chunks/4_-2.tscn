@@ -775,6 +775,7 @@ position = Vector2(157, 412)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("7_k5vmb")
+sound = "Bush"
 
 [node name="Leaf13" type="StaticBody2D" parent="." instance=ExtResource("6_5yint")]
 z_index = 24
@@ -782,6 +783,7 @@ position = Vector2(1885, 348)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("7_k5vmb")
+sound = "Bush"
 
 [node name="Tutorial15" type="RichTextLabel" parent="." instance=ExtResource("10_k5vmb")]
 z_index = 6

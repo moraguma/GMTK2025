@@ -148,6 +148,7 @@ var reset_progress = 0.0
 var can_reset = true
 var is_map_open = false
 var dung_map_state = false
+var finished = false
 
 var is_grounded = true
 var camera_aim = Vector2(0, 0)
@@ -195,10 +196,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("map") and not aiming:
 		if is_map_open:
 			SoundController.play_sfx("MapClose")
-			world_loader.game_timer.paused = false
+			if not finished:
+				world_loader.game_timer.paused = false
+				SoundController.set_music_paused(false)
 			animation_player.speed_scale = 2.0
 			dung.active = dung_map_state
-			SoundController.set_music_paused(false)
 			world_loader.close_map()
 		else:
 			SoundController.play_sfx("MapOpen")
@@ -287,9 +289,9 @@ func _movement_process(delta: float) -> void:
 		dung.aiming = false
 		arrow_pivot.hide()
 		pulling = false
-		world_loader.game_timer.paused = false
-		
-		SoundController.set_music_paused(false)
+		if not finished:
+			world_loader.game_timer.paused = false
+			SoundController.set_music_paused(false)
 		SoundController.play_sfx("StopAim")
 		SoundController.stop_sfx("PrayPull")
 	
@@ -612,7 +614,7 @@ func _palette_process(delta: float) -> void:
 func _sound_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec()
 	fire_loop_audio.volume_db = -8.0 if not is_map_open and on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
-	aim_loop_audio.volume_db = 3.0 if not is_map_open and aiming or is_map_open else -80.0
+	aim_loop_audio.volume_db = 3.0 if aiming or is_map_open or finished else -80.0
 	push_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "ball_walk" else -80.0
 	roll_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "roll" else -80.0
 	
@@ -658,7 +660,14 @@ func change_area(area):
 
 
 func finish():
-	pass
+	if finished:
+		return
+	finished = true
+	world_loader.finish()
+	
+	SoundController.play_sfx("Aim")
+	world_loader.game_timer.paused = true
+	SoundController.set_music_paused(true)
 
 
 func check_pin(pin_name):

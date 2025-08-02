@@ -778,6 +778,7 @@ z_index = 24
 position = Vector2(2312, 644)
 collision_mask = 0
 script = ExtResource("7_bh2y4")
+sound = "Rock"
 
 [node name="ButtonPrompts56" type="Sprite2D" parent="." instance=ExtResource("10_p733o")]
 z_index = 6

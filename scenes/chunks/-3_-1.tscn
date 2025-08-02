@@ -781,6 +781,7 @@ position = Vector2(1408, 2240)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("7_cn6dv")
+sound = "Bush"
 
 [node name="Tutorial6" type="RichTextLabel" parent="." instance=ExtResource("10_v8pyt")]
 z_index = 6

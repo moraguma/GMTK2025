@@ -38,6 +38,11 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
+[node name="FinishTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [node name="BG" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rmikl")
 scale = Vector2(2, 2)
