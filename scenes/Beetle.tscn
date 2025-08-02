@@ -770,7 +770,7 @@ scale_amount_min = 0.5
 [node name="Fire" type="AnimatedSprite2D" parent="SpritePivot"]
 position = Vector2(0, -121)
 sprite_frames = SubResource("SpriteFrames_0xuoo")
-frame_progress = 0.868746
+frame_progress = 0.934941
 speed_scale = 4.0
 
 [node name="Reset" type="Node2D" parent="."]

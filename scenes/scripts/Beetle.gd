@@ -57,7 +57,74 @@ const PRAY_PULL_MAX_DIST = 1250.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
 const ANIM_TOLERANCE = 30.0
+const PALETTE_LERP_WEIGHT = 0.1
 
+@export var tartarus_bg_from: Color = Color("#efeae1")
+@export var tartarus_bg_to: Color = Color("#ffffff")
+@export var tartarus_detail_from: Color = Color("#662630")
+@export var tartarus_detail_to: Color = Color("#c07c71")
+@export var tartarus_ground_from: Color = Color("#6e2f3e")
+@export var tartarus_ground_to: Color = Color("#bb6270")
+
+@export var earth_bg_from: Color = Color("#ecefe1")
+@export var earth_bg_to: Color = Color("#ffffff")
+@export var earth_detail_from: Color = Color("#41543b")
+@export var earth_detail_to: Color = Color("#5c9671")
+@export var earth_ground_from: Color = Color("#57342d")
+@export var earth_ground_to: Color = Color("#ca9072")
+
+@export var olympus_bg_from: Color = Color("#fffddf")
+@export var olympus_bg_to: Color = Color("#ffffff")
+@export var olympus_detail_from: Color = Color("#b16d51")
+@export var olympus_detail_to: Color = Color("#f1ddb2")
+@export var olympus_ground_from: Color = Color("#817d42")
+@export var olympus_ground_to: Color = Color("#c9b262")
+
+var palette_data = {
+	"tartarus": [
+		tartarus_bg_from,
+		tartarus_bg_to,
+		tartarus_detail_from,
+		tartarus_detail_to,
+		tartarus_ground_from,
+		tartarus_ground_to
+	],
+	"earth": [
+		earth_bg_from,
+		earth_bg_to,
+		earth_detail_from,
+		earth_detail_to,
+		earth_ground_from,
+		earth_ground_to
+	],
+	"olympus": [
+		olympus_bg_from,
+		olympus_bg_to,
+		olympus_detail_from,
+		olympus_detail_to,
+		olympus_ground_from,
+		olympus_ground_to
+	],
+}
+var palette_pos_to_shader = [
+		"bg_from",
+		"bg_to",
+		"detail_from",
+		"detail_to",
+		"ground_from",
+		"ground_to"
+]
+var palette = [
+	tartarus_bg_from,
+	tartarus_bg_to,
+	tartarus_detail_from,
+	tartarus_detail_to,
+	tartarus_ground_from,
+	tartarus_ground_to
+]
+
+var palette_name = "tartarus"
+var palette_pos = 0
 
 var time_fire_started = 0.0
 var dung: Dung
@@ -146,6 +213,7 @@ func _process(delta: float) -> void:
 	
 	camera_follow.position = lerp(camera_follow.position, camera_aim, CAMERA_LERP)
 	
+	_palette_process(delta)
 	_sound_process(delta)
 
 
@@ -205,8 +273,12 @@ func _movement_process(delta: float) -> void:
 	var jumped = false
 	if aiming and not has_dung: # Pray pull
 		if Input.is_action_just_pressed("throw"):
-			SoundController.play_sfx("PrayPull")
-			pulling = true
+			if can_pray_pull:
+				SoundController.play_sfx("PrayPull")
+				pulling = true
+			else:
+				SoundController.play_sfx("NoJump")
+				sprite_pivot.squish()
 			time_pulling_started = Time.get_ticks_msec()
 		elif Input.is_action_just_released("throw"):
 			SoundController.stop_sfx("PrayPull")
@@ -506,6 +578,14 @@ func _animation_process(delta: float) -> void:
 	dung_holder.visible = animation_player.current_animation in ["roll", "ball_walk"]
 
 
+func _palette_process(delta: float) -> void:
+	palette[palette_pos] = lerp(palette[palette_pos], palette_data[palette_name][palette_pos], PALETTE_LERP_WEIGHT)
+	RenderingServer.global_shader_parameter_set(palette_pos_to_shader[palette_pos], palette[palette_pos])
+	palette_pos += 1
+	if palette_pos >= len(palette):
+		palette_pos = 0
+
+
 func _sound_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec()
 	fire_loop_audio.volume_db = -5.0 if on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
@@ -513,7 +593,7 @@ func _sound_process(delta: float) -> void:
 	push_loop_audio.volume_db = 0.0 if animation_player.current_animation == "ball_walk" else -80.0
 	roll_loop_audio.volume_db = 0.0 if animation_player.current_animation == "roll" else -80.0
 	
-	push_loop_audio.pitch_scale = abs(velocity[0]) / SPEED[true]
+	push_loop_audio.pitch_scale = max(0.01, abs(velocity[0]) / SPEED[true])
 
 
 func get_feet_raycast_movements():
@@ -548,3 +628,7 @@ func adjust(adjustment_vector):
 
 func play_sfx(sfx_name):
 	SoundController.play_sfx(sfx_name)
+
+
+func change_area(area):
+	palette_name = area

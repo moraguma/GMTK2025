@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsr3cymdhrtp0"]
+
+[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="1_jkl7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mprlo"]
+size = Vector2(256, 400)
+
+[node name="AreaEnter" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jkl7e")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mprlo")

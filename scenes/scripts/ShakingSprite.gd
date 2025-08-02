@@ -19,9 +19,6 @@ var base_rotation = 0
 var noise_y = 0
 
 
-@onready var shader_canvas = $ShaderCanvas
-
-
 func _ready():
 	randomize()
 	noise.seed = randi()

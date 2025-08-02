@@ -91,23 +91,23 @@ reset={
 
 ground_from={
 "type": "color",
-"value": Color(0.341391, 0.20319, 0.176088, 1)
+"value": Color(0.504909, 0.489592, 0.259288, 1)
 }
 ground_to={
 "type": "color",
-"value": Color(0.792157, 0.564706, 0.447059, 1)
+"value": Color(0.788235, 0.698039, 0.384314, 1)
 }
 detail_from={
 "type": "color",
-"value": Color(0.255528, 0.327952, 0.230632, 1)
+"value": Color(0.694118, 0.427451, 0.317647, 1)
 }
 detail_to={
 "type": "color",
-"value": Color(0.361132, 0.588866, 0.444907, 1)
+"value": Color(0.945098, 0.866667, 0.698039, 1)
 }
 bg_from={
 "type": "color",
-"value": Color(0.972549, 1, 0.870588, 1)
+"value": Color(1, 0.992157, 0.87451, 1)
 }
 bg_to={
 "type": "color",

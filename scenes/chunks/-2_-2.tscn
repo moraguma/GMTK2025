@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tii7ven8hwb2"]
+[gd_scene load_steps=14 format=3 uid="uid://tii7ven8hwb2"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_rqaod"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_wk5an"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_dcu2g"]
 [ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="5_o41pw"]
 [ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="6_j8yje"]
+[ext_resource type="PackedScene" uid="uid://bsr3cymdhrtp0" path="res://scenes/AreaEnter.tscn" id="8_dcu2g"]
+[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="9_o41pw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
 shader = ExtResource("3_wk5an")
@@ -420,3 +422,10 @@ position = Vector2(2304, 2368)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("6_j8yje")
+
+[node name="AreaEnter4" type="Area2D" parent="." instance=ExtResource("8_dcu2g")]
+position = Vector2(1899, 2308)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_o41pw")
+area = "earth"
