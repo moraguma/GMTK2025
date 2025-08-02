@@ -61,24 +61,24 @@ const PALETTE_LERP_WEIGHT = 0.1
 
 @export var tartarus_bg_from: Color = Color("#efeae1")
 @export var tartarus_bg_to: Color = Color("#ffffff")
-@export var tartarus_detail_from: Color = Color("#662630")
-@export var tartarus_detail_to: Color = Color("#c07c71")
-@export var tartarus_ground_from: Color = Color("#6e2f3e")
-@export var tartarus_ground_to: Color = Color("#bb6270")
+@export var tartarus_detail_from: Color = Color("#bb6270")
+@export var tartarus_detail_to: Color = Color("#6e2f3e")
+@export var tartarus_ground_from: Color = Color("#c07c71")
+@export var tartarus_ground_to: Color = Color("#662630")
 
 @export var earth_bg_from: Color = Color("#ecefe1")
 @export var earth_bg_to: Color = Color("#ffffff")
-@export var earth_detail_from: Color = Color("#41543b")
-@export var earth_detail_to: Color = Color("#5c9671")
-@export var earth_ground_from: Color = Color("#57342d")
-@export var earth_ground_to: Color = Color("#ca9072")
+@export var earth_detail_from: Color = Color("#ca9072")
+@export var earth_detail_to: Color = Color("#57342d")
+@export var earth_ground_from: Color = Color("#5c9671")
+@export var earth_ground_to: Color = Color("#41543b")
 
 @export var olympus_bg_from: Color = Color("#fffddf")
 @export var olympus_bg_to: Color = Color("#ffffff")
-@export var olympus_detail_from: Color = Color("#b16d51")
-@export var olympus_detail_to: Color = Color("#f1ddb2")
-@export var olympus_ground_from: Color = Color("#817d42")
-@export var olympus_ground_to: Color = Color("#c9b262")
+@export var olympus_detail_from: Color = Color("#c9b262")
+@export var olympus_detail_to: Color = Color("#817d42")
+@export var olympus_ground_from: Color = Color("#f1ddb2")
+@export var olympus_ground_to: Color = Color("#b16d51")
 
 var palette_data = {
 	"tartarus": [
@@ -632,3 +632,7 @@ func play_sfx(sfx_name):
 
 func change_area(area):
 	palette_name = area
+
+
+func finish():
+	pass

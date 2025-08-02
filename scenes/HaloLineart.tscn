@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://niityq6mkqgx"]
+
+[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="1_p22nk"]
+
+[node name="HaloLineart" type="Sprite2D"]
+z_index = 6
+texture = ExtResource("1_p22nk")

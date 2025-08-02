@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf8w1mikf7ckk"]
+
+[ext_resource type="Script" uid="uid://cqspathumr8om" path="res://scenes/scripts/FinishArea.gd" id="1_8h7tt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qald"]
+size = Vector2(512, 512)
+
+[node name="FinishArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8h7tt")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0qald")
+
+[connection signal="body_entered" from="." to="." method="finish"]

@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://xq376kmqkmcs"]
+
+[ext_resource type="FontFile" uid="uid://cpw8ajt3ibpgq" path="res://resources/fonts/sweet_pancakes.otf" id="1_x2ak3"]
+
+[resource]
+default_font = ExtResource("1_x2ak3")
+default_font_size = 32
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 8

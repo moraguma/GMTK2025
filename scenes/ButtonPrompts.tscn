@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7ucuklm5ixu"]
+
+[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="1_t6gq3"]
+
+[node name="ButtonPrompts" type="Sprite2D"]
+z_index = 6
+texture = ExtResource("1_t6gq3")
+vframes = 12

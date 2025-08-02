@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcoss5ln6jgsc"]
+
+[ext_resource type="Texture2D" uid="uid://ck16jg3d8psfs" path="res://resources/sprites/beetle_lineart.png" id="1_ewv0h"]
+
+[node name="BeetleLineart" type="Sprite2D"]
+z_index = 6
+texture = ExtResource("1_ewv0h")
+hframes = 5
+vframes = 5

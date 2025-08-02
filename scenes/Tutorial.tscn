@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmi8mk33prchr"]
+
+[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="1_cfv3y"]
+
+[node name="Tutorial" type="RichTextLabel"]
+z_index = 6
+offset_right = 225.0
+offset_bottom = 100.0
+theme = ExtResource("1_cfv3y")
+bbcode_enabled = true
+text = "[center]"
