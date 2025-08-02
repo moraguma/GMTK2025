@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://chf7r1j18ecx0"]
+
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_lmnys"]
+[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="2_kpcea"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kl65"]
+shader = ExtResource("1_lmnys")
+shader_parameter/type = 1
+
+[node name="Grass" type="Polygon2D"]
+z_index = 7
+material = SubResource("ShaderMaterial_7kl65")
+skew = -0.390139
+polygon = PackedVector2Array(0, 0, 39.3917, -145.102, 76.5444, -31.8296, 113.805, -116.394, 149.033, -44.7502, 182.758, -109.465, 216.336, -35.3209, 249.586, -113.054, 284.425, -42.5631, 323.593, -115.603, 358.958, -47.6748, 396.647, -137.05, 435.514, -37.3407, 472.367, -134.704, 511.458, -46.4608, 544.118, -104.182, 578.154, -28.0436, 616.184, -108.546, 652.908, -51.0621, 688.465, -154.741, 722.97, -50.3821, 762.263, -112.653, 800.489, -40.9222, 834.531, -151.418, 868.556, -50.4092, 903.602, -103.78, 941.037, -28.9221, 979.965, -129.461, 1016.67, -39.1997, 1049.57, -154.068, 1087.05, -37.2537, 1126.74, -144.093, 1163.47, -32.321, 1198.81, -132.018, 1232.72, -43.5999, 1268.97, -139.741, 1303.15, -38.5131, 1339.06, -138.598, 1374.84, -46.7765, 1414.47, -109.157, 1451.16, 0)
+script = ExtResource("2_kpcea")
+size = 1405.2
+height = 128.951

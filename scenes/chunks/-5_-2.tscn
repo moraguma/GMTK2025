@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkkxylayb8868"]
+[gd_scene load_steps=10 format=3 uid="uid://dkkxylayb8868"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_01b43"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ji06m"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_ji06m"]
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_wful0"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_ap81v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("3_ji06m")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("3_wful0")
@@ -402,6 +407,7 @@ script = ExtResource("1_01b43")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ji06m")]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
-layer_0/tile_data = PackedInt32Array(2555935, 0, 0, 2490400, 0, 0, 2555936, 393216, 2, 2424865, 0, 0, 2490401, 393216, 2, 2555937, 65536, 1, 2359330, 0, 0, 2424866, 393216, 2, 2490402, 65536, 1, 2555938, 65536, 1, 2293795, 0, 0, 2359331, 393216, 2, 2424867, 65536, 1, 2490403, 65536, 1, 2555939, 65536, 1, 2228260, 0, 0, 2293796, 393216, 2, 2359332, 65536, 1, 2424868, 65536, 1, 2490404, 65536, 1, 2555940, 65536, 1, 2162725, 0, 0, 2228261, 393216, 2, 2293797, 65536, 1, 2359333, 65536, 1, 2424869, 65536, 1, 2490405, 65536, 1, 2555941, 65536, 1, 2162726, 65536, 0, 2228262, 65536, 1, 2293798, 65536, 1, 2359334, 65536, 1, 2424870, 65536, 1, 2490406, 65536, 1, 2555942, 65536, 1, 2162727, 65536, 0, 2228263, 65536, 1, 2293799, 65536, 1, 2359335, 65536, 1, 2424871, 65536, 1, 2490407, 65536, 1, 2555943, 65536, 1)
+layer_0/tile_data = PackedInt32Array(2555941, 0, 0, 2490406, 0, 0, 2555942, 393216, 2, 2424871, 0, 0, 2490407, 393216, 2, 2555943, 65536, 1)

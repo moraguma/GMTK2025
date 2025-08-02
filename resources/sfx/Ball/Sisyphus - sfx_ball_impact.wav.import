@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3uelg6y2v4hp"
+path="res://.godot/imported/Sisyphus - sfx_ball_impact.wav-376cfa6fcc0764e69170907b9af3e300.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Ball/Sisyphus - sfx_ball_impact.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_ball_impact.wav-376cfa6fcc0764e69170907b9af3e300.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

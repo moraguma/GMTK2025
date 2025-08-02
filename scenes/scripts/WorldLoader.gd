@@ -59,6 +59,8 @@ var initialized = false
 # BUILT-INS
 # ------------------------------------------------------------------------------
 func _ready():
+	SoundController.play_music("Gameplay")
+	
 	game_timer.start(GAME_TIME)
 	
 	process_physics_priority = PHYSICS_PROCESS_PRIORITY
@@ -87,14 +89,14 @@ func _ready():
 	beetle.world_camera = world_camera
 	beetle.world_loader = self
 	
-	world_camera.aim_node = beetle
+	world_camera.aim_node = beetle.get_node("CameraFollow")
 	world_camera.snap_to_aim.call_deferred()
 
 
 func _physics_process(delta: float) -> void:
 	_update_chunk_position()
 	_update_queued_chunks()
-	#_shift_origin() TODO: Is this necessary?
+	#_shift_origin() # TODO: Is this necessary?
 
 
 func _process(delta: float) -> void:
@@ -195,5 +197,7 @@ func get_chunk_path(chunk_pos: Vector2i):
 
 ## Asks for a reset of the current level
 func queue_reset():
-	print(beetle.position)
+	if not game_timer.is_stopped():
+		SoundController.mute_music()
+	
 	SceneManager.goto_scene("res://scenes/WorldLoader.tscn")

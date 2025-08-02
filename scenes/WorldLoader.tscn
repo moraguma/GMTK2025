@@ -1,11 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=13 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="2_k34yh"]
 [ext_resource type="Script" uid="uid://dacbb1cpfey06" path="res://scenes/scripts/WorldCamera.gd" id="2_qh2w4"]
+[ext_resource type="Texture2D" uid="uid://dr7l6wxd5vh47" path="res://resources/sprites/bg.PNG" id="2_ynewl"]
+[ext_resource type="Texture2D" uid="uid://ddcr3p1c6kh30" path="res://resources/sprites/clouds.PNG" id="4_k34yh"]
+[ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
+shader = ExtResource("2_k34yh")
+shader_parameter/type = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gjsnv"]
 viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yixxd"]
+shader = ExtResource("2_k34yh")
+shader_parameter/type = 2
+
+[sub_resource type="Curve" id="Curve_kqw7a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Theme" id="Theme_qh2w4"]
 default_font_size = 64
@@ -20,9 +36,36 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
+[node name="BG" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rmikl")
+scale = Vector2(2, 2)
+texture = ExtResource("2_ynewl")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rmikl")
+scale = Vector2(2, 2)
+texture = ExtResource("4_k34yh")
+
 [node name="View" type="Sprite2D" parent="."]
 texture = SubResource("ViewportTexture_gjsnv")
 script = ExtResource("2_gjsnv")
+
+[node name="AirParticles" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_yixxd")
+position = Vector2(1199, -340)
+amount = 32
+texture = ExtResource("6_rmikl")
+lifetime = 2.5
+preprocess = 2.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 960)
+direction = Vector2(-1, 0)
+gravity = Vector2(-1000, 400)
+initial_velocity_min = 64.0
+initial_velocity_max = 128.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_kqw7a")
 
 [node name="Viewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -41,6 +84,7 @@ offset_top = -540.0
 offset_right = 960.0
 offset_bottom = -440.0
 theme = SubResource("Theme_qh2w4")
+theme_override_constants/outline_size = 16
 bbcode_enabled = true
 text = "[center]dasda"
 

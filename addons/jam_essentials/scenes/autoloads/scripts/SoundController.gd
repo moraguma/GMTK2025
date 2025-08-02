@@ -2,7 +2,7 @@ extends Node
 
 
 const OFF_DB = -80.0
-const ON_DB = 0.0
+const ON_DB = -5.0
 
 
 const LERP_WEIGHT = 0.05
@@ -57,7 +57,7 @@ func get_audio(path):
 			return null
 		
 		node = audios.pick_random()
-	node.play()
+	return node
 
 
 ## Plays music in given path. Should be nodepath from Music node
@@ -65,6 +65,7 @@ func play_music(path):
 	var played_node = get_audio("Music/" + path)
 	if played_node != null:
 		current_music = played_node
+		current_music.stream_paused = false
 		played_node.play()
 
 
@@ -79,6 +80,16 @@ func play_sfx(path):
 	if sfx != null:
 		sfx.stop()
 		sfx.play()
+
+
+func stop_sfx(path):
+	var sfx = get_audio("SFX/" + path)
+	if sfx != null:
+		sfx.stop()
+
+
+func set_music_paused(paused: bool):
+	current_music.stream_paused = paused
 
 
 ## Sets volume for given bus. Bus numbers are defined as consts in Globals

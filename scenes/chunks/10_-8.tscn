@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0nfh30w0jn6h"]
+[gd_scene load_steps=10 format=3 uid="uid://b0nfh30w0jn6h"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_27cnx"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_x5u23"]
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_51nwc"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_x5u23"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_m1dwu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("3_x5u23")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("3_51nwc")
@@ -402,6 +407,7 @@ script = ExtResource("1_27cnx")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_x5u23")]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(196642, 0, 0, 262178, 0, 1, 327714, 0, 1, 393250, 0, 1, 458786, 0, 1, 524322, 0, 1, 589858, 0, 1, 655394, 0, 1, 720930, 0, 1, 786466, 0, 2, 196643, 65536, 0, 262179, 65536, 1, 327715, 65536, 1, 393251, 65536, 1, 458787, 65536, 1, 524323, 65536, 1, 589859, 65536, 1, 655395, 65536, 1, 720931, 65536, 1, 786467, 65536, 2, 196644, 65536, 0, 262180, 65536, 1, 327716, 65536, 1, 393252, 65536, 1, 458788, 65536, 1, 524324, 65536, 1, 589860, 65536, 1, 655396, 65536, 1, 720932, 65536, 1, 786468, 65536, 2, 196645, 65536, 0, 262181, 65536, 1, 327717, 65536, 1, 393253, 65536, 1, 458789, 65536, 1, 524325, 65536, 1, 589861, 65536, 1, 655397, 65536, 1, 720933, 65536, 1, 786469, 65536, 2, 196646, 65536, 0, 262182, 65536, 1, 327718, 65536, 1, 393254, 65536, 1, 458790, 65536, 1, 524326, 65536, 1, 589862, 65536, 1, 655398, 65536, 1, 720934, 65536, 1, 786470, 65536, 2, 196647, 65536, 0, 262183, 65536, 1, 327719, 65536, 1, 393255, 65536, 1, 458791, 65536, 1, 524327, 65536, 1, 589863, 65536, 1, 655399, 65536, 1, 720935, 65536, 1, 786471, 65536, 2)

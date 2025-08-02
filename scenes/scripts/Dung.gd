@@ -45,6 +45,8 @@ func _movement_process(delta: float) -> void:
 	velocity[1] = lerp(velocity[1], NORMAL_TERMINAL_SPEED, GRAVITY)
 	
 	if move_and_slide():
+		SoundController.play_sfx("DungImpact")
+		
 		goop_pivot.rotation = Vector2(0, -1).angle_to(-get_slide_collision(0).get_normal())
 		
 		landed = true
@@ -76,7 +78,7 @@ func collect(body):
 	if not pick_timer.is_stopped():
 		return
 	
-	body.get_dung()
+	body.get_dung(true)
 	deactivate()
 
 

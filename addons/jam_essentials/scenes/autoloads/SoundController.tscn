@@ -1,22 +1,128 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqkx1bmvj3rym"]
+[gd_scene load_steps=23 format=3 uid="uid://bqkx1bmvj3rym"]
 
 [ext_resource type="Script" uid="uid://dqe0hhn3td6yr" path="res://addons/jam_essentials/scenes/autoloads/scripts/SoundController.gd" id="1_lfq44"]
+[ext_resource type="AudioStream" uid="uid://bnrre3vcivl4q" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_bounce.wav" id="2_112ck"]
+[ext_resource type="AudioStream" uid="uid://c8bnhrynabtg4" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_1.wav" id="2_in5je"]
+[ext_resource type="AudioStream" uid="uid://cqj1t7yv0vyfr" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_fire.wav" id="2_t8ll8"]
+[ext_resource type="Script" uid="uid://bee8wtsukutph" path="res://addons/jam_essentials/scenes/components/scripts/RandomPitchAudioStreamPlayer.gd" id="3_t8ll8"]
+[ext_resource type="AudioStream" uid="uid://ch0ohloqsl0b1" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_freeze_time.wav" id="4_hd7cr"]
+[ext_resource type="AudioStream" uid="uid://f4433428s4y3" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_2.wav" id="4_hqqsc"]
+[ext_resource type="AudioStream" uid="uid://b4b0axdhy53xb" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_unfreeze_time.wav" id="5_7ntfb"]
+[ext_resource type="AudioStream" uid="uid://movgfi2rjdu1" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_3.wav" id="5_hd7cr"]
+[ext_resource type="AudioStream" uid="uid://bfx21210kbuu8" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_jump.wav" id="5_yv582"]
+[ext_resource type="AudioStream" uid="uid://ck530ac8feg05" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_jump_cant.wav" id="6_85hj3"]
+[ext_resource type="AudioStream" uid="uid://bms8n1m16m6n1" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_4.wav" id="6_yv582"]
+[ext_resource type="AudioStream" uid="uid://bgqeds0a7npam" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_5.wav" id="7_85hj3"]
+[ext_resource type="AudioStream" uid="uid://dfk6c4mg5igoa" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_land.wav" id="7_cg8qx"]
+[ext_resource type="AudioStream" uid="uid://cyq4mjxga6td6" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_6.wav" id="8_cg8qx"]
+[ext_resource type="AudioStream" uid="uid://b16ph7lu48f3w" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_pray.wav" id="8_u2bq5"]
+[ext_resource type="AudioStream" uid="uid://cou1tbr8x3r1y" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_throw.wav" id="9_kdmlc"]
+[ext_resource type="AudioStream" uid="uid://c87c5jumcw8q5" path="res://resources/music/Sisyphus-Gameplay.ogg" id="9_u2bq5"]
+[ext_resource type="AudioStream" uid="uid://c2sgyxvuyfdot" path="res://resources/music/Sisyphus-Menu.ogg" id="10_kdmlc"]
+[ext_resource type="AudioStream" uid="uid://cuwqa0dpgmntv" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_pull.wav" id="11_lr23o"]
+[ext_resource type="AudioStream" uid="uid://d2hq2ojxao5j0" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_touch_ball.wav" id="11_uykq3"]
+[ext_resource type="AudioStream" uid="uid://b3uelg6y2v4hp" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_impact.wav" id="12_uykq3"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_lfq44")
 
 [node name="SFX" type="Node" parent="."]
 
-[node name="Example" type="AudioStreamPlayer" parent="SFX"]
+[node name="Bounce" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_112ck")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
 
-[node name="Topic" type="Node" parent="SFX"]
+[node name="Fire" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_t8ll8")
+script = ExtResource("3_t8ll8")
 
-[node name="Example" type="AudioStreamPlayer" parent="SFX/Topic"]
+[node name="Aim" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_hd7cr")
+volume_db = 5.0
+pitch_scale = 2.0
+script = ExtResource("3_t8ll8")
+
+[node name="StopAim" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_7ntfb")
+volume_db = 5.0
+pitch_scale = 3.0
+script = ExtResource("3_t8ll8")
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_yv582")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="NoJump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_85hj3")
+script = ExtResource("3_t8ll8")
+
+[node name="Land" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_cg8qx")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Pray" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_u2bq5")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="PrayPull" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_lr23o")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Throw" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_kdmlc")
+script = ExtResource("3_t8ll8")
+
+[node name="GetDung" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("11_uykq3")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="DungImpact" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_uykq3")
+volume_db = 5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Footstep" type="Node" parent="SFX"]
+
+[node name="1" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("2_in5je")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="2" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("4_hqqsc")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="3" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("5_hd7cr")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="4" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("6_yv582")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="5" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("7_85hj3")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="6" type="AudioStreamPlayer" parent="SFX/Footstep"]
+stream = ExtResource("8_cg8qx")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
 
 [node name="Music" type="Node" parent="."]
 
-[node name="Example" type="AudioStreamPlayer" parent="Music"]
+[node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("9_u2bq5")
 
-[node name="Topic" type="Node" parent="Music"]
-
-[node name="Example" type="AudioStreamPlayer" parent="Music/Topic"]
+[node name="Menu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("10_kdmlc")

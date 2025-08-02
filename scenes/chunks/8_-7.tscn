@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmsqfhab8yu5v"]
+[gd_scene load_steps=10 format=3 uid="uid://cmsqfhab8yu5v"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_v3hgh"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_t0nxu"]
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_iuptt"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_t0nxu"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_xrdp2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("3_t0nxu")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("3_iuptt")
@@ -402,6 +407,7 @@ script = ExtResource("1_v3hgh")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_t0nxu")]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(524323, 0, 0, 589859, 0, 1, 655395, 0, 1, 720931, 0, 1, 786467, 0, 1, 852003, 0, 1, 917539, 0, 1, 983075, 0, 1, 1048611, 0, 1, 1114147, 0, 1, 1179683, 0, 1, 1245219, 0, 1, 1310755, 0, 1, 1376291, 0, 1, 1441827, 0, 1, 1507363, 0, 1, 1572899, 0, 1, 1638435, 0, 1, 1703971, 0, 1, 1769507, 0, 1, 1835043, 0, 1, 1900579, 0, 1, 1966115, 0, 1, 2031651, 0, 1, 2097187, 0, 1, 2162723, 0, 1, 2228259, 0, 1, 2293795, 0, 1, 2359331, 0, 1, 2424867, 0, 1, 2490403, 0, 1, 2555939, 0, 1, 524324, 65536, 0, 589860, 65536, 1, 655396, 65536, 1, 720932, 65536, 1, 786468, 65536, 1, 852004, 65536, 1, 917540, 65536, 1, 983076, 65536, 1, 1048612, 65536, 1, 1114148, 65536, 1, 1179684, 65536, 1, 1245220, 65536, 1, 1310756, 65536, 1, 1376292, 65536, 1, 1441828, 65536, 1, 1507364, 65536, 1, 1572900, 65536, 1, 1638436, 65536, 1, 1703972, 65536, 1, 1769508, 65536, 1, 1835044, 65536, 1, 1900580, 65536, 1, 1966116, 65536, 1, 2031652, 65536, 1, 2097188, 65536, 1, 2162724, 65536, 1, 2228260, 65536, 1, 2293796, 65536, 1, 2359332, 65536, 1, 2424868, 65536, 1, 2490404, 65536, 1, 2555940, 65536, 1, 524325, 131072, 0, 589861, 131072, 1, 655397, 131072, 1, 720933, 131072, 1, 786469, 131072, 1, 852005, 131072, 1, 917541, 131072, 1, 983077, 131072, 1, 1048613, 131072, 1, 1114149, 131072, 1, 1179685, 131072, 1, 1245221, 131072, 1, 1310757, 131072, 1, 1376293, 131072, 1, 1441829, 131072, 1, 1507365, 131072, 1, 1572901, 131072, 1, 1638437, 131072, 1, 1703973, 131072, 1, 1769509, 131072, 1, 1835045, 131072, 1, 1900581, 131072, 1, 1966117, 131072, 1, 2031653, 131072, 1, 2097189, 131072, 1, 2162725, 131072, 1, 2228261, 131072, 1, 2293797, 131072, 1, 2359333, 131072, 1, 2424869, 131072, 1, 2490405, 131072, 1, 2555941, 131072, 1)

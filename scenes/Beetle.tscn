@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://cg3tc75yvlkxo"]
+[gd_scene load_steps=42 format=3 uid="uid://cg3tc75yvlkxo"]
 
 [ext_resource type="Script" uid="uid://cek6gql3w0idv" path="res://scenes/scripts/Beetle.gd" id="1_df2da"]
 [ext_resource type="Script" uid="uid://cwbnog83wxe6f" path="res://scenes/scripts/TransitionAnimationPlayer.gd" id="2_mvssf"]
 [ext_resource type="Texture2D" uid="uid://b40i851oeyibu" path="res://resources/sprites/beetle.png" id="3_m71fs"]
 [ext_resource type="Texture2D" uid="uid://cbwbyhxnquckp" path="res://resources/sprites/arrow.png" id="3_pwiwl"]
 [ext_resource type="Texture2D" uid="uid://cy5vgst0kfv1" path="res://resources/sprites/dung_particles.png" id="4_20vj5"]
+[ext_resource type="Script" uid="uid://cvt0t77v3gd8y" path="res://scenes/scripts/Squisher.gd" id="4_lpchp"]
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="4_m71fs"]
 [ext_resource type="Texture2D" uid="uid://d2o12p575pfxl" path="res://resources/sprites/dung.png" id="4_qa3k0"]
 [ext_resource type="Texture2D" uid="uid://babbpdcxswvv3" path="res://resources/sprites/particles.png" id="5_odn6d"]
@@ -13,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://hfs1gnallhda" path="res://resources/sprites/ui/r.png" id="11_10t1h"]
 [ext_resource type="Texture2D" uid="uid://4aeutdjo1bpf" path="res://resources/sprites/ui/under_progress_bar.png" id="12_0xuoo"]
 [ext_resource type="Texture2D" uid="uid://fei5a8mac45n" path="res://resources/sprites/ui/progress_bar.png" id="13_m2xve"]
+[ext_resource type="AudioStream" uid="uid://cxkvsjsis4ynf" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_fire_loop.wav" id="14_0xuoo"]
+[ext_resource type="AudioStream" uid="uid://tmyotkvbjhct" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_freeze_pad_loop.wav" id="15_m2xve"]
+[ext_resource type="AudioStream" uid="uid://boqxp574vo1hi" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_push_loop.wav" id="17_rvsd1"]
+[ext_resource type="AudioStream" uid="uid://cm4hm13sakqw7" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_roll_loop.wav" id="18_fket5"]
 
 [sub_resource type="Animation" id="Animation_mvssf"]
 resource_name = "idle"
@@ -569,6 +574,23 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, -128)]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Footstep"],
+"method": &"play_sfx"
+}, {
+"args": ["Footstep"],
+"method": &"play_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_20vj5"]
 resource_name = "walk"
@@ -598,6 +620,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -128)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["Footstep"],
+"method": &"play_sfx"
+}, {
+"args": ["Footstep"],
+"method": &"play_sfx"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ekb5"]
@@ -680,6 +719,7 @@ texture = ExtResource("3_pwiwl")
 
 [node name="SpritePivot" type="Node2D" parent="."]
 position = Vector2(0, 57)
+script = ExtResource("4_lpchp")
 
 [node name="DungParticles" type="CPUParticles2D" parent="SpritePivot"]
 visible = false
@@ -730,7 +770,7 @@ scale_amount_min = 0.5
 [node name="Fire" type="AnimatedSprite2D" parent="SpritePivot"]
 position = Vector2(0, -121)
 sprite_frames = SubResource("SpriteFrames_0xuoo")
-frame_progress = 0.854497
+frame_progress = 0.868746
 speed_scale = 4.0
 
 [node name="Reset" type="Node2D" parent="."]
@@ -791,3 +831,23 @@ hit_from_inside = true
 
 [node name="DungDetector" type="RayCast2D" parent="."]
 process_physics_priority = 2
+
+[node name="CameraFollow" type="Node2D" parent="."]
+position = Vector2(128, 0)
+
+[node name="FireLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_0xuoo")
+volume_db = -80.0
+stream_paused = true
+
+[node name="AimLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_m2xve")
+volume_db = -80.0
+
+[node name="PushLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_rvsd1")
+volume_db = -80.0
+
+[node name="RollLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_fket5")
+volume_db = -80.0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfx21210kbuu8"
+path="res://.godot/imported/Sisyphus - sfx_beetle_jump.wav-e5c4778e20bde02c058269906d350333.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_jump.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_beetle_jump.wav-e5c4778e20bde02c058269906d350333.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

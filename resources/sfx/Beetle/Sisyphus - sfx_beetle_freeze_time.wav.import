@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ch0ohloqsl0b1"
+path="res://.godot/imported/Sisyphus - sfx_beetle_freeze_time.wav-283aaf968fc374ef7bcea2da08f61a8f.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_freeze_time.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_beetle_freeze_time.wav-283aaf968fc374ef7bcea2da08f61a8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

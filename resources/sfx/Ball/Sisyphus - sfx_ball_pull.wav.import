@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cuwqa0dpgmntv"
+path="res://.godot/imported/Sisyphus - sfx_ball_pull.wav-8451b36db423eee2567f9b99b45294aa.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Ball/Sisyphus - sfx_ball_pull.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_ball_pull.wav-8451b36db423eee2567f9b99b45294aa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

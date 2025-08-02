@@ -23,6 +23,7 @@ var just_compiled = false
 func _enter_tree() -> void:
 	tilemaps_to_scenes = {
 		$Tilemaps/Tiles: preload("res://scenes/Tiles.tscn"),
+		$Tilemaps/Walls: preload("res://scenes/Walls.tscn")
 	}
 
 

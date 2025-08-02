@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfk6c4mg5igoa"
+path="res://.godot/imported/Sisyphus - sfx_beetle_land.wav-c783b172e33a0737b5cdb927c7098ea9.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_land.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_beetle_land.wav-c783b172e33a0737b5cdb927c7098ea9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr8341ym5aycm"]
+[gd_scene load_steps=8 format=3 uid="uid://cr8341ym5aycm"]
 
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="1_ie7ma"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_xx18x"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="2_av5mp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("1_xx18x")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("1_ie7ma")
@@ -397,5 +402,6 @@ sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
 [node name="Tiles" type="TileMap"]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2

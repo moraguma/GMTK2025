@@ -86,3 +86,30 @@ reset={
 2d_physics/layer_2="Beetle"
 2d_physics/layer_3="Dung"
 2d_physics/layer_4="Leaves"
+
+[shader_globals]
+
+ground_from={
+"type": "color",
+"value": Color(0.341391, 0.20319, 0.176088, 1)
+}
+ground_to={
+"type": "color",
+"value": Color(0.792157, 0.564706, 0.447059, 1)
+}
+detail_from={
+"type": "color",
+"value": Color(0.255528, 0.327952, 0.230632, 1)
+}
+detail_to={
+"type": "color",
+"value": Color(0.361132, 0.588866, 0.444907, 1)
+}
+bg_from={
+"type": "color",
+"value": Color(0.972549, 1, 0.870588, 1)
+}
+bg_to={
+"type": "color",
+"value": Color(1, 1, 1, 1)
+}

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://movgfi2rjdu1"
+path="res://.godot/imported/Sisyphus - sfx_beetle_footsteps_3.wav-50b8b80d3b3982c001214d2c9b05bdd2.sample"
+
+[deps]
+
+source_file="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_footsteps_3.wav"
+dest_files=["res://.godot/imported/Sisyphus - sfx_beetle_footsteps_3.wav-50b8b80d3b3982c001214d2c9b05bdd2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

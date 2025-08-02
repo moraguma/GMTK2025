@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://kkkstg1stabu"]
+[gd_scene load_steps=10 format=3 uid="uid://kkkstg1stabu"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_tbtwy"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_s1sae"]
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_jwq8a"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_s1sae"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_30ocj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("3_s1sae")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("3_jwq8a")
@@ -402,6 +407,7 @@ script = ExtResource("1_tbtwy")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_s1sae")]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(2555912, 0, 0, 2555913, 65536, 0, 2555914, 65536, 0, 2490379, 0, 0, 2555915, 393216, 2, 2490380, 65536, 0, 2555916, 65536, 1, 2490381, 65536, 0, 2555917, 65536, 1, 2490382, 65536, 0, 2555918, 65536, 1, 2490383, 65536, 0, 2555919, 65536, 1, 2424848, 0, 0, 2490384, 393216, 2, 2555920, 65536, 1, 2424849, 65536, 0, 2490385, 65536, 1, 2555921, 65536, 1, 2424850, 65536, 0, 2490386, 65536, 1, 2555922, 65536, 1, 2424851, 65536, 0, 2490387, 65536, 1, 2555923, 65536, 1, 2424852, 65536, 0, 2490388, 65536, 1, 2555924, 65536, 1, 2424853, 65536, 0, 2490389, 65536, 1, 2555925, 65536, 1, 2424854, 65536, 0, 2490390, 65536, 1, 2555926, 65536, 1, 2424855, 65536, 0, 2490391, 65536, 1, 2555927, 65536, 1, 2424856, 65536, 0, 2490392, 65536, 1, 2555928, 65536, 1, 2424857, 131072, 0, 2490393, 327680, 2, 2555929, 65536, 1, 2490394, 131072, 0, 2555930, 327680, 2, 2555931, 131072, 0)

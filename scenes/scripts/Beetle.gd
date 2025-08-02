@@ -4,6 +4,10 @@ class_name Beetle
 
 const DUNG_SCENE = preload("res://scenes/Dung.tscn")
 
+const CAMERA_LERP = 1.0
+const CAMERA_VEL_TRANSMISSION = 0.3
+const TIME_FOR_FIRE_LOOP_SOUND = 0.2
+
 const DUNG_ROLL_ANIM_TRANSMISSION = 0.012
 const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
 const NORMAL_TERMINAL_SPEED = 3400.0
@@ -12,9 +16,9 @@ const JUMP_SPEED = -1050.0
 const ROLLING_JUMP_SPEED = -1800.0
 const SOMERSAULT_VEC = Vector2(-200, -1400)
 const FIRE_HIT_VEC = Vector2(-300, -1400)
-const THROW_SPEED = 800.0
+const THROW_SPEED = 900.0
 const FIRE_THROW_SPEED = 700.0
-const CATCH_SPEED = 1000.0
+const CATCH_SPEED = 1500.0
 const MAX_HORIZONTAL_JUMP_SPEED = 300.0
 const ROLLING_SPEED = 1200.0
 const UP_SLOPE_ROLLING_SPEED = 1750.0
@@ -48,13 +52,14 @@ const DECELERATIONS = {
 const TIME_FOR_PRAY_PULL = 2.0
 const TIME_FOR_RESET = 1.0
 
-const HEIGHT_FOR_FIRE = 620.0
+const HEIGHT_FOR_FIRE = 720.0
 const PRAY_PULL_MAX_DIST = 1250.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
 const ANIM_TOLERANCE = 30.0
 
 
+var time_fire_started = 0.0
 var dung: Dung
 var world_camera: WorldCamera
 var world_loader: WorldLoader
@@ -76,11 +81,11 @@ var reset_progress = 0.0
 var can_reset = true
 
 var is_grounded = true
-
+var camera_aim = Vector2(0, 0)
 
 @onready var fire: AnimatedSprite2D = $SpritePivot/Fire
 @onready var sprite: ShakingSprite = $SpritePivot/Sprite
-@onready var sprite_pivot: Node2D = $SpritePivot
+@onready var sprite_pivot: Squisher = $SpritePivot
 @onready var animation_player: TransitionAnimationPlayer = $AnimationPlayer
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
@@ -96,9 +101,19 @@ var is_grounded = true
 @onready var dust_particles: CPUParticles2D = $SpritePivot/DustParticles
 @onready var reset_container: Node2D = $Reset
 @onready var reset_progress_bar: TextureProgressBar = $Reset/ResetProgressBar
+@onready var camera_follow: Node2D = $CameraFollow
+@onready var fire_loop_audio: AudioStreamPlayer = $FireLoop
+@onready var aim_loop_audio: AudioStreamPlayer = $AimLoop
+@onready var push_loop_audio: AudioStreamPlayer = $PushLoop
+@onready var roll_loop_audio: AudioStreamPlayer = $RollLoop
 
 
 func _ready() -> void:
+	fire_loop_audio.play()
+	aim_loop_audio.play()
+	push_loop_audio.play()
+	roll_loop_audio.play()
+	
 	fire.play("default")
 	
 	dung = DUNG_SCENE.instantiate()
@@ -124,6 +139,16 @@ func _physics_process(delta: float) -> void:
 		reset_container.hide()
 
 
+func _process(delta: float) -> void:
+	camera_aim = Vector2(velocity[0] * CAMERA_VEL_TRANSMISSION, 0)
+	if not has_dung and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
+		camera_aim = (dung.position - position) / 2.0
+	
+	camera_follow.position = lerp(camera_follow.position, camera_aim, CAMERA_LERP)
+	
+	_sound_process(delta)
+
+
 func _movement_process(delta: float) -> void:
 	# Fire logic
 	if has_dung and not is_grounded:
@@ -131,12 +156,18 @@ func _movement_process(delta: float) -> void:
 			heavy_falling_height = position[1]
 		
 		if position[1] - heavy_falling_height >= HEIGHT_FOR_FIRE:
-			on_fire = true
+			if not on_fire:
+				time_fire_started = Time.get_ticks_msec()
+				SoundController.play_sfx("Fire")
+				on_fire = true
 	else:
 		heavy_falling_height = null
 	
 	# Throw logic
 	if Input.is_action_just_pressed("aim") and not aiming and not rolling: # Start aim
+		SoundController.set_music_paused(true)
+		SoundController.play_sfx("Aim")
+		
 		animation_before_pray = animation_player.current_animation
 		
 		if has_dung:
@@ -151,7 +182,9 @@ func _movement_process(delta: float) -> void:
 		if has_dung:
 			arrow_pivot.show()
 		
-		can_pray_pull = true
+		can_pray_pull = false
+		if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
+			can_pray_pull = true
 		#can_pray_pull = false
 		#if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
 			#dung_detector.target_position = dung.position - position
@@ -165,13 +198,18 @@ func _movement_process(delta: float) -> void:
 		arrow_pivot.hide()
 		pulling = false
 		world_loader.game_timer.paused = false
+		
+		SoundController.set_music_paused(false)
+		SoundController.play_sfx("StopAim")
 	
 	var jumped = false
 	if aiming and not has_dung: # Pray pull
 		if Input.is_action_just_pressed("throw"):
+			SoundController.play_sfx("PrayPull")
 			pulling = true
 			time_pulling_started = Time.get_ticks_msec()
 		elif Input.is_action_just_released("throw"):
+			SoundController.stop_sfx("PrayPull")
 			pulling = false
 		
 		if pulling:
@@ -182,6 +220,8 @@ func _movement_process(delta: float) -> void:
 				dung.sprite.trauma = progress
 				
 				if time_elapsed >= TIME_FOR_PRAY_PULL:
+					SoundController.play_sfx("DungImpact")
+					
 					dung.deactivate()
 					get_dung()
 					stop_aiming.call()
@@ -207,6 +247,8 @@ func _movement_process(delta: float) -> void:
 		arrow_pivot.rotation = Vector2(0, -1).angle_to(throw_dir)
 		
 		if Input.is_action_just_pressed("throw") and has_dung:
+			SoundController.play_sfx("Throw")
+			
 			if not is_grounded:
 				facing_dir = throw_dir[0] / abs(throw_dir[0])
 			
@@ -230,6 +272,7 @@ func _movement_process(delta: float) -> void:
 			
 			stop_aiming.call()
 		elif Input.is_action_just_pressed("jump") and not has_dung and is_grounded:
+			SoundController.play_sfx("Jump")
 			animation_player.play("jump")
 			
 			jumped = true
@@ -293,19 +336,23 @@ func _movement_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and can_jump and not jumped:
 		if not has_dung:
+			SoundController.play_sfx("Jump")
 			animation_player.play("jump")
 			
 			jumped = true
 			velocity[1] = JUMP_SPEED
 			velocity[0] = clamp(velocity[0], -MAX_HORIZONTAL_JUMP_SPEED, MAX_HORIZONTAL_JUMP_SPEED)
-		else: # TODO Add can't jump effect
-			pass
+		else: 
+			SoundController.play_sfx("NoJump")
+			sprite_pivot.squish()
 	
 	# Fire hit logic
 	if get_slide_collision_count() > 0 and on_fire:
 		var normal = get_slide_collision(0).get_normal()
 		
-		if abs(normal[0] - 0) < TOLERANCE and not rolling or not has_dung: # Floor hit
+		if abs(normal[0]) < TOLERANCE and normal[1] < 0 and not rolling or not has_dung: # Floor hit
+			SoundController.play_sfx("Bounce")
+			
 			animation_player.play("fall")
 			
 			jumped = true
@@ -326,6 +373,8 @@ func _movement_process(delta: float) -> void:
 			if collider.has_method("destroy"):
 				collider.destroy()
 		elif abs(normal[1] - 0) < TOLERANCE: # Wall hit
+			SoundController.play_sfx("Bounce")
+			
 			animation_player.play("fall")
 			
 			jumped = true
@@ -355,9 +404,10 @@ func _movement_process(delta: float) -> void:
 	
 	# Roll jump logic
 	if rolling and rolling_dir * slope_dir > 0:
-		if abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) > RAYCAST_DIF_FOR_ROLLING_JUMP:
+		if abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) > RAYCAST_DIF_FOR_ROLLING_JUMP and is_grounded:
 			rolling_uphill = true
 		if rolling_uphill and abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) < RAYCAST_DIF_FOR_ROLLING_JUMP:
+			SoundController.play_sfx("Jump")
 			animation_player.play("roll_fall")
 			
 			rolling_uphill = false
@@ -372,6 +422,7 @@ func _movement_process(delta: float) -> void:
 		has_pray_pulled = false
 	
 	if not was_grounded and is_grounded:
+		SoundController.play_sfx("Land")
 		if rolling:
 			animation_player.play("roll")
 		elif has_dung:
@@ -405,7 +456,10 @@ func _movement_process(delta: float) -> void:
 
 
 func _animation_process(delta: float) -> void:
-	fire.rotation = Vector2(0, 1).angle_to(velocity)
+	if rolling:
+		fire.rotation = -PI / 2 * rolling_dir
+	else:
+		fire.rotation = 0
 	dust_particles.emitting = (facing_dir * velocity[0] < 0 and is_grounded and abs(velocity[0]) > ANIM_TOLERANCE) or animation_player.current_animation == "land"
 	sprite.flip_h = facing_dir < 0
 	halo.offset = Vector2(-2 * halo.position[0], 0) if sprite.flip_h else Vector2(0, 0)
@@ -452,6 +506,16 @@ func _animation_process(delta: float) -> void:
 	dung_holder.visible = animation_player.current_animation in ["roll", "ball_walk"]
 
 
+func _sound_process(delta: float) -> void:
+	var current_time = Time.get_ticks_msec()
+	fire_loop_audio.volume_db = -5.0 if on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
+	aim_loop_audio.volume_db = 0.0 if aiming else -80.0
+	push_loop_audio.volume_db = 0.0 if animation_player.current_animation == "ball_walk" else -80.0
+	roll_loop_audio.volume_db = 0.0 if animation_player.current_animation == "roll" else -80.0
+	
+	push_loop_audio.pitch_scale = abs(velocity[0]) / SPEED[true]
+
+
 func get_feet_raycast_movements():
 	var movement_options = []
 	for cast: RayCast2D in [left_feet_cast, right_feet_cast]:
@@ -467,7 +531,10 @@ func lose_dung():
 	has_dung = false
 
 
-func get_dung():
+func get_dung(play_sound=false):
+	if play_sound:
+		SoundController.play_sfx("GetDung")
+	
 	has_dung = true
 	
 	animation_player.play("ball_idle" if is_grounded else "ball_fall")
@@ -477,3 +544,7 @@ func adjust(adjustment_vector):
 	skip_floor_correction = true
 	if heavy_falling_height != null:
 		heavy_falling_height += adjustment_vector[1]
+
+
+func play_sfx(sfx_name):
+	SoundController.play_sfx(sfx_name)

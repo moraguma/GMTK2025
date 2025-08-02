@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://crsiqbx48xgxm"]
+[gd_scene load_steps=10 format=3 uid="uid://crsiqbx48xgxm"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_61cnd"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_twfqt"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_twfqt"]
 [ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="3_ytvcn"]
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="4_gj03w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
+shader = ExtResource("3_twfqt")
+shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
 texture = ExtResource("3_ytvcn")
@@ -402,6 +407,7 @@ script = ExtResource("1_61cnd")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_twfqt")]
 z_index = 25
+material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(1900544, 131072, 0, 1966080, 327680, 2, 2031616, 393216, 1, 2097152, 0, 2, 2555904, 65536, 0, 1966081, 131072, 0, 2031617, 327680, 2, 2097153, 393216, 1, 2162689, 0, 2, 2555905, 65536, 0, 2031618, 131072, 0, 2097154, 327680, 2, 2162690, 65536, 2, 2555906, 65536, 0, 2097155, 131072, 0, 2162691, 131072, 2, 2555907, 65536, 0, 2555908, 65536, 0, 2555909, 65536, 0, 2555910, 65536, 0, 2555911, 65536, 0, 2555912, 65536, 0, 2555913, 65536, 0, 2555914, 65536, 0, 2555915, 65536, 0, 2555916, 65536, 0, 2555917, 65536, 0, 2555918, 65536, 0, 2555919, 131072, 0)
