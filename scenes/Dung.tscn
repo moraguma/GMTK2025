@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://npiq72ggv33n"]
+[gd_scene load_steps=10 format=3 uid="uid://npiq72ggv33n"]
 
 [ext_resource type="Script" uid="uid://5hpg8rvt41g8" path="res://scenes/scripts/Dung.gd" id="1_fmysa"]
 [ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_rhg3x"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="3_obthd"]
 [ext_resource type="Texture2D" uid="uid://be4omikrf0lvd" path="res://resources/sprites/goop.png" id="4_v0uvx"]
 [ext_resource type="Texture2D" uid="uid://cy5vgst0kfv1" path="res://resources/sprites/dung_particles.png" id="5_awpmb"]
+
+[sub_resource type="Curve" id="Curve_awpmb"]
+_data = [Vector2(0.505208, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmysa"]
 radius = 56.0
@@ -23,6 +27,7 @@ script = ExtResource("1_fmysa")
 position = Vector2(3.8147e-06, -3.8147e-06)
 texture = ExtResource("2_v0uvx")
 script = ExtResource("3_obthd")
+trauma_modifier = 0.5
 
 [node name="GoopPivot" type="Node2D" parent="."]
 visible = false
@@ -36,6 +41,8 @@ texture = ExtResource("4_v0uvx")
 amount = 16
 texture = ExtResource("5_awpmb")
 lifetime = 0.7
+emission_shape = 1
+emission_sphere_radius = 32.0
 direction = Vector2(0, -1)
 spread = 180.0
 initial_velocity_min = 200.0
@@ -43,6 +50,7 @@ initial_velocity_max = 400.0
 angle_min = -45.0
 angle_max = 45.0
 scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_awpmb")
 
 [node name="Fire" type="Sprite2D" parent="."]
 visible = false

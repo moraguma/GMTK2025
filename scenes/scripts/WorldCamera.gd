@@ -7,7 +7,7 @@ const LERP_WEIGHT = 0.1
 
 const SHAKE = 0.5
 const DECAY = 0.8
-const MAX_OFFSET = Vector2(160, 90)
+const MAX_OFFSET = Vector2(320, 180)
 const MAX_ROLL = 0.15
 const TRAUMA_POWER = 2
 

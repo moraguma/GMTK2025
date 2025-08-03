@@ -55,6 +55,7 @@ var current_chunk_pos: Vector2i
 var current_room: String
 var chunk_shift: Vector2i = Vector2i(0, 0)
 var initialized = false
+var has_reset = false
 
 
 @onready var map = $Map
@@ -67,6 +68,8 @@ var initialized = false
 func _ready():
 	for pin_name in Globals.checked_pins:
 		get_node("Map/" + pin_name).frame = 2
+	if Globals.has_recipe:
+		$Map/Recipe.show()
 	
 	SoundController.play_music("Gameplay")
 	
@@ -112,9 +115,9 @@ func _process(delta: float) -> void:
 	var time_progress = pow((GAME_TIME - game_timer.time_left) / GAME_TIME, 0.9)
 	var fake_time_left = GAME_FAKE_TIME - time_progress * GAME_FAKE_TIME
 	if fake_time_left > STRESS_TIME:
-		time_label.text = "[center]%d" % [int(fake_time_left)]
+		time_label.text = "%d" % [int(fake_time_left)]
 	else:
-		time_label.text = "[center]%.2f" % [fake_time_left]
+		time_label.text = "%.2f" % [fake_time_left]
 	
 	beetle_icon.position = Vector2(960.0 / 19200.0 * beetle.position[0], 540.0 / 7900.0 * beetle.position[1]) + Vector2(-15, 120)
 	beetle_icon.position[0] = max(-850, beetle_icon.position[0])
@@ -212,6 +215,11 @@ func get_chunk_path(chunk_pos: Vector2i):
 
 ## Asks for a reset of the current level
 func queue_reset():
+	if has_reset:
+		return
+	has_reset = true
+	Globals.loop_count += 1
+	
 	if not game_timer.is_stopped():
 		SoundController.mute_music()
 	
@@ -232,5 +240,15 @@ func close_map():
 
 
 func finish():
+	var time_progress = pow((GAME_TIME - game_timer.time_left) / GAME_TIME, 0.9)
+	var time_taken = time_progress * GAME_FAKE_TIME
+	if time_taken < Globals.best_time:
+		Globals.best_time = time_taken
+	
 	finish_timer.timeout.connect(SceneManager.goto_scene.bind("res://scenes/EndCutscene.tscn"))
 	finish_timer.start(5.0)
+
+
+func get_recipe():
+	Globals.has_recipe = true
+	$Map/Recipe.show()

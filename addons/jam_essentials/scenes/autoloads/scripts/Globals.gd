@@ -11,7 +11,10 @@ const BUS_TO_STRING = {
 }
 
 
+var has_recipe = false
 var checked_pins = []
+var loop_count = 0
+var best_time = 60.0
 
 
 ## If the given check is true, pushes a warning message and returns true.

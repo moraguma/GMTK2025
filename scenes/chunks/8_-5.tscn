@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d7u5ejlyenhn"]
+[gd_scene load_steps=15 format=3 uid="uid://d7u5ejlyenhn"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_f5662"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_kk5xq"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_dtnqs"]
 [ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="6_24km5"]
 [ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="7_fwwff"]
+[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="8_vcxeo"]
+[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="9_nnctu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
 shader = ExtResource("3_vcxeo")
@@ -404,6 +406,10 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kl65"]
+shader = ExtResource("3_vcxeo")
+shader_parameter/type = 1
+
 [node name="(8, -5)" type="Node2D"]
 script = ExtResource("1_f5662")
 
@@ -421,3 +427,16 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("7_fwwff")
 sound = "Bush"
+
+[node name="Grass23" type="Polygon2D" parent="." instance=ExtResource("8_vcxeo")]
+z_index = 26
+material = SubResource("ShaderMaterial_7kl65")
+position = Vector2(1056, 319.999)
+rotation = -0.785398
+scale = Vector2(1, 1.05376)
+skew = -0.148437
+polygon = PackedVector2Array(0, 0, 49.2419, -288.833, 96.4036, -80.1781, 146.165, -248.42, 195.498, -74.116, 244.933, -248.352, 292.42, -81.5901, 342.404, -225.588, 389.522, -77.1066, 439.529, -296.673, 487.927, -83.1532, 536.116, -258.377, 583.272, -88.2838, 632.781, -271.848, 680.087, -93.3631, 729.096, -225.58, 777.73, -102.235, 826.191, -225.932, 875.441, -77.4162, 923.354, -245.42, 971.076, -93.5984, 1018.48, -269.563, 1066.35, -82.4427, 1115.43, -236.226, 1165.65, -62.6627, 1213.72, -205.67, 1262.66, -99.0067, 1310.4, -244.226, 1358.34, 0)
+script = ExtResource("9_nnctu")
+size = 1320.69
+height = 256.0
+spacing = 46.853

@@ -7,7 +7,8 @@ signal finish_transition
 const TRANSITION_TIME = 2.0
 const LERP_WEIGHT = 0.1
 
-const SHAKE = 0.5
+const SMALL_SHAKE = 0.3
+const SHAKE = 0.6
 const DECAY = 0.8
 const MAX_OFFSET = Vector2(160, 90)
 const MAX_ROLL = 0.15

@@ -4,6 +4,7 @@ class_name Cutscene
 
 @export var next_scene_path: String
 @export var play_menu: bool = true
+@export var call_credits: bool = false
 
 
 var current_anim = 0
@@ -36,7 +37,10 @@ func _physics_process(delta: float) -> void:
 			var sound_to_play = get_node_or_null("Sound/" + str(current_anim))
 			if sound_to_play != null:
 				sound_to_play.stop()
-			SceneManager.goto_scene(next_scene_path)
+			if call_credits:
+				SceneManager.goto_scene_and_call(next_scene_path, "show_credits", [])
+			else:
+				SceneManager.goto_scene(next_scene_path)
 
 
 func _process(delta: float) -> void:

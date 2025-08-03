@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqkx1bmvj3rym"]
+[gd_scene load_steps=30 format=3 uid="uid://bqkx1bmvj3rym"]
 
 [ext_resource type="Script" uid="uid://dqe0hhn3td6yr" path="res://addons/jam_essentials/scenes/autoloads/scripts/SoundController.gd" id="1_lfq44"]
 [ext_resource type="AudioStream" uid="uid://bnrre3vcivl4q" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_bounce.wav" id="2_112ck"]
@@ -26,6 +26,9 @@
 [ext_resource type="AudioStream" uid="uid://mdl00jx7kl1g" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_map_close.wav" id="16_nyr33"]
 [ext_resource type="AudioStream" uid="uid://cjeejpcqkw38g" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_destroy_bush.wav" id="17_d460l"]
 [ext_resource type="AudioStream" uid="uid://dlgxpe6so7a5u" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_destroy_rock.wav" id="18_q4i7v"]
+[ext_resource type="AudioStream" uid="uid://bde48f5myn2nb" path="res://resources/sfx/UI/Sisyphus - sfx_ui_buttons.wav" id="19_m74ht"]
+[ext_resource type="AudioStream" uid="uid://cj5mjtkpxbx1p" path="res://resources/sfx/UI/Sisyphus - sfx_ui_hover.wav" id="20_udut1"]
+[ext_resource type="AudioStream" uid="uid://c2nw7w1nacv0" path="res://resources/sfx/UI/Sisyphus - sfx_ui_play.wav" id="21_7lawe"]
 
 [node name="SoundController" type="Node"]
 script = ExtResource("1_lfq44")
@@ -106,6 +109,21 @@ script = ExtResource("3_t8ll8")
 
 [node name="Rock" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("18_q4i7v")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Click" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("19_m74ht")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Hover" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_udut1")
+volume_db = -5.0
+script = ExtResource("3_t8ll8")
+
+[node name="Play" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("21_7lawe")
 volume_db = -5.0
 script = ExtResource("3_t8ll8")
 

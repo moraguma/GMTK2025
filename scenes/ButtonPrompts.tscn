@@ -5,4 +5,4 @@
 [node name="ButtonPrompts" type="Sprite2D"]
 z_index = 6
 texture = ExtResource("1_t6gq3")
-vframes = 13
+vframes = 14

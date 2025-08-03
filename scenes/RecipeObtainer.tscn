@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1mw72axw2kmy"]
+
+[ext_resource type="Script" uid="uid://del0y0aybgvsv" path="res://scenes/scripts/RecipeObtainer.gd" id="1_svdkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mprlo"]
+size = Vector2(256, 400)
+
+[node name="RecipeObtainer" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_svdkl")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mprlo")

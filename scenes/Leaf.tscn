@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://djj1tl6m51kop"]
+[gd_scene load_steps=7 format=3 uid="uid://djj1tl6m51kop"]
 
 [ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="1_76gdt"]
 [ext_resource type="Texture2D" uid="uid://di6v83thbx2bh" path="res://resources/sprites/OBSTACULO-ARBUSTO.png" id="2_76gdt"]
@@ -10,6 +10,9 @@ size = Vector2(248, 512)
 [sub_resource type="Curve" id="Curve_gw1oa"]
 _data = [Vector2(0.458333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw1oa"]
+size = Vector2(240, 20)
 
 [node name="Leaf" type="StaticBody2D"]
 z_index = 24
@@ -45,3 +48,11 @@ damping_max = 84.712
 scale_amount_min = 0.5
 scale_amount_max = 0.7
 scale_amount_curve = SubResource("Curve_gw1oa")
+
+[node name="PlayerDestroy" type="Area2D" parent="."]
+position = Vector2(0, -266)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="PlayerDestroy"]
+shape = SubResource("RectangleShape2D_gw1oa")

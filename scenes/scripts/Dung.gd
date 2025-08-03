@@ -19,6 +19,7 @@ var landed = true
 var aiming = false
 var player: Beetle = null
 var on_fire = false
+var dung_sprite_overrided = false
 
 
 @onready var pick_timer: Timer = $PickTimer
@@ -46,6 +47,7 @@ func _movement_process(delta: float) -> void:
 	
 	if move_and_slide():
 		SoundController.play_sfx("DungImpact")
+		player.world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 		
 		goop_pivot.rotation = Vector2(0, -1).angle_to(-get_slide_collision(0).get_normal())
 		
@@ -61,6 +63,11 @@ func _animation_process(delta: float) -> void:
 	
 	if not landed:
 		sprite.rotation += velocity[0] * ROLL_TRANSMISSION * delta
+	
+	if dung_sprite_overrided:
+		dung_sprite_overrided = false
+	else:
+		sprite.position = Vector2(0, 0)
 
 
 ## Throws dung, starting from player, in given direction
@@ -102,4 +109,10 @@ func deactivate():
 
 
 func destroy_leaf(body: Node2D) -> void:
+	player.world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 	body.destroy()
+
+
+func override_sprite_pos(pos: Vector2) -> void:
+	dung_sprite_overrided = true
+	sprite.position = pos

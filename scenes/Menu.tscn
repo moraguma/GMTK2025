@@ -1,0 +1,254 @@
+[gd_scene load_steps=26 format=3 uid="uid://cp41udqhsw43d"]
+
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_11y2r"]
+[ext_resource type="Script" uid="uid://b1pgbc1rx8r1m" path="res://scenes/scripts/Menu.gd" id="1_jmdev"]
+[ext_resource type="Texture2D" uid="uid://dr7l6wxd5vh47" path="res://resources/sprites/bg.PNG" id="2_o0tnf"]
+[ext_resource type="Texture2D" uid="uid://ddcr3p1c6kh30" path="res://resources/sprites/clouds.PNG" id="3_jmdev"]
+[ext_resource type="PackedScene" uid="uid://c37ty308up4iu" path="res://scenes/WorldBit.tscn" id="4_o0tnf"]
+[ext_resource type="Texture2D" uid="uid://b40i851oeyibu" path="res://resources/sprites/beetle.png" id="5_b6cxs"]
+[ext_resource type="Texture2D" uid="uid://d2o12p575pfxl" path="res://resources/sprites/dung.png" id="6_aaywf"]
+[ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="8_1abgu"]
+[ext_resource type="Texture2D" uid="uid://d0xpeueca4yjc" path="res://resources/sprites/ui/TITLE.png" id="9_yt8fu"]
+[ext_resource type="Script" uid="uid://dacxvqs7ubqpe" path="res://addons/jam_essentials/scenes/components/scripts/WavingElement.gd" id="10_el213"]
+[ext_resource type="Texture2D" uid="uid://s6eikq0fewlw" path="res://resources/sprites/ui/play.png" id="10_pp5m5"]
+[ext_resource type="Texture2D" uid="uid://cs80ybrudfycw" path="res://resources/sprites/ui/credits.png" id="11_el213"]
+[ext_resource type="Texture2D" uid="uid://cnp6fbtvgnayo" path="res://resources/sprites/ui/play_pressed.png" id="12_thu7x"]
+[ext_resource type="Script" uid="uid://vcl6xw8gbgqt" path="res://scenes/scripts/Button.gd" id="13_5p0sf"]
+[ext_resource type="Texture2D" uid="uid://cyivicuoporym" path="res://resources/sprites/ui/credits_pressed.png" id="14_7ycwl"]
+[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="15_rtd1e"]
+[ext_resource type="Texture2D" uid="uid://csvsksr7r4kj1" path="res://resources/sprites/ui/back.png" id="16_6c8sk"]
+[ext_resource type="Texture2D" uid="uid://dfp8uqil3ctu3" path="res://resources/sprites/ui/back_pressed.png" id="17_5p0sf"]
+[ext_resource type="Script" uid="uid://b5iuchxgfwpf" path="res://scenes/scripts/SoulchainButton.gd" id="19_7t7qg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11y2r"]
+shader = ExtResource("1_11y2r")
+shader_parameter/type = 2
+
+[sub_resource type="Animation" id="Animation_aaywf"]
+resource_name = "roll"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beetle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_1abgu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beetle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yt8fu"]
+_data = {
+&"RESET": SubResource("Animation_1abgu"),
+&"roll": SubResource("Animation_aaywf")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yt8fu"]
+shader = ExtResource("1_11y2r")
+shader_parameter/type = 2
+
+[sub_resource type="Curve" id="Curve_4umqm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_jmdev")
+
+[node name="BG" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_11y2r")
+scale = Vector2(2, 2)
+texture = ExtResource("2_o0tnf")
+
+[node name="CloudsParallax" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, -291)
+repeat_size = Vector2(1120, 0)
+autoscroll = Vector2(-32, 0)
+repeat_times = 3
+
+[node name="Clouds" type="Sprite2D" parent="CloudsParallax"]
+material = SubResource("ShaderMaterial_11y2r")
+texture = ExtResource("3_jmdev")
+
+[node name="Beetle" type="Sprite2D" parent="."]
+z_index = 15
+position = Vector2(352, 128)
+rotation = -0.785398
+texture = ExtResource("5_b6cxs")
+hframes = 5
+vframes = 5
+frame = 12
+
+[node name="Dung" type="Sprite2D" parent="."]
+z_index = 14
+position = Vector2(448, 105)
+rotation = -0.785398
+texture = ExtResource("6_aaywf")
+
+[node name="WorldBits" type="Node2D" parent="."]
+
+[node name="WorldBit" parent="WorldBits" instance=ExtResource("4_o0tnf")]
+position = Vector2(-160, 800)
+
+[node name="WorldBit2" parent="WorldBits" instance=ExtResource("4_o0tnf")]
+position = Vector2(1760, -1120)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yt8fu")
+}
+speed_scale = 2.0
+
+[node name="AirParticles" type="CPUParticles2D" parent="."]
+z_index = 30
+material = SubResource("ShaderMaterial_yt8fu")
+position = Vector2(1199, -340)
+amount = 32
+texture = ExtResource("8_1abgu")
+lifetime = 2.5
+preprocess = 2.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 960)
+direction = Vector2(-1, 0)
+gravity = Vector2(-1000, 400)
+initial_velocity_min = 64.0
+initial_velocity_max = 128.0
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_4umqm")
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Logo" type="Sprite2D" parent="Main"]
+position = Vector2(-384, -256)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("9_yt8fu")
+script = ExtResource("10_el213")
+frequency = 0.2
+
+[node name="Buttons" type="VBoxContainer" parent="Main"]
+offset_left = -832.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 463.0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="Main/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("10_pp5m5")
+texture_pressed = ExtResource("12_thu7x")
+texture_hover = ExtResource("12_thu7x")
+texture_focused = ExtResource("12_thu7x")
+stretch_mode = 3
+script = ExtResource("13_5p0sf")
+
+[node name="Credits" type="TextureButton" parent="Main/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("11_el213")
+texture_pressed = ExtResource("14_7ycwl")
+texture_hover = ExtResource("14_7ycwl")
+texture_focused = ExtResource("14_7ycwl")
+stretch_mode = 3
+script = ExtResource("13_5p0sf")
+
+[node name="Credits" type="Node2D" parent="."]
+visible = false
+
+[node name="Code" type="RichTextLabel" parent="Credits"]
+offset_left = -896.0
+offset_top = -448.0
+offset_right = -384.0
+offset_bottom = -192.0
+theme = ExtResource("15_rtd1e")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][i]Code and game design[/i]
+[wave][color=#236BB1]Gustavo Morais (@moraguma)"
+
+[node name="Art" type="RichTextLabel" parent="Credits"]
+offset_left = -896.0
+offset_top = -192.0
+offset_right = -384.0
+offset_bottom = 64.0
+theme = ExtResource("15_rtd1e")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][i]2D Art Direction[/i]
+[wave][color=#236BB1]Jana Marcato (@alphajn)"
+
+[node name="Art2" type="RichTextLabel" parent="Credits"]
+offset_left = -384.0
+offset_top = -192.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme = ExtResource("15_rtd1e")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][i]2D Art Designer[/i]
+[wave][color=#236BB1]Luigi Francisco (@luigi_troxao)"
+
+[node name="Audio" type="RichTextLabel" parent="Credits"]
+offset_left = -384.0
+offset_top = -448.0
+offset_right = 128.0
+offset_bottom = -192.0
+theme = ExtResource("15_rtd1e")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][i]Audio Director[/i]
+[wave][color=#236BB1]Gustavo Chagas (@Chagasgstv)"
+
+[node name="Back" type="TextureButton" parent="Credits"]
+offset_left = -704.0
+offset_top = 64.0
+offset_right = -90.0
+offset_bottom = 224.0
+texture_normal = ExtResource("16_6c8sk")
+texture_pressed = ExtResource("17_5p0sf")
+texture_hover = ExtResource("17_5p0sf")
+texture_focused = ExtResource("17_5p0sf")
+stretch_mode = 3
+script = ExtResource("13_5p0sf")
+
+[node name="Soulchain" type="Button" parent="."]
+z_index = 26
+offset_left = 384.0
+offset_top = 448.0
+offset_right = 909.0
+offset_bottom = 510.0
+theme = ExtResource("15_rtd1e")
+text = "Wishlist our other game"
+flat = true
+script = ExtResource("19_7t7qg")
+
+[connection signal="pressed" from="Main/Buttons/Play" to="." method="play"]
+[connection signal="pressed" from="Main/Buttons/Credits" to="." method="show_credits"]
+[connection signal="pressed" from="Credits/Back" to="." method="show_main"]

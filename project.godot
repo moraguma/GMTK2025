@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://brpn0rdudm732"
+run/main_scene="uid://cp41udqhsw43d"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://r3ovg6yt7sdb"
+config/icon="uid://cmuolj1n544nx"
 
 [autoload]
 
@@ -26,6 +27,9 @@ Globals="*res://addons/jam_essentials/scenes/autoloads/Globals.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://c2pqjsr63cr6l"
 
 [editor_plugins]
 

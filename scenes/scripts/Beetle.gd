@@ -24,16 +24,16 @@ const ROLLING_SPEED = 1200.0
 const UP_SLOPE_ROLLING_SPEED = 1750.0
 const DOWN_SLOPE_ROLLING_SPEED = 800.0
 const SPEED = {
-	false: 420.0,
-	true: 250.0
+	false: 440.0,
+	true: 270.0
 }
 const UP_SLOPE_SPEED = {
-	false: 600.0,
-	true: 360.0
+	false: 614.0,
+	true: 374.0
 }
 const DOWN_SLOPE_SPEED = {
-	false: 420.0,
-	true: 250.0
+	false: 440.0,
+	true: 270.0
 }
 
 const GRAVITY = 0.01
@@ -50,9 +50,10 @@ const DECELERATIONS = {
 
 
 const TIME_FOR_PRAY_PULL = 2.0
+const TIME_FOR_PRAY_PULL_DUNG_SPRITE_OVERRIDE = 1.6
 const TIME_FOR_RESET = 1.0
 
-const HEIGHT_FOR_FIRE = 720.0
+const HEIGHT_FOR_FIRE = 680.0
 const PRAY_PULL_MAX_DIST = 1250.0
 const MAX_GROUNDED_THROW_ANGLE = PI / 3
 const TOLERANCE = 0.001
@@ -252,6 +253,7 @@ func _movement_process(delta: float) -> void:
 				time_fire_started = Time.get_ticks_msec()
 				SoundController.play_sfx("Fire")
 				on_fire = true
+				world_camera.add_trauma()
 	else:
 		heavy_falling_height = null
 	
@@ -316,7 +318,11 @@ func _movement_process(delta: float) -> void:
 			if can_pray_pull:
 				dung.sprite.trauma = progress
 				
+				if time_elapsed >= TIME_FOR_PRAY_PULL_DUNG_SPRITE_OVERRIDE:
+					dung.override_sprite_pos((position - dung.position) * pow((time_elapsed - TIME_FOR_PRAY_PULL_DUNG_SPRITE_OVERRIDE) / (TIME_FOR_PRAY_PULL - TIME_FOR_PRAY_PULL_DUNG_SPRITE_OVERRIDE), 4.0))
+				
 				if time_elapsed >= TIME_FOR_PRAY_PULL:
+					world_camera.add_trauma()
 					SoundController.play_sfx("DungImpact")
 					
 					dung.deactivate()
@@ -342,6 +348,10 @@ func _movement_process(delta: float) -> void:
 			throw_dir = Vector2(0, -1).rotated(angle)
 		
 		arrow_pivot.rotation = Vector2(0, -1).angle_to(throw_dir)
+		
+		if Input.is_action_just_pressed("jump") and (has_dung or not is_grounded):
+			sprite_pivot.squish()
+			SoundController.play_sfx("NoJump")
 		
 		if Input.is_action_just_pressed("throw") and has_dung:
 			SoundController.play_sfx("Throw")
@@ -459,6 +469,7 @@ func _movement_process(delta: float) -> void:
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= facing_dir 
+			world_camera.add_trauma()
 			
 			if has_dung:
 				var throw_dir = velocity
@@ -469,6 +480,7 @@ func _movement_process(delta: float) -> void:
 			var collider = get_slide_collision(0).get_collider()
 			if collider.has_method("destroy"):
 				collider.destroy()
+				world_camera.add_trauma()
 		elif abs(normal[1] - 0) < TOLERANCE: # Wall hit
 			SoundController.play_sfx("Bounce")
 			
@@ -481,6 +493,7 @@ func _movement_process(delta: float) -> void:
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= -normal[0] 
+			world_camera.add_trauma()
 			
 			if has_dung:
 				var throw_dir = velocity
@@ -498,6 +511,8 @@ func _movement_process(delta: float) -> void:
 			rolling = true
 			facing_dir = -slope_dir
 			rolling_dir = facing_dir
+			
+			world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 	
 	# Roll jump logic
 	if rolling and rolling_dir * slope_dir > 0:
@@ -510,6 +525,7 @@ func _movement_process(delta: float) -> void:
 			rolling_uphill = false
 			velocity[1] = ROLLING_JUMP_SPEED
 			jumped = true
+			world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 	
 	var was_grounded = is_grounded
 	move_and_slide()
@@ -672,3 +688,7 @@ func finish():
 
 func check_pin(pin_name):
 	world_loader.check_pin(pin_name)
+
+
+func get_recipe():
+	world_loader.get_recipe()

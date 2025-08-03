@@ -9,7 +9,13 @@ class_name Destructible
 var destroyed = false
 
 
-func destroy():
+func _ready() -> void:
+	var player_destroy = get_node_or_null("PlayerDestroy")
+	if player_destroy != null:
+		player_destroy.body_entered.connect(destroy)
+
+
+func destroy(body=null):
 	if destroyed:
 		return
 	destroyed = true

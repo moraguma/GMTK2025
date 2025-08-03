@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=20 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://c1vibkoxxj4yt" path="res://resources/sprites/ui/map.png" id="6_kqw7a"]
 [ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
 [ext_resource type="Texture2D" uid="uid://dq6febieth1va" path="res://resources/sprites/ui/map_icons.png" id="7_geuqd"]
+[ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="8_bcks2"]
+[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="9_f4qb8"]
+[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="10_s61us"]
+[ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="11_abq6w"]
+[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="14_f4qb8"]
+[ext_resource type="Texture2D" uid="uid://cjy6c1yb5cotw" path="res://resources/sprites/ui/timer.png" id="14_s61us"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
 shader = ExtResource("2_k34yh")
@@ -25,13 +31,10 @@ shader_parameter/type = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Theme" id="Theme_qh2w4"]
-default_font_size = 64
-
 [node name="WorldLoader" type="Node2D"]
 script = ExtResource("1_u227p")
 starting_chunk_pos = Vector2i(0, -1)
-starting_pos = Vector2(192, 2368)
+starting_pos = Vector2(192, 2432)
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 60.0
@@ -48,9 +51,14 @@ material = SubResource("ShaderMaterial_rmikl")
 scale = Vector2(2, 2)
 texture = ExtResource("2_ynewl")
 
-[node name="Clouds" type="Sprite2D" parent="."]
+[node name="CloudsParallax" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, -291)
+repeat_size = Vector2(1120, 0)
+autoscroll = Vector2(-32, 0)
+repeat_times = 3
+
+[node name="Clouds" type="Sprite2D" parent="CloudsParallax"]
 material = SubResource("ShaderMaterial_rmikl")
-scale = Vector2(2, 2)
 texture = ExtResource("4_k34yh")
 
 [node name="View" type="Sprite2D" parent="."]
@@ -101,11 +109,171 @@ texture = ExtResource("7_geuqd")
 vframes = 4
 frame = 1
 
-[node name="Combo2" type="Sprite2D" parent="Map"]
+[node name="Olympus" type="Sprite2D" parent="Map"]
 position = Vector2(848, -397)
 texture = ExtResource("7_geuqd")
 vframes = 4
 frame = 3
+
+[node name="Recipe" type="Node2D" parent="Map"]
+visible = false
+position = Vector2(-619, -924)
+rotation = -0.0194306
+scale = Vector2(0.6, 0.6)
+
+[node name="Polygon2D" type="Polygon2D" parent="Map/Recipe"]
+position = Vector2(-203.975, 31.0427)
+rotation = 0.0194306
+scale = Vector2(1.66667, 1.66667)
+color = Color(0.143884, 0.105067, 0.0903078, 1)
+polygon = PackedVector2Array(-155, 372, 125, 393, 474, 403, 434, 730, 126, 791, -165, 773, -173, 612)
+
+[node name="Tutorial23" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+offset_left = -365.0
+offset_top = 899.0
+offset_right = -304.0
+offset_bottom = 978.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+text = "[center]2"
+
+[node name="Tutorial25" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+offset_left = -466.0
+offset_top = 1081.0
+offset_right = -405.0
+offset_bottom = 1160.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+text = "[center]3"
+
+[node name="Tutorial26" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+offset_left = 163.064
+offset_top = 848.55
+offset_right = 224.064
+offset_bottom = 927.55
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+text = "[center]4"
+
+[node name="Tutorial27" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+offset_left = 149.064
+offset_top = 1035.55
+offset_right = 210.064
+offset_bottom = 1114.55
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+text = "[center]5"
+
+[node name="Tutorial24" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+offset_left = -367.0
+offset_top = 706.0
+offset_right = -306.0
+offset_bottom = 785.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+text = "[center]1"
+
+[node name="ButtonPrompts49" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(355.064, 1140.55)
+rotation = 3.14159
+scale = Vector2(1, -1)
+frame = 13
+
+[node name="ButtonPrompts44" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(-189, 899)
+rotation = 3.14159
+scale = Vector2(0.6, -0.6)
+frame = 10
+
+[node name="HaloLineart15" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-157, 941.5)
+
+[node name="BeetleLineart24" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-157, 958.5)
+frame = 7
+
+[node name="HaloLineart19" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-269, 941.5)
+
+[node name="BeetleLineart25" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-269, 958.5)
+frame = 9
+
+[node name="HaloLineart25" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(259.064, 906.05)
+
+[node name="BeetleLineart30" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(259.064, 923.05)
+flip_h = true
+frame = 9
+
+[node name="BeetleLineart32" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(387.064, 923.05)
+flip_h = true
+frame = 4
+
+[node name="BeetleLineart35" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(235.064, 1078.05)
+flip_h = true
+frame = 4
+
+[node name="ButtonPrompts45" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(-249, 728)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+frame = 7
+
+[node name="HaloLineart20" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-303, 753.5)
+
+[node name="HaloLineart21" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-128, 748.5)
+
+[node name="BeetleLineart26" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-303, 770.5)
+
+[node name="BeetleLineart27" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-128, 765.5)
+frame = 20
+
+[node name="HaloLineart22" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-372, 1130.5)
+
+[node name="BeetleLineart28" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-317, 1155.5)
+frame = 4
+
+[node name="ButtonPrompts46" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(-26, 1065)
+rotation = -1.5708
+scale = Vector2(1, -1)
+frame = 7
+
+[node name="ButtonPrompts48" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(398.064, 848.55)
+rotation = -1.5708
+scale = Vector2(1, -1)
+frame = 7
+
+[node name="ButtonPrompts47" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+position = Vector2(-154, 1262)
+rotation = 1.5708
+scale = Vector2(0.6, -0.6)
+frame = 7
+
+[node name="HaloLineart23" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-24, 1123.84)
+
+[node name="BeetleLineart29" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-24, 1140.84)
+frame = 19
+
+[node name="HaloLineart24" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+position = Vector2(-201, 1132)
+
+[node name="BeetleLineart31" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+position = Vector2(-201, 1149)
+frame = 1
 
 [node name="AirParticles" type="CPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_yixxd")
@@ -134,15 +302,19 @@ size = Vector2i(1920, 1080)
 process_priority = 2
 script = ExtResource("2_qh2w4")
 
+[node name="Timer" type="Sprite2D" parent="."]
+position = Vector2(-42, -481)
+texture = ExtResource("14_s61us")
+
 [node name="TimeLabel" type="RichTextLabel" parent="."]
 clip_contents = false
-offset_left = -960.0
-offset_top = -540.0
+offset_top = -522.0
 offset_right = 960.0
-offset_bottom = -440.0
-theme = SubResource("Theme_qh2w4")
+offset_bottom = -422.0
+theme = ExtResource("14_f4qb8")
 theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
-text = "[center]dasda"
+text = "dasda"
 
 [connection signal="timeout" from="GameTimer" to="." method="queue_reset"]
