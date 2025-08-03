@@ -93,7 +93,7 @@ func stop_sfx(path):
 
 
 func set_music_paused(paused: bool):
-	current_music.stream_paused = paused
+	current_music.pitch_scale = 0.000000001 if paused else 1.0
 
 
 ## Sets volume for given bus. Bus numbers are defined as consts in Globals
