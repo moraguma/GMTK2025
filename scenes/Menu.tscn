@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cp41udqhsw43d"]
+[gd_scene load_steps=28 format=3 uid="uid://cp41udqhsw43d"]
 
 [ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_11y2r"]
 [ext_resource type="Script" uid="uid://b1pgbc1rx8r1m" path="res://scenes/scripts/Menu.gd" id="1_jmdev"]
@@ -19,10 +19,27 @@
 [ext_resource type="Texture2D" uid="uid://csvsksr7r4kj1" path="res://resources/sprites/ui/back.png" id="16_6c8sk"]
 [ext_resource type="Texture2D" uid="uid://dfp8uqil3ctu3" path="res://resources/sprites/ui/back_pressed.png" id="17_5p0sf"]
 [ext_resource type="Script" uid="uid://b5iuchxgfwpf" path="res://scenes/scripts/SoulchainButton.gd" id="19_7t7qg"]
+[ext_resource type="Texture2D" uid="uid://d14n4lhfxq5cr" path="res://resources/sprites/ui/steam_release.png" id="19_l3wcu"]
+[ext_resource type="Texture2D" uid="uid://cqexjvwajw0cx" path="res://resources/sprites/ui/steam_release_pressed.png" id="20_i7htd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11y2r"]
 shader = ExtResource("1_11y2r")
 shader_parameter/type = 2
+
+[sub_resource type="Animation" id="Animation_1abgu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beetle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
 
 [sub_resource type="Animation" id="Animation_aaywf"]
 resource_name = "roll"
@@ -40,21 +57,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 13]
-}
-
-[sub_resource type="Animation" id="Animation_1abgu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Beetle:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yt8fu"]
@@ -106,11 +108,13 @@ texture = ExtResource("6_aaywf")
 
 [node name="WorldBits" type="Node2D" parent="."]
 
-[node name="WorldBit" parent="WorldBits" instance=ExtResource("4_o0tnf")]
+[node name="Base" type="Node2D" parent="WorldBits"]
 position = Vector2(-160, 800)
 
-[node name="WorldBit2" parent="WorldBits" instance=ExtResource("4_o0tnf")]
-position = Vector2(1760, -1120)
+[node name="WorldBit" parent="WorldBits/Base" instance=ExtResource("4_o0tnf")]
+
+[node name="WorldBit2" parent="WorldBits/Base" instance=ExtResource("4_o0tnf")]
+position = Vector2(1920, -1920)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -191,20 +195,20 @@ text = "[center][i]Code and game design[/i]
 offset_left = -896.0
 offset_top = -192.0
 offset_right = -384.0
-offset_bottom = 64.0
+offset_bottom = 128.0
 theme = ExtResource("15_rtd1e")
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/italics_font_size = 48
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[center][i]2D Art Direction[/i]
+text = "[center][i]Art Direction and Characters[/i]
 [wave][color=#236BB1]Jana Marcato (@alphajn)"
 
 [node name="Art2" type="RichTextLabel" parent="Credits"]
 offset_left = -384.0
-offset_top = -192.0
+offset_top = -160.0
 offset_right = 128.0
-offset_bottom = 64.0
+offset_bottom = 96.0
 theme = ExtResource("15_rtd1e")
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/italics_font_size = 48
@@ -228,9 +232,9 @@ text = "[center][i]Audio Director[/i]
 
 [node name="Back" type="TextureButton" parent="Credits"]
 offset_left = -704.0
-offset_top = 64.0
+offset_top = 96.0
 offset_right = -90.0
-offset_bottom = 224.0
+offset_bottom = 256.0
 texture_normal = ExtResource("16_6c8sk")
 texture_pressed = ExtResource("17_5p0sf")
 texture_hover = ExtResource("17_5p0sf")
@@ -238,15 +242,16 @@ texture_focused = ExtResource("17_5p0sf")
 stretch_mode = 3
 script = ExtResource("13_5p0sf")
 
-[node name="Soulchain" type="Button" parent="."]
+[node name="Soulchain" type="TextureButton" parent="."]
 z_index = 26
 offset_left = 384.0
-offset_top = 448.0
+offset_top = 160.0
 offset_right = 909.0
-offset_bottom = 510.0
+offset_bottom = 511.0
 theme = ExtResource("15_rtd1e")
-text = "Wishlist our other game"
-flat = true
+texture_normal = ExtResource("19_l3wcu")
+texture_hover = ExtResource("20_i7htd")
+texture_focused = ExtResource("20_i7htd")
 script = ExtResource("19_7t7qg")
 
 [connection signal="pressed" from="Main/Buttons/Play" to="." method="play"]

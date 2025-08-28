@@ -1,4 +1,4 @@
-extends Button
+extends BaseButton
 
 
 func _ready() -> void:
@@ -6,4 +6,5 @@ func _ready() -> void:
 
 
 func _pressed() -> void:
-	OS.shell_open("https://store.steampowered.com/app/3383610/Soulchain/")
+	OS.shell_open("https://store.steampowered.com/app/3971000/Sisyphus_Is_a_Bug/")
+	release_focus()

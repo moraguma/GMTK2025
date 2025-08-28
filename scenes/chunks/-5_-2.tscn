@@ -1,19 +1,19 @@
 [gd_scene load_steps=15 format=3 uid="uid://ct24uigmpaa2l"]
 
-[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_ji06m"]
-[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_wful0"]
-[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_ap81v"]
-[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_ep2ea"]
-[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_lx4kj"]
-[ext_resource type="PackedScene" uid="uid://dco2knpim71jm" path="res://scenes/Walls.tscn" id="6_ap81v"]
-[ext_resource type="Texture2D" uid="uid://c04ccbiha5tct" path="res://resources/sprites/wall.png" id="7_ep2ea"]
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_ap81v"]
+[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ep2ea"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_lx4kj"]
+[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_w4r12"]
+[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_unrmr"]
+[ext_resource type="PackedScene" uid="uid://dco2knpim71jm" path="res://scenes/Walls.tscn" id="6_dsfi1"]
+[ext_resource type="Texture2D" uid="uid://c04ccbiha5tct" path="res://resources/sprites/wall.png" id="7_r75q1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
-shader = ExtResource("3_ap81v")
+shader = ExtResource("3_lx4kj")
 shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
-texture = ExtResource("4_ep2ea")
+texture = ExtResource("4_w4r12")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -384,7 +384,7 @@ texture_region_size = Vector2i(64, 64)
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx18x"]
-texture = ExtResource("5_lx4kj")
+texture = ExtResource("5_unrmr")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, 32, 32, 32, 32, -28, -28, -28)
@@ -405,11 +405,11 @@ sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2piji"]
-shader = ExtResource("3_ap81v")
+shader = ExtResource("3_lx4kj")
 shader_parameter/type = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cs6l2"]
-texture = ExtResource("7_ep2ea")
+texture = ExtResource("7_r75q1")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -749,16 +749,16 @@ terrain_set_0/terrain_0/color = Color(0.681671, 0.0939097, 0.375479, 1)
 sources/0 = SubResource("TileSetAtlasSource_cs6l2")
 
 [node name="(-5, -2)" type="Node2D"]
-script = ExtResource("1_ji06m")
+script = ExtResource("1_ap81v")
 
-[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_wful0")]
+[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ep2ea")]
 z_index = 25
 material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(2555941, 0, 0, 2490406, 0, 0, 2555942, 393216, 2, 2424871, 0, 0, 2490407, 393216, 2, 2555943, 65536, 1)
 
-[node name="Walls" type="TileMap" parent="." instance=ExtResource("6_ap81v")]
+[node name="Walls" type="TileMap" parent="." instance=ExtResource("6_dsfi1")]
 z_index = 5
 material = SubResource("ShaderMaterial_2piji")
 tile_set = SubResource("TileSet_vbwfj")

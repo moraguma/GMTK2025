@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxf65ijbdsoeo"]
+[gd_scene load_steps=22 format=3 uid="uid://cxf65ijbdsoeo"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_c0ved"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_uf23d"]
@@ -9,12 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c04ccbiha5tct" path="res://resources/sprites/wall.png" id="7_b1lx0"]
 [ext_resource type="PackedScene" uid="uid://bjbxlo1ax7qby" path="res://scenes/TallAreaEnter.tscn" id="8_1i8u4"]
 [ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="9_v6cxb"]
-[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="10_evuq3"]
-[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="10_k8ksu"]
-[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="11_gs60l"]
-[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="11_vctcb"]
-[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="12_5go3b"]
-[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="13_pxpuo"]
+[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="10_evuq3"]
+[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="11_vctcb"]
+[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="12_5go3b"]
+[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="13_pxpuo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
 shader = ExtResource("3_k8ksu")
@@ -791,38 +789,31 @@ collision_mask = 2
 script = ExtResource("9_v6cxb")
 area = "olympus"
 
-[node name="Grass14" type="Polygon2D" parent="." instance=ExtResource("10_k8ksu")]
+[node name="Grass14" type="Polygon2D" parent="." instance=ExtResource("10_evuq3")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1024, 2336)
 rotation = -0.785398
 scale = Vector2(1, 1.05376)
-skew = -0.148437
-polygon = PackedVector2Array(0, 0, 40.6025, -211.099, 79.2546, -59.1436, 118.488, -157.481, 158.403, -40.0978, 198.175, -148.585, 239.164, -47.6423, 278.62, -201.375, 317.527, -59.2935, 359.397, -207.585, 398.014, -56.4403, 439.992, -177.717, 481.27, -54.3493, 520.339, -162.686, 558.894, -42.3136, 600.123, -210.887, 640.742, -49.4948, 680.804, -181.866, 720.759, -49.0093, 762.076, -163.383, 802.514, -37.5687, 841.191, -188.955, 879.981, -37.9017, 918.272, -150.924, 958.452, -57.0476, 998.997, -185.059, 1039.92, 0)
-script = ExtResource("11_gs60l")
+skew = -0.19635
+polygon = PackedVector2Array(0, 0, 40.3032, -190.317, 78.9802, -40.0597, 118.291, -176.654, 158.023, -43.328, 198.726, -211.211, 240.149, -44.2417, 281.207, -204.147, 320.868, -68.5249, 361.645, -164.253, 400.495, -56.1659, 439.405, -178.268, 479.447, -64.8968, 520.485, -167.142, 562.668, -55.3111, 602.379, -198.208, 641.93, -71.4711, 683.117, -162.132, 724.851, -39.455, 763.157, -171.607, 804.403, -41.7495, 844.763, -161.618, 883.744, -70.7377, 924.956, -199.486, 964.527, -68.8239, 1003, -175.185, 1041.41, 0)
+script = ExtResource("11_vctcb")
 size = 1038.2
 height = 179.873
 spacing = 38.233
 
-[node name="ButtonPrompts50" type="Sprite2D" parent="." instance=ExtResource("10_evuq3")]
+[node name="ButtonPrompts50" type="Sprite2D" parent="." instance=ExtResource("12_5go3b")]
 z_index = 6
 position = Vector2(626.61, 2376.01)
 scale = Vector2(-0.8, 0.8)
-texture = ExtResource("11_vctcb")
+texture = ExtResource("13_pxpuo")
 vframes = 14
 frame = 9
 
-[node name="ButtonPrompts51" type="Sprite2D" parent="." instance=ExtResource("10_evuq3")]
+[node name="ButtonPrompts51" type="Sprite2D" parent="." instance=ExtResource("12_5go3b")]
 z_index = 6
 position = Vector2(598.01, 2335.01)
 rotation = -0.366519
-texture = ExtResource("11_vctcb")
+texture = ExtResource("13_pxpuo")
 vframes = 14
 frame = 10
-
-[node name="HaloLineart13" type="Sprite2D" parent="." instance=ExtResource("12_5go3b")]
-z_index = 6
-position = Vector2(2431, 2549)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("13_pxpuo")
