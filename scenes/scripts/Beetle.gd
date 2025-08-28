@@ -342,7 +342,12 @@ func _movement_process(delta: float) -> void:
 						animation_player.play("ball_fall")
 	
 	if aiming: # Aim actions
-		var throw_dir = (world_loader.get_global_mouse_position() - (global_position - world_camera.get_screen_center_position())).normalized()
+		var throw_dir
+		if InputHelper.device == InputHelper.DEVICE_KEYBOARD:
+			throw_dir = (world_loader.get_global_mouse_position() - (global_position - world_camera.get_screen_center_position())).normalized()
+		else:
+			throw_dir = Input.get_vector("left", "right", "up", "down")
+		
 		if is_grounded:
 			var angle = clamp(Vector2(0, -1).angle_to(throw_dir), -MAX_GROUNDED_THROW_ANGLE, MAX_GROUNDED_THROW_ANGLE)
 			throw_dir = Vector2(0, -1).rotated(angle)
