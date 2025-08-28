@@ -22,6 +22,11 @@ SceneManager="*res://addons/jam_essentials/scenes/autoloads/SceneManager.tscn"
 GlobalCamera="*res://addons/jam_essentials/scenes/autoloads/GlobalCamera.tscn"
 SoundController="*res://addons/jam_essentials/scenes/autoloads/SoundController.tscn"
 Globals="*res://addons/jam_essentials/scenes/autoloads/Globals.tscn"
+SteamInterface="*res://scenes/SteamInterface.tscn"
+
+[debug]
+
+file_logging/enable_file_logging=true
 
 [display]
 
@@ -127,3 +132,8 @@ bg_to={
 "type": "color",
 "value": Color(1, 1, 1, 1)
 }
+
+[steam]
+
+initialization/app_id=3971000
+initialization/initialize_on_startup=true
