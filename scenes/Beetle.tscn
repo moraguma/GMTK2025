@@ -840,6 +840,7 @@ stream = ExtResource("14_0xuoo")
 volume_db = -80.0
 
 [node name="AimLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_m2xve")
 volume_db = -80.0
 

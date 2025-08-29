@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=21 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="11_abq6w"]
 [ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="14_f4qb8"]
 [ext_resource type="Texture2D" uid="uid://cjy6c1yb5cotw" path="res://resources/sprites/ui/timer.png" id="14_s61us"]
+[ext_resource type="PackedScene" uid="uid://x8gfn3tnklhh" path="res://scenes/Options.tscn" id="16_abq6w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
 shader = ExtResource("2_k34yh")
@@ -32,26 +33,31 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, 
 point_count = 3
 
 [node name="WorldLoader" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_u227p")
 starting_chunk_pos = Vector2i(0, -1)
 starting_pos = Vector2(192, 2432)
 
 [node name="GameTimer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 60.0
 one_shot = true
 autostart = true
 
 [node name="FinishTimer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 60.0
 one_shot = true
 autostart = true
 
 [node name="BG" type="Sprite2D" parent="."]
+process_mode = 1
 material = SubResource("ShaderMaterial_rmikl")
 scale = Vector2(2, 2)
 texture = ExtResource("2_ynewl")
 
 [node name="CloudsParallax" type="Parallax2D" parent="."]
+process_mode = 1
 scroll_offset = Vector2(0, -291)
 repeat_size = Vector2(1120, 0)
 autoscroll = Vector2(-32, 0)
@@ -62,10 +68,12 @@ material = SubResource("ShaderMaterial_rmikl")
 texture = ExtResource("4_k34yh")
 
 [node name="View" type="Sprite2D" parent="."]
+process_mode = 1
 texture = SubResource("ViewportTexture_gjsnv")
 script = ExtResource("2_gjsnv")
 
 [node name="Map" type="Sprite2D" parent="."]
+process_mode = 1
 visible = false
 texture = ExtResource("6_kqw7a")
 
@@ -276,6 +284,7 @@ position = Vector2(-201, 1149)
 frame = 1
 
 [node name="AirParticles" type="CPUParticles2D" parent="."]
+process_mode = 1
 material = SubResource("ShaderMaterial_yixxd")
 position = Vector2(1199, -340)
 amount = 32
@@ -293,6 +302,7 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_kqw7a")
 
 [node name="Viewport" type="SubViewport" parent="."]
+process_mode = 1
 transparent_bg = true
 size = Vector2i(1920, 1080)
 
@@ -303,10 +313,12 @@ process_priority = 2
 script = ExtResource("2_qh2w4")
 
 [node name="Timer" type="Sprite2D" parent="."]
+process_mode = 1
 position = Vector2(-42, -481)
 texture = ExtResource("14_s61us")
 
 [node name="TimeLabel" type="RichTextLabel" parent="."]
+process_mode = 1
 clip_contents = false
 offset_top = -522.0
 offset_right = 960.0
@@ -316,5 +328,13 @@ theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "dasda"
+
+[node name="Options" parent="." instance=ExtResource("16_abq6w")]
+visible = false
+offset_left = -960.0
+offset_top = -476.0
+offset_right = 960.0
+offset_bottom = 604.0
+include_back_to_title = true
 
 [connection signal="timeout" from="GameTimer" to="." method="queue_reset"]

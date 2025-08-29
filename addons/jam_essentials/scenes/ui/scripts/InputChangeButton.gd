@@ -42,6 +42,8 @@ func setup_input_display() -> void:
 
 
 func _pressed():
+	SoundController.play_sfx("Click")
+	
 	var new_popup: InputChangePopup = INPUT_CHANGE_POPUP_SCENE.instantiate()
 	new_popup.pressed_button.connect(assign_event)
 	menu_base.add_child(new_popup)

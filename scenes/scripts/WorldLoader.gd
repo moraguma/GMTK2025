@@ -57,9 +57,12 @@ var chunk_shift: Vector2i = Vector2i(0, 0)
 var initialized = false
 var has_reset = false
 
+var is_menu_open = false
+
 
 @onready var map = $Map
 @onready var finish_timer: Timer = $FinishTimer
+@onready var options: Options = $Options
 
 
 # ------------------------------------------------------------------------------
@@ -106,9 +109,30 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	if is_menu_open:
+		beetle._sound_process(delta)
+		return
+	
 	_update_chunk_position()
 	_update_queued_chunks()
-	#_shift_origin() # TODO: Is this necessary?
+	
+	if Input.is_action_just_pressed("menu"):
+		is_menu_open = true
+		beetle.is_menu_open = true
+		SoundController.play_sfx("Aim")
+		SoundController.set_music_paused(true)
+		
+		await get_tree().physics_frame
+		
+		options.activate()
+		
+		await options.closed_menu
+		await get_tree().physics_frame
+		
+		SoundController.set_music_paused(false)
+		SoundController.play_sfx("StopAim")
+		beetle.is_menu_open = false
+		is_menu_open = false
 
 
 func _process(delta: float) -> void:

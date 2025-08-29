@@ -45,6 +45,8 @@ func goto_scene(path: String) -> void:
 ## been queued, will call that method on the root not of that new scene
 func _finish_transition():
 	if transitioning:
+		get_tree().paused = false
+		SoundController.set_music_paused(false)
 		transitioning = false
 		
 		current_scene.free()

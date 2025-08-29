@@ -49,6 +49,9 @@ func activate(action_name) -> void:
 ## Called upon timeout or input selection. Frees this popup after emitting the
 ## pressed_button signal
 func deactivate(event) -> void:
+	if event != null:
+		SoundController.play_sfx("Click")
+	
 	get_tree().call_group("ui_blockable", "unblock")
 	
 	active = false

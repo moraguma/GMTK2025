@@ -367,4 +367,10 @@ func set_bus_vol(vol: float, bus_idx: int) -> void:
 ## Returns the bus volume for a particular bus
 func get_bus_vol(bus_idx: int) -> float:
 	return get_options_data(["audio", "volumes", str(bus_idx)])
+
+
+# Misc settings ----------------------------------------------------------------
+## Transitions scene to title menu
+func back_to_title() -> void:
+	SceneManager.goto_scene("res://scenes/Menu.tscn")
 #endregion

@@ -148,6 +148,7 @@ var animation_before_pray = "idle"
 var reset_progress = 0.0
 var can_reset = true
 var is_map_open = false
+var is_menu_open = false
 var dung_map_state = false
 var finished = false
 
@@ -635,7 +636,7 @@ func _palette_process(delta: float) -> void:
 func _sound_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec()
 	fire_loop_audio.volume_db = -8.0 if not is_map_open and on_fire and (current_time - time_fire_started) / 1000.0 > TIME_FOR_FIRE_LOOP_SOUND else -80
-	aim_loop_audio.volume_db = 3.0 if aiming or is_map_open or finished else -80.0
+	aim_loop_audio.volume_db = 3.0 if aiming or is_map_open or finished or is_menu_open else -80.0
 	push_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "ball_walk" else -80.0
 	roll_loop_audio.volume_db = -20.0 if not is_map_open and animation_player.current_animation == "roll" else -80.0
 	

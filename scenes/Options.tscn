@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x8gfn3tnklhh"]
+[gd_scene load_steps=10 format=3 uid="uid://x8gfn3tnklhh"]
 
 [ext_resource type="Script" uid="uid://dy55kb2piqfip" path="res://scenes/scripts/Options.gd" id="1_p1xw0"]
 [ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="1_w238l"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://86secdqtvw01" path="res://addons/jam_essentials/scenes/ui/OptionsTitle.tscn" id="3_p1xw0"]
 [ext_resource type="PackedScene" uid="uid://ca4qeo3k2vkps" path="res://addons/jam_essentials/scenes/ui/OptionsDropdownButton.tscn" id="4_n5jw5"]
 [ext_resource type="PackedScene" uid="uid://p7xh65ggaeix" path="res://addons/jam_essentials/scenes/ui/OptionsToggleButton.tscn" id="5_b4pvv"]
+[ext_resource type="PackedScene" uid="uid://lduuj4o3od2p" path="res://addons/jam_essentials/scenes/ui/OptionsButton.tscn" id="6_b4pvv"]
 [ext_resource type="PackedScene" uid="uid://cjgfp2lfy6dh6" path="res://addons/jam_essentials/scenes/ui/OptionsSlider.tscn" id="6_s26ps"]
 [ext_resource type="PackedScene" uid="uid://bpanqpi6shgmg" path="res://addons/jam_essentials/scenes/ui/OptionsInputChanger.tscn" id="8_n5jw5"]
 
 [node name="Options" type="Control"]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -37,6 +40,9 @@ anchor_left = 0.1
 anchor_right = 0.9
 vertical_scroll_mode = 3
 
+[node name="VBoxContainer" parent="Base/OptionsMenu/ScrollContainer" index="0"]
+theme_override_constants/separation = 8
+
 [node name="General" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="0" instance=ExtResource("3_p1xw0")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -52,26 +58,32 @@ arguments = ["en", "pt"]
 func_to_call = "set_locale"
 func_to_set = "get_locale"
 
-[node name="Video" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("3_p1xw0")]
+[node name="BackToTitle" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="2" instance=ExtResource("6_b4pvv")]
+layout_mode = 2
+text = "Back to title"
+func_to_call = "back_to_title"
+localization_code = "Back to title"
+
+[node name="Video" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("3_p1xw0")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Video"
 localization_code = "Video"
 
-[node name="OptionsToggleButton" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="3" instance=ExtResource("5_b4pvv")]
+[node name="OptionsToggleButton" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("5_b4pvv")]
 custom_minimum_size = Vector2(0, 54)
 layout_mode = 2
 localization_code = "Fullscreen"
 func_to_call = "set_fullscreen"
 func_to_set = "get_fullscreen"
 
-[node name="Audio" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="4" instance=ExtResource("3_p1xw0")]
+[node name="Audio" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="5" instance=ExtResource("3_p1xw0")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Audio"
 localization_code = "Audio"
 
-[node name="Master" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="5" instance=ExtResource("6_s26ps")]
+[node name="Master" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="6" instance=ExtResource("6_s26ps")]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 localization_code = "Master"
@@ -81,7 +93,7 @@ func_to_set = "get_bus_vol"
 set_binds = [0]
 notches = 6
 
-[node name="Music" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="6" instance=ExtResource("6_s26ps")]
+[node name="Music" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="7" instance=ExtResource("6_s26ps")]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 localization_code = "Music"
@@ -91,7 +103,7 @@ func_to_set = "get_bus_vol"
 set_binds = [1]
 notches = 6
 
-[node name="SFX" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="7" instance=ExtResource("6_s26ps")]
+[node name="SFX" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="8" instance=ExtResource("6_s26ps")]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 localization_code = "SFX"
@@ -101,58 +113,63 @@ func_to_set = "get_bus_vol"
 set_binds = [2]
 notches = 6
 
-[node name="Controls" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="8" instance=ExtResource("3_p1xw0")]
+[node name="Controls" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="9" instance=ExtResource("3_p1xw0")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Controls"
 localization_code = "Controls"
 
-[node name="Left" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="9" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Left" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="10" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["left", "ui_left"])
 
-[node name="Right" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="10" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Right" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="11" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["right", "ui_right"])
 
-[node name="Up" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="11" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Up" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="12" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["up", "ui_up"])
 
-[node name="Down" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="12" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Down" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="13" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["down", "ui_down"])
 
-[node name="Jump" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="13" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Jump" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="14" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["jump"])
 
-[node name="Back" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="14" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Back" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="15" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["back"])
 
-[node name="Aim" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="15" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Reset" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="16" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+layout_mode = 2
+menu_base = NodePath("../../../../..")
+actions = Array[String](["reset"])
+
+[node name="Aim" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="17" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["aim"])
 
-[node name="Throw" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="16" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Throw" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="18" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["throw"])
 
-[node name="Map" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="17" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Map" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="19" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["map"])
 
-[node name="Menu" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="18" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
+[node name="Menu" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="20" node_paths=PackedStringArray("menu_base") instance=ExtResource("8_n5jw5")]
 layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["menu"])

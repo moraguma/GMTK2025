@@ -29,6 +29,8 @@ func _ready() -> void:
 		new_button.idx = idx
 		new_button.menu_base = menu_base
 		input_button_container.add_child(new_button)
+		
+		Globals.connect_focus_sounds(new_button)
 	
 	custom_minimum_size[1] = label.size[1]
 

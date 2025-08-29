@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://c2nw7w1nacv0" path="res://resources/sfx/UI/Sisyphus - sfx_ui_play.wav" id="21_7lawe"]
 
 [node name="SoundController" type="Node"]
+process_mode = 3
 script = ExtResource("1_lfq44")
 
 [node name="SFX" type="Node" parent="."]

@@ -1,11 +1,17 @@
+@tool
 extends Button
 class_name LocalizableButton
 
 
-@export var localization_code: String = ""
+@export var localization_code: String = "":
+	set(val):
+		localization_code = val
+		localize()
 
 
 func _ready() -> void:
+	Globals.connect_focus_sounds(self)
+	
 	add_to_group("localizable")
 	
 	localize()

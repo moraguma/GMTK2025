@@ -20,6 +20,9 @@ class_name OptionsToggleButton
 
 
 func _ready() -> void:
+	Globals.connect_focus_sounds(check_box)
+	check_box.toggled.connect(func(x): SoundController.play_sfx("Click"))
+	
 	add_to_group("localizable")
 	
 	localize()

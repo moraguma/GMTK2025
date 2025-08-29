@@ -50,6 +50,12 @@ func create_callable(object: Object, func_name: String, binds: Array) -> Callabl
 	return callable
 
 
+## Given a control node connects the related sounds to hovering and focusing
+func connect_focus_sounds(c: Control) -> void:
+	c.mouse_entered.connect(SoundController.play_sfx.bind("Hover"))
+	c.focus_entered.connect(SoundController.play_sfx.bind("Hover"))
+
+
 ## Time dependent lerp
 func tlerp(a, b, weight: float, delta: float):
 	return lerp(a, b, exp(-weight * delta))

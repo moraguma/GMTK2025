@@ -22,6 +22,10 @@ signal select_item(parameter)
 @onready var label: Label = $Label
 
 func _ready() -> void:
+	Globals.connect_focus_sounds(option_button)
+	option_button.item_focused.connect(func(x): SoundController.play_sfx("Hover"))
+	option_button.item_selected.connect(func(x): SoundController.play_sfx("Click"))
+	
 	add_to_group("localizable")
 	
 	for localization_code in localization_codes:

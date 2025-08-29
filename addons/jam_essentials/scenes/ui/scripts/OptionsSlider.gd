@@ -21,6 +21,9 @@ class_name LocalizableSlider
 
 
 func _ready() -> void:
+	Globals.connect_focus_sounds(h_slider)
+	h_slider.value_changed.connect(func(x): SoundController.play_sfx("Click"))
+	
 	add_to_group("localizable")
 	localize()
 	

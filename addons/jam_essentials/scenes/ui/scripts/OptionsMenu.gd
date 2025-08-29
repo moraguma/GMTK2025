@@ -20,7 +20,7 @@ var last_focus: Control = null
 @onready var menu_container = $ScrollContainer/VBoxContainer
 
 
-func _ready() -> void:
+func initialize() -> void:
 	# Create focusables
 	for object in menu_container.get_children():
 		var new_focusables = object.get_focusables()
