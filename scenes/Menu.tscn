@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cp41udqhsw43d"]
+[gd_scene load_steps=26 format=3 uid="uid://cp41udqhsw43d"]
 
 [ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_11y2r"]
 [ext_resource type="Script" uid="uid://b1pgbc1rx8r1m" path="res://scenes/scripts/Menu.gd" id="1_jmdev"]
@@ -10,17 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="8_1abgu"]
 [ext_resource type="Texture2D" uid="uid://d0xpeueca4yjc" path="res://resources/sprites/ui/TITLE.png" id="9_yt8fu"]
 [ext_resource type="Script" uid="uid://dacxvqs7ubqpe" path="res://addons/jam_essentials/scenes/components/scripts/WavingElement.gd" id="10_el213"]
-[ext_resource type="Texture2D" uid="uid://s6eikq0fewlw" path="res://resources/sprites/ui/play.png" id="10_pp5m5"]
-[ext_resource type="Texture2D" uid="uid://cs80ybrudfycw" path="res://resources/sprites/ui/credits.png" id="11_el213"]
-[ext_resource type="Texture2D" uid="uid://cnp6fbtvgnayo" path="res://resources/sprites/ui/play_pressed.png" id="12_thu7x"]
+[ext_resource type="PackedScene" uid="uid://dnax8gvb3d6ke" path="res://addons/jam_essentials/scenes/ui/LocalizableButton.tscn" id="11_760fv"]
 [ext_resource type="Script" uid="uid://vcl6xw8gbgqt" path="res://scenes/scripts/Button.gd" id="13_5p0sf"]
-[ext_resource type="Texture2D" uid="uid://cyivicuoporym" path="res://resources/sprites/ui/credits_pressed.png" id="14_7ycwl"]
 [ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="15_rtd1e"]
 [ext_resource type="Texture2D" uid="uid://csvsksr7r4kj1" path="res://resources/sprites/ui/back.png" id="16_6c8sk"]
 [ext_resource type="Texture2D" uid="uid://dfp8uqil3ctu3" path="res://resources/sprites/ui/back_pressed.png" id="17_5p0sf"]
 [ext_resource type="Script" uid="uid://b5iuchxgfwpf" path="res://scenes/scripts/SoulchainButton.gd" id="19_7t7qg"]
 [ext_resource type="Texture2D" uid="uid://d14n4lhfxq5cr" path="res://resources/sprites/ui/steam_release.png" id="19_l3wcu"]
 [ext_resource type="Texture2D" uid="uid://cqexjvwajw0cx" path="res://resources/sprites/ui/steam_release_pressed.png" id="20_i7htd"]
+[ext_resource type="PackedScene" uid="uid://x8gfn3tnklhh" path="res://scenes/Options.tscn" id="22_dek3k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11y2r"]
 shader = ExtResource("1_11y2r")
@@ -154,26 +152,50 @@ offset_left = -832.0
 offset_top = 64.0
 offset_right = 64.0
 offset_bottom = 463.0
-theme_override_constants/separation = 32
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Play" type="TextureButton" parent="Main/Buttons"]
+[node name="Play" parent="Main/Buttons" instance=ExtResource("11_760fv")]
 layout_mode = 2
-texture_normal = ExtResource("10_pp5m5")
-texture_pressed = ExtResource("12_thu7x")
-texture_hover = ExtResource("12_thu7x")
-texture_focused = ExtResource("12_thu7x")
-stretch_mode = 3
-script = ExtResource("13_5p0sf")
+focus_neighbor_bottom = NodePath("../Options")
+theme_override_colors/font_outline_color = Color(0, 0.0588235, 0.176471, 1)
+theme_override_colors/font_color = Color(1, 0.988235, 0.913725, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 64
+text = "Play"
+localization_code = "Play"
+play_sound = null
 
-[node name="Credits" type="TextureButton" parent="Main/Buttons"]
+[node name="Options" parent="Main/Buttons" instance=ExtResource("11_760fv")]
 layout_mode = 2
-texture_normal = ExtResource("11_el213")
-texture_pressed = ExtResource("14_7ycwl")
-texture_hover = ExtResource("14_7ycwl")
-texture_focused = ExtResource("14_7ycwl")
-stretch_mode = 3
-script = ExtResource("13_5p0sf")
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Credits")
+theme_override_colors/font_outline_color = Color(0, 0.0588235, 0.176471, 1)
+theme_override_colors/font_color = Color(1, 0.988235, 0.913725, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 64
+text = "Options"
+localization_code = "Options"
+
+[node name="Credits" parent="Main/Buttons" instance=ExtResource("11_760fv")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+theme_override_colors/font_outline_color = Color(0, 0.0588235, 0.176471, 1)
+theme_override_colors/font_color = Color(1, 0.988235, 0.913725, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+localization_code = "Credits"
+
+[node name="Exit" parent="Main/Buttons" instance=ExtResource("11_760fv")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+theme_override_colors/font_outline_color = Color(0, 0.0588235, 0.176471, 1)
+theme_override_colors/font_color = Color(1, 0.988235, 0.913725, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+localization_code = "Exit"
 
 [node name="Credits" type="Node2D" parent="."]
 visible = false
@@ -254,6 +276,15 @@ texture_hover = ExtResource("20_i7htd")
 texture_focused = ExtResource("20_i7htd")
 script = ExtResource("19_7t7qg")
 
+[node name="Options" parent="." instance=ExtResource("22_dek3k")]
+z_index = 31
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
 [connection signal="pressed" from="Main/Buttons/Play" to="." method="play"]
+[connection signal="pressed" from="Main/Buttons/Options" to="." method="go_to_options"]
 [connection signal="pressed" from="Main/Buttons/Credits" to="." method="show_credits"]
+[connection signal="pressed" from="Main/Buttons/Exit" to="." method="exit"]
 [connection signal="pressed" from="Credits/Back" to="." method="show_main"]

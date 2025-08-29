@@ -12,9 +12,12 @@ const DUNG_ROLL_ANIM_TRANSMISSION = 0.0095
 @onready var dung: Sprite2D = $Dung
 @onready var main: Node2D = $Main
 @onready var credits: Node2D = $Credits
+@onready var options: Options = $Options
 
 
 func _ready() -> void:
+	$Main/Buttons/Play.grab_focus()
+	
 	Globals.loop_count = 0
 	
 	SoundController.play_music("Menu")
@@ -51,12 +54,28 @@ func play():
 
 
 func show_credits():
+	$Credits/Back.grab_focus()
+	
 	credits.show()
 	main.hide()
 	SoundController.play_sfx("Click")
 
 
 func show_main():
+	$Main/Buttons/Play.grab_focus()
+	
 	main.show()
 	credits.hide()
 	SoundController.play_sfx("Click")
+
+
+func go_to_options() -> void:
+	options.activate()
+	
+	await options.closed_menu
+	
+	$Main/Buttons/Options.grab_focus()
+
+
+func exit() -> void:
+	get_tree().quit()
