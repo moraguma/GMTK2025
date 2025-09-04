@@ -9,5 +9,6 @@ class_name RandomPitchAudioStreamPlayer
 
 ## Plays audio with random pitch
 func play(from_position: float=0.0) -> void:
+	stop()
 	pitch_scale = max(0.01, base_pitch + randf_range(-1.0, 1.0) * randomize_pitch)
 	super(from_position)

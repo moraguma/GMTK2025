@@ -39,93 +39,112 @@ script = ExtResource("1_lfq44")
 [node name="Bounce" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_112ck")
 volume_db = 3.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Fire" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_t8ll8")
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Aim" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_hd7cr")
 pitch_scale = 2.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="StopAim" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_7ntfb")
 volume_db = -2.0
 pitch_scale = 3.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("5_yv582")
 volume_db = 5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="NoJump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("6_85hj3")
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("7_cg8qx")
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Pray" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("8_u2bq5")
 volume_db = 5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="PrayPull" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_lr23o")
 volume_db = -2.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Throw" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("9_kdmlc")
 volume_db = 2.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="GetDung" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("11_uykq3")
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="DungImpact" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("12_uykq3")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="MapOpen" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("15_kqme0")
 volume_db = -8.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="MapClose" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("16_nyr33")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Bush" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("17_d460l")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Rock" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("18_q4i7v")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Click" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("19_m74ht")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Hover" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("20_udut1")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Play" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("21_7lawe")
 volume_db = -5.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Footstep" type="Node" parent="SFX"]
@@ -133,31 +152,37 @@ script = ExtResource("3_t8ll8")
 [node name="1" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("2_in5je")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="2" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("4_hqqsc")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="3" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("5_hd7cr")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="4" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("6_yv582")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="5" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("7_85hj3")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="6" type="AudioStreamPlayer" parent="SFX/Footstep"]
 stream = ExtResource("8_cg8qx")
 volume_db = -20.0
+bus = &"SFX"
 script = ExtResource("3_t8ll8")
 
 [node name="Music" type="Node" parent="."]
@@ -165,9 +190,12 @@ script = ExtResource("3_t8ll8")
 [node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("9_u2bq5")
 volume_db = 1.0
+bus = &"Music"
 
 [node name="Menu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("10_kdmlc")
+bus = &"Music"
 
 [node name="Cutscene" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("10_kdmlc")
+bus = &"Music"

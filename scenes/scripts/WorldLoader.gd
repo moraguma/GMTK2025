@@ -11,11 +11,15 @@ const GAME_TIME = 90.0
 const GAME_FAKE_TIME = 60.0
 const STRESS_TIME = 10.0
 
+const MOUNTAINS_SCROLL_STRENGHTS = Vector2(0.2, 0.05)
+const BACK_MOUNTAINS_SCROLL_STRENGHTS = Vector2(0.1, 0.025)
+
 # ------------------------------------------------------------------------------
 # VARIABLES
 # ------------------------------------------------------------------------------
 @export var starting_chunk_pos: Vector2i
 @export var starting_pos: Vector2
+@export var leaderboard_type: String = "Reach Olympus"
 
 # ------------------------------------------------------------------------------
 # NODES
@@ -26,12 +30,15 @@ const STRESS_TIME = 10.0
 
 @onready var world_base: Node2D = $Viewport/WorldBase
 @onready var world_camera: Camera2D = $Viewport/WorldCamera
+@onready var mountains_parallax: Parallax2D = $MountainsParallax
+@onready var back_mountains_parallax: Parallax2D = $MountainsBackParallax
 @onready var game_timer: Timer = $GameTimer
-@onready var time_label: RichTextLabel = $TimeLabel
+@onready var sun_timer: SunTimer = $SunTimerViewport/SunTimer
 
 @onready var beetle_icon: Sprite2D = $Map/Beetle
 
 var beetle: Beetle
+var past_world_camera_pos: Vector2
 
 
 enum CHUNK_STATE {LOADING, LOADED}
@@ -69,6 +76,8 @@ var is_menu_open = false
 # BUILT-INS
 # ------------------------------------------------------------------------------
 func _ready():
+	Globals.reset_temp_flags()
+	
 	for pin_name in Globals.checked_pins:
 		get_node("Map/" + pin_name).frame = 2
 	if Globals.has_recipe:
@@ -105,7 +114,9 @@ func _ready():
 	beetle.world_loader = self
 	
 	world_camera.aim_node = beetle.get_node("CameraFollow")
-	world_camera.snap_to_aim.call_deferred()
+	world_camera.aim_offset = Vector2(0, -64)
+	world_camera.snap_to_aim()
+	past_world_camera_pos = world_camera.get_screen_center_position()
 
 
 func _physics_process(delta: float) -> void:
@@ -116,7 +127,7 @@ func _physics_process(delta: float) -> void:
 	_update_chunk_position()
 	_update_queued_chunks()
 	
-	if Input.is_action_just_pressed("menu"):
+	if Input.is_action_just_pressed("menu") and not beetle.is_map_open and not beetle.aiming:
 		is_menu_open = true
 		beetle.is_menu_open = true
 		SoundController.play_sfx("Aim")
@@ -136,12 +147,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	var time_progress = pow((GAME_TIME - game_timer.time_left) / GAME_TIME, 0.9)
-	var fake_time_left = GAME_FAKE_TIME - time_progress * GAME_FAKE_TIME
-	if fake_time_left > STRESS_TIME:
-		time_label.text = "%d" % [int(fake_time_left)]
-	else:
-		time_label.text = "%.2f" % [fake_time_left]
+	if GAME_TIME - game_timer.time_left > 1.0:
+		var scroll = world_camera.get_screen_center_position() - past_world_camera_pos
+		mountains_parallax.scroll_offset -= scroll * MOUNTAINS_SCROLL_STRENGHTS
+		back_mountains_parallax.scroll_offset -= scroll * BACK_MOUNTAINS_SCROLL_STRENGHTS
+	past_world_camera_pos = world_camera.get_screen_center_position()
+	
+	sun_timer.set_time(GAME_TIME, game_timer.time_left, GAME_FAKE_TIME)
 	
 	beetle_icon.position = Vector2(960.0 / 19200.0 * beetle.position[0], 540.0 / 7900.0 * beetle.position[1]) + Vector2(-15, 120)
 	beetle_icon.position[0] = max(-850, beetle_icon.position[0])
@@ -266,8 +278,9 @@ func close_map():
 func finish():
 	var time_progress = pow((GAME_TIME - game_timer.time_left) / GAME_TIME, 0.9)
 	var time_taken = time_progress * GAME_FAKE_TIME
-	if time_taken < Globals.best_time:
-		Globals.best_time = time_taken
+	if time_taken < Globals.best_times[leaderboard_type]:
+		Globals.best_times[leaderboard_type] = time_taken
+	Globals.last_times[leaderboard_type] = time_taken
 	
 	finish_timer.timeout.connect(SceneManager.goto_scene.bind("res://scenes/EndCutscene.tscn"))
 	finish_timer.start(5.0)

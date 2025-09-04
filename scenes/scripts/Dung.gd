@@ -20,14 +20,23 @@ var aiming = false
 var player: Beetle = null
 var on_fire = false
 var dung_sprite_overrided = false
+var fire_recoil = false
 
 
 @onready var pick_timer: Timer = $PickTimer
 @onready var collection_area: Area2D = $CollectionArea
 @onready var sprite: ShakingSprite = $Sprite
-@onready var fire: Sprite2D = $Fire
+@onready var fire: AnimatedSprite2D = $FirePivot/Fire
+@onready var fire_pivot: Node2D = $FirePivot
 @onready var goop_pivot: Node2D = $GoopPivot
 @onready var dung_particles: CPUParticles2D = $DungParticles
+@onready var fire_recoil_timer: Timer = $FireRecoilTimer
+
+
+func _ready() -> void:
+	fire_recoil_timer.timeout.connect(set.bind("fire_recoil", false))
+	
+	fire.play("default")
 
 
 func _physics_process(delta: float) -> void:
@@ -39,23 +48,41 @@ func _movement_process(delta: float) -> void:
 	if not active or landed or aiming: 
 		return
 	
-	# Air resistance
-	velocity[0] = lerp(velocity[0], 0.0, AIR_RESISTANCE)
-	
-	# Gravity
-	velocity[1] = lerp(velocity[1], NORMAL_TERMINAL_SPEED, GRAVITY)
+	if not fire_recoil:
+		# Air resistance
+		velocity[0] = lerp(velocity[0], 0.0, AIR_RESISTANCE)
+		
+		# Gravity
+		velocity[1] = lerp(velocity[1], NORMAL_TERMINAL_SPEED, GRAVITY)
 	
 	if move_and_slide():
-		SoundController.play_sfx("DungImpact")
-		player.world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
-		
-		goop_pivot.rotation = Vector2(0, -1).angle_to(-get_slide_collision(0).get_normal())
-		
-		landed = true
+		var collision: KinematicCollision2D = get_last_slide_collision()
+		if on_fire and collision.get_collider().has_method("destroy"):
+			collision.get_collider().destroy()
+			fire_recoil = false
+			fire_recoil_timer.stop()
+			
+			var old_dir = velocity[0] / abs(velocity[0])
+			velocity = Beetle.FIRE_HIT_VEC
+			if abs(collision.get_normal()[1]) > Beetle.TOLERANCE: # Vertical
+				velocity[0] *= -old_dir
+			else: # Horizontal
+				velocity[1] *= -1
+				if collision.get_normal()[0] > 0:
+					velocity[0] *= -1
+		else:
+			SoundController.play_sfx("DungImpact")
+			player.world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
+			
+			goop_pivot.rotation = Vector2(0, -1).angle_to(-get_slide_collision(0).get_normal())
+			
+			landed = true
 		on_fire = false
 
 
 func _animation_process(delta: float) -> void:
+	fire_pivot.rotation = Vector2(0, 1).angle_to(velocity)
+	
 	dung_particles.emitting = not landed and active
 	goop_pivot.visible = landed and active
 	
@@ -75,9 +102,12 @@ func throw(dir, catch_fire=false):
 	activate()
 	pick_timer.start(PICK_TIME)
 	on_fire = catch_fire
+	if catch_fire:
+		fire_recoil = true
+		fire_recoil_timer.start(Beetle.FIRE_RECOIL_TIME)
 	
 	position = player.position + dir * THROW_ADJUST_AMOUNT
-	velocity = dir * (FIRE_SPEED if on_fire else THROW_SPEED)
+	velocity = dir * (Beetle.FIRE_THROW_SPEED if on_fire else THROW_SPEED)
 
 
 ## Called when player enters collection area. deactivates and gives player dung

@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://djj1tl6m51kop"]
+[gd_scene load_steps=8 format=3 uid="uid://djj1tl6m51kop"]
 
 [ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="1_76gdt"]
 [ext_resource type="Texture2D" uid="uid://di6v83thbx2bh" path="res://resources/sprites/OBSTACULO-ARBUSTO.png" id="2_76gdt"]
-[ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="3_gw1oa"]
+[ext_resource type="Texture2D" uid="uid://de68jpm6f6ggq" path="res://resources/sprites/leaf_particle.png" id="3_gw1oa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw1oa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn4lm"]
-size = Vector2(248, 512)
+size = Vector2(336, 420)
 
 [sub_resource type="Curve" id="Curve_gw1oa"]
 _data = [Vector2(0.458333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw1oa"]
-size = Vector2(240, 20)
+size = Vector2(320, 72)
 
 [node name="Leaf" type="StaticBody2D"]
 z_index = 24
@@ -20,16 +22,83 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_76gdt")
 sound = "Bush"
+waving_amp = 0.05
+freq = 0.1
+skew_base = -0.100198
+
+[node name="Skewer" type="Node2D" parent="."]
+position = Vector2(0, 256)
+skew = -0.052075
+
+[node name="LeafOutline" type="Polygon2D" parent="Skewer"]
+clip_children = 2
+material = SubResource("ShaderMaterial_gw1oa")
+position = Vector2(0, -256)
+scale = Vector2(1.03, 1.03)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-163.107, 255.34, 164.078, 255.34, 188.35, 199.029, 225.243, 196.117, 200, 182.524, 191.262, 169.903, 193.204, 158.252, 216.505, 157.282, 201.942, 144.66, 237.864, 141.748, 213.592, 122.33, 204.854, 100, 198.058, 96.1165, 198.058, 51.4563, 239.806, 43.6893, 221.359, 28.1553, 212.621, 5.82524, 208.738, 5.82524, 235.922, -14.5631, 209.709, -14.5631, 194.175, -25.2427, 184.466, -25.2427, 148, -113, 42, -167, -98, -157, -172, -71, -176.699, -35.9223, -181.553, -36.8932, -197.087, -17.4757, -231.068, -9.70874, -200, 1.94175, -209.709, 3.8835, -213.592, 31.068, -233.981, 57.2816, -192.233, 52.4272, -200.971, 84.466, -198.058, 95.1456, -207.767, 105.825, -230.097, 109.709, -207.767, 152.427, -231.068, 176.699, -189.32, 169.903, -185.437, 191.262, -198.058, 193.204, -206.796, 218.447, -223.301, 234.951, -182.524, 235.922)
+
+[node name="LeafPoly" type="Polygon2D" parent="Skewer"]
+clip_children = 2
+material = SubResource("ShaderMaterial_gw1oa")
+position = Vector2(0, -256)
+color = Color(0.258824, 0.388235, 0.14902, 1)
+polygon = PackedVector2Array(-168, 256, 168, 256, 190, 201, 224, 200, 203, 191, 193, 175, 196, 160, 217, 160, 199, 147, 238, 144, 216, 127, 208, 105, 200, 101, 200, 49, 239, 43, 225, 31, 216, 9, 205, 9, 231, -11, 210, -11, 199, -22, 186, -21, 148, -113, 42, -167, -98, -157, -172, -71, -178, -29, -187, -30, -201, -12, -229, -9, -194, 2, -210, 7, -215, 34, -234, 55, -193, 50, -202, 87, -199, 98, -211, 112, -231, 116, -207, 157, -230, 178, -191, 169, -185, 200, -201, 203, -209, 227, -223, 239, -185, 239)
+
+[node name="LeafShadow" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(252, 46, 183, 40, 220, 63)
+
+[node name="LeafShadow3" type="Polygon2D" parent="Skewer/LeafPoly"]
+position = Vector2(11, 102)
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(233, 42, 176, 38, 192, 46, 231, 45)
+
+[node name="LeafShadow5" type="Polygon2D" parent="Skewer/LeafPoly"]
+position = Vector2(-2, 158)
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(233, 42, 176, 38, 192, 46, 231, 45)
+
+[node name="LeafShadow4" type="Polygon2D" parent="Skewer/LeafPoly"]
+position = Vector2(17, 120)
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(233, 42, 176, 38, 192, 46, 231, 45)
+
+[node name="LeafShadow2" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(240, -14, 184, 6, 207, 8, 269, 2)
+
+[node name="LeafShadow6" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(-239, -9, -168, -2, -196, 2)
+
+[node name="LeafShadow7" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(-253, 60, -177, 39, -215, 66)
+
+[node name="LeafShadow8" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(-264, 107, -189, 127, -233, 139)
+
+[node name="LeafShadow9" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(-236, 181, -175, 153, -195, 174)
+
+[node name="LeafShadow10" type="Polygon2D" parent="Skewer/LeafPoly"]
+color = Color(0.2, 0.282353, 0.0901961, 1)
+polygon = PackedVector2Array(-234, 240, -167, 227, -195, 247)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3.8147e-06, 0)
 texture = ExtResource("2_76gdt")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 46)
 shape = SubResource("RectangleShape2D_pn4lm")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
-modulate = Color(0.0862745, 0.270588, 0.109804, 1)
+modulate = Color(0.258824, 0.388235, 0.14902, 1)
 emitting = false
 amount = 32
 texture = ExtResource("3_gw1oa")
@@ -45,14 +114,17 @@ initial_velocity_min = 400.0
 initial_velocity_max = 800.0
 damping_min = 84.712
 damping_max = 84.712
+angle_min = -180.0
+angle_max = 180.0
 scale_amount_min = 0.5
-scale_amount_max = 0.7
+scale_amount_max = 0.9
 scale_amount_curve = SubResource("Curve_gw1oa")
 
 [node name="PlayerDestroy" type="Area2D" parent="."]
-position = Vector2(0, -266)
+position = Vector2(0, -98)
 collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="PlayerDestroy"]
+position = Vector2(0, -98)
 shape = SubResource("RectangleShape2D_gw1oa")

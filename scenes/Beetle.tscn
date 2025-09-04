@@ -24,7 +24,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +36,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/DungHolder/Dung:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/DungParticles:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -60,7 +60,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -78,7 +78,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -108,7 +108,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +120,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +138,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,7 +150,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -167,7 +167,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -179,7 +179,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -197,7 +197,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -209,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/DungHolder/Dung:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -221,7 +221,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/DungParticles:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -233,7 +233,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -268,7 +268,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -280,7 +280,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -297,7 +297,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -309,7 +309,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -327,7 +327,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -339,7 +339,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -356,7 +356,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -382,7 +382,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -400,7 +400,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -412,7 +412,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -430,7 +430,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -442,7 +442,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/DungHolder/Dung:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/DungHolder/Dung:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -454,7 +454,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/DungParticles:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/DungParticles:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -466,7 +466,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpritePivot/Halo:position")
+tracks/3/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -484,7 +484,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -496,7 +496,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -513,7 +513,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -539,7 +539,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -556,7 +556,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -582,7 +582,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpritePivot/Halo:position")
+tracks/2/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -600,7 +600,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePivot/Sprite:frame")
+tracks/0/path = NodePath("UpsideDownPivot/SpritePivot/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -612,7 +612,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpritePivot/Halo:position")
+tracks/1/path = NodePath("UpsideDownPivot/SpritePivot/Halo:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -688,12 +688,11 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_df2da"]
-radius = 40.0
-height = 112.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2da"]
-size = Vector2(80, 40)
+size = Vector2(80, 112)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvsd1"]
+radius = 96.3328
 
 [node name="Beetle" type="CharacterBody2D"]
 process_physics_priority = 2
@@ -714,14 +713,17 @@ never_transition = ["jump", "pray", "fall", "throw", "throw_air", "aim", "aim_ai
 visible = false
 
 [node name="Arrow" type="Sprite2D" parent="ArrowPivot"]
+z_index = 33
 position = Vector2(0, -160)
 texture = ExtResource("3_pwiwl")
 
-[node name="SpritePivot" type="Node2D" parent="."]
+[node name="UpsideDownPivot" type="Node2D" parent="."]
+
+[node name="SpritePivot" type="Node2D" parent="UpsideDownPivot"]
 position = Vector2(0, 57)
 script = ExtResource("4_lpchp")
 
-[node name="DungParticles" type="CPUParticles2D" parent="SpritePivot"]
+[node name="DungParticles" type="CPUParticles2D" parent="UpsideDownPivot/SpritePivot"]
 visible = false
 position = Vector2(0, -21)
 emitting = false
@@ -734,13 +736,13 @@ angle_min = -45.0
 angle_max = 45.0
 scale_amount_min = 0.5
 
-[node name="DungHolder" type="Node2D" parent="SpritePivot"]
+[node name="DungHolder" type="Node2D" parent="UpsideDownPivot/SpritePivot"]
 
-[node name="Dung" type="Sprite2D" parent="SpritePivot/DungHolder"]
+[node name="Dung" type="Sprite2D" parent="UpsideDownPivot/SpritePivot/DungHolder"]
 position = Vector2(93, -64)
 texture = ExtResource("4_qa3k0")
 
-[node name="Sprite" type="Sprite2D" parent="SpritePivot"]
+[node name="Sprite" type="Sprite2D" parent="UpsideDownPivot/SpritePivot"]
 position = Vector2(-2.38419e-07, -117)
 texture = ExtResource("3_m71fs")
 hframes = 5
@@ -749,11 +751,11 @@ frame = 5
 script = ExtResource("4_m71fs")
 trauma_modifier = 0.5
 
-[node name="Halo" type="Sprite2D" parent="SpritePivot"]
+[node name="Halo" type="Sprite2D" parent="UpsideDownPivot/SpritePivot"]
 position = Vector2(0, -128)
 texture = ExtResource("8_2ekb5")
 
-[node name="DustParticles" type="CPUParticles2D" parent="SpritePivot"]
+[node name="DustParticles" type="CPUParticles2D" parent="UpsideDownPivot/SpritePivot"]
 position = Vector2(0, -5)
 emitting = false
 amount = 16
@@ -767,8 +769,11 @@ angle_min = -45.0
 angle_max = 45.0
 scale_amount_min = 0.5
 
-[node name="Fire" type="AnimatedSprite2D" parent="SpritePivot"]
-position = Vector2(0, -121)
+[node name="FirePivot" type="Node2D" parent="UpsideDownPivot/SpritePivot"]
+position = Vector2(0, -56)
+
+[node name="Fire" type="AnimatedSprite2D" parent="UpsideDownPivot/SpritePivot/FirePivot"]
+position = Vector2(0, -65)
 sprite_frames = SubResource("SpriteFrames_0xuoo")
 frame_progress = 0.934941
 speed_scale = 4.0
@@ -793,10 +798,6 @@ texture_under = ExtResource("12_0xuoo")
 texture_progress = ExtResource("13_m2xve")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_df2da")
-
-[node name="FeetHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_df2da")
 
 [node name="LeftFeetCast" type="RayCast2D" parent="."]
@@ -805,10 +806,22 @@ position = Vector2(-40, 56)
 target_position = Vector2(0, 128)
 hit_from_inside = true
 
+[node name="LeftHeadCast" type="RayCast2D" parent="."]
+process_physics_priority = 2
+position = Vector2(-40, -56)
+target_position = Vector2(0, -128)
+hit_from_inside = true
+
 [node name="RightFeetCast" type="RayCast2D" parent="."]
 process_physics_priority = 2
 position = Vector2(40, 56)
 target_position = Vector2(0, 128)
+hit_from_inside = true
+
+[node name="RightHeadCast" type="RayCast2D" parent="."]
+process_physics_priority = 2
+position = Vector2(40, -56)
+target_position = Vector2(0, -128)
 hit_from_inside = true
 
 [node name="GroundDetectorL" type="RayCast2D" parent="."]
@@ -827,6 +840,12 @@ hit_from_inside = true
 process_physics_priority = 2
 position = Vector2(0, 56)
 target_position = Vector2(0, 64)
+hit_from_inside = true
+
+[node name="UpsideDownAnimFloorDetector" type="RayCast2D" parent="."]
+process_physics_priority = 2
+position = Vector2(0, -56)
+target_position = Vector2(0, -64)
 hit_from_inside = true
 
 [node name="DungDetector" type="RayCast2D" parent="."]
@@ -851,3 +870,15 @@ volume_db = -80.0
 [node name="RollLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_fket5")
 volume_db = -80.0
+
+[node name="FireRecoilTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_rvsd1")
+
+[connection signal="body_entered" from="HitArea" to="." method="enter_bush"]

@@ -26,17 +26,17 @@ func _ready() -> void:
 	GlobalCamera.follow_node(self)
 	GlobalCamera.snap_to_aim()
 	
-	RenderingServer.global_shader_parameter_set("bg_from", Color("#fffddf"))
+	RenderingServer.global_shader_parameter_set("bg_from", Color("#F0F5DD"))
 	await get_tree().process_frame
 	RenderingServer.global_shader_parameter_set("bg_to", Color("#ffffff"))
 	await get_tree().process_frame
-	RenderingServer.global_shader_parameter_set("detail_from", Color("#c9b262"))
+	RenderingServer.global_shader_parameter_set("detail_from", Color("#D3E1C8"))
 	await get_tree().process_frame
-	RenderingServer.global_shader_parameter_set("detail_to", Color("#817d42"))
+	RenderingServer.global_shader_parameter_set("detail_to", Color("#C1D7B0"))
 	await get_tree().process_frame
-	RenderingServer.global_shader_parameter_set("ground_from", Color("#f1ddb2"))
+	RenderingServer.global_shader_parameter_set("ground_from", Color("#BD7F66"))
 	await get_tree().process_frame
-	RenderingServer.global_shader_parameter_set("ground_to", Color("#b16d51"))
+	RenderingServer.global_shader_parameter_set("ground_to", Color("#CA9072"))
 	await get_tree().process_frame
 
 

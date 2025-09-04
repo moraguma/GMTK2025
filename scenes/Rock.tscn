@@ -39,3 +39,5 @@ damping_min = 84.712
 damping_max = 84.712
 scale_amount_min = 0.5
 scale_amount_max = 0.7
+
+[node name="Skewer" type="Node2D" parent="."]

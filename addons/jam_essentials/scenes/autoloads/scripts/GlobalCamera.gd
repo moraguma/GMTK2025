@@ -4,7 +4,7 @@ extends Camera2D
 signal finish_transition
 
 
-const TRANSITION_TIME = 2.0
+const TRANSITION_TIME = 0.8
 const LERP_WEIGHT = 0.1
 
 const SMALL_SHAKE = 0.3
@@ -68,7 +68,7 @@ func shake():
 func get_effective_aim_pos() -> Vector2:
 	var effective_aim_pos = aim_pos
 	if aim_node != null:
-		effective_aim_pos = aim_node.position
+		effective_aim_pos = aim_node.global_position
 	return effective_aim_pos
 
 

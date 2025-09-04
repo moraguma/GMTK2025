@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=27 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
 [ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="2_k34yh"]
 [ext_resource type="Script" uid="uid://dacbb1cpfey06" path="res://scenes/scripts/WorldCamera.gd" id="2_qh2w4"]
-[ext_resource type="Texture2D" uid="uid://dr7l6wxd5vh47" path="res://resources/sprites/bg.PNG" id="2_ynewl"]
 [ext_resource type="Texture2D" uid="uid://ddcr3p1c6kh30" path="res://resources/sprites/clouds.PNG" id="4_k34yh"]
+[ext_resource type="Shader" uid="uid://cfcussq2cqtx3" path="res://resources/shaders/Distort.gdshader" id="5_vqldl"]
 [ext_resource type="Texture2D" uid="uid://c1vibkoxxj4yt" path="res://resources/sprites/ui/map.png" id="6_kqw7a"]
 [ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
 [ext_resource type="Texture2D" uid="uid://dq6febieth1va" path="res://resources/sprites/ui/map_icons.png" id="7_geuqd"]
@@ -13,11 +13,28 @@
 [ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="9_f4qb8"]
 [ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="10_s61us"]
 [ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="11_abq6w"]
-[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="14_f4qb8"]
-[ext_resource type="Texture2D" uid="uid://cjy6c1yb5cotw" path="res://resources/sprites/ui/timer.png" id="14_s61us"]
 [ext_resource type="PackedScene" uid="uid://x8gfn3tnklhh" path="res://scenes/Options.tscn" id="16_abq6w"]
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="17_gjftb"]
+[ext_resource type="PackedScene" uid="uid://b2rlb3akvsmpc" path="res://scenes/SunTimer.tscn" id="18_inx8q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmikl"]
+shader = ExtResource("2_k34yh")
+shader_parameter/type = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gjftb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_inx8q"]
+noise = SubResource("FastNoiseLite_gjftb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spbye"]
+shader = ExtResource("5_vqldl")
+shader_parameter/type = 2
+shader_parameter/noise = SubResource("NoiseTexture2D_inx8q")
+shader_parameter/amplitude_x = 16.0
+shader_parameter/amplitude_y = 8.0
+shader_parameter/time_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abq6w"]
 shader = ExtResource("2_k34yh")
 shader_parameter/type = 2
 
@@ -31,6 +48,15 @@ shader_parameter/type = 2
 [sub_resource type="Curve" id="Curve_kqw7a"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10684"]
+shader = ExtResource("17_gjftb")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 8.0
+shader_parameter/outline_color = Color(0.055999, 0.00899714, 0.010571, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_spbye"]
+viewport_path = NodePath("SunTimerViewport")
 
 [node name="WorldLoader" type="Node2D"]
 process_mode = 3
@@ -50,11 +76,15 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="BG" type="ColorRect" parent="."]
 process_mode = 1
 material = SubResource("ShaderMaterial_rmikl")
+offset_left = -1960.0
+offset_top = -1540.0
+offset_right = 40.0
+offset_bottom = 460.0
 scale = Vector2(2, 2)
-texture = ExtResource("2_ynewl")
+color = Color(0.65834, 0.65834, 0.65834, 1)
 
 [node name="CloudsParallax" type="Parallax2D" parent="."]
 process_mode = 1
@@ -64,8 +94,116 @@ autoscroll = Vector2(-32, 0)
 repeat_times = 3
 
 [node name="Clouds" type="Sprite2D" parent="CloudsParallax"]
+visible = false
 material = SubResource("ShaderMaterial_rmikl")
 texture = ExtResource("4_k34yh")
+
+[node name="Cloud" type="Polygon2D" parent="CloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+polygon = PackedVector2Array(715, 22, 1010, 22, 974, 13, 963, -13, 936, -17, 920, -9, 911, -40, 882, -66, 844, -61, 817, -31, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="Cloud5" type="Polygon2D" parent="CloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(1280, -128)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(715, 22, 1010, 22, 974, 13, 963, -13, 936, -17, 920, -9, 911, -40, 882, -66, 844, -61, 817, -31, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="Cloud2" type="Polygon2D" parent="CloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(-965, -52)
+polygon = PackedVector2Array(715, 22, 1087, 22, 1048, 16, 1040, -7, 1017, -32, 980, -36, 973, -64, 926, -91, 861, -82, 837, -62, 830, -31, 804, -40, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="Cloud3" type="Polygon2D" parent="CloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(1211, 76)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(715, 22, 1087, 22, 1048, 16, 1040, -7, 1017, -32, 980, -36, 973, -64, 926, -91, 861, -82, 837, -62, 830, -31, 804, -40, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="BackCloudsParallax" type="Parallax2D" parent="."]
+process_mode = 1
+scroll_offset = Vector2(0, -291)
+repeat_size = Vector2(1120, 0)
+autoscroll = Vector2(-16, 0)
+repeat_times = 3
+
+[node name="Cloud6" type="Polygon2D" parent="BackCloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(379, -116)
+rotation = 3.14159
+scale = Vector2(1, -1)
+polygon = PackedVector2Array(-97, -23, -247, -23, -228, -27, -220, -40, -204, -46, -184, -43, -176, -55, -159, -63, -135, -62, -121, -45, -116, -27)
+
+[node name="Cloud7" type="Polygon2D" parent="BackCloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(-133, 76)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+polygon = PackedVector2Array(-97, -23, -247, -23, -228, -27, -220, -40, -204, -46, -184, -43, -176, -55, -159, -63, -135, -62, -121, -45, -116, -27)
+
+[node name="Cloud8" type="Polygon2D" parent="BackCloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(704, 0)
+rotation = 3.14159
+scale = Vector2(0.5, -0.5)
+polygon = PackedVector2Array(715, 22, 1010, 22, 974, 13, 963, -13, 936, -17, 920, -9, 911, -40, 882, -66, 844, -61, 817, -31, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="Cloud4" type="Polygon2D" parent="BackCloudsParallax"]
+material = SubResource("ShaderMaterial_spbye")
+position = Vector2(-645, -180)
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(715, 22, 1087, 22, 1048, 16, 1040, -7, 1017, -32, 980, -36, 973, -64, 926, -91, 861, -82, 837, -62, 830, -31, 804, -40, 778, -33, 755, -4, 763.923, 14.4985)
+
+[node name="MountainsBackParallax" type="Parallax2D" parent="."]
+process_mode = 1
+scroll_scale = Vector2(0.2, 0.05)
+scroll_offset = Vector2(0, -500)
+repeat_size = Vector2(1120, 0)
+repeat_times = 3
+ignore_camera_scroll = true
+
+[node name="Mountain" type="Polygon2D" parent="MountainsBackParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(0, 192)
+color = Color(0.281187, 0.281187, 0.281187, 1)
+polygon = PackedVector2Array(-1316, 894, -1148.87, 895.613, -818, 252, -390, 962, 1240, 924, 1298, 2718, -1277, 2747)
+
+[node name="Mountain2" type="Polygon2D" parent="MountainsBackParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(256, 64)
+color = Color(0.281187, 0.281187, 0.281187, 1)
+polygon = PackedVector2Array(-1183, 962, -818, 252, -390, 962, -343, 1169, -1167, 1158)
+
+[node name="Mountain3" type="Polygon2D" parent="MountainsBackParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(705, 320)
+color = Color(0.281187, 0.281187, 0.281187, 1)
+polygon = PackedVector2Array(-1183, 962, -818, 252, -390, 962)
+
+[node name="MountainsParallax" type="Parallax2D" parent="."]
+process_mode = 1
+scroll_scale = Vector2(0.2, 0.05)
+scroll_offset = Vector2(0, -500)
+repeat_size = Vector2(1120, 0)
+repeat_times = 3
+ignore_camera_scroll = true
+
+[node name="Mountain" type="Polygon2D" parent="MountainsParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(256, 128)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1316, 894, -1148.87, 895.613, -818, 252, -390, 962, 1240, 924, 1298, 2718, -1277, 2747)
+
+[node name="Mountain2" type="Polygon2D" parent="MountainsParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(512, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1183, 962, -818, 252, -390, 962, -343, 1169, -1167, 1158)
+
+[node name="Mountain3" type="Polygon2D" parent="MountainsParallax"]
+material = SubResource("ShaderMaterial_abq6w")
+position = Vector2(961, 256)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-1183, 962, -818, 252, -390, 962)
 
 [node name="View" type="Sprite2D" parent="."]
 process_mode = 1
@@ -312,29 +450,22 @@ size = Vector2i(1920, 1080)
 process_priority = 2
 script = ExtResource("2_qh2w4")
 
-[node name="Timer" type="Sprite2D" parent="."]
-process_mode = 1
-position = Vector2(-42, -481)
-texture = ExtResource("14_s61us")
-
-[node name="TimeLabel" type="RichTextLabel" parent="."]
-process_mode = 1
-clip_contents = false
-offset_top = -522.0
-offset_right = 960.0
-offset_bottom = -422.0
-theme = ExtResource("14_f4qb8")
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/normal_font_size = 72
-bbcode_enabled = true
-text = "dasda"
-
 [node name="Options" parent="." instance=ExtResource("16_abq6w")]
-visible = false
 offset_left = -960.0
-offset_top = -476.0
+offset_top = -540.0
 offset_right = 960.0
-offset_bottom = 604.0
+offset_bottom = 540.0
 include_back_to_title = true
+
+[node name="SunTimerSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_10684")
+position = Vector2(-748, -379)
+texture = SubResource("ViewportTexture_spbye")
+
+[node name="SunTimerViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(400, 400)
+
+[node name="SunTimer" parent="SunTimerViewport" instance=ExtResource("18_inx8q")]
 
 [connection signal="timeout" from="GameTimer" to="." method="queue_reset"]

@@ -15,6 +15,7 @@ const TRAUMA_POWER = 2
 @onready var center: Vector2 = Vector2(ProjectSettings.get_setting("display/window/size/viewport_width"), ProjectSettings.get_setting("display/window/size/viewport_height")) / 2
 @onready var aim_pos: Vector2 = center
 var aim_node: Node2D = null
+var aim_offset: Vector2 = Vector2(0, 0)
 
 var trauma = 0.0
 var aim_rot = 0
@@ -65,7 +66,7 @@ func get_effective_aim_pos() -> Vector2:
 	var effective_aim_pos = aim_pos
 	if aim_node != null:
 		effective_aim_pos = aim_node.global_position
-	return effective_aim_pos
+	return effective_aim_pos + aim_offset
 
 
 func follow_node(node: Node2D):

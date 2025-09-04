@@ -50,7 +50,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x81gp"]
-bg_color = Color(0.909804, 0.72549, 0.568627, 1)
+bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
@@ -74,7 +74,7 @@ expand_margin_right = 16.0
 [resource]
 default_font = ExtResource("1_x81gp")
 default_font_size = 64
-Button/colors/font_color = Color(0, 0.0588235, 0.176471, 1)
+Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(0.137255, 0.419608, 0.694118, 1)
 Button/colors/font_hover_color = Color(0.137255, 0.419608, 0.694118, 1)
 Button/colors/font_hover_pressed_color = Color(0.137255, 0.419608, 0.694118, 1)
@@ -101,7 +101,7 @@ HSlider/icons/tick = ExtResource("5_w4p4e")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_huyqw")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ag2rb")
 HSlider/styles/slider = SubResource("StyleBoxFlat_bjlip")
-Label/colors/font_color = Color(0, 0.0588235, 0.176471, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 32
 OptionButton/colors/font_color = Color(0, 0.0588235, 0.176471, 1)
 OptionButton/colors/font_focus_color = Color(0.137255, 0.419608, 0.694118, 1)
@@ -116,7 +116,7 @@ OptionButton/styles/focus = ExtResource("1_83kp4")
 OptionButton/styles/hover = ExtResource("1_83kp4")
 OptionButton/styles/normal = ExtResource("1_83kp4")
 Panel/styles/panel = SubResource("StyleBoxFlat_x81gp")
-PopupMenu/colors/font_color = Color(0, 0.0588235, 0.176471, 1)
+PopupMenu/colors/font_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 PopupMenu/colors/font_hover_color = Color(0.137255, 0.419608, 0.694118, 1)
 PopupMenu/font_sizes/font_size = 32
 PopupMenu/icons/radio_checked = ExtResource("3_7bqls")

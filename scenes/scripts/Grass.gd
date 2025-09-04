@@ -14,6 +14,7 @@ const SKEW_AMPLITUDE = PI / 24
 const SKEW_FREQUENCY = 0.5
 
 
+@export var auto: bool = false
 @export_range(8.0, 1960.0) var size: float = 32.0:
 	set(val):
 		size = val
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 
 
 func bake():
-	if not Engine.is_editor_hint():
+	if not Engine.is_editor_hint() or not auto:
 		return
 	
 	var pos = spacing + randf() * SPACING_RAND

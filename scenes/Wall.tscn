@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrm24a60bouc"]
+
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_efbxx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awoh5"]
+shader = ExtResource("1_efbxx")
+shader_parameter/type = 1
+
+[node name="Wall" type="Polygon2D"]
+z_index = 5
+material = SubResource("ShaderMaterial_awoh5")
+color = Color(0, 0, 0, 1)

@@ -15,10 +15,22 @@ var has_recipe = false
 var checked_pins = []
 var loop_count = 0
 var best_time = 60.0
+var last_times = {
+	"Reach Olympus": 60.0,
+	"Escape Hades": 90.0
+}
+
+var best_times = {
+	"Reach Olympus": 60.0,
+	"Escape Hades": 90.0
+}
 
 
 ## If not empty, loads this default save once the game starts
 @export var default_save: String = "save"
+
+## Saves flags temporarily. Will not be maintained between sessions
+var temp_flags = {}
 
 
 func _ready() -> void:
@@ -59,3 +71,17 @@ func connect_focus_sounds(c: Control) -> void:
 ## Time dependent lerp
 func tlerp(a, b, weight: float, delta: float):
 	return lerp(a, b, exp(-weight * delta))
+
+
+func set_temp_flag(n: String) -> void:
+	temp_flags[n] = true
+
+
+func get_temp_flag(n: String) -> bool:
+	if not n in temp_flags:
+		return false
+	return temp_flags[n]
+
+
+func reset_temp_flags() -> void:
+	temp_flags = {}

@@ -66,6 +66,8 @@ func get_audio(path):
 
 ## Plays music in given path. Should be nodepath from Music node
 func play_music(path):
+	set_music_paused(false)
+	
 	var played_node = get_audio("Music/" + path)
 	if played_node != null:
 		current_music = played_node
@@ -93,7 +95,8 @@ func stop_sfx(path):
 
 
 func set_music_paused(paused: bool):
-	current_music.pitch_scale = 0.000000001 if paused else 1.0
+	if current_music != null:
+		current_music.pitch_scale = 0.000000001 if paused else 1.0
 
 
 ## Sets volume for given bus. Bus numbers are defined as consts in Globals

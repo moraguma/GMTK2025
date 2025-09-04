@@ -219,7 +219,7 @@ _data = {
 [node name="Cutscene" type="Node2D"]
 position = Vector2(960, 540)
 script = ExtResource("1_s2l0v")
-next_scene_path = "res://scenes/Menu.tscn"
+next_scene_path = "res://scenes/ZeusLeaderboards.tscn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

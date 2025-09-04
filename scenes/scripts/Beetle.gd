@@ -8,6 +8,11 @@ const CAMERA_LERP = 1.0
 const CAMERA_VEL_TRANSMISSION = 0.3
 const TIME_FOR_FIRE_LOOP_SOUND = 0.2
 
+const FIRE_PIVOT_BASE_POS = Vector2(0, -56)
+const FIRE_PIVOT_ROLLING_POS = Vector2(0, -110)
+const FIRE_PIVOT_BASE_SCALE = Vector2(1.0, 1.0)
+const FIRE_PIVOT_ROLLING_SCALE = Vector2(1.4, 1.4)
+
 const DUNG_ROLL_ANIM_TRANSMISSION = 0.012
 const RAYCAST_DIF_FOR_ROLLING_JUMP = 64
 const NORMAL_TERMINAL_SPEED = 3400.0
@@ -17,7 +22,7 @@ const ROLLING_JUMP_SPEED = -1800.0
 const SOMERSAULT_VEC = Vector2(-200, -1400)
 const FIRE_HIT_VEC = Vector2(-300, -1400)
 const THROW_SPEED = 900.0
-const FIRE_THROW_SPEED = 700.0
+const FIRE_THROW_SPEED = 1500.0
 const CATCH_SPEED = 1500.0
 const MAX_HORIZONTAL_JUMP_SPEED = 300.0
 const ROLLING_SPEED = 1200.0
@@ -49,6 +54,7 @@ const DECELERATIONS = {
 }
 
 
+const FIRE_RECOIL_TIME = 2.5
 const TIME_FOR_PRAY_PULL = 2.0
 const TIME_FOR_PRAY_PULL_DUNG_SPRITE_OVERRIDE = 1.6
 const TIME_FOR_RESET = 1.0
@@ -60,26 +66,26 @@ const TOLERANCE = 0.001
 const ANIM_TOLERANCE = 30.0
 const PALETTE_LERP_WEIGHT = 0.1
 
-@export var tartarus_bg_from: Color = Color("#efeae1")
+@export var tartarus_bg_from: Color = Color("#FFEAD7")
 @export var tartarus_bg_to: Color = Color("#ffffff")
-@export var tartarus_detail_from: Color = Color("#bb6270")
-@export var tartarus_detail_to: Color = Color("#6e2f3e")
-@export var tartarus_ground_from: Color = Color("#c07c71")
-@export var tartarus_ground_to: Color = Color("#662630")
+@export var tartarus_detail_from: Color = Color("#C1625A")
+@export var tartarus_detail_to: Color = Color("#AB4047")
+@export var tartarus_ground_from: Color = Color("#D17D76")
+@export var tartarus_ground_to: Color = Color("#E8948F")
 
-@export var earth_bg_from: Color = Color("#ecefe1")
+@export var earth_bg_from: Color = Color("#F0F5DD")
 @export var earth_bg_to: Color = Color("#ffffff")
-@export var earth_detail_from: Color = Color("#ca9072")
-@export var earth_detail_to: Color = Color("#57342d")
-@export var earth_ground_from: Color = Color("#5c9671")
-@export var earth_ground_to: Color = Color("#41543b")
+@export var earth_detail_from: Color = Color("#D3E1C8")
+@export var earth_detail_to: Color = Color("#C1D7B0")
+@export var earth_ground_from: Color = Color("#BD7F66")
+@export var earth_ground_to: Color = Color("#CA9072")
 
-@export var olympus_bg_from: Color = Color("#fffddf")
+@export var olympus_bg_from: Color = Color("#FBF6D9")
 @export var olympus_bg_to: Color = Color("#ffffff")
-@export var olympus_detail_from: Color = Color("#c9b262")
-@export var olympus_detail_to: Color = Color("#817d42")
-@export var olympus_ground_from: Color = Color("#f1ddb2")
-@export var olympus_ground_to: Color = Color("#b16d51")
+@export var olympus_detail_from: Color = Color("#D99A7F")
+@export var olympus_detail_to: Color = Color("#FFEDCB")
+@export var olympus_ground_from: Color = Color("#DABF80")
+@export var olympus_ground_to: Color = Color("#EBD58E")
 
 var palette_data = {
 	"tartarus": [
@@ -133,8 +139,10 @@ var world_camera: WorldCamera
 var world_loader: WorldLoader
 var has_dung = true
 var on_fire = false
+var fire_recoil = false
 var rolling = false
 var rolling_uphill = false
+var upside_down = false
 var rolling_dir = 1
 var aiming = false
 var pulling = false
@@ -151,26 +159,32 @@ var is_map_open = false
 var is_menu_open = false
 var dung_map_state = false
 var finished = false
+var old_vel = Vector2(0, 0)
 
 var is_grounded = true
 var camera_aim = Vector2(0, 0)
 
-@onready var fire: AnimatedSprite2D = $SpritePivot/Fire
-@onready var sprite: ShakingSprite = $SpritePivot/Sprite
-@onready var sprite_pivot: Squisher = $SpritePivot
+@onready var fire: AnimatedSprite2D = $UpsideDownPivot/SpritePivot/FirePivot/Fire
+@onready var fire_pivot: Node2D = $UpsideDownPivot/SpritePivot/FirePivot
+@onready var sprite: ShakingSprite = $UpsideDownPivot/SpritePivot/Sprite
+@onready var sprite_pivot: Squisher = $UpsideDownPivot/SpritePivot
+@onready var upside_down_pivot: Node2D = $UpsideDownPivot
 @onready var animation_player: TransitionAnimationPlayer = $AnimationPlayer
 @onready var left_feet_cast: RayCast2D = $LeftFeetCast
 @onready var right_feet_cast: RayCast2D = $RightFeetCast
+@onready var left_head_cast: RayCast2D = $LeftHeadCast
+@onready var right_head_cast: RayCast2D = $RightHeadCast
 @onready var dung_detector: RayCast2D = $DungDetector
 @onready var arrow_pivot: Node2D = $ArrowPivot
 @onready var ground_detectors: Array[RayCast2D] = [$GroundDetectorL, $GroundDetectorR]
-@onready var dung_holder: Node2D = $SpritePivot/DungHolder
-@onready var dung_sprite: Sprite2D = $SpritePivot/DungHolder/Dung
+@onready var dung_holder: Node2D = $UpsideDownPivot/SpritePivot/DungHolder
+@onready var dung_sprite: Sprite2D = $UpsideDownPivot/SpritePivot/DungHolder/Dung
 @onready var anim_floor_detector: RayCast2D = $AnimFloorDetector
+@onready var upside_down_anim_floor_detector: RayCast2D = $UpsideDownAnimFloorDetector
 @onready var sprite_base_pos: Vector2 = sprite_pivot.position
-@onready var halo: Sprite2D = $SpritePivot/Halo
-@onready var dung_particles: CPUParticles2D = $SpritePivot/DungParticles
-@onready var dust_particles: CPUParticles2D = $SpritePivot/DustParticles
+@onready var halo: Sprite2D = $UpsideDownPivot/SpritePivot/Halo
+@onready var dung_particles: CPUParticles2D = $UpsideDownPivot/SpritePivot/DungParticles
+@onready var dust_particles: CPUParticles2D = $UpsideDownPivot/SpritePivot/DustParticles
 @onready var reset_container: Node2D = $Reset
 @onready var reset_progress_bar: TextureProgressBar = $Reset/ResetProgressBar
 @onready var camera_follow: Node2D = $CameraFollow
@@ -178,9 +192,12 @@ var camera_aim = Vector2(0, 0)
 @onready var aim_loop_audio: AudioStreamPlayer = $AimLoop
 @onready var push_loop_audio: AudioStreamPlayer = $PushLoop
 @onready var roll_loop_audio: AudioStreamPlayer = $RollLoop
+@onready var fire_recoil_timer: Timer = $FireRecoilTimer
 
 
 func _ready() -> void:
+	fire_recoil_timer.timeout.connect(set.bind("fire_recoil", false))
+	
 	fire_loop_audio.play()
 	aim_loop_audio.play()
 	push_loop_audio.play()
@@ -199,6 +216,7 @@ func _physics_process(delta: float) -> void:
 		if is_map_open:
 			SoundController.play_sfx("MapClose")
 			if not finished:
+				fire_recoil_timer.paused = false
 				world_loader.game_timer.paused = false
 				SoundController.set_music_paused(false)
 			animation_player.speed_scale = 2.0
@@ -206,6 +224,7 @@ func _physics_process(delta: float) -> void:
 			world_loader.close_map()
 		else:
 			SoundController.play_sfx("MapOpen")
+			fire_recoil_timer.paused = true
 			world_loader.game_timer.paused = true
 			animation_player.speed_scale = 0.0
 			dung_map_state = dung.active
@@ -271,6 +290,7 @@ func _movement_process(delta: float) -> void:
 			animation_player.play("pray")
 		
 		world_loader.game_timer.paused = true
+		fire_recoil_timer.paused = true
 		aiming = true
 		dung.aiming = true
 		
@@ -280,12 +300,11 @@ func _movement_process(delta: float) -> void:
 		can_pray_pull = false
 		if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
 			can_pray_pull = true
-		#can_pray_pull = false
-		#if not has_dung and dung.landed and (is_grounded or not has_pray_pulled) and (dung.position - position).length() < PRAY_PULL_MAX_DIST:
-			#dung_detector.target_position = dung.position - position
-			#dung_detector.force_raycast_update()
-			#if not dung_detector.is_colliding():
-				#can_pray_pull = true
+			
+			if Input.is_action_pressed("throw"):
+				SoundController.play_sfx("PrayPull")
+				pulling = true
+				time_pulling_started = Time.get_ticks_msec()
 	
 	var stop_aiming = func():
 		aiming = false
@@ -294,6 +313,7 @@ func _movement_process(delta: float) -> void:
 		pulling = false
 		if not finished:
 			world_loader.game_timer.paused = false
+			fire_recoil_timer.paused = false
 			SoundController.set_music_paused(false)
 		SoundController.play_sfx("StopAim")
 		SoundController.stop_sfx("PrayPull")
@@ -331,7 +351,8 @@ func _movement_process(delta: float) -> void:
 					stop_aiming.call()
 					
 					var pray_dir = (position - dung.position).normalized()
-					velocity = pray_dir * CATCH_SPEED
+					if not fire_recoil:
+						velocity = pray_dir * CATCH_SPEED
 					
 					facing_dir = 1 if pray_dir[0] < 0 else -1
 					
@@ -367,7 +388,9 @@ func _movement_process(delta: float) -> void:
 			
 			dung.throw(throw_dir, on_fire)
 			if on_fire:
-				velocity += -throw_dir * FIRE_THROW_SPEED
+				velocity = -throw_dir * FIRE_THROW_SPEED
+				fire_recoil_timer.start(FIRE_RECOIL_TIME)
+				fire_recoil = true
 			else:
 				velocity = -throw_dir * THROW_SPEED
 			
@@ -412,22 +435,30 @@ func _movement_process(delta: float) -> void:
 	elif feet_raycast_distances[0] < feet_raycast_distances[1]:
 		slope_dir = -1
 	
+	var head_raycast_distances = get_feet_raycast_movements(true)
+	var upside_down_slope_dir = 0 # Direction of head slope ascent
+	if head_raycast_distances[0] > head_raycast_distances[1]:
+		upside_down_slope_dir = 1
+	elif head_raycast_distances[0] < head_raycast_distances[1]:
+		upside_down_slope_dir = -1
+	
 	if not rolling:
-		if is_grounded: # Facing dir
-			if dir[0] > 0: 
-				facing_dir = 1
-			elif dir[0] < 0:
-				facing_dir = -1
-		
-		var speed_dict = SPEED
-		if slope_dir * dir[0] > 0:
-			speed_dict = UP_SLOPE_SPEED
-		elif slope_dir * dir[0] < 0:
-			speed_dict = DOWN_SLOPE_SPEED
-		
-		var speed = speed_dict[has_dung]
-		var accel = (ACCELERATIONS if dir.dot(velocity) > 0 else DECELERATIONS)[has_dung] if is_grounded else AIR_ACCELERATION
-		velocity[0] = lerp(velocity[0], dir[0] * speed, accel)
+		if not fire_recoil:
+			if is_grounded: # Facing dir
+				if dir[0] > 0: 
+					facing_dir = 1
+				elif dir[0] < 0:
+					facing_dir = -1
+			
+			var speed_dict = SPEED
+			if slope_dir * dir[0] > 0:
+				speed_dict = UP_SLOPE_SPEED
+			elif slope_dir * dir[0] < 0:
+				speed_dict = DOWN_SLOPE_SPEED
+			
+			var speed = speed_dict[has_dung]
+			var accel = (ACCELERATIONS if dir.dot(velocity) > 0 else DECELERATIONS)[has_dung] if is_grounded else AIR_ACCELERATION
+			velocity[0] = lerp(velocity[0], dir[0] * speed, accel)
 	else:
 		var speed = ROLLING_SPEED
 		if slope_dir * rolling_dir > 0:
@@ -438,8 +469,9 @@ func _movement_process(delta: float) -> void:
 	
 	# Vertical movement
 	var gravity = ROLLING_GRAVITY if rolling else GRAVITY
-	var terminal_speed = FIRE_TERMINAL_SPEED if on_fire else NORMAL_TERMINAL_SPEED
-	velocity[1] = lerp(velocity[1], terminal_speed, gravity)
+	var terminal_speed = (FIRE_TERMINAL_SPEED if not upside_down else -FIRE_TERMINAL_SPEED) if on_fire else NORMAL_TERMINAL_SPEED
+	if not fire_recoil:
+		velocity[1] = lerp(velocity[1], terminal_speed, gravity)
 	
 	var can_jump = false
 	for ground_detector in ground_detectors:
@@ -462,8 +494,19 @@ func _movement_process(delta: float) -> void:
 	# Fire hit logic
 	if get_slide_collision_count() > 0 and on_fire:
 		var normal = get_slide_collision(0).get_normal()
+		var roll_dir = 0 if normal[0] == 0 else normal[0] / abs(normal[0])
 		
-		if abs(normal[0]) < TOLERANCE and normal[1] < 0 and not rolling or not has_dung: # Floor hit
+		if abs(normal[0]) > TOLERANCE and abs(normal[1]) > TOLERANCE and has_dung and not rolling: # Rolling
+			animation_player.play("roll")
+			
+			fire_recoil = false
+			fire_recoil_timer.stop()
+			rolling = true
+			if normal[1] > 0:
+				upside_down = true
+			facing_dir = roll_dir
+			rolling_dir = facing_dir
+		elif abs(normal[0]) < TOLERANCE and not rolling:
 			SoundController.play_sfx("Bounce")
 			
 			animation_player.play("fall")
@@ -471,10 +514,13 @@ func _movement_process(delta: float) -> void:
 			jumped = true
 			on_fire = false
 			rolling = false
+			upside_down = false
 			rolling_uphill = false
+			fire_recoil = false
+			fire_recoil_timer.stop()
 			
 			velocity = FIRE_HIT_VEC
-			velocity[0] *= facing_dir 
+			velocity[0] *= facing_dir
 			world_camera.add_trauma()
 			
 			if has_dung:
@@ -487,7 +533,7 @@ func _movement_process(delta: float) -> void:
 			if collider.has_method("destroy"):
 				collider.destroy()
 				world_camera.add_trauma()
-		elif abs(normal[1] - 0) < TOLERANCE: # Wall hit
+		elif abs(normal[1]) < TOLERANCE and (normal.dot(-old_vel.normalized()) > 0.8 or rolling):
 			SoundController.play_sfx("Bounce")
 			
 			animation_player.play("fall")
@@ -495,7 +541,10 @@ func _movement_process(delta: float) -> void:
 			jumped = true
 			on_fire = false
 			rolling = false
+			upside_down = false
 			rolling_uphill = false
+			fire_recoil = false
+			fire_recoil_timer.stop()
 			
 			velocity = FIRE_HIT_VEC
 			velocity[0] *= -normal[0] 
@@ -511,29 +560,124 @@ func _movement_process(delta: float) -> void:
 			var collider = get_slide_collision(0).get_collider()
 			if collider.has_method("destroy"):
 				collider.destroy()
-		elif normal[1] < 1 and not rolling: # Hill hit
-			animation_player.play("roll")
-			
-			rolling = true
-			facing_dir = -slope_dir
-			rolling_dir = facing_dir
-			
-			world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
+	
+	#if get_slide_collision_count() > 0 and on_fire:
+		#var normal = get_slide_collision(0).get_normal()
+		#
+		#if abs(normal[0]) < TOLERANCE and (normal[1] < 0.0 or upside_down) and not rolling or (not has_dung and (normal[1] < 0.0 or upside_down)): # Floor hit
+			#SoundController.play_sfx("Bounce")
+			#
+			#animation_player.play("fall")
+			#
+			#jumped = true
+			#on_fire = false
+			#rolling = false
+			#upside_down = false
+			#rolling_uphill = false
+			#fire_recoil = false
+			#fire_recoil_timer.stop()
+			#
+			#velocity = FIRE_HIT_VEC
+			#velocity[0] *= facing_dir 
+			#world_camera.add_trauma()
+			#
+			#if has_dung:
+				#var throw_dir = velocity
+				#throw_dir[0] *= -1
+				#dung.throw(throw_dir.normalized())
+				#lose_dung()
+			#
+			#var collider = get_slide_collision(0).get_collider()
+			#if collider.has_method("destroy"):
+				#collider.destroy()
+				#world_camera.add_trauma()
+		#elif abs(normal[1]) < TOLERANCE:
+			#if old_vel.normalized().dot(-normal) > 0.3: # Wall hit
+				#SoundController.play_sfx("Bounce")
+				#
+				#animation_player.play("fall")
+				#
+				#jumped = true
+				#on_fire = false
+				#rolling = false
+				#upside_down = false
+				#rolling_uphill = false
+				#fire_recoil = false
+				#fire_recoil_timer.stop()
+				#
+				#velocity = FIRE_HIT_VEC
+				#velocity[0] *= -normal[0] 
+				#world_camera.add_trauma()
+				#
+				#if has_dung:
+					#var throw_dir = velocity
+					#throw_dir[1] *= -1
+					#dung.throw(throw_dir.normalized())
+					#dung.position[0] += throw_dir[0] / abs(throw_dir[0]) * 50
+					#lose_dung()
+				#
+				#var collider = get_slide_collision(0).get_collider()
+				#if collider.has_method("destroy"):
+					#collider.destroy()
+		#elif normal[1] > 0 and not rolling: # Upside down hill hit
+			#animation_player.play("roll")
+			#
+			#fire_recoil = false
+			#fire_recoil_timer.stop()
+			#rolling = true
+			#upside_down = true
+			#facing_dir = -upside_down_slope_dir
+			#rolling_dir = facing_dir
+			#
+			#world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
+		#elif normal[1] < 0 and not rolling: # Hill hit
+			#animation_player.play("roll")
+			#
+			#rolling = true
+			#facing_dir = -slope_dir
+			#rolling_dir = facing_dir
+			#
+			#world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 	
 	# Roll jump logic
-	if rolling and rolling_dir * slope_dir > 0:
-		if abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) > RAYCAST_DIF_FOR_ROLLING_JUMP and is_grounded:
+	if rolling and rolling_dir * (upside_down_slope_dir if upside_down else slope_dir) > 0:
+		if upside_down:
+			feet_raycast_distances = head_raycast_distances
+		
+		if abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) > RAYCAST_DIF_FOR_ROLLING_JUMP and (is_grounded or upside_down):
 			rolling_uphill = true
 		if rolling_uphill and abs(feet_raycast_distances[0][1] - feet_raycast_distances[1][1]) < RAYCAST_DIF_FOR_ROLLING_JUMP:
-			SoundController.play_sfx("Jump")
-			animation_player.play("roll_fall")
+			if upside_down:
+				animation_player.play("ball_fall")
+				jumped = true
+				rolling = false
+			else:
+				animation_player.play("roll_fall")
+				velocity[1] = ROLLING_JUMP_SPEED
+				jumped = true
 			
+			SoundController.play_sfx("Jump")
+			
+			upside_down = false
 			rolling_uphill = false
-			velocity[1] = ROLLING_JUMP_SPEED
-			jumped = true
+			
 			world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
 	
+	upside_down_anim_floor_detector.force_raycast_update()
+	if upside_down and not upside_down_anim_floor_detector.is_colliding():
+		animation_player.play("ball_fall")
+		jumped = true
+		rolling = false
+		
+		SoundController.play_sfx("Jump")
+		
+		upside_down = false
+		rolling_uphill = false
+		
+		world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
+	
 	var was_grounded = is_grounded
+	old_vel = velocity
 	move_and_slide()
 	if not skip_floor_correction:
 		is_grounded = is_on_floor()
@@ -551,7 +695,7 @@ func _movement_process(delta: float) -> void:
 	
 	# Floor correction
 	if was_grounded and not is_on_floor() and not jumped and not skip_floor_correction:
-		var movement_options = get_feet_raycast_movements()
+		var movement_options = get_feet_raycast_movements(upside_down)
 		var effective_movement_options = []
 		for movement_option in movement_options:
 			if movement_option[1] > 0:
@@ -567,7 +711,7 @@ func _movement_process(delta: float) -> void:
 					min_movement_length = movement_length
 			
 			if min_movement[1] > 0:
-				position += min_movement
+				position += min_movement * (-1.0 if upside_down else 1.0)
 				is_grounded = true
 	
 	if skip_floor_correction:
@@ -576,29 +720,44 @@ func _movement_process(delta: float) -> void:
 
 func _animation_process(delta: float) -> void:
 	if rolling:
-		fire.rotation = -PI / 2 * rolling_dir
+		fire_pivot.position = FIRE_PIVOT_ROLLING_POS
+		fire_pivot.scale = FIRE_PIVOT_ROLLING_SCALE
+		fire_pivot.rotation = -PI / 2 * rolling_dir
 	else:
-		fire.rotation = 0
+		fire_pivot.position = FIRE_PIVOT_BASE_POS
+		fire_pivot.scale = FIRE_PIVOT_BASE_SCALE
+		fire_pivot.rotation = Vector2(0, 1).angle_to(velocity)
 	dust_particles.emitting = (facing_dir * velocity[0] < 0 and is_grounded and abs(velocity[0]) > ANIM_TOLERANCE) or animation_player.current_animation == "land"
 	sprite.flip_h = facing_dir < 0
 	halo.offset = Vector2(-2 * halo.position[0], 0) if sprite.flip_h else Vector2(0, 0)
 	halo.visible = not has_pray_pulled
 	fire.visible = on_fire
+	upside_down_pivot.scale[1] = -1.0 if upside_down else 1.0
 	
-	anim_floor_detector.force_raycast_update()
-	var vec_to_ground = anim_floor_detector.get_collision_point() - anim_floor_detector.global_position
-	if is_grounded and not aiming:
-		if anim_floor_detector.is_colliding():
-			sprite_pivot.position = sprite_base_pos + vec_to_ground
+	var effective_anim_floor_detector: RayCast2D = upside_down_anim_floor_detector if upside_down else anim_floor_detector
+	
+	effective_anim_floor_detector.force_raycast_update()
+	var vec_to_ground = effective_anim_floor_detector.get_collision_point() - effective_anim_floor_detector.global_position
+	if (is_grounded and not aiming) or upside_down:
+		if effective_anim_floor_detector.is_colliding():
+			upside_down_pivot.position = vec_to_ground
 		
-		var floor_movements = get_feet_raycast_movements()
-		var angle_movements
-		if floor_movements[0][1] > 0.5:
-			angle_movements = [floor_movements[0][1], vec_to_ground[1]]
-		else:
-			angle_movements = [vec_to_ground[1], floor_movements[1][1] if floor_movements[1][1] >= 0.0 else 40.0]
-		var ang = atan((angle_movements[1] - angle_movements[0]) / 40.0)
-		sprite_pivot.rotation = ang
+		var floor_movements = get_feet_raycast_movements(upside_down)
+		if upside_down:
+			for i in range(len(floor_movements)):
+				floor_movements[i][1] *= -1
+		for i in range(len(floor_movements)):
+			if floor_movements[i][1] == -1:
+				floor_movements[i][1] = 80.0
+		
+		sprite_pivot.rotation = atan((floor_movements[1][1] - floor_movements[0][1] if not upside_down else floor_movements[0][1] - floor_movements[1][1]) / 80.0)
+		#var angle_movements
+		#if floor_movements[0][1] > 0.5:
+			#angle_movements = [floor_movements[0][1], vec_to_ground[1]]
+		#else:
+			#angle_movements = [vec_to_ground[1], floor_movements[1][1] if floor_movements[1][1] >= 0.0 else 40.0]
+		#var ang = atan((angle_movements[1] - angle_movements[0]) / 40.0)
+		#sprite_pivot.rotation = ang
 	else:
 		sprite_pivot.rotation = 0
 	
@@ -643,9 +802,9 @@ func _sound_process(delta: float) -> void:
 	push_loop_audio.pitch_scale = max(0.01, abs(velocity[0]) / SPEED[true])
 
 
-func get_feet_raycast_movements():
+func get_feet_raycast_movements(head=false):
 	var movement_options = []
-	for cast: RayCast2D in [left_feet_cast, right_feet_cast]:
+	for cast: RayCast2D in ([left_feet_cast, right_feet_cast] if not head else [right_head_cast, left_head_cast]):
 		cast.force_raycast_update()
 		if cast.is_colliding():
 			movement_options.append(cast.get_collision_point() - cast.global_position)
@@ -698,3 +857,8 @@ func check_pin(pin_name):
 
 func get_recipe():
 	world_loader.get_recipe()
+
+
+func enter_bush(body: Node2D) -> void:
+	if on_fire:
+		body.destroy()

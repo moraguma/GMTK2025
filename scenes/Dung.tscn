@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://npiq72ggv33n"]
+[gd_scene load_steps=14 format=3 uid="uid://npiq72ggv33n"]
 
 [ext_resource type="Script" uid="uid://5hpg8rvt41g8" path="res://scenes/scripts/Dung.gd" id="1_fmysa"]
-[ext_resource type="Texture2D" uid="uid://ohxcteex4cfv" path="res://icon.svg" id="1_rhg3x"]
 [ext_resource type="Texture2D" uid="uid://d2o12p575pfxl" path="res://resources/sprites/dung.png" id="2_v0uvx"]
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="3_obthd"]
 [ext_resource type="Texture2D" uid="uid://be4omikrf0lvd" path="res://resources/sprites/goop.png" id="4_v0uvx"]
 [ext_resource type="Texture2D" uid="uid://cy5vgst0kfv1" path="res://resources/sprites/dung_particles.png" id="5_awpmb"]
+[ext_resource type="Texture2D" uid="uid://bfk03vagl733i" path="res://resources/sprites/fire.png" id="6_awpmb"]
 
 [sub_resource type="Curve" id="Curve_awpmb"]
 _data = [Vector2(0.505208, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -16,6 +16,35 @@ radius = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obthd"]
 radius = 64.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffa43"]
+atlas = ExtResource("6_awpmb")
+region = Rect2(0, 0, 198, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usmqj"]
+atlas = ExtResource("6_awpmb")
+region = Rect2(198, 0, 198, 245)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10t1h"]
+atlas = ExtResource("6_awpmb")
+region = Rect2(396, 0, 198, 245)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jnh6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffa43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usmqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10t1h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Dung" type="CharacterBody2D"]
 process_physics_priority = 2
@@ -52,11 +81,6 @@ angle_max = 45.0
 scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_awpmb")
 
-[node name="Fire" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0.027451, 0.294118, 0.470588)
-texture = ExtResource("1_rhg3x")
-
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_fmysa")
@@ -79,6 +103,16 @@ collision_mask = 8
 [node name="Hitbox" type="CollisionShape2D" parent="HitArea"]
 visible = false
 shape = SubResource("CircleShape2D_obthd")
+
+[node name="FirePivot" type="Node2D" parent="."]
+
+[node name="Fire" type="AnimatedSprite2D" parent="FirePivot"]
+position = Vector2(0, -41)
+sprite_frames = SubResource("SpriteFrames_jnh6h")
+speed_scale = 4.0
+
+[node name="FireRecoilTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="CollectionArea" to="." method="collect"]
 [connection signal="body_entered" from="HitArea" to="." method="destroy_leaf"]

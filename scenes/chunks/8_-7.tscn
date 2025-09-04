@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://q6kn44jj0u4w"]
+
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_qsqrj"]
+[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="2_v3hgh"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_t0nxu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awoh5"]
+shader = ExtResource("3_t0nxu")
+shader_parameter/type = 1
+
+[node name="(8, -7)" type="Node2D"]
+script = ExtResource("1_qsqrj")
+
+[node name="Wall60" type="Polygon2D" parent="." instance=ExtResource("2_v3hgh")]
+z_index = 5
+material = SubResource("ShaderMaterial_awoh5")
+position = Vector2(2171, 1981)
+rotation = -0.7881
+scale = Vector2(-1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(217, 497, 219, 468, 114, 468, 104, -210, 28, -262, -62, -694, -68, 473, -195, 473, -196, 486, -171, 486, -175, 703, -364, 703, -373, 834, 275.936, 844.248)

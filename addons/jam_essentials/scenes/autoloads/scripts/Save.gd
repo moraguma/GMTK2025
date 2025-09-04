@@ -3,7 +3,7 @@ extends Node
 const BASE_OPTIONS_PATH = "res://addons/jam_essentials/resources/data/options.json"
 const OPTIONS_PATH = "user://options.json"
 
-const BASE_SAVE_PATH = "res://addons/jam_essentials/resources/data/options.json"
+const BASE_SAVE_PATH = "res://addons/jam_essentials/resources/data/save.json"
 const SAVE_PATH = "user://saves/"
 const SAVE_EXTENSION = ".json"
 

@@ -32,7 +32,10 @@ func _physics_process(delta: float) -> void:
 		current_anim += 1
 		if animation_player.has_animation(str(current_anim)):
 			animation_player.play(str(current_anim))
-			get_node("Sound/" + str(current_anim)).play()
+			
+			var sound_node = get_node_or_null("Sound/" + str(current_anim))
+			if sound_node != null:
+				sound_node.play()
 		else:
 			var sound_to_play = get_node_or_null("Sound/" + str(current_anim))
 			if sound_to_play != null:
@@ -49,3 +52,11 @@ func _process(delta: float) -> void:
 
 func shake():
 	GlobalCamera.add_trauma()
+
+
+func shake_low():
+	GlobalCamera.add_trauma(GlobalCamera.SMALL_SHAKE)
+
+
+func shake_big():
+	GlobalCamera.add_trauma(0.9)

@@ -1,5 +1,9 @@
 {
 	"version": 0.1,
 	"elapsed_time": 0,
-	"flags": {}
+	"flags": {},
+	"best_times": {
+		"Reach Olympus": 61.0,
+		"Escape Hades": 91.0
+	}
 }

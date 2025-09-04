@@ -176,23 +176,23 @@ environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 
 ground_from={
 "type": "color",
-"value": Color(0.504909, 0.489592, 0.259288, 1)
+"value": Color(0.854902, 0.74902, 0.501961, 1)
 }
 ground_to={
 "type": "color",
-"value": Color(0.788235, 0.698039, 0.384314, 1)
+"value": Color(0.921569, 0.835294, 0.556863, 1)
 }
 detail_from={
 "type": "color",
-"value": Color(0.694118, 0.427451, 0.317647, 1)
+"value": Color(0.85098, 0.603922, 0.498039, 1)
 }
 detail_to={
 "type": "color",
-"value": Color(0.945098, 0.866667, 0.698039, 1)
+"value": Color(1, 0.929412, 0.796078, 1)
 }
 bg_from={
 "type": "color",
-"value": Color(1, 0.992157, 0.87451, 1)
+"value": Color(0.984314, 0.964706, 0.85098, 1)
 }
 bg_to={
 "type": "color",

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8iqomsmf1n5o"]
+
+[ext_resource type="Shader" uid="uid://cfcussq2cqtx3" path="res://resources/shaders/Distort.gdshader" id="1_oijh0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_324vy"]
+shader = ExtResource("1_oijh0")
+shader_parameter/type = 1
+shader_parameter/amplitude_x = 16.0
+shader_parameter/amplitude_y = 8.0
+shader_parameter/time_scale = 0.5
+
+[node name="Cloud" type="Polygon2D"]
+z_index = 7
+material = SubResource("ShaderMaterial_324vy")
+skew = -0.254012

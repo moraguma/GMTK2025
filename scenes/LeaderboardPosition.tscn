@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4dukn44x4jvx"]
+
+[ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="1_nqad8"]
+[ext_resource type="Script" uid="uid://b4bcnafdpjvnf" path="res://scenes/scripts/LeaderboardPosition.gd" id="2_6lgqf"]
+
+[node name="LeaderboardPosition" type="Panel"]
+custom_minimum_size = Vector2(768, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -1040.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nqad8")
+script = ExtResource("2_6lgqf")
+player_color = Color(0.137255, 0.419608, 0.694118, 1)
+
+[node name="Position" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+text = "#102"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+text = "dfsdfsdf"
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_right = 0.98
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+text = "60.12s"
+horizontal_alignment = 2
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="GetNameTimer" type="Timer" parent="."]

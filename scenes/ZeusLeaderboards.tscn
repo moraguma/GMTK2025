@@ -1,0 +1,186 @@
+[gd_scene load_steps=15 format=3 uid="uid://b567iut88ucv4"]
+
+[ext_resource type="Script" uid="uid://c03s0kv8ltflm" path="res://scenes/scripts/Leaderboards.gd" id="1_2dmde"]
+[ext_resource type="Texture2D" uid="uid://ckmf81t6gicn5" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-BG.png" id="2_8lkg7"]
+[ext_resource type="Script" uid="uid://cvt0t77v3gd8y" path="res://scenes/scripts/Squisher.gd" id="4_pdaj7"]
+[ext_resource type="Shader" uid="uid://dionnpqrhlyi6" path="res://resources/shaders/BlackFog.gdshader" id="5_8lkg7"]
+[ext_resource type="Texture2D" uid="uid://bwyjraoddrtav" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-ART-4.png" id="6_mik2h"]
+[ext_resource type="PackedScene" uid="uid://5vdpr2nj1l16" path="res://scenes/InputTextDisplay.tscn" id="7_mik2h"]
+[ext_resource type="PackedScene" uid="uid://bfcunsevfo48a" path="res://addons/jam_essentials/scenes/ui/LocalizableLabel.tscn" id="7_pdaj7"]
+[ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="8_aedv5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8lkg7"]
+noise_type = 2
+frequency = 0.0055
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mik2h"]
+width = 1080
+height = 1080
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_8lkg7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pdaj7"]
+noise_type = 2
+frequency = 0.0028
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdaj7"]
+width = 1080
+height = 1080
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_pdaj7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdaj7"]
+shader = ExtResource("5_8lkg7")
+shader_parameter/black_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_pdaj7")
+shader_parameter/extra_noise = SubResource("NoiseTexture2D_mik2h")
+shader_parameter/time_scale = 0.126
+shader_parameter/scroll_dir = Vector2(1, -0.5)
+shader_parameter/extra_noise_strength = 0.4
+shader_parameter/threshold = 0.7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lkg7"]
+bg_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+
+[node name="Leaderboards" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_2dmde")
+reset_scene = "res://scenes/WorldLoader.tscn"
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("2_8lkg7")
+flip_h = true
+
+[node name="Fog" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pdaj7")
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="GodSquisher" type="Node2D" parent="."]
+position = Vector2(-576, 544)
+script = ExtResource("4_pdaj7")
+
+[node name="God" type="Sprite2D" parent="GodSquisher"]
+position = Vector2(544, -480)
+texture = ExtResource("6_mik2h")
+flip_h = true
+
+[node name="GodGround" type="Polygon2D" parent="."]
+color = Color(0.608928, 0.361902, 0.182258, 1)
+polygon = PackedVector2Array(-1027, 439, -259, 548, -1016, 568)
+
+[node name="Mountain" type="Polygon2D" parent="."]
+color = Color(0.192157, 0.0588235, 0.0666667, 1)
+polygon = PackedVector2Array(129, -658, 44, 48, -37, -52, -207, 714, 1205, 679, 1215, -755)
+uv = PackedVector2Array(129, -658, 44, 48, -37, -52, -207, 714, 1205, 679, 1215, -755)
+
+[node name="GlobalLeaderboard" type="VBoxContainer" parent="."]
+offset_left = 144.0
+offset_top = -491.0
+offset_right = 912.0
+offset_bottom = 509.0
+
+[node name="Leaderboards" parent="GlobalLeaderboard" instance=ExtResource("7_pdaj7")]
+layout_mode = 2
+theme = ExtResource("8_aedv5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "Leaderboards"
+horizontal_alignment = 1
+localization_code = "Leaderboards"
+
+[node name="Global" parent="GlobalLeaderboard" instance=ExtResource("7_pdaj7")]
+layout_mode = 2
+theme = ExtResource("8_aedv5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Global"
+horizontal_alignment = 1
+localization_code = "Global"
+
+[node name="FriendLeaderboard" type="VBoxContainer" parent="."]
+visible = false
+offset_left = 144.0
+offset_top = -491.0
+offset_right = 912.0
+offset_bottom = 509.0
+
+[node name="Leaderboards" parent="FriendLeaderboard" instance=ExtResource("7_pdaj7")]
+layout_mode = 2
+theme = ExtResource("8_aedv5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 96
+text = "Leaderboards"
+horizontal_alignment = 1
+localization_code = "Leaderboards"
+
+[node name="Friends" parent="FriendLeaderboard" instance=ExtResource("7_pdaj7")]
+layout_mode = 2
+theme = ExtResource("8_aedv5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Friends"
+horizontal_alignment = 1
+localization_code = "Friends"
+
+[node name="Loading" type="Panel" parent="."]
+offset_left = 144.0
+offset_top = -491.0
+offset_right = 912.0
+offset_bottom = 509.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8lkg7")
+
+[node name="Label" type="Label" parent="Loading"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_aedv5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Loading leaderboards..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Commands" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 144.0
+offset_top = -491.0
+offset_right = 912.0
+offset_bottom = 509.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Commands"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Friends" parent="Commands/VBoxContainer" instance=ExtResource("7_mik2h")]
+layout_mode = 2
+alignment = 2
+action = "jump"
+custom_action_name = "Toggle leaderboard"
+
+[node name="Reset" parent="Commands/VBoxContainer" instance=ExtResource("7_mik2h")]
+layout_mode = 2
+action = "reset"
+
+[node name="Exit" parent="Commands/VBoxContainer" instance=ExtResource("7_mik2h")]
+layout_mode = 2
+action = "menu"
+custom_action_name = "Exit"
