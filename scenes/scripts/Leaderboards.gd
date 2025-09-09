@@ -29,6 +29,10 @@ func _ready() -> void:
 	
 	var global_leaderboards: Array[Array] = await SteamInterface.get_global_leaderboard(handle)
 	var friend_leaderboards: Array[Array] = await SteamInterface.get_friends_leaderboard(handle)
+	for i in range(len(friend_leaderboards[0])):
+		friend_leaderboards[0][i]["global_rank"] = i + 1
+	for i in range(len(friend_leaderboards[1])):
+		friend_leaderboards[1][i]["global_rank"] = len(friend_leaderboards[0]) + i + 1
 	
 	populate_leaderboard(global_leaderboard_base, global_leaderboards[0], global_leaderboards[1])
 	populate_leaderboard(friend_leaderboard_base, friend_leaderboards[0], friend_leaderboards[1])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b567iut88ucv4"]
+[gd_scene load_steps=16 format=3 uid="uid://b567iut88ucv4"]
 
 [ext_resource type="Script" uid="uid://c03s0kv8ltflm" path="res://scenes/scripts/Leaderboards.gd" id="1_2dmde"]
 [ext_resource type="Texture2D" uid="uid://ckmf81t6gicn5" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-BG.png" id="2_8lkg7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5vdpr2nj1l16" path="res://scenes/InputTextDisplay.tscn" id="7_mik2h"]
 [ext_resource type="PackedScene" uid="uid://bfcunsevfo48a" path="res://addons/jam_essentials/scenes/ui/LocalizableLabel.tscn" id="7_pdaj7"]
 [ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="8_aedv5"]
+[ext_resource type="Script" uid="uid://qefol8e1beur" path="res://addons/jam_essentials/scenes/ui/scripts/LocalizableLabel.gd" id="8_n3syx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8lkg7"]
 noise_type = 2
@@ -149,6 +150,8 @@ theme_override_font_sizes/font_size = 48
 text = "Loading leaderboards..."
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_n3syx")
+localization_code = "Loading leaderboards..."
 
 [node name="Commands" type="Control" parent="."]
 layout_mode = 3

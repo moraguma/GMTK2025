@@ -69,9 +69,18 @@ menu,Pause,Pausar
 Assign a button to {action}, Assign a button to {action}, Escolha o botão para {action}
 Reset controls,Reset controls,Reiniciar controles
 Play,Play,Jogar
+Leaderboards, Leaderboards, Placares
+Back, Back, Voltar
 Options,Options,Opções
 Credits,Credits,Créditos
 Exit,Exit,Sair
+Reach Olympus,Reach Olympus,Alcance o Olímpo
+Escape Hades,Escape Hades,Escape de Hades
+Loading leaderboards...,Loading leaderboards...,Carregando placares...
+Toggle leaderboard,Toggle leaderboard,Trocar placares
+Global,Global,Global
+Friends,Friends,Amigos
+
 MoragumaCredits,"[center][i]Code and game design[/i]
 [wave][color=#236BB1]Gustavo Morais (@moraguma)","[center][i]Código e design de jogo[/i]
 [wave][color=#236BB1]Gustavo Morais (@moraguma)"

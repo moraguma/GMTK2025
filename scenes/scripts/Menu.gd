@@ -60,6 +60,9 @@ func _physics_process(delta: float) -> void:
 			select_campaign(0)
 		elif Input.is_action_just_pressed("ui_right"):
 			select_campaign(1)
+		elif Input.is_action_just_pressed("back") or Input.is_action_just_pressed("menu"):
+			show_main()
+			campaign_animation_player.play("disappear")
 
 
 func _process(delta: float) -> void:
@@ -75,6 +78,7 @@ func play():
 	SoundController.play_sfx("Click")
 	$Campaign/Buttons/Play.grab_focus()
 	
+	$Campaign/SelectHades.mouse_filter = Control.MOUSE_FILTER_STOP
 	campaign_animation_player.play("appear")
 	selecting_campaign = true
 
@@ -94,6 +98,7 @@ func show_main():
 	credits.hide()
 	SoundController.play_sfx("Click")
 	
+	$Campaign/SelectHades.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	select_campaign(-1)
 	selecting_campaign = false
 

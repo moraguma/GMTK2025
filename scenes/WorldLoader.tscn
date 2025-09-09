@@ -24,13 +24,13 @@ shader_parameter/type = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gjftb"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_inx8q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vqldl"]
 noise = SubResource("FastNoiseLite_gjftb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_spbye"]
 shader = ExtResource("5_vqldl")
 shader_parameter/type = 2
-shader_parameter/noise = SubResource("NoiseTexture2D_inx8q")
+shader_parameter/noise = SubResource("NoiseTexture2D_vqldl")
 shader_parameter/amplitude_x = 16.0
 shader_parameter/amplitude_y = 8.0
 shader_parameter/time_scale = 1.0
