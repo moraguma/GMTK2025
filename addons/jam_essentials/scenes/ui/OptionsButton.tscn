@@ -9,6 +9,7 @@ anchor_right = 1.0
 offset_bottom = 48.0
 grow_horizontal = 2
 theme = ExtResource("1_j4stj")
+theme_override_constants/outline_size = 0
 flat = true
 alignment = 2
 script = ExtResource("2_j4stj")

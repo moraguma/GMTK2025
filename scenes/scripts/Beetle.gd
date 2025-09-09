@@ -561,84 +561,6 @@ func _movement_process(delta: float) -> void:
 			if collider.has_method("destroy"):
 				collider.destroy()
 	
-	#if get_slide_collision_count() > 0 and on_fire:
-		#var normal = get_slide_collision(0).get_normal()
-		#
-		#if abs(normal[0]) < TOLERANCE and (normal[1] < 0.0 or upside_down) and not rolling or (not has_dung and (normal[1] < 0.0 or upside_down)): # Floor hit
-			#SoundController.play_sfx("Bounce")
-			#
-			#animation_player.play("fall")
-			#
-			#jumped = true
-			#on_fire = false
-			#rolling = false
-			#upside_down = false
-			#rolling_uphill = false
-			#fire_recoil = false
-			#fire_recoil_timer.stop()
-			#
-			#velocity = FIRE_HIT_VEC
-			#velocity[0] *= facing_dir 
-			#world_camera.add_trauma()
-			#
-			#if has_dung:
-				#var throw_dir = velocity
-				#throw_dir[0] *= -1
-				#dung.throw(throw_dir.normalized())
-				#lose_dung()
-			#
-			#var collider = get_slide_collision(0).get_collider()
-			#if collider.has_method("destroy"):
-				#collider.destroy()
-				#world_camera.add_trauma()
-		#elif abs(normal[1]) < TOLERANCE:
-			#if old_vel.normalized().dot(-normal) > 0.3: # Wall hit
-				#SoundController.play_sfx("Bounce")
-				#
-				#animation_player.play("fall")
-				#
-				#jumped = true
-				#on_fire = false
-				#rolling = false
-				#upside_down = false
-				#rolling_uphill = false
-				#fire_recoil = false
-				#fire_recoil_timer.stop()
-				#
-				#velocity = FIRE_HIT_VEC
-				#velocity[0] *= -normal[0] 
-				#world_camera.add_trauma()
-				#
-				#if has_dung:
-					#var throw_dir = velocity
-					#throw_dir[1] *= -1
-					#dung.throw(throw_dir.normalized())
-					#dung.position[0] += throw_dir[0] / abs(throw_dir[0]) * 50
-					#lose_dung()
-				#
-				#var collider = get_slide_collision(0).get_collider()
-				#if collider.has_method("destroy"):
-					#collider.destroy()
-		#elif normal[1] > 0 and not rolling: # Upside down hill hit
-			#animation_player.play("roll")
-			#
-			#fire_recoil = false
-			#fire_recoil_timer.stop()
-			#rolling = true
-			#upside_down = true
-			#facing_dir = -upside_down_slope_dir
-			#rolling_dir = facing_dir
-			#
-			#world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
-		#elif normal[1] < 0 and not rolling: # Hill hit
-			#animation_player.play("roll")
-			#
-			#rolling = true
-			#facing_dir = -slope_dir
-			#rolling_dir = facing_dir
-			#
-			#world_camera.add_trauma(GlobalCamera.SMALL_SHAKE)
-	
 	# Roll jump logic
 	if rolling and rolling_dir * (upside_down_slope_dir if upside_down else slope_dir) > 0:
 		if upside_down:
@@ -716,6 +638,10 @@ func _movement_process(delta: float) -> void:
 	
 	if skip_floor_correction:
 		skip_floor_correction = false
+	
+	
+	if rolling and velocity[0] < TOLERANCE:
+		position[1] -= 1 # TODO : Maybe a fix for getting stuck on geometry?
 
 
 func _animation_process(delta: float) -> void:

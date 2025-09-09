@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://brpn0rdudm732"]
+[gd_scene load_steps=33 format=3 uid="uid://brpn0rdudm732"]
 
 [ext_resource type="Script" uid="uid://d2ww8j1xy8pai" path="res://scenes/scripts/WorldLoader.gd" id="1_u227p"]
 [ext_resource type="Script" uid="uid://bllglyg44xhmb" path="res://scenes/scripts/ScalableView.gd" id="2_gjsnv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c1vibkoxxj4yt" path="res://resources/sprites/ui/map.png" id="6_kqw7a"]
 [ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="6_rmikl"]
 [ext_resource type="Texture2D" uid="uid://dq6febieth1va" path="res://resources/sprites/ui/map_icons.png" id="7_geuqd"]
+[ext_resource type="Shader" uid="uid://dionnpqrhlyi6" path="res://resources/shaders/BlackFog.gdshader" id="7_vqldl"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="8_bcks2"]
 [ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="9_f4qb8"]
 [ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="10_s61us"]
@@ -40,6 +41,40 @@ shader_parameter/type = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gjsnv"]
 viewport_path = NodePath("Viewport")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_inx8q"]
+noise_type = 2
+frequency = 0.0055
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mik2h"]
+width = 1080
+height = 1080
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_inx8q")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_10684"]
+noise_type = 2
+frequency = 0.0028
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aedv5"]
+width = 1080
+height = 1080
+invert = true
+seamless = true
+noise = SubResource("FastNoiseLite_10684")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mn8p"]
+shader = ExtResource("7_vqldl")
+shader_parameter/black_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_aedv5")
+shader_parameter/extra_noise = SubResource("NoiseTexture2D_mik2h")
+shader_parameter/time_scale = 0.126
+shader_parameter/scroll_dir = Vector2(1, -0.5)
+shader_parameter/extra_noise_strength = -5.195
+shader_parameter/threshold = 0.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yixxd"]
 shader = ExtResource("2_k34yh")
@@ -215,6 +250,15 @@ process_mode = 1
 visible = false
 texture = ExtResource("6_kqw7a")
 
+[node name="Fog" type="ColorRect" parent="Map"]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_8mn8p")
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+
 [node name="Beetle" type="Sprite2D" parent="Map"]
 texture = ExtResource("7_geuqd")
 vframes = 4
@@ -250,7 +294,7 @@ vframes = 4
 frame = 1
 
 [node name="Combo" type="Sprite2D" parent="Map"]
-position = Vector2(873, -153)
+position = Vector2(862, -153)
 texture = ExtResource("7_geuqd")
 vframes = 4
 frame = 1
@@ -263,7 +307,7 @@ frame = 3
 
 [node name="Recipe" type="Node2D" parent="Map"]
 visible = false
-position = Vector2(-619, -924)
+position = Vector2(618, -277)
 rotation = -0.0194306
 scale = Vector2(0.6, 0.6)
 
@@ -271,143 +315,182 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(-203.975, 31.0427)
 rotation = 0.0194306
 scale = Vector2(1.66667, 1.66667)
-color = Color(0.143884, 0.105067, 0.0903078, 1)
-polygon = PackedVector2Array(-155, 372, 125, 393, 474, 403, 434, 730, 126, 791, -165, 773, -173, 612)
+color = Color(0.985938, 0.966453, 0.83089, 1)
+polygon = PackedVector2Array(-386.999, 560.999, -92.9996, 469.999, 450.999, 408.999, 444.999, 715.999, 392.999, 769.999, 86.0001, 774.999, -389.999, 761.999)
 
 [node name="Tutorial23" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 offset_left = -365.0
 offset_top = 899.0
 offset_right = -304.0
 offset_bottom = 978.0
 theme_override_font_sizes/bold_font_size = 24
+text = "2"
+localization_code = "2"
 
 [node name="Tutorial25" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 offset_left = -466.0
 offset_top = 1081.0
 offset_right = -405.0
 offset_bottom = 1160.0
 theme_override_font_sizes/bold_font_size = 24
+text = "3"
+localization_code = "3"
 
 [node name="Tutorial26" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 offset_left = 163.064
 offset_top = 848.55
 offset_right = 224.064
 offset_bottom = 927.55
 theme_override_font_sizes/bold_font_size = 24
+text = "4"
+localization_code = "4"
 
 [node name="Tutorial27" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 offset_left = 149.064
 offset_top = 1035.55
 offset_right = 210.064
 offset_bottom = 1114.55
 theme_override_font_sizes/bold_font_size = 24
+text = "5"
+localization_code = "5"
 
 [node name="Tutorial24" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
-offset_left = -367.0
-offset_top = 706.0
-offset_right = -306.0
-offset_bottom = 785.0
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+offset_left = -830.167
+offset_top = 1004.85
+offset_right = -769.167
+offset_bottom = 1083.85
 theme_override_font_sizes/bold_font_size = 24
+text = "1"
+localization_code = "1"
 
 [node name="ButtonPrompts49" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(355.064, 1140.55)
 rotation = 3.14159
 scale = Vector2(1, -1)
 frame = 13
 
 [node name="ButtonPrompts44" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-189, 899)
 rotation = 3.14159
 scale = Vector2(0.6, -0.6)
 frame = 10
 
 [node name="HaloLineart15" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-157, 941.5)
 
 [node name="BeetleLineart24" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-157, 958.5)
 frame = 7
 
 [node name="HaloLineart19" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-269, 941.5)
 
 [node name="BeetleLineart25" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-269, 958.5)
 frame = 9
 
 [node name="HaloLineart25" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(259.064, 906.05)
 
 [node name="BeetleLineart30" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(259.064, 923.05)
 flip_h = true
 frame = 9
 
 [node name="BeetleLineart32" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(387.064, 923.05)
 flip_h = true
 frame = 4
 
 [node name="BeetleLineart35" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(235.064, 1078.05)
 flip_h = true
 frame = 4
 
 [node name="ButtonPrompts45" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
-position = Vector2(-249, 728)
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+position = Vector2(-712.167, 1026.85)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 frame = 7
 
 [node name="HaloLineart20" parent="Map/Recipe" instance=ExtResource("10_s61us")]
-position = Vector2(-303, 753.5)
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+position = Vector2(-766.167, 1052.35)
 
 [node name="HaloLineart21" parent="Map/Recipe" instance=ExtResource("10_s61us")]
-position = Vector2(-128, 748.5)
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+position = Vector2(-591.167, 1047.35)
 
 [node name="BeetleLineart26" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
-position = Vector2(-303, 770.5)
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+position = Vector2(-766.167, 1069.35)
 
 [node name="BeetleLineart27" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
-position = Vector2(-128, 765.5)
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+position = Vector2(-591.167, 1064.35)
 frame = 20
 
 [node name="HaloLineart22" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-372, 1130.5)
 
 [node name="BeetleLineart28" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-317, 1155.5)
 frame = 4
 
 [node name="ButtonPrompts46" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-26, 1065)
 rotation = -1.5708
 scale = Vector2(1, -1)
 frame = 7
 
 [node name="ButtonPrompts48" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(398.064, 848.55)
 rotation = -1.5708
 scale = Vector2(1, -1)
 frame = 7
 
 [node name="ButtonPrompts47" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-154, 1262)
 rotation = 1.5708
 scale = Vector2(0.6, -0.6)
 frame = 7
 
 [node name="HaloLineart23" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-24, 1123.84)
 
 [node name="BeetleLineart29" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-24, 1140.84)
 frame = 19
 
 [node name="HaloLineart24" parent="Map/Recipe" instance=ExtResource("10_s61us")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-201, 1132)
 
 [node name="BeetleLineart31" parent="Map/Recipe" instance=ExtResource("11_abq6w")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 position = Vector2(-201, 1149)
 frame = 1
 

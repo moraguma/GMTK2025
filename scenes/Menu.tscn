@@ -85,7 +85,7 @@ noise_type = 2
 frequency = 0.0055
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mik2h"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uwbky"]
 width = 1080
 height = 1080
 invert = true
@@ -97,7 +97,7 @@ noise_type = 2
 frequency = 0.0028
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aedv5"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r54wa"]
 width = 1080
 height = 1080
 invert = true
@@ -107,8 +107,8 @@ noise = SubResource("FastNoiseLite_yqqfh")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22i10"]
 shader = ExtResource("17_nxcfj")
 shader_parameter/black_color = Color(0.192157, 0.0588235, 0.0666667, 1)
-shader_parameter/noise = SubResource("NoiseTexture2D_aedv5")
-shader_parameter/extra_noise = SubResource("NoiseTexture2D_mik2h")
+shader_parameter/noise = SubResource("NoiseTexture2D_r54wa")
+shader_parameter/extra_noise = SubResource("NoiseTexture2D_uwbky")
 shader_parameter/time_scale = 0.126
 shader_parameter/scroll_dir = Vector2(1, -0.5)
 shader_parameter/extra_noise_strength = 0.4
