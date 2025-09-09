@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2w8y8n3und2o"]
+[gd_scene load_steps=21 format=3 uid="uid://yoclog8s0s73"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_8m8m8"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_m7pdh"]
@@ -511,7 +511,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ENDING_1"
+text = "Sisyphus could see Olympus in the distance"
 horizontal_alignment = 1
 script = ExtResource("13_uep8y")
 localization_code = "OLYMPUS_ENDING_1"
@@ -528,7 +528,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ENDING_2"
+text = "He would have to get here quickly if he wanted to make it"
 horizontal_alignment = 1
 script = ExtResource("13_uep8y")
 localization_code = "OLYMPUS_ENDING_2"

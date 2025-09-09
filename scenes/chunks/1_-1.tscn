@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bcj1svgttlbuk"]
+[gd_scene load_steps=30 format=3 uid="uid://bbuu060ei6537"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_02pic"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_il8kq"]
@@ -469,7 +469,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(588, 390)
 rotation = -0.785398
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(325.396, 2.08643, 301.023, -170.206, 236.776, -53.8207, 78.0864, -173.106, 127.135, -46.3508, 2.89697, -58.6143, 96.7266, 0.685059)
 script = ExtResource("9_r1ayb")
 size = 398.474
@@ -482,7 +482,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1183, 75)
 rotation = -0.0331422
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
 script = ExtResource("9_r1ayb")
 size = 398.474
@@ -495,7 +495,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(653, 374)
 rotation = -0.785398
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(10.7437, -0.683594, 32.2163, -2.04834, -36.3198, -42.7665)
 script = ExtResource("9_r1ayb")
 size = 398.474

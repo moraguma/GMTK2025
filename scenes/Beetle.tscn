@@ -723,6 +723,7 @@ visible = false
 [node name="Arrow" type="Sprite2D" parent="ArrowPivot"]
 z_index = 33
 position = Vector2(0, -160)
+rotation = 0.785398
 texture = ExtResource("3_pwiwl")
 
 [node name="UpsideDownPivot" type="Node2D" parent="."]

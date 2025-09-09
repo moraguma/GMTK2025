@@ -75,6 +75,7 @@ shader_parameter/time_scale = 0.126
 shader_parameter/scroll_dir = Vector2(1, -0.5)
 shader_parameter/extra_noise_strength = -5.195
 shader_parameter/threshold = 0.7
+shader_parameter/power = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yixxd"]
 shader = ExtResource("2_k34yh")
@@ -531,6 +532,7 @@ offset_bottom = 540.0
 include_back_to_title = true
 
 [node name="SunTimerSprite" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_10684")
 position = Vector2(-748, -379)
 texture = SubResource("ViewportTexture_spbye")

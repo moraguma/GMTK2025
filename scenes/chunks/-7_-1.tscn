@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bs3otxckf8nag"]
+[gd_scene load_steps=16 format=3 uid="uid://bbd3st11qnbvm"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_3huyd"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_gu1ca"]
@@ -489,7 +489,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ROLL_1"
+text = "Sisyphus rolled away from the mountain"
 horizontal_alignment = 1
 script = ExtResource("8_uxbvp")
 localization_code = "OLYMPUS_ROLL_1"

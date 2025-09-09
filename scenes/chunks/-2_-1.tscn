@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cow5wl7e5xbql"]
+[gd_scene load_steps=18 format=3 uid="uid://dji85e2v816i2"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_4e2yv"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_5exhy"]
@@ -438,7 +438,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2168, 216)
 rotation = 0.0180124
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(364.912, 2.10889, 275.178, -187.699, 271.093, -47.823, 134.95, -149.83, 190.712, -40.2561, 59.9658, -84.7256, 136.114, -13.2717, 7.99512, -29.1389, 96.7266, 0.685059)
 script = ExtResource("9_0m36f")
 size = 398.474

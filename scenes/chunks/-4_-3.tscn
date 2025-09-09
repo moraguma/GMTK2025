@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2yifsry56ocf"]
+[gd_scene load_steps=17 format=3 uid="uid://dvvvt8bafoau"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_xux1m"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_4y1fh"]
@@ -457,7 +457,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "OLYMPUS_PRAY_PULL_1"
+text = "IT'S ABSURD!"
 horizontal_alignment = 1
 script = ExtResource("10_4rjq4")
 localization_code = "OLYMPUS_PRAY_PULL_1"

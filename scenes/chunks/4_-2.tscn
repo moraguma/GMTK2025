@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bsyp5bdjn41xm"]
+[gd_scene load_steps=31 format=3 uid="uid://7h13a70vj27e"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_c0l43"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_1dwav"]
@@ -424,7 +424,7 @@ sources/1 = SubResource("TileSetAtlasSource_xx18x")
 shader = ExtResource("3_3eqxt")
 shader_parameter/type = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imwpe"]
 shader = ExtResource("3_3eqxt")
 shader_parameter/type = 1
 
@@ -469,7 +469,7 @@ z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(436, 1478)
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(236.808, 0.966797, 142.386, -292.209, 114.527, -68.2222, -105.062, -226.151, -12.4053, -54.6531, -291.4, -113.885, -106.579, -1.93921)
 script = ExtResource("9_vyu3d")
 size = 398.474
@@ -482,7 +482,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2407.7, 941.81)
 rotation = -0.00263637
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(54.2798, 0.689697, 33.6245, -77.6504, 26.3447, -18.3418, -16.6792, -38.3574, 27.4604, 0.680176)
 script = ExtResource("9_vyu3d")
 size = 398.474
@@ -494,7 +494,7 @@ z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1309, 1041)
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(196.381, -1.93213, 218.551, -340.809, 70.9014, -93.6982, -44.2715, -292.977, -102.165, -57.699, -315.991, -148.437, -228.084, -42.6074, -452.07, -60.4197, -256.633, -1.01099)
 script = ExtResource("9_vyu3d")
 size = 398.474
@@ -503,11 +503,11 @@ spacing = 33.964
 
 [node name="Grass67" type="Polygon2D" parent="." instance=ExtResource("10_i8yq0")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(1025, 519)
 rotation = 0.0100376
-skew = -0.384124
-polygon = PackedVector2Array(0, 0, 17.9383, -72.4906, 35.4188, -25.709, 52.8273, -88.9087, 71.7104, -28.0541, 90.2818, -79.0974, 107.717, -15.4045, 125.459, -81.8156, 142.873, -16.9372, 161.516, -66.0028, 179.684, -25.9631, 197.705, -84.2136, 216.837, -17.6398, 233.871, -82.2795, 252.309, -16.658, 270.172, -67.416, 286.424, -28.4392, 304.075, -79.6933, 320.455, -19.2264, 338.593, -64.1442, 356.585, -24.7234, 375.046, -63.2604, 392.487, -21.5999, 408.588, -67.4855, 425.099, -22.5704, 443.618, -69.9266, 460.79, -29.3426, 477.251, -63.9946, 496.957, -29.6492, 514.365, -71.0366, 531.477, -21.4078, 548.764, -67.716, 565.668, 0)
+skew = -0.225716
+polygon = PackedVector2Array(0, 0, 17.3451, -84.4894, 35.7256, -19.5125, 54.6073, -66.6047, 73.9678, -18.6711, 92.461, -72.418, 112.338, -26.6079, 131.243, -69.3182, 147.933, -22.1776, 165.389, -69.4524, 182.211, -23.9624, 201.944, -88.6625, 221.548, -24.5545, 240.739, -89.5618, 260.42, -25.568, 276.794, -75.3565, 293.542, -17.1101, 311.77, -64.0842, 329.24, -26.6741, 349.142, -76.1875, 369.072, -26.6291, 388.768, -71.9462, 405.937, -16.1975, 422.613, -72.3609, 439.848, -16.653, 456.947, -66.6569, 474.149, -15.5691, 491.619, -77.909, 510.81, -21.029, 529.315, -60.7596, 547.96, 0)
 script = ExtResource("9_vyu3d")
 auto = true
 size = 535.821
@@ -515,9 +515,9 @@ height = 74.766
 
 [node name="Grass53" type="Polygon2D" parent="." instance=ExtResource("10_i8yq0")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(288, 960)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(0, 0, 18.9613, -43.7201, 35.383, -11.1374, 54.7832, -49.6027, 73.4067, -10.924, 89.7875, -50.7995, 107.133, -12.7589, 126.273, -38.3401, 143.05, -13.6184, 160.248, -40.894, 179.594, -15.6775, 197.743, -40.343, 216.924, -13.9724, 235.539, -48.089, 252.806, -18.6896, 271.347, -49.2478, 290.662, -12.0732, 306.9, -38.2865, 323.281, 0)
 script = ExtResource("9_vyu3d")
 size = 322.578
@@ -525,9 +525,9 @@ height = 47.674
 
 [node name="Grass56" type="Polygon2D" parent="." instance=ExtResource("10_i8yq0")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(2112, 512)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(0, 0, 18.907, -45.4515, 36.5746, -15.9109, 55.4397, -50.7668, 74.1973, -10.996, 91.7128, -43.6094, 107.964, -9.61839, 127.518, -49.8299, 146.66, -16.7198, 163.424, -49.1976, 182.874, -15.1543, 199.366, -39.3302, 215.539, -16.2263, 231.814, -54.2825, 249.212, -9.729, 267.606, -41.5069, 285.32, -15.8102, 301.618, -45.4523, 320.483, -15.5295, 338.435, -47.9677, 354.454, 0)
 script = ExtResource("9_vyu3d")
 size = 322.578
@@ -617,7 +617,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_AIR_THROW_2"
+text = "But all he knows is rolling dung"
 horizontal_alignment = 1
 script = ExtResource("18_dr802")
 localization_code = "OLYMPUS_AIR_THROW_2"
@@ -646,7 +646,7 @@ mouse_filter = 2
 texture = ExtResource("20_8owed")
 stretch_mode = 3
 script = ExtResource("21_f7r8k")
-action = "aim"
+action = "throw"
 
 [node name="ButtonPrompts31" type="Sprite2D" parent="." instance=ExtResource("22_rjo3p")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)

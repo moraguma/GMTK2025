@@ -43,6 +43,7 @@ shader_parameter/time_scale = 0.126
 shader_parameter/scroll_dir = Vector2(1, -0.5)
 shader_parameter/extra_noise_strength = 0.4
 shader_parameter/threshold = 0.7
+shader_parameter/power = 0.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8lkg7"]
 bg_color = Color(0.192157, 0.0588235, 0.0666667, 1)

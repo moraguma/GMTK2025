@@ -11,6 +11,7 @@ const CHUNK_SIZE = Vector2(2560, 2560)
 const TILE_LAYER = 0
 
 
+@export var base_chunk_path: String = "res://scenes/chunks/"
 @export var world_min: Vector2
 @export var world_max: Vector2
 
@@ -119,7 +120,7 @@ func merge_or_append_polygon(polygons: Array, holes: Array, polygon: PackedVecto
 
 
 func get_chunk_path(chunk_pos: Vector2i):
-	return "res://scenes/chunks/%s.tscn" % [str(chunk_pos[0]) + "_" + str(chunk_pos[1])]
+	return base_chunk_path + "%s.tscn" % [str(chunk_pos[0]) + "_" + str(chunk_pos[1])]
 
 
 func prepare_for_saving(node: Node, owner: Node):

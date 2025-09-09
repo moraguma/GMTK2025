@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bx6406818b1sj"]
+[gd_scene load_steps=16 format=3 uid="uid://c5gkeo5rjdnm4"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_dk2od"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_kdu7o"]
@@ -490,7 +490,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_THROW_2"
+text = "Sisyphus thought to explore the surroundings before going to the peak"
 horizontal_alignment = 1
 script = ExtResource("9_4qyhn")
 localization_code = "OLYMPUS_THROW_2"

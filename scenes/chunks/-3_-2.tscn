@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgd677k4p0wtr"]
+[gd_scene load_steps=24 format=3 uid="uid://tdwq0qlfi1jo"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_6vtwp"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_xr5n7"]
@@ -502,7 +502,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_PRAY_PULL_2"
+text = "All the work Sisyphus put in brought him closer to an end he didn't know"
 horizontal_alignment = 1
 script = ExtResource("16_06724")
 localization_code = "OLYMPUS_PRAY_PULL_2"

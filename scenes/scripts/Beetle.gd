@@ -87,6 +87,13 @@ const PALETTE_LERP_WEIGHT = 0.1
 @export var olympus_ground_from: Color = Color("#DABF80")
 @export var olympus_ground_to: Color = Color("#EBD58E")
 
+@export var hades_bg_from: Color = Color("#FBD9ED")
+@export var hades_bg_to: Color = Color("#ffffff")
+@export var hades_detail_from: Color = Color("#4049AB")
+@export var hades_detail_to: Color = Color("#A871C5")
+@export var hades_ground_from: Color = Color("#8780DA")
+@export var hades_ground_to: Color = Color("#AC8EEB")
+
 var palette_data = {
 	"tartarus": [
 		tartarus_bg_from,
@@ -112,6 +119,14 @@ var palette_data = {
 		olympus_ground_from,
 		olympus_ground_to
 	],
+	"hades": [
+		hades_bg_from,
+		hades_bg_to,
+		hades_detail_from,
+		hades_detail_to,
+		hades_ground_from,
+		hades_ground_to
+	]
 }
 var palette_pos_to_shader = [
 		"bg_from",

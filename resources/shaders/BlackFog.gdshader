@@ -8,6 +8,7 @@ uniform float time_scale = 0.01;
 uniform vec2 scroll_dir = vec2(1.0, 0.0);
 uniform float extra_noise_strength = 0.2;
 uniform float threshold = 0.7;
+uniform float power = 0.5;
 
 
 float fmod(float x, float y) {
@@ -33,6 +34,6 @@ void fragment() {
 	if (v > threshold) COLOR = vec4(vec3(1.0), COLOR.a);
 	else COLOR = vec4(black_color, pow(UV.y, 0.2) * COLOR.a);
 	
-	float a = pow(UV.y, 0.5) * COLOR.a;
+	float a = pow(UV.y, power) * COLOR.a;
 	COLOR = vec4(lerp(vec3(1.0), black_color, (1.0 - v) * a), a);
 }

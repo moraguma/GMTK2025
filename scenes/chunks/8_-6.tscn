@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6hhyhnuy50ll"]
+[gd_scene load_steps=21 format=3 uid="uid://dvoko6xhckkvw"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_rg1i0"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_apbfn"]
@@ -549,7 +549,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ENDING_5"
+text = "But today?"
 horizontal_alignment = 1
 script = ExtResource("13_gel7d")
 localization_code = "OLYMPUS_ENDING_5"

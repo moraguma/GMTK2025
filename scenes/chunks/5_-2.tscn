@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bp88ihkxhn83m"]
+[gd_scene load_steps=25 format=3 uid="uid://ccqlsp1st6384"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_rdlms"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ouw46"]
@@ -418,7 +418,7 @@ sources/1 = SubResource("TileSetAtlasSource_xx18x")
 shader = ExtResource("3_x81dc")
 shader_parameter/type = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imwpe"]
 shader = ExtResource("3_x81dc")
 shader_parameter/type = 1
 
@@ -449,7 +449,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1364.1, 795.62)
 rotation = -0.00263637
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(54.2798, 0.689697, 33.6245, -77.6504, 26.3447, -18.3418, -16.6792, -38.3574, 27.4604, 0.680176)
 script = ExtResource("9_gm0cy")
 size = 398.474
@@ -461,7 +461,7 @@ z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1839.1, 738.62)
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(236.808, 0.966797, 142.386, -292.209, 114.527, -68.2222, -105.062, -226.151, -12.4053, -54.6531, -291.4, -113.885, -106.579, -1.93921)
 script = ExtResource("9_gm0cy")
 size = 398.474
@@ -473,7 +473,7 @@ z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(322.7, 884.81)
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(236.808, 0.966797, 142.386, -292.209, 114.527, -68.2222, -105.062, -226.151, -12.4053, -54.6531, -291.4, -113.885, -106.579, -1.93921)
 script = ExtResource("9_gm0cy")
 size = 398.474
@@ -486,7 +486,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(714.8, 758.34)
 rotation = -0.0331422
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
 script = ExtResource("9_gm0cy")
 size = 398.474
@@ -499,7 +499,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(757.8, 785.34)
 rotation = 0.00872618
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(10.7437, -0.683594, 32.2163, -2.04834, -36.3198, -42.7665)
 script = ExtResource("9_gm0cy")
 size = 398.474
@@ -508,9 +508,9 @@ spacing = 33.964
 
 [node name="Grass57" type="Polygon2D" parent="." instance=ExtResource("10_jwpqb")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(1152, 512)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(0, 0, 17.4554, -44.1647, 35.1551, -14.2082, 53.3312, -46.8813, 69.8031, -14.9677, 86.8801, -52.1477, 104.932, -11.8304, 123.693, -50.4203, 140.669, -11.4934, 157.205, -49.0257, 174.924, -18.013, 192.544, -53.1993, 210.162, -10.7693, 227.562, -56.3972, 245.194, -13.1165, 263.598, -42.8122, 282.921, -16.2849, 300.995, -55.6514, 317.126, -13.3579, 333.663, -55.8212, 352.312, 0)
 script = ExtResource("9_gm0cy")
 size = 322.578
@@ -535,7 +535,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_AIR_THROW_3"
+text = "What else could he wish for?"
 horizontal_alignment = 1
 script = ExtResource("14_a2ijk")
 localization_code = "OLYMPUS_AIR_THROW_3"

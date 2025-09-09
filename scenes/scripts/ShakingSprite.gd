@@ -18,6 +18,7 @@ var aim_rot = 0
 var base_rotation = 0
 @onready var noise = FastNoiseLite.new()
 var noise_y = 0
+@onready var base_offset = offset
 
 
 func _ready():
@@ -38,7 +39,7 @@ func shake():
 	
 	var amount = pow(trauma * trauma_modifier, TRAUMA_POWER)
 	
-	offset[0] = MAX_OFFSET[0] * amount * noise.get_noise_1d(noise_y)
-	offset[1] = MAX_OFFSET[1] * amount * noise.get_noise_1d(noise_y + 9999)
+	offset[0] = base_offset[0] + MAX_OFFSET[0] * amount * noise.get_noise_1d(noise_y)
+	offset[1] = base_offset[1] + MAX_OFFSET[1] * amount * noise.get_noise_1d(noise_y + 9999)
 	
 	noise_y += 1

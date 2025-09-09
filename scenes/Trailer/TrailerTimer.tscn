@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://clmqsb1o6epel"]
+
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="1_htg2v"]
+[ext_resource type="PackedScene" uid="uid://b2rlb3akvsmpc" path="res://scenes/SunTimer.tscn" id="2_kwd88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sw7w2"]
+shader = ExtResource("1_htg2v")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 10.0
+shader_parameter/outline_color = Color(0.055999, 0.00899714, 0.010571, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_plbeh"]
+viewport_path = NodePath("SunTimerViewport")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SunTimerSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_sw7w2")
+position = Vector2(960, 540)
+texture = SubResource("ViewportTexture_plbeh")
+
+[node name="SunTimerViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="SunTimer" parent="SunTimerViewport" instance=ExtResource("2_kwd88")]

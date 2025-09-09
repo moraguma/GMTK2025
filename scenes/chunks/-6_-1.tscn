@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpigvhsbbillx"]
+[gd_scene load_steps=19 format=3 uid="uid://iwvoqwj2bwoy"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_dso7s"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_vnkje"]

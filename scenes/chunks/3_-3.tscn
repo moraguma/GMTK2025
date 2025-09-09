@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cxf65ijbdsoeo"]
+[gd_scene load_steps=23 format=3 uid="uid://c8ack2g50t5kl"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_uf23d"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_k8ksu"]
@@ -415,7 +415,7 @@ sources/1 = SubResource("TileSetAtlasSource_xx18x")
 shader = ExtResource("3_gs60l")
 shader_parameter/type = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imwpe"]
 shader = ExtResource("3_gs60l")
 shader_parameter/type = 1
 
@@ -463,7 +463,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(956, 2448)
 rotation = -0.765391
 scale = Vector2(1, 1.05376)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
 script = ExtResource("9_evuq3")
 size = 398.474
@@ -472,11 +472,11 @@ spacing = 33.964
 
 [node name="Grass86" type="Polygon2D" parent="." instance=ExtResource("10_vctcb")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(752, 2391)
 rotation = -0.778589
-skew = -0.384124
-polygon = PackedVector2Array(0, 0, 19.7745, -65.4691, 36.739, -28.4692, 54.137, -64.5081, 71.502, -22.993, 89.7051, -62.0965, 108.738, -19.821, 128.504, -78.397, 146.122, -28.2951, 163.351, -72.5849, 180.763, -16.6774, 197.461, -63.1894, 214.52, -26.5247, 230.93, -74.6388, 247.646, -20.3411, 266.158, -64.536, 284.947, -29.1268, 303.019, -63.9633, 322.903, -25.4152, 341.924, -88.1307, 359.138, -16.2063, 378.998, -75.499, 397.582, -26.6669, 416.734, -86.9503, 435.852, -25.5605, 454.803, -84.9982, 472.814, -26.8999, 491.156, -61.9122, 507.592, -19.2436, 526.735, -62.6465, 546.681, 0)
+skew = -0.225716
+polygon = PackedVector2Array(0, 0, 18.7297, -66.1035, 36.6136, -24.5417, 56.1989, -83.1155, 74.4011, -20.587, 93.6836, -86.8013, 112.234, -19.2061, 131.85, -88.4874, 151.467, -27.329, 170.063, -72.2119, 187.16, -25.6733, 204.562, -71.4421, 223.561, -17.6139, 240.876, -75.8869, 259.257, -28.9744, 277.587, -60.5348, 297.253, -27.2006, 316.224, -64.2684, 333.249, -25.6408, 350.258, -75.3968, 368.56, -23.0893, 385.949, -71.2942, 404.7, -22.2554, 422.569, -83.639, 441.393, -23.5393, 459.16, -63.4782, 477.917, -16.1755, 495.39, -78.773, 512.982, -27.599, 530.905, -84.0083, 547.46, 0)
 script = ExtResource("9_evuq3")
 auto = true
 size = 535.821

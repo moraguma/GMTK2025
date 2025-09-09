@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crpwbth5kcqhu"]
+[gd_scene load_steps=5 format=3 uid="uid://bhaihrvbq1kax"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_8f6qx"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="2_mv2vu"]
@@ -19,7 +19,9 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_COMBO_2"
+text = "At last, Sisyphus was ready
+
+Olympus awaited"
 horizontal_alignment = 1
 script = ExtResource("4_lwu6s")
 localization_code = "OLYMPUS_COMBO_2"

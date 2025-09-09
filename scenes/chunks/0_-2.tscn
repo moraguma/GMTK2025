@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://rn3300kfdh1w"]
+[gd_scene load_steps=17 format=3 uid="uid://m60yyrr5o2li"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_hanoe"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_jqseq"]
@@ -408,7 +408,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imwpe"]
 shader = ExtResource("3_pmhy6")
 shader_parameter/type = 1
 
@@ -437,9 +437,9 @@ script = ExtResource("7_tn2fa")
 
 [node name="Grass60" type="Polygon2D" parent="." instance=ExtResource("8_x4vp4")]
 z_index = 7
-material = SubResource("ShaderMaterial_ex1w3")
+material = SubResource("ShaderMaterial_imwpe")
 position = Vector2(64, 2496)
-skew = -0.384124
+skew = -0.225716
 polygon = PackedVector2Array(0, 0, 19.8326, -42.0991, 37.6109, -14.3355, 53.9245, -41.8948, 72.0594, -18.7003, 91.7965, -45.6209, 110.976, -15.9466, 130.623, -38.567, 149.739, -15.8975, 169.197, -38.9519, 188.83, -11.323, 206.332, -56.7503, 225.675, -10.7119, 243.376, -56.3021, 262.195, -11.3885, 279.926, -57.1065, 296.559, -11.4464, 312.602, -54.7689, 329.528, -13.9889, 345.915, -52.6557, 363.886, -15.2511, 383.369, -48.2655, 399.479, -11.047, 418.933, -50.081, 436.452, -14.063, 453.612, -46.0986, 469.904, -16.3929, 489.513, -51.0729, 507.418, 0)
 script = ExtResource("9_vtxjp")
 size = 470.208

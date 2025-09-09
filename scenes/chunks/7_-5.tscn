@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://r0vlnodd6ikw"]
+[gd_scene load_steps=21 format=3 uid="uid://dhqe5g3te4up1"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_m4gt4"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_afeek"]
@@ -527,7 +527,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ENDING_3"
+text = "He could use his knowledge to find faster routes"
 horizontal_alignment = 1
 script = ExtResource("13_w5d1c")
 localization_code = "OLYMPUS_ENDING_3"
@@ -544,7 +544,7 @@ theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "OLYMPUS_ENDING_4"
+text = "After all, there is always tomorrow"
 horizontal_alignment = 1
 script = ExtResource("13_w5d1c")
 localization_code = "OLYMPUS_ENDING_4"
