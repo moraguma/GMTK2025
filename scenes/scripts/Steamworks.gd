@@ -37,7 +37,7 @@ func get_leaderboard_handle(leaderboard_name: String) -> int:
 ## Coroutine that updates the leaderboard. Returns whether the operation was
 ## successful
 func update_leaderboard(leaderboard_handle: int, score: int) -> bool:
-	Steam.uploadLeaderboardScore(score, false, PackedInt32Array(), leaderboard_handle)
+	Steam.uploadLeaderboardScore(score, true, PackedInt32Array(), leaderboard_handle)
 	
 	var args = await Steam.leaderboard_score_uploaded
 	

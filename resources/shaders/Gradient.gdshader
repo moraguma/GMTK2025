@@ -28,7 +28,7 @@ void fragment() {
 		from = bg_from;
 		to = bg_to;
 	}
-	
+
 	if (COLOR.a > 0.0) COLOR = lerp_color(from, to, (COLOR[0] + COLOR[1] + COLOR[2]) / 3.0);
 }
 

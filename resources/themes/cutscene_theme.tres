@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://ke53vtgjwwko"]
+
+[ext_resource type="FontFile" uid="uid://cpw8ajt3ibpgq" path="res://resources/fonts/sweet_pancakes.otf" id="1_2lfw4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kp1ys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_doe1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8b0v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_slfbb"]
+
+[resource]
+default_font = ExtResource("1_2lfw4")
+default_font_size = 32
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.137255, 0.419608, 0.694118, 1)
+Button/colors/font_hover_pressed_color = Color(0.137255, 0.419608, 0.694118, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 16
+Button/font_sizes/font_size = 48
+Button/styles/focus = SubResource("StyleBoxEmpty_kp1ys")
+Button/styles/hover = SubResource("StyleBoxEmpty_doe1r")
+Button/styles/normal = SubResource("StyleBoxEmpty_g8b0v")
+Button/styles/pressed = SubResource("StyleBoxEmpty_slfbb")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 16
+RichTextLabel/font_sizes/normal_font_size = 72

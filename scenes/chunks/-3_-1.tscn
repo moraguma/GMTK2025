@@ -1,28 +1,32 @@
-[gd_scene load_steps=23 format=3 uid="uid://dqtsgu04c34xm"]
+[gd_scene load_steps=27 format=3 uid="uid://dqtsgu04c34xm"]
 
-[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_0s1kj"]
-[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_2xyi5"]
-[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_mil25"]
-[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_av8yv"]
-[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_v8pyt"]
-[ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="6_wbrdl"]
-[ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="7_ovgpn"]
-[ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="8_m0yd0"]
-[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="9_tlbv1"]
-[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="10_0ajbj"]
-[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="11_hpbd4"]
-[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="12_om3cs"]
-[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="13_xe3l6"]
-[ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="14_tkpt5"]
-[ext_resource type="Texture2D" uid="uid://ck16jg3d8psfs" path="res://resources/sprites/beetle_lineart.png" id="15_up0y2"]
-[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="16_2xyi5"]
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_wbrdl"]
+[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ovgpn"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_m0yd0"]
+[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_tlbv1"]
+[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_0ajbj"]
+[ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="6_hpbd4"]
+[ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="7_om3cs"]
+[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="8_xe3l6"]
+[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="9_tkpt5"]
+[ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="10_up0y2"]
+[ext_resource type="Texture2D" uid="uid://ck16jg3d8psfs" path="res://resources/sprites/beetle_lineart.png" id="11_njhw0"]
+[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="12_xvr5a"]
+[ext_resource type="PackedScene" uid="uid://bytw8x327a2uj" path="res://addons/jam_essentials/scenes/ui/InputDisplay.tscn" id="13_fh7ic"]
+[ext_resource type="Texture2D" uid="uid://biqemmwkbjpfa" path="res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png" id="14_2pndc"]
+[ext_resource type="Script" uid="uid://etnn2ymfmf2k" path="res://addons/jam_essentials/scenes/ui/scripts/InputDisplay.gd" id="15_rvaep"]
+[ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="16_xa4fu"]
+[ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="17_o60mq"]
+[ext_resource type="Script" uid="uid://cn56ft6m0oipi" path="res://addons/jam_essentials/scenes/ui/scripts/LocalizableRichTextLabel.gd" id="18_gsfi5"]
+[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="19_rm1p5"]
+[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="20_66ceo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
-shader = ExtResource("3_mil25")
+shader = ExtResource("3_m0yd0")
 shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
-texture = ExtResource("4_av8yv")
+texture = ExtResource("4_tlbv1")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -393,7 +397,7 @@ texture_region_size = Vector2i(64, 64)
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx18x"]
-texture = ExtResource("5_v8pyt")
+texture = ExtResource("5_0ajbj")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, 32, 32, 32, 32, -28, -28, -28)
@@ -414,156 +418,91 @@ sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awoh5"]
-shader = ExtResource("3_mil25")
+shader = ExtResource("3_m0yd0")
 shader_parameter/type = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddx3t"]
-shader = ExtResource("3_mil25")
+shader = ExtResource("3_m0yd0")
 shader_parameter/type = 1
 
 [node name="(-3, -1)" type="Node2D"]
-script = ExtResource("1_0s1kj")
+script = ExtResource("1_wbrdl")
 
-[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_2xyi5")]
+[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ovgpn")]
 z_index = 25
 material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 131072, 0, 393216, 327680, 2, 458752, 393216, 1, 524288, 0, 1, 589824, 0, 2, 983040, 65536, 0, 1048576, 65536, 1, 1114112, 65536, 1, 1179648, 65536, 1, 1245184, 65536, 1, 1310720, 65536, 1, 1376256, 65536, 1, 1441792, 65536, 1, 1507328, 65536, 1, 1572864, 65536, 2, 2097152, 65536, 0, 2162688, 65536, 1, 2228224, 65536, 1, 2293760, 65536, 1, 2359296, 65536, 1, 2424832, 65536, 1, 2490368, 65536, 1, 2555904, 65536, 1, 393217, 131072, 0, 458753, 327680, 2, 524289, 65536, 1, 589825, 65536, 2, 983041, 65536, 0, 1048577, 65536, 1, 1114113, 65536, 1, 1179649, 65536, 1, 1245185, 65536, 1, 1310721, 65536, 1, 1376257, 65536, 1, 1441793, 65536, 1, 1507329, 65536, 1, 1572865, 65536, 2, 2097153, 65536, 0, 2162689, 65536, 1, 2228225, 65536, 1, 2293761, 65536, 1, 2359297, 65536, 1, 2424833, 65536, 1, 2490369, 65536, 1, 2555905, 65536, 1, 458754, 131072, 0, 524290, 327680, 2, 589826, 65536, 2, 983042, 65536, 0, 1048578, 65536, 1, 1114114, 65536, 1, 1179650, 65536, 1, 1245186, 65536, 1, 1310722, 65536, 1, 1376258, 65536, 1, 1441794, 65536, 1, 1507330, 65536, 1, 1572866, 65536, 2, 2097154, 65536, 0, 2162690, 65536, 1, 2228226, 65536, 1, 2293762, 65536, 1, 2359298, 65536, 1, 2424834, 65536, 1, 2490370, 65536, 1, 2555906, 65536, 1, 524291, 131072, 0, 589827, 589824, 0, 655363, 0, 1, 720899, 0, 1, 786435, 0, 1, 851971, 0, 1, 917507, 0, 1, 983043, 393216, 2, 1048579, 65536, 1, 1114115, 65536, 1, 1179651, 65536, 1, 1245187, 65536, 1, 1310723, 65536, 1, 1376259, 65536, 1, 1441795, 65536, 1, 1507331, 65536, 1, 1572867, 393216, 1, 1638403, 0, 2, 2097155, 131072, 0, 2162691, 327680, 2, 2228227, 65536, 1, 2293763, 65536, 1, 2359299, 65536, 1, 2424835, 65536, 1, 2490371, 65536, 1, 2555907, 65536, 1, 589828, 131072, 0, 655364, 327680, 2, 720900, 65536, 1, 786436, 65536, 1, 851972, 65536, 1, 917508, 65536, 1, 983044, 65536, 1, 1048580, 65536, 1, 1114116, 65536, 1, 1179652, 65536, 1, 1245188, 65536, 1, 1310724, 65536, 1, 1376260, 65536, 1, 1441796, 65536, 1, 1507332, 65536, 1, 1572868, 65536, 1, 1638404, 65536, 2, 2162692, 131072, 0, 2228228, 131072, 1, 2293764, 131072, 1, 2359300, 131072, 1, 2424836, 131072, 1, 2490372, 327680, 2, 2555908, 65536, 1, 655365, 131072, 0, 720901, 327680, 2, 786437, 65536, 1, 851973, 65536, 1, 917509, 65536, 1, 983045, 65536, 1, 1048581, 65536, 1, 1114117, 65536, 1, 1179653, 65536, 1, 1245189, 65536, 1, 1310725, 65536, 1, 1376261, 65536, 1, 1441797, 65536, 1, 1507333, 65536, 1, 1572869, 65536, 1, 1638405, 65536, 2, 2490373, 65536, 0, 2555909, 65536, 1, 720902, 131072, 0, 786438, 327680, 2, 851974, 65536, 1, 917510, 65536, 1, 983046, 65536, 1, 1048582, 65536, 1, 1114118, 65536, 1, 1179654, 65536, 1, 1245190, 65536, 1, 1310726, 65536, 1, 1376262, 65536, 1, 1441798, 65536, 1, 1507334, 65536, 1, 1572870, 65536, 1, 1638406, 65536, 2, 2490374, 65536, 0, 2555910, 65536, 1, 786439, 131072, 0, 851975, 327680, 2, 917511, 65536, 1, 983047, 65536, 1, 1048583, 65536, 1, 1114119, 65536, 1, 1179655, 65536, 1, 1245191, 65536, 1, 1310727, 65536, 1, 1376263, 65536, 1, 1441799, 65536, 1, 1507335, 65536, 1, 1572871, 65536, 1, 1638407, 65536, 2, 2490375, 65536, 0, 2555911, 65536, 1, 851976, 131072, 0, 917512, 327680, 2, 983048, 65536, 1, 1048584, 65536, 1, 1114120, 65536, 1, 1179656, 65536, 1, 1245192, 65536, 1, 1310728, 65536, 1, 1376264, 65536, 1, 1441800, 65536, 1, 1507336, 65536, 1, 1572872, 65536, 1, 1638408, 65536, 2, 2490376, 65536, 0, 2555912, 65536, 1, 917513, 131072, 0, 983049, 327680, 2, 1048585, 65536, 1, 1114121, 65536, 1, 1179657, 65536, 1, 1245193, 65536, 1, 1310729, 65536, 1, 1376265, 65536, 1, 1441801, 65536, 1, 1507337, 65536, 1, 1572873, 65536, 1, 1638409, 65536, 2, 2490377, 65536, 0, 2555913, 65536, 1, 983050, 131072, 0, 1048586, 327680, 2, 1114122, 65536, 1, 1179658, 65536, 1, 1245194, 65536, 1, 1310730, 65536, 1, 1376266, 65536, 1, 1441802, 65536, 1, 1507338, 65536, 1, 1572874, 65536, 1, 1638410, 393216, 1, 1703946, 0, 1, 1769482, 0, 2, 2490378, 65536, 0, 2555914, 65536, 1, 1048587, 131072, 0, 1114123, 327680, 2, 1179659, 65536, 1, 1245195, 65536, 1, 1310731, 65536, 1, 1376267, 65536, 1, 1441803, 65536, 1, 1507339, 65536, 1, 1572875, 65536, 1, 1638411, 65536, 1, 1703947, 65536, 1, 1769483, 393216, 1, 1835019, 0, 2, 2490379, 65536, 0, 2555915, 65536, 1, 1114124, 131072, 0, 1179660, 327680, 2, 1245196, 65536, 1, 1310732, 65536, 1, 1376268, 65536, 1, 1441804, 65536, 1, 1507340, 65536, 1, 1572876, 65536, 1, 1638412, 65536, 1, 1703948, 65536, 1, 1769484, 65536, 1, 1835020, 65536, 2, 2490380, 65536, 0, 2555916, 65536, 1, 1179661, 131072, 0, 1245197, 327680, 2, 1310733, 65536, 1, 1376269, 65536, 1, 1441805, 65536, 1, 1507341, 65536, 1, 1572877, 65536, 1, 1638413, 65536, 1, 1703949, 65536, 1, 1769485, 65536, 1, 1835021, 65536, 2, 2490381, 65536, 0, 2555917, 65536, 1, 1245198, 131072, 0, 1310734, 327680, 2, 1376270, 65536, 1, 1441806, 65536, 1, 1507342, 65536, 1, 1572878, 65536, 1, 1638414, 65536, 1, 1703950, 65536, 1, 1769486, 65536, 1, 1835022, 65536, 2, 2490382, 65536, 0, 2555918, 65536, 1, 1310735, 131072, 0, 1376271, 327680, 2, 1441807, 65536, 1, 1507343, 65536, 1, 1572879, 65536, 1, 1638415, 65536, 1, 1703951, 65536, 1, 1769487, 65536, 1, 1835023, 393216, 1, 1900559, 0, 2, 2490383, 65536, 0, 2555919, 65536, 1, 1376272, 131072, 0, 1441808, 327680, 2, 1507344, 65536, 1, 1572880, 65536, 1, 1638416, 65536, 1, 1703952, 65536, 1, 1769488, 65536, 1, 1835024, 65536, 1, 1900560, 65536, 2, 2490384, 65536, 0, 2555920, 65536, 1, 1441809, 131072, 0, 1507345, 327680, 2, 1572881, 65536, 1, 1638417, 65536, 1, 1703953, 65536, 1, 1769489, 65536, 1, 1835025, 65536, 1, 1900561, 65536, 2, 2490385, 65536, 0, 2555921, 65536, 1, 1507346, 131072, 0, 1572882, 327680, 2, 1638418, 65536, 1, 1703954, 65536, 1, 1769490, 65536, 1, 1835026, 65536, 1, 1900562, 65536, 2, 2424850, 0, 0, 2490386, 393216, 2, 2555922, 65536, 1, 1572883, 131072, 0, 1638419, 327680, 2, 1703955, 65536, 1, 1769491, 65536, 1, 1835027, 65536, 1, 1900563, 65536, 2, 2424851, 65536, 0, 2490387, 65536, 1, 2555923, 65536, 1, 1638420, 131072, 0, 1703956, 327680, 2, 1769492, 65536, 1, 1835028, 65536, 1, 1900564, 65536, 2, 2424852, 65536, 0, 2490388, 65536, 1, 2555924, 65536, 1, 1703957, 131072, 0, 1769493, 327680, 2, 1835029, 65536, 1, 1900565, 65536, 2, 2424853, 65536, 0, 2490389, 65536, 1, 2555925, 65536, 1, 1769494, 131072, 0, 1835030, 327680, 2, 1900566, 65536, 2, 2424854, 65536, 0, 2490390, 65536, 1, 2555926, 65536, 1, 1835031, 131072, 0, 1900567, 589824, 0, 1966103, 0, 2, 2424855, 65536, 0, 2490391, 65536, 1, 2555927, 65536, 1, 1900568, 131072, 0, 1966104, 589824, 0, 2031640, 0, 2, 2424856, 65536, 0, 2490392, 65536, 1, 2555928, 65536, 1, 1966105, 131072, 0, 2031641, 131072, 2, 2424857, 65536, 0, 2490393, 65536, 1, 2555929, 65536, 1, 2424858, 65536, 0, 2490394, 65536, 1, 2555930, 65536, 1, 2424859, 65536, 0, 2490395, 65536, 1, 2555931, 65536, 1, 2424860, 65536, 0, 2490396, 65536, 1, 2555932, 65536, 1, 2424861, 65536, 0, 2490397, 65536, 1, 2555933, 65536, 1, 2424862, 65536, 0, 2490398, 65536, 1, 2555934, 65536, 1, 2424863, 65536, 0, 2490399, 65536, 1, 2555935, 65536, 1, 2424864, 65536, 0, 2490400, 65536, 1, 2555936, 65536, 1, 2424865, 65536, 0, 2490401, 65536, 1, 2555937, 65536, 1, 2424866, 65536, 0, 2490402, 65536, 1, 2555938, 65536, 1, 2424867, 131072, 0, 2490403, 327680, 2, 2555939, 65536, 1, 2490404, 131072, 0, 2555940, 327680, 2, 2555941, 131072, 0)
 
-[node name="Leaf5" type="StaticBody2D" parent="." instance=ExtResource("6_wbrdl")]
+[node name="Leaf5" type="StaticBody2D" parent="." instance=ExtResource("6_hpbd4")]
 z_index = 24
 position = Vector2(1408, 2176)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("7_ovgpn")
+script = ExtResource("7_om3cs")
 sound = "Bush"
 waving_amp = 0.05
 freq = 0.1
 skew_base = -0.100198
 
-[node name="Tutorial6" type="RichTextLabel" parent="." instance=ExtResource("8_m0yd0")]
-z_index = 6
-offset_left = 512.0
-offset_top = 2236.0
-offset_right = 737.0
-offset_bottom = 2336.0
-theme = ExtResource("9_tlbv1")
-theme_override_font_sizes/bold_font_size = 24
-bbcode_enabled = true
-text = "[center][b]HOLD"
-
-[node name="Tutorial36" type="RichTextLabel" parent="." instance=ExtResource("8_m0yd0")]
-z_index = 6
-offset_left = 399.0
-offset_top = 2149.0
-offset_right = 624.0
-offset_bottom = 2249.0
-theme = ExtResource("9_tlbv1")
-theme_override_font_sizes/bold_font_size = 24
-bbcode_enabled = true
-text = "[center][b](NO DUNG)"
-
-[node name="ButtonPrompts7" type="Sprite2D" parent="." instance=ExtResource("10_0ajbj")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(625, 2192)
-texture = ExtResource("11_hpbd4")
-vframes = 14
-frame = 4
-
-[node name="ButtonPrompts6" type="Sprite2D" parent="." instance=ExtResource("10_0ajbj")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(736, 2208)
-texture = ExtResource("11_hpbd4")
-vframes = 14
-frame = 5
-
-[node name="ButtonPrompts8" type="Sprite2D" parent="." instance=ExtResource("10_0ajbj")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(704, 1984)
-scale = Vector2(-0.6, 0.6)
-texture = ExtResource("11_hpbd4")
-vframes = 14
-frame = 10
-
-[node name="ButtonPrompts23" type="Sprite2D" parent="." instance=ExtResource("10_0ajbj")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(1670.4, 1891)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("11_hpbd4")
-vframes = 14
-frame = 9
-
-[node name="ButtonPrompts22" type="Sprite2D" parent="." instance=ExtResource("10_0ajbj")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(1694.4, 1840)
-scale = Vector2(-1, 1)
-texture = ExtResource("11_hpbd4")
-vframes = 14
-frame = 10
-
-[node name="HaloLineart5" type="Sprite2D" parent="." instance=ExtResource("12_om3cs")]
+[node name="HaloLineart5" type="Sprite2D" parent="." instance=ExtResource("8_xe3l6")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
 position = Vector2(512, 2026.5)
-texture = ExtResource("13_xe3l6")
+texture = ExtResource("9_tkpt5")
 
-[node name="BeetleLineart6" type="Sprite2D" parent="." instance=ExtResource("14_tkpt5")]
+[node name="BeetleLineart6" type="Sprite2D" parent="." instance=ExtResource("10_up0y2")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
 position = Vector2(512, 2043.5)
-texture = ExtResource("15_up0y2")
+texture = ExtResource("11_njhw0")
 hframes = 5
 vframes = 5
 frame = 5
 
-[node name="HaloLineart6" type="Sprite2D" parent="." instance=ExtResource("12_om3cs")]
+[node name="HaloLineart6" type="Sprite2D" parent="." instance=ExtResource("8_xe3l6")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
-position = Vector2(736, 2026.5)
-texture = ExtResource("13_xe3l6")
+position = Vector2(864, 2026.5)
+texture = ExtResource("9_tkpt5")
 
-[node name="BeetleLineart7" type="Sprite2D" parent="." instance=ExtResource("14_tkpt5")]
+[node name="BeetleLineart7" type="Sprite2D" parent="." instance=ExtResource("10_up0y2")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
-position = Vector2(736, 2043.5)
-texture = ExtResource("15_up0y2")
+position = Vector2(864, 2043.5)
+texture = ExtResource("11_njhw0")
 hframes = 5
 vframes = 5
 frame = 7
 
-[node name="BeetleLineart9" type="Sprite2D" parent="." instance=ExtResource("14_tkpt5")]
+[node name="BeetleLineart9" type="Sprite2D" parent="." instance=ExtResource("10_up0y2")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
 position = Vector2(312, 2074.5)
 rotation = 0.785398
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("15_up0y2")
+texture = ExtResource("11_njhw0")
 hframes = 5
 vframes = 5
 frame = 22
 
-[node name="HaloLineart7" type="Sprite2D" parent="." instance=ExtResource("12_om3cs")]
+[node name="HaloLineart7" type="Sprite2D" parent="." instance=ExtResource("8_xe3l6")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
-position = Vector2(624, 2026.5)
-texture = ExtResource("13_xe3l6")
+position = Vector2(688, 2026.5)
+texture = ExtResource("9_tkpt5")
 
-[node name="BeetleLineart8" type="Sprite2D" parent="." instance=ExtResource("14_tkpt5")]
+[node name="BeetleLineart8" type="Sprite2D" parent="." instance=ExtResource("10_up0y2")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
-position = Vector2(624, 2043.5)
-texture = ExtResource("15_up0y2")
+position = Vector2(688, 2043.5)
+texture = ExtResource("11_njhw0")
 hframes = 5
 vframes = 5
 frame = 9
 
-[node name="Wall24" type="Polygon2D" parent="." instance=ExtResource("16_2xyi5")]
+[node name="Wall24" type="Polygon2D" parent="." instance=ExtResource("12_xvr5a")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(1408, 2112)
@@ -571,7 +510,7 @@ scale = Vector2(-1, 1)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-438, 356, -329, 161, -310, 190, -236, 116, -226, -21, -361, -48, -432, -155, -429, -306, -421, -334, -401, -334, -394, -324, -382, -323, -378, -315, -367, -322, -341, -413, -326, -383, -289, -373, -285, -347, -276, -382, -301, -395, -294, -433, -234, -426, -188, -365, -168, -384, -113, -319, -65, -306, 409, -232, 434, -209, 405, -183, 432, -101, 443, -170, 490, -198, 510, -263, 633, -318, 788, 380)
 
-[node name="Wall25" type="Polygon2D" parent="." instance=ExtResource("16_2xyi5")]
+[node name="Wall25" type="Polygon2D" parent="." instance=ExtResource("12_xvr5a")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(192, 1856)
@@ -579,7 +518,7 @@ scale = Vector2(-1, 1)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-604, -45, -481, 648, -57, 598, -10, 280, 629, 242, 455, 199, 483, 133, 543, 130, 610, -4, 631, 8, 683, -84, 721, -24, 754, -26, 786, 19, 1014, 2, 625, -364, -592, -253)
 
-[node name="Wall44" type="Polygon2D" parent="." instance=ExtResource("16_2xyi5")]
+[node name="Wall44" type="Polygon2D" parent="." instance=ExtResource("12_xvr5a")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(2379, 2431)
@@ -589,6 +528,93 @@ polygon = PackedVector2Array(241, 312, 146, 45, 128, 87, 24, -164, -12, -79, -71
 [node name="Rock88" type="Polygon2D" parent="."]
 z_index = 7
 material = SubResource("ShaderMaterial_ddx3t")
-position = Vector2(985, 2354)
+position = Vector2(1049, 2354)
 scale = Vector2(-1.2, 1.2)
 polygon = PackedVector2Array(64.1666, 74.1666, 38.3333, 40, 10.8333, -157.5, 5.83325, -218.333, 0.833252, -142.5, -13.3334, 45.8333, -41.6667, 76.6666)
+
+[node name="InputDisplay8" type="TextureRect" parent="." instance=ExtResource("13_fh7ic")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+offset_left = 657.0
+offset_top = 2147.0
+offset_right = 721.0
+offset_bottom = 2211.0
+mouse_filter = 2
+texture = ExtResource("14_2pndc")
+stretch_mode = 3
+script = ExtResource("15_rvaep")
+action = "aim"
+
+[node name="InputDisplay9" type="TextureRect" parent="." instance=ExtResource("13_fh7ic")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+offset_left = 832.0
+offset_top = 2147.0
+offset_right = 896.0
+offset_bottom = 2211.0
+mouse_filter = 2
+texture = ExtResource("14_2pndc")
+stretch_mode = 3
+script = ExtResource("15_rvaep")
+action = "jump"
+
+[node name="Tutorial6" type="RichTextLabel" parent="." instance=ExtResource("16_xa4fu")]
+z_index = 6
+offset_left = 576.0
+offset_top = 2208.0
+offset_right = 801.0
+offset_bottom = 2308.0
+theme = ExtResource("17_o60mq")
+theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "HOLD"
+horizontal_alignment = 1
+script = ExtResource("18_gsfi5")
+localization_code = "HOLD"
+
+[node name="Tutorial36" type="RichTextLabel" parent="." instance=ExtResource("16_xa4fu")]
+z_index = 6
+offset_left = 399.0
+offset_top = 2149.0
+offset_right = 624.0
+offset_bottom = 2249.0
+theme = ExtResource("17_o60mq")
+theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "(NO DUNG)"
+horizontal_alignment = 1
+script = ExtResource("18_gsfi5")
+localization_code = "(NO DUNG)"
+
+[node name="ButtonPrompts8" type="Sprite2D" parent="." instance=ExtResource("19_rm1p5")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+position = Vector2(832, 1984)
+rotation = 3.14159
+scale = Vector2(0.6, -0.6)
+texture = ExtResource("20_66ceo")
+vframes = 14
+frame = 10
+
+[node name="ButtonPrompts23" type="Sprite2D" parent="." instance=ExtResource("19_rm1p5")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+position = Vector2(1670.4, 1891)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("20_66ceo")
+vframes = 14
+frame = 9
+
+[node name="ButtonPrompts22" type="Sprite2D" parent="." instance=ExtResource("19_rm1p5")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+position = Vector2(1694.4, 1840)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("20_66ceo")
+vframes = 14
+frame = 10

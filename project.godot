@@ -161,6 +161,10 @@ back={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://resources/localizations/localizations.en.translation", "res://resources/localizations/localizations.pt.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Tiles"

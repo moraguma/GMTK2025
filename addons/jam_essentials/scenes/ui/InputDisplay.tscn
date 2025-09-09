@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://etnn2ymfmf2k" path="res://addons/jam_essentials/scenes/ui/scripts/InputDisplay.gd" id="1_v1lqs"]
 
 [node name="InputDisplay" type="TextureRect"]
+z_index = 6
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2

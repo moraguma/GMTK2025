@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="1_wmx41"]
 [ext_resource type="Texture2D" uid="uid://c344rkjngm48c" path="res://resources/sprites/OBSTACULO-ROCHA.png" id="2_wmx41"]
-[ext_resource type="Texture2D" uid="uid://d1vweb4yneo3l" path="res://resources/sprites/wind_particle.png" id="3_8hfn2"]
+[ext_resource type="Texture2D" uid="uid://bciwhmf378ylf" path="res://resources/sprites/rock_particle.png" id="3_8hfn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn4lm"]
 size = Vector2(248, 512)
@@ -14,10 +14,13 @@ script = ExtResource("1_wmx41")
 sound = "Rock"
 
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.282353)
 position = Vector2(-3.8147e-06, 0)
 texture = ExtResource("2_wmx41")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_pn4lm")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
@@ -37,7 +40,113 @@ initial_velocity_min = 400.0
 initial_velocity_max = 800.0
 damping_min = 84.712
 damping_max = 84.712
-scale_amount_min = 0.5
-scale_amount_max = 0.7
+angle_min = -180.0
+angle_max = 180.0
 
 [node name="Skewer" type="Node2D" parent="."]
+
+[node name="Shadow" type="Polygon2D" parent="Skewer"]
+clip_children = 2
+position = Vector2(7, 2)
+scale = Vector2(1.03, 1.02)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-162, 256, -156.311, 242.157, -151.456, 240.196, -149.515, 234.314, -137.864, 230.392, -142.718, 223.529, -142.718, 208.824, -134.951, 200.98, -134.951, 190.196, -128.155, 180.392, -128, 163, -137, 160, -142, 146, -154, 133, -154.369, 110.784, -137.864, 109.804, -136.893, 104.902, -156.311, 98.0392, -157.282, 71.5686, -142.718, 65.6863, -145.631, 52.9412, -133.01, 48.0392, -129.126, 39.2157, -133.01, 22.549, -143.689, 17.6471, -148.544, -3.92157, -139.806, -11.7647, -140.777, -34.3137, -129.126, -43.1373, -129.126, -61.7647, -136.893, -72.549, -133.981, -89.2157, -144.66, -100, -143.689, -114.706, -148.544, -130.392, -147, -157, -139, -158, -138.835, -167.647, -130.097, -171.569, -131.068, -202.941, -138.835, -203.922, -139.806, -212.745, -151.456, -214.706, -144, -256, 160, -256, 151.456, -217.647, 142.718, -216.667, 137.864, -204.902, 129.126, -199.02, 130.097, -164.706, 136.893, -159.804, 137.864, -151.961, 144.66, -150, 144.66, -126.471, 137.864, -119.608, 134.951, -105.882, 129.126, -101.961, 129.126, -86.2745, 138.835, -78.4314, 139.806, -65.6863, 152, -54, 150.485, -45.098, 155, -40, 154.369, -25.4902, 141.748, -18.6275, 140.777, -8.82353, 153.398, 0, 152.427, 18.6275, 137.864, 25.4902, 138.835, 33.3333, 156.311, 38.2353, 151.456, 64.7059, 141.748, 68.6275, 140.777, 73.5294, 149.515, 79.4118, 146.602, 98.0392, 131.068, 104.902, 136.893, 114.706, 135.922, 122.549, 143.689, 124.51, 146, 143, 134.951, 148.039, 139.806, 153.922, 140.777, 161.765, 151.456, 162.745, 151, 181, 140, 187, 141, 200, 133.01, 206.863, 142.718, 210.784, 146.602, 222.549, 158.252, 224.51, 167, 256)
+
+[node name="Stone" type="Polygon2D" parent="Skewer"]
+clip_children = 2
+position = Vector2(7, 2)
+color = Color(0.298039, 0.313726, 0.541176, 1)
+polygon = PackedVector2Array(-162, 256, -159, 250, -154, 249, -151, 243, -138, 239, -137, 233, -142, 226, -142, 216, -135, 210, -135, 197, -128, 186.239, -128, 163, -137, 160, -142, 146, -154, 133, -154, 118, -137, 117, -137, 103, -157, 96, -157, 77, -142, 71, -145, 57, -133, 52, -128, 41.3519, -130, 32, -133, 20, -144, 14, -148, -1, -139, -9, -140, -31, -128, -41.7824, -128, -65, -136, -76, -133, -93, -144, -104, -142, -117, -148, -134, -147, -157, -139, -158, -138, -167, -128, -170.503, -128, -211, -138, -213, -140, -222, -150, -225, -144, -256, 160, -256, 153, -227, 143, -225, 138, -213, 128, -208, 128, -183.277, 128, -164.771, 135, -160, 135, -151, 144, -149, 144, -131, 138, -124, 135, -111, 128, -108, 128, -84.5781, 139, -77, 139, -65, 152, -54, 150, -43, 155, -40, 154, -30, 142, -21, 138, -7, 153, 2, 152, 16, 138, 24, 139, 38, 156, 43, 152, 61, 142, 67, 141, 79, 149, 84, 147, 95, 128, 103.567, 136, 118, 136, 128, 144, 131, 146, 143, 131, 150, 138, 158, 140, 169, 151, 171, 151, 181, 140, 187, 141, 200, 133, 208, 134, 217, 144, 220, 147, 230, 160, 233, 167, 256)
+
+[node name="Shadow" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(160, -227, 133, -229, 136, -227, 141, -227, 145, -223)
+
+[node name="Shadow2" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(141, -212, 119, -217, 113, -214, 132, -207)
+
+[node name="Shadow3" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(145, -131, 130, -133, 127, -130, 139, -123)
+
+[node name="Shadow4" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(139, -111, 119, -115, 116, -112, 109, -113, 108, -110, 117, -110, 120, -112, 130, -107)
+
+[node name="Shadow5" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(157, -29, 138, -35, 136, -31, 136, -20, 144, -17)
+
+[node name="Shadow6" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+
+[node name="Shadow7" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(156, 17, 140, 13, 133, 19, 133, 27, 144, 28)
+
+[node name="Shadow8" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(153, 62, 136, 58, 134, 61, 135, 68, 144, 69)
+
+[node name="Shadow9" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(150, 96, 133, 92, 121, 101, 134, 106)
+
+[node name="Shadow10" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(147, 143, 132, 141, 121, 149, 133, 150)
+
+[node name="Shadow11" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(152, 181, 135, 178, 132, 184, 143, 188)
+
+[node name="Shadow12" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(143, 201, 128, 199, 126, 205, 135, 209)
+
+[node name="Shadow13" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-151, -224, -147, -227, -138, -225, -137, -221, -141, -219)
+
+[node name="Shadow14" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-139, -213, -133, -215, -119, -212, -119, -207, -131, -207)
+
+[node name="Shadow15" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-150, -134, -140, -134, -142, -116)
+
+[node name="Shadow16" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-148, -104, -135, -104, -125, -93, -126, -87, -137, -86)
+
+[node name="Shadow17" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-139, -76, -126, -76, -124, -68, -131, -67)
+
+[node name="Shadow18" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-146, 14, -134, 13, -125, 18, -124, 24, -132, 25)
+
+[node name="Shadow19" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-159, 96, -144, 94, -127, 102, -127, 108, -143, 110)
+
+[node name="Shadow20" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-157, 134, -140, 132, -133, 145, -132, 149, -142, 150)
+
+[node name="Shadow21" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-138, 160, -126, 159, -121, 162, -121, 166, -132, 167)
+
+[node name="Shadow22" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+polygon = PackedVector2Array(-143, 226, -137, 226, -132, 232, -132, 235, -139, 234)
+
+[node name="Shadow23" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)
+
+[node name="Shadow24" type="Polygon2D" parent="Skewer/Stone"]
+color = Color(0.198568, 0.262735, 0.452134, 1)

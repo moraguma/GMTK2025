@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpf03w2pi4ape"]
+[gd_scene load_steps=20 format=3 uid="uid://cpf03w2pi4ape"]
 
 [ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_ea1jp"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="2_65fvd"]
 [ext_resource type="Texture2D" uid="uid://cyhmislouoscn" path="res://resources/sprites/cutscenes/LOOP/LOOP-0.png" id="2_eavbo"]
 [ext_resource type="Texture2D" uid="uid://c2nxoiunal58r" path="res://resources/sprites/cutscenes/LOOP/LOOP-RAIO.png" id="3_agn4f"]
-[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="3_eavbo"]
 [ext_resource type="Texture2D" uid="uid://b6jxs0yxd658a" path="res://resources/sprites/cutscenes/LOOP/LOOP-1.png" id="4_1yflk"]
 [ext_resource type="Texture2D" uid="uid://bjfdhbcc6lj3e" path="res://resources/sprites/cutscenes/LOOP/LOOP-2.png" id="5_p2qee"]
 [ext_resource type="Texture2D" uid="uid://bx5epq2uaculf" path="res://resources/sprites/cutscenes/LOOP/LOOP-3.png" id="6_d0051"]
+[ext_resource type="PackedScene" uid="uid://bytw8x327a2uj" path="res://addons/jam_essentials/scenes/ui/InputDisplay.tscn" id="8_cofj3"]
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="9_40yuo"]
 [ext_resource type="AudioStream" uid="uid://d3ieljljf1rhw" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_thunder_earthquake.wav" id="9_oht0b"]
+[ext_resource type="Texture2D" uid="uid://biqemmwkbjpfa" path="res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png" id="10_0u1fw"]
 [ext_resource type="AudioStream" uid="uid://bj2c7y1ykkare" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_1.wav" id="10_rto5t"]
 [ext_resource type="AudioStream" uid="uid://w1frvfxhp40d" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_2.wav" id="11_cofj3"]
 [ext_resource type="AudioStream" uid="uid://0368enoik4uu" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_stinger_3.wav" id="12_40yuo"]
@@ -262,6 +264,12 @@ _data = {
 &"RESET": SubResource("Animation_0xuf1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6o6g"]
+shader = ExtResource("9_40yuo")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
 [node name="Cutscene" type="Node2D"]
 position = Vector2(960, 540)
 script = ExtResource("1_ea1jp")
@@ -296,17 +304,26 @@ texture = ExtResource("3_agn4f")
 position = Vector2(-960, -562)
 
 [node name="Tutorial" parent="Skip" instance=ExtResource("2_65fvd")]
-offset_left = 1604.0
+clip_contents = false
+offset_left = 1527.0
 offset_top = 985.0
-offset_right = 1829.0
+offset_right = 1793.0
 offset_bottom = 1085.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 48
-text = "[center]Next"
+text = "Next"
+horizontal_alignment = 2
+localization_code = "Next"
 
-[node name="ButtonPrompts" parent="Skip" instance=ExtResource("3_eavbo")]
-position = Vector2(1838, 1015)
-frame = 12
+[node name="InputDisplay" parent="Skip" instance=ExtResource("8_cofj3")]
+material = SubResource("ShaderMaterial_s6o6g")
+offset_left = 1806.0
+offset_top = 983.0
+offset_right = 1870.0
+offset_bottom = 1047.0
+texture = ExtResource("10_0u1fw")
+action = "jump"
 
 [node name="Sound" type="Node" parent="."]
 

@@ -1,0 +1,159 @@
+KEYS,en,pt
+HOLD,HOLD,SEGURE
+OPEN  MAP,OPEN MAP,ABRIR MAPA
+OLYMPUS_THROW_1,Olympus was a tiny speck from the base of the mountain,O Olímpo era um ponto distante visto da base da montanha
+OLYMPUS_THROW_2,Sisyphus thought to explore the surroundings before going to the peak,Sísifo decidiu explorar as redondezas antes de escalar até o topo
+OLYMPUS_THROW_3,"After all...
+
+There is always tomorrow","Afinal...
+
+Há sempre o amanhã"
+(NO DUNG),(NO DUNG),"(MÃOS 
+VAZIAS)"
+OLYMPUS_SOMERSAULT_1,Sisyphus entered a cave in the depths of Tartarus,Sísifo entrou numa caverna nas profundezas do Tártaro
+OLYMPUS_SOMERSAULT_2,"Though far away from Olympus
+
+He held hope for tomorrow","Apesar de estar longe do Olímpo
+
+Amanhã seria outro dia"
+RESET,RESET,REINICIAR
+OLYMPUS_ROLL_1,Sisyphus rolled away from the mountain,Sísifo rolou para longe da montanha
+OLYMPUS_ROLL_2,"Despite the distance
+
+He felt he was getting closer to Olympus","Apesar da distância
+
+Ele se sentia mais próximo do Olímpo"
+OLYMPUS_AIR_THROW_1,Sisyphus' toil would be rewarded by the gods,O esforço de Sísifo seria recompensado pelos deuses
+OLYMPUS_AIR_THROW_2,But all he knows is rolling dung,Mas ele só sabe rolar bosta
+OLYMPUS_AIR_THROW_3,What else could he wish for?,O que mais ele poderia querer?
+OLYMPUS_PRAY_PULL_1,IT'S ABSURD!,É ABSURDO!
+OLYMPUS_PRAY_PULL_2,All the work Sisyphus put in brought him closer to an end he didn't know,Todo o trabalho de Sísifo o aproximava de um final que não pertencia à sua realidade
+OLYMPUS_COMBO_1,"Sisyphus found a recipe for creating fire anywhere
+
+He wrote it down on his map for later","Sísifo achou uma receita para criar fogo em qualquer lugar
+
+Ele a anotou no seu mapa para mais tarde"
+OLYMPUS_COMBO_2,"At last, Sisyphus was ready
+
+Olympus awaited","Finalmente, Sísifo estava pronto
+
+O Olímpo o esperava"
+OLYMPUS_ENDING_1,Sisyphus could see Olympus in the distance,Sísifo conseguia ver o Olímpo ao longe
+OLYMPUS_ENDING_2,He would have to get here quickly if he wanted to make it,Ele precisaria chegar aqui rápido para alcançar o Olímpo
+OLYMPUS_ENDING_3,He could use his knowledge to find faster routes,Ele poderia usar seu conhecimento para encontrar caminhos mais rápidos
+OLYMPUS_ENDING_4,"After all, there is always tomorrow","Afinal, há sempre o amanhã"
+OLYMPUS_ENDING_5,But today?,Mas hoje...
+General,General,Geral
+Language,Language,Idioma
+English,English,English
+Português,Português,Português
+Back to title,Back to title,Menu principal
+Video,Video,Vídeo
+Fullscreen,Fullscreen,Tela cheia
+Audio,Audio,Áudio
+Master,Master,Mestre
+Music,Music,Música
+SFX,SFX,Efeitos sonoros
+Controls,Controls,Controles
+left,Left,Esquerda
+up,Up,Cima
+right,Right,Direita
+down,Down,Baixo
+jump,Jump,Pular
+back,Back,Voltar
+reset,Reset,Reiniciar
+aim,Aim,Mirar
+throw,Throw,Arremessar
+map,Map,Mapa
+menu,Pause,Pausar
+Assign a button to {action}, Assign a button to {action}, Escolha o botão para {action}
+Reset controls,Reset controls,Reiniciar controles
+Play,Play,Jogar
+Options,Options,Opções
+Credits,Credits,Créditos
+Exit,Exit,Sair
+MoragumaCredits,"[center][i]Code and game design[/i]
+[wave][color=#236BB1]Gustavo Morais (@moraguma)","[center][i]Código e design de jogo[/i]
+[wave][color=#236BB1]Gustavo Morais (@moraguma)"
+JanaCredits,"[center][i]Art Direction and Characters[/i]
+[wave][color=#236BB1]Jana Marcato (@alphajn)","[center][i]Direção de arte e personagens[/i]
+[wave][color=#236BB1]Jana Marcato (@alphajn)"
+ChagasCredits,"[center][i]Audio Director[/i]
+[wave][color=#236BB1]Gustavo Chagas (@Chagasgstv)","[center][i]Diretor de áudio[/i]
+[wave][color=#236BB1]Gustavo Chagas (@Chagasgstv)"
+LuigiCredits,"[center][i]2D Art Designer[/i]
+[wave][color=#236BB1]Luigi Francisco (@luigi_troxao)","[center][i]Designer de arte 2D[/i]
+[wave][color=#236BB1]Luigi Francisco (@luigi_troxao)"
+Next,Next,Próximo
+INTRO_0_0,"Once upon a time, in a land of gods and bugs...
+SISYPHUS, the little dung beetle,
+lives his days like any other.","Era uma vez, numa terra de deuses e insetos...
+SÍSIFO, o pequeno rola-bosta,
+vive seus dias, como sempre"
+INTRO_1_0,"Happily rolling his ball of dung...
+	 Not a care in the world...
+		  It's routine, and he's satisfied","Rolando tranquilo sua bola de bosta...
+	 Sem nenhuma preocupação...
+		  É sua rotina, e ele está satisfeito"
+INTRO_2_0,"But the gods... Not as much.
+	How dare this fool step into
+						  Mount Olympus with
+								something so nasty!","Já os deuses... nem tanto.
+	Como ousa este tolo entrar no
+						  Monte Olímpo com
+								algo tão nojento!"
+INTRO_3_0,"Zeus does not tolerate such insolence.
+		And thus, condemns little Sisyphus...","Zeus não tolera este tipo de insolência.
+		Então, condena o pequeno Sísifo..."
+INTRO_4_0,"...To roll his ball of dung
+up the mountain,","...A rolar sua bola de bosta
+pela montanha,"
+INTRO_4_1,"Every day,
+for the rest of his life.","Todo dia,
+pelo resto da sua vida."
+INTRO_5_0,"...Unless he can reach Olympus before the sun sets.
+
+Only then will he be freed
+of this terrible curse.","...A não ser que ele consiga alcançar o Olímpo antes do anoitecer.
+
+É o único jeito de se livrar
+deste terrível tormento."
+END_0_0,"At last, right before the end of the day...
+  little Sisyphus reaches the mountaintop
+		...and stumbles upon the
+				God of Thunder once again.","Enfim, pouco antes do anoitecer...
+  o pequeno Sísifo alcança o pico
+		...e se depara com o
+				Deus do Trovão novamente."
+END_1_0,"Impressed by his dedication
+ and determination,
+	Zeus rewards little Sisyphus with
+		a wish for anything he
+			could ever want.","Impressionado com sua dedicação
+ e determinação,
+	Zeus oferece ao pequeno Sísifo
+		um desejo: qualquer coisa
+			que ele possa querer."
+END_2_0,"	However, without much thought,
+Sisyphus left Olympus with his ball of dung
+					and went back to the
+						base of the mountain.","	Contudo, sem pensar muito,
+Sísifo deixa o Olímpo com sua bosta
+					e desce de volta
+						para a base da montanha."
+END_3_0,"Zeus was confused.
+To choose dung over a gift from the gods?
+
+To make sense of this decision,
+Zeus must imaine the dung beetle happy.","Zeus ficou confuso.
+Escolher bosta no lugar de um desejo dos deuses?
+
+Para entender esta decisão,
+Zeus precisa imaginar Sísifo feliz"
+locked,"Locked!
+
+Available in 
+full game","Bloqueado!
+
+Disponível no 
+jogo completo"

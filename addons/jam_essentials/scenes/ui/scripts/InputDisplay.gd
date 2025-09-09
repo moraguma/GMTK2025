@@ -202,7 +202,7 @@ const FORMAT = ".png"
 	set(val):
 		action = val
 		if Engine.is_editor_hint():
-			try_load_from_dict(0, KEYCODE_TO_TEX, KEYCODE_PREFIX)
+			texture = preload("res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png")
 @export var idx: int = 0
 var current_tex_path
 

@@ -28,7 +28,7 @@ skew_base = -0.100198
 
 [node name="Skewer" type="Node2D" parent="."]
 position = Vector2(0, 256)
-skew = -0.052075
+skew = -0.138386
 
 [node name="LeafOutline" type="Polygon2D" parent="Skewer"]
 clip_children = 2

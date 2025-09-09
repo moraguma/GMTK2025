@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmi8mk33prchr"]
+[gd_scene load_steps=3 format=3 uid="uid://dmi8mk33prchr"]
 
 [ext_resource type="Theme" uid="uid://xq376kmqkmcs" path="res://resources/themes/main_theme.tres" id="1_cfv3y"]
+[ext_resource type="Script" uid="uid://cn56ft6m0oipi" path="res://addons/jam_essentials/scenes/ui/scripts/LocalizableRichTextLabel.gd" id="2_ci5ev"]
 
 [node name="Tutorial" type="RichTextLabel"]
 z_index = 6
 offset_right = 225.0
 offset_bottom = 100.0
 theme = ExtResource("1_cfv3y")
+theme_override_colors/default_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+theme_override_constants/outline_size = 0
 bbcode_enabled = true
-text = "[center]"
+text = "fsdfadasd"
+horizontal_alignment = 1
+script = ExtResource("2_ci5ev")
+localization_code = "fsdfadasd"

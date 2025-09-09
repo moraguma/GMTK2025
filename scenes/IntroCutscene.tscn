@@ -1,12 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://b73e0yeqtbwbb"]
+[gd_scene load_steps=38 format=3 uid="uid://b73e0yeqtbwbb"]
 
 [ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_fgsq1"]
+[ext_resource type="Theme" uid="uid://ke53vtgjwwko" path="res://resources/themes/cutscene_theme.tres" id="2_f52n8"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="2_nuwxb"]
-[ext_resource type="Texture2D" uid="uid://d3oe4otnp5med" path="res://resources/sprites/cutscenes/INTRO/CENA-1.png" id="2_sgn3j"]
-[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="3_0xuf1"]
 [ext_resource type="Texture2D" uid="uid://cir4gligfaiue" path="res://resources/sprites/cutscenes/INTRO/2/CENA-2-BG.png" id="3_igf54"]
+[ext_resource type="Script" uid="uid://cn56ft6m0oipi" path="res://addons/jam_essentials/scenes/ui/scripts/LocalizableRichTextLabel.gd" id="3_ncfcn"]
 [ext_resource type="Texture2D" uid="uid://c4u7c1bcmhbo3" path="res://resources/sprites/cutscenes/INTRO/2/CENA-2-ART.png" id="4_fa6oa"]
-[ext_resource type="Texture2D" uid="uid://cnaf8r8f18k8p" path="res://resources/sprites/cutscenes/INTRO/2/CENA-2-TEXT.png" id="5_nnjpo"]
 [ext_resource type="Script" uid="uid://bg4vq7i1cehh6" path="res://scenes/scripts/ShakingSprite.gd" id="6_x6d56"]
 [ext_resource type="Texture2D" uid="uid://ckmf81t6gicn5" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-BG.png" id="7_54643"]
 [ext_resource type="Texture2D" uid="uid://dkoqs3e6o71pu" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-BG-2.png" id="8_sokfp"]
@@ -15,16 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://t5knfgmy3pmw" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-ART-3.png" id="10_fu2l7"]
 [ext_resource type="Texture2D" uid="uid://3ub68xjjhbse" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-ART-2.png" id="11_lvwbc"]
 [ext_resource type="Texture2D" uid="uid://44sldp5x0dot" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-ART-1.png" id="12_f52n8"]
-[ext_resource type="Texture2D" uid="uid://botjnwxr7ch8d" path="res://resources/sprites/cutscenes/INTRO/3/CENA-3-TEXT.png" id="13_ncfcn"]
 [ext_resource type="Texture2D" uid="uid://c6qqiiaguhid4" path="res://resources/sprites/cutscenes/INTRO/4/CENA-4-BG.png" id="14_jon0r"]
 [ext_resource type="Texture2D" uid="uid://c0q0f2n12p68d" path="res://resources/sprites/cutscenes/INTRO/4/CENA-4-ART-1.png" id="15_nryxe"]
 [ext_resource type="Texture2D" uid="uid://bacwoipdy32eo" path="res://resources/sprites/cutscenes/INTRO/4/CENA-4-ART-2.png" id="16_jvq6h"]
 [ext_resource type="Texture2D" uid="uid://b7gln0bknsofy" path="res://resources/sprites/cutscenes/INTRO/4/CENA-4-ART-3.png" id="17_l1g38"]
-[ext_resource type="Texture2D" uid="uid://b4o0pypypwry3" path="res://resources/sprites/cutscenes/INTRO/4/CENA-4-TEXT.png" id="18_tufev"]
 [ext_resource type="Texture2D" uid="uid://bcnvrexy1yfld" path="res://resources/sprites/cutscenes/INTRO/5/CENA-5-BG.png" id="19_nnjpo"]
-[ext_resource type="Texture2D" uid="uid://txceurafjxyi" path="res://resources/sprites/cutscenes/INTRO/5/CENA-5-TEXT.png" id="20_x6d56"]
-[ext_resource type="Texture2D" uid="uid://c87u5tw32yt0c" path="res://resources/sprites/cutscenes/INTRO/CENA-6.png" id="21_54643"]
+[ext_resource type="PackedScene" uid="uid://bytw8x327a2uj" path="res://addons/jam_essentials/scenes/ui/InputDisplay.tscn" id="24_ncfcn"]
 [ext_resource type="AudioStream" uid="uid://1vhlf1k4wupt" path="res://resources/sfx/Cutscenes/Intro/Sisyphus - sfx_cutscene_intro_stinger_1.wav" id="25_f52n8"]
+[ext_resource type="Texture2D" uid="uid://biqemmwkbjpfa" path="res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png" id="25_jon0r"]
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="25_nryxe"]
 [ext_resource type="AudioStream" uid="uid://cwm3l47bmu0ex" path="res://resources/sfx/Cutscenes/Intro/Sisyphus - sfx_cutscene_intro_stinger_2.wav" id="26_ncfcn"]
 [ext_resource type="AudioStream" uid="uid://bdi44b666ftk5" path="res://resources/sfx/Cutscenes/Intro/Sisyphus - sfx_cutscene_intro_stinger_3.wav" id="27_jon0r"]
 [ext_resource type="AudioStream" uid="uid://38a4sm2bnvt" path="res://resources/sfx/Cutscenes/Intro/Sisyphus - sfx_cutscene_intro_stinger_4.wav" id="28_nryxe"]
@@ -305,6 +303,12 @@ _data = {
 &"RESET": SubResource("Animation_0xuf1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvq6h"]
+shader = ExtResource("25_nryxe")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
 [node name="Cutscene" type="Node2D"]
 position = Vector2(960, 540)
 script = ExtResource("1_fgsq1")
@@ -317,8 +321,17 @@ libraries = {
 
 [node name="0" type="Node2D" parent="."]
 
-[node name="0" type="Sprite2D" parent="0"]
-texture = ExtResource("2_sgn3j")
+[node name="0" type="RichTextLabel" parent="0"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+theme = ExtResource("2_f52n8")
+text = "INTRO_0_0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_0_0"
 
 [node name="1" type="Node2D" parent="."]
 visible = false
@@ -332,8 +345,18 @@ script = ExtResource("6_x6d56")
 trauma = 0.1
 decay_trauma = false
 
-[node name="2" type="Sprite2D" parent="1"]
-texture = ExtResource("5_nnjpo")
+[node name="2" type="RichTextLabel" parent="1"]
+clip_contents = false
+offset_left = -463.0
+offset_top = -571.0
+offset_right = 935.0
+offset_bottom = -122.0
+theme = ExtResource("2_f52n8")
+theme_override_font_sizes/normal_font_size = 80
+text = "INTRO_1_0"
+vertical_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_1_0"
 
 [node name="2" type="Node2D" parent="."]
 visible = false
@@ -370,8 +393,17 @@ decay_trauma = false
 [node name="4" type="Sprite2D" parent="2/LittleGuy"]
 texture = ExtResource("11_lvwbc")
 
-[node name="6" type="Sprite2D" parent="2"]
-texture = ExtResource("13_ncfcn")
+[node name="2" type="RichTextLabel" parent="2"]
+clip_contents = false
+offset_left = -909.0
+offset_top = -502.0
+offset_right = 489.0
+offset_bottom = -53.0
+theme = ExtResource("2_f52n8")
+theme_override_font_sizes/normal_font_size = 64
+text = "INTRO_2_0"
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_2_0"
 
 [node name="3" type="Node2D" parent="."]
 visible = false
@@ -396,8 +428,18 @@ script = ExtResource("6_x6d56")
 trauma = 0.2
 decay_trauma = false
 
-[node name="4" type="Sprite2D" parent="3"]
-texture = ExtResource("18_tufev")
+[node name="4" type="RichTextLabel" parent="3"]
+clip_contents = false
+offset_left = -271.0
+offset_top = -635.0
+offset_right = 1127.0
+offset_bottom = -186.0
+theme = ExtResource("2_f52n8")
+theme_override_font_sizes/normal_font_size = 64
+text = "INTRO_3_0"
+vertical_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_3_0"
 
 [node name="4" type="Node2D" parent="."]
 visible = false
@@ -405,30 +447,78 @@ visible = false
 [node name="0" type="Sprite2D" parent="4"]
 texture = ExtResource("19_nnjpo")
 
-[node name="1" type="Sprite2D" parent="4"]
-texture = ExtResource("20_x6d56")
+[node name="1" type="RichTextLabel" parent="4"]
+clip_contents = false
+offset_left = -1085.0
+offset_top = -482.0
+offset_right = 313.0
+offset_bottom = -33.0
+theme = ExtResource("2_f52n8")
+theme_override_font_sizes/normal_font_size = 80
+text = "INTRO_4_0"
+horizontal_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_4_0"
+
+[node name="2" type="RichTextLabel" parent="4"]
+clip_contents = false
+offset_left = -240.0
+offset_top = 118.0
+offset_right = 1158.0
+offset_bottom = 567.0
+theme = ExtResource("2_f52n8")
+theme_override_font_sizes/normal_font_size = 80
+text = "INTRO_4_1"
+horizontal_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_4_1"
 
 [node name="5" type="Node2D" parent="."]
 visible = false
 
-[node name="0" type="Sprite2D" parent="5"]
-texture = ExtResource("21_54643")
+[node name="0" type="ColorRect" parent="5"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[node name="1" type="RichTextLabel" parent="5"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+theme = ExtResource("2_f52n8")
+text = "INTRO_5_0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ncfcn")
+localization_code = "INTRO_5_0"
 
 [node name="Skip" type="Node2D" parent="."]
 position = Vector2(-960, -562)
 
 [node name="Tutorial" parent="Skip" instance=ExtResource("2_nuwxb")]
-offset_left = 1604.0
+clip_contents = false
+offset_left = 1527.0
 offset_top = 985.0
-offset_right = 1829.0
+offset_right = 1793.0
 offset_bottom = 1085.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/normal_font_size = 48
-text = "[center]Next"
+text = "Next"
+horizontal_alignment = 2
+localization_code = "Next"
 
-[node name="ButtonPrompts" parent="Skip" instance=ExtResource("3_0xuf1")]
-position = Vector2(1838, 1015)
-frame = 12
+[node name="InputDisplay" parent="Skip" instance=ExtResource("24_ncfcn")]
+material = SubResource("ShaderMaterial_jvq6h")
+offset_left = 1806.0
+offset_top = 983.0
+offset_right = 1870.0
+offset_bottom = 1047.0
+texture = ExtResource("25_jon0r")
+action = "jump"
 
 [node name="Sound" type="Node" parent="."]
 

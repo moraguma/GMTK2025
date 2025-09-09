@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cg3tc75yvlkxo"]
+[gd_scene load_steps=45 format=3 uid="uid://cg3tc75yvlkxo"]
 
 [ext_resource type="Script" uid="uid://cek6gql3w0idv" path="res://scenes/scripts/Beetle.gd" id="1_df2da"]
 [ext_resource type="Script" uid="uid://cwbnog83wxe6f" path="res://scenes/scripts/TransitionAnimationPlayer.gd" id="2_mvssf"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://babbpdcxswvv3" path="res://resources/sprites/particles.png" id="5_odn6d"]
 [ext_resource type="Texture2D" uid="uid://crxt6n8dhi8ok" path="res://resources/sprites/halo.png" id="8_2ekb5"]
 [ext_resource type="Texture2D" uid="uid://bfk03vagl733i" path="res://resources/sprites/fire.png" id="10_pwiwl"]
-[ext_resource type="Texture2D" uid="uid://hfs1gnallhda" path="res://resources/sprites/ui/r.png" id="11_10t1h"]
 [ext_resource type="Texture2D" uid="uid://4aeutdjo1bpf" path="res://resources/sprites/ui/under_progress_bar.png" id="12_0xuoo"]
+[ext_resource type="PackedScene" uid="uid://bytw8x327a2uj" path="res://addons/jam_essentials/scenes/ui/InputDisplay.tscn" id="12_a61v5"]
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="13_a8n6e"]
 [ext_resource type="Texture2D" uid="uid://fei5a8mac45n" path="res://resources/sprites/ui/progress_bar.png" id="13_m2xve"]
 [ext_resource type="AudioStream" uid="uid://cxkvsjsis4ynf" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_fire_loop.wav" id="14_0xuoo"]
+[ext_resource type="Texture2D" uid="uid://biqemmwkbjpfa" path="res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png" id="14_aeih5"]
 [ext_resource type="AudioStream" uid="uid://tmyotkvbjhct" path="res://resources/sfx/Beetle/Sisyphus - sfx_beetle_freeze_pad_loop.wav" id="15_m2xve"]
 [ext_resource type="AudioStream" uid="uid://boqxp574vo1hi" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_push_loop.wav" id="17_rvsd1"]
 [ext_resource type="AudioStream" uid="uid://cm4hm13sakqw7" path="res://resources/sfx/Ball/Sisyphus - sfx_ball_roll_loop.wav" id="18_fket5"]
@@ -688,6 +690,12 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7xopq"]
+shader = ExtResource("13_a8n6e")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2da"]
 size = Vector2(80, 112)
 
@@ -780,10 +788,14 @@ speed_scale = 4.0
 
 [node name="Reset" type="Node2D" parent="."]
 
-[node name="R" type="Sprite2D" parent="Reset"]
-position = Vector2(0, -175)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("11_10t1h")
+[node name="R" parent="Reset" instance=ExtResource("12_a61v5")]
+material = SubResource("ShaderMaterial_7xopq")
+offset_left = -32.0
+offset_top = -208.0
+offset_right = 32.0
+offset_bottom = -144.0
+texture = ExtResource("14_aeih5")
+action = "reset"
 
 [node name="ResetProgressBar" type="TextureProgressBar" parent="Reset"]
 offset_left = -66.0

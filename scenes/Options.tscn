@@ -536,6 +536,12 @@ layout_mode = 2
 menu_base = NodePath("../../../../..")
 actions = Array[String](["menu"])
 
+[node name="ResetControls" parent="Base/OptionsMenu/ScrollContainer/VBoxContainer" index="21" instance=ExtResource("6_b4pvv")]
+layout_mode = 2
+text = "Reset controls"
+func_to_call = "reset_controls"
+localization_code = "Reset controls"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_pdp8e")

@@ -279,45 +279,35 @@ offset_left = -365.0
 offset_top = 899.0
 offset_right = -304.0
 offset_bottom = 978.0
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
-text = "[center]2"
 
 [node name="Tutorial25" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
 offset_left = -466.0
 offset_top = 1081.0
 offset_right = -405.0
 offset_bottom = 1160.0
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
-text = "[center]3"
 
 [node name="Tutorial26" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
 offset_left = 163.064
 offset_top = 848.55
 offset_right = 224.064
 offset_bottom = 927.55
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
-text = "[center]4"
 
 [node name="Tutorial27" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
 offset_left = 149.064
 offset_top = 1035.55
 offset_right = 210.064
 offset_bottom = 1114.55
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
-text = "[center]5"
 
 [node name="Tutorial24" parent="Map/Recipe" instance=ExtResource("8_bcks2")]
 offset_left = -367.0
 offset_top = 706.0
 offset_right = -306.0
 offset_bottom = 785.0
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/bold_font_size = 24
-text = "[center]1"
 
 [node name="ButtonPrompts49" parent="Map/Recipe" instance=ExtResource("9_f4qb8")]
 position = Vector2(355.064, 1140.55)

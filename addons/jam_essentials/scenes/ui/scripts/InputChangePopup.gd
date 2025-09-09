@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 func activate(action_name) -> void:
 	get_tree().call_group("ui_blockable", "block")
 	
-	instructions.text = tr("Assign a button to {action}").format({"action": action_name})
+	instructions.text = tr("Assign a button to {action}").format({"action": tr(action_name)})
 	
 	active = true
 	timer.start(TIME)

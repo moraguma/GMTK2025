@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc7dh7c047gub"]
+[gd_scene load_steps=4 format=3 uid="uid://bc7dh7c047gub"]
 
 [ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="1_t5t7t"]
 [ext_resource type="Script" uid="uid://dwscm5xt4ipbs" path="res://addons/jam_essentials/scenes/ui/scripts/InputChangePopup.gd" id="2_rj48e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8usw5"]
+bg_color = Color(0.192157, 0.0588235, 0.0666667, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="InputChangePopup" type="Control"]
 layout_mode = 3
@@ -22,6 +29,7 @@ anchor_right = 0.8
 anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8usw5")
 
 [node name="Instructions" type="Label" parent="Panel"]
 layout_mode = 1

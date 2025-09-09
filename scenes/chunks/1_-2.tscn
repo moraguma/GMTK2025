@@ -1,29 +1,29 @@
 [gd_scene load_steps=26 format=3 uid="uid://cfmlroyfolesm"]
 
-[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_75igk"]
-[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_gt5tm"]
-[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_ysnf7"]
-[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_qo0f2"]
-[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_pxrqw"]
-[ext_resource type="PackedScene" uid="uid://bjbxlo1ax7qby" path="res://scenes/TallAreaEnter.tscn" id="6_2f4ng"]
-[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="7_c35lj"]
-[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="8_v3sy3"]
-[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="9_vtrah"]
-[ext_resource type="PackedScene" uid="uid://chf7r1j18ecx0" path="res://scenes/BGGrass.tscn" id="10_pn6wl"]
-[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="11_ql7yx"]
-[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="12_dygnq"]
-[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="13_nwpgs"]
-[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="14_cm7yi"]
-[ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="15_lchiy"]
-[ext_resource type="Texture2D" uid="uid://ck16jg3d8psfs" path="res://resources/sprites/beetle_lineart.png" id="16_67dq5"]
-[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="17_gt5tm"]
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_gt5tm"]
+[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ysnf7"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_qo0f2"]
+[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_pxrqw"]
+[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_2f4ng"]
+[ext_resource type="PackedScene" uid="uid://bjbxlo1ax7qby" path="res://scenes/TallAreaEnter.tscn" id="6_c35lj"]
+[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="7_v3sy3"]
+[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="8_vtrah"]
+[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="9_pn6wl"]
+[ext_resource type="PackedScene" uid="uid://chf7r1j18ecx0" path="res://scenes/BGGrass.tscn" id="10_ql7yx"]
+[ext_resource type="PackedScene" uid="uid://niityq6mkqgx" path="res://scenes/HaloLineart.tscn" id="11_dygnq"]
+[ext_resource type="Texture2D" uid="uid://bvvree4eihmgd" path="res://resources/sprites/halo_lineart.png" id="12_nwpgs"]
+[ext_resource type="PackedScene" uid="uid://dcoss5ln6jgsc" path="res://scenes/BeetleLineart.tscn" id="13_cm7yi"]
+[ext_resource type="Texture2D" uid="uid://ck16jg3d8psfs" path="res://resources/sprites/beetle_lineart.png" id="14_lchiy"]
+[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="15_67dq5"]
+[ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="16_q03cv"]
+[ext_resource type="Texture2D" uid="uid://bw86qv2egcrrw" path="res://resources/sprites/ui/buttons.png" id="17_0wtbj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
-shader = ExtResource("3_ysnf7")
+shader = ExtResource("3_qo0f2")
 shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
-texture = ExtResource("4_qo0f2")
+texture = ExtResource("4_pxrqw")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -394,7 +394,7 @@ texture_region_size = Vector2i(64, 64)
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx18x"]
-texture = ExtResource("5_pxrqw")
+texture = ExtResource("5_2f4ng")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, 32, 32, 32, 32, -28, -28, -28)
@@ -415,165 +415,146 @@ sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7kl65"]
-shader = ExtResource("3_ysnf7")
+shader = ExtResource("3_qo0f2")
 shader_parameter/type = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h06rn"]
-shader = ExtResource("3_ysnf7")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+shader = ExtResource("3_qo0f2")
 shader_parameter/type = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awoh5"]
-shader = ExtResource("3_ysnf7")
+shader = ExtResource("3_qo0f2")
 shader_parameter/type = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddx3t"]
-shader = ExtResource("3_ysnf7")
+shader = ExtResource("3_qo0f2")
 shader_parameter/type = 1
 
 [node name="(1, -2)" type="Node2D"]
-script = ExtResource("1_75igk")
+script = ExtResource("1_gt5tm")
 
-[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_gt5tm")]
+[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ysnf7")]
 z_index = 25
 material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(2555914, 0, 0, 2490379, 0, 0, 2555915, 393216, 2, 2424844, 0, 0, 2490380, 393216, 2, 2555916, 65536, 1, 2359309, 0, 0, 2424845, 393216, 2, 2490381, 65536, 1, 2555917, 65536, 1, 14, 0, 1, 65550, 0, 1, 131086, 0, 1, 196622, 0, 1, 262158, 0, 1, 327694, 0, 2, 2359310, 65536, 0, 2424846, 65536, 1, 2490382, 65536, 1, 2555918, 65536, 1, 15, 65536, 1, 65551, 65536, 1, 131087, 65536, 1, 196623, 65536, 1, 262159, 65536, 1, 327695, 393216, 1, 393231, 0, 1, 458767, 0, 1, 524303, 0, 1, 589839, 0, 1, 655375, 0, 1, 720911, 0, 1, 786447, 0, 1, 851983, 0, 2, 2359311, 131072, 0, 2424847, 327680, 2, 2490383, 65536, 1, 2555919, 65536, 1, 16, 65536, 1, 65552, 65536, 1, 131088, 65536, 1, 196624, 65536, 1, 262160, 65536, 1, 327696, 65536, 1, 393232, 65536, 1, 458768, 65536, 1, 524304, 65536, 1, 589840, 65536, 1, 655376, 65536, 1, 720912, 65536, 1, 786448, 65536, 1, 851984, 393216, 1, 917520, 0, 1, 983056, 0, 1, 1048592, 0, 1, 1114128, 0, 2, 2424848, 131072, 0, 2490384, 327680, 2, 2555920, 65536, 1, 17, 65536, 1, 65553, 65536, 1, 131089, 65536, 1, 196625, 65536, 1, 262161, 65536, 1, 327697, 65536, 1, 393233, 65536, 1, 458769, 65536, 1, 524305, 65536, 1, 589841, 65536, 1, 655377, 65536, 1, 720913, 65536, 1, 786449, 65536, 1, 851985, 65536, 1, 917521, 65536, 1, 983057, 65536, 1, 1048593, 65536, 1, 1114129, 65536, 2, 2490385, 131072, 0, 2555921, 327680, 2, 18, 65536, 1, 65554, 65536, 1, 131090, 65536, 1, 196626, 65536, 1, 262162, 65536, 1, 327698, 327680, 1, 393234, 131072, 1, 458770, 131072, 1, 524306, 131072, 1, 589842, 131072, 1, 655378, 131072, 1, 720914, 327680, 2, 786450, 65536, 1, 851986, 65536, 1, 917522, 65536, 1, 983058, 65536, 1, 1048594, 65536, 1, 1114130, 65536, 2, 2555922, 65536, 0, 19, 65536, 1, 65555, 65536, 1, 131091, 65536, 1, 196627, 327680, 1, 262163, 131072, 1, 327699, 131072, 2, 720915, 131072, 0, 786451, 327680, 2, 851987, 65536, 1, 917523, 65536, 1, 983059, 65536, 1, 1048595, 65536, 1, 1114131, 65536, 2, 2555923, 65536, 0, 20, 65536, 1, 65556, 65536, 1, 131092, 65536, 1, 196628, 65536, 2, 786452, 131072, 0, 851988, 327680, 2, 917524, 65536, 1, 983060, 65536, 1, 1048596, 65536, 1, 1114132, 65536, 2, 2293780, 0, 0, 2359316, 0, 2, 2555924, 65536, 0, 21, 65536, 1, 65557, 65536, 1, 131093, 65536, 1, 196629, 65536, 2, 851989, 131072, 0, 917525, 327680, 2, 983061, 65536, 1, 1048597, 65536, 1, 1114133, 65536, 2, 2228245, 0, 0, 2293781, 393216, 2, 2359317, 65536, 2, 2555925, 65536, 0, 22, 65536, 1, 65558, 65536, 1, 131094, 327680, 1, 196630, 131072, 2, 917526, 131072, 0, 983062, 327680, 2, 1048598, 65536, 1, 1114134, 65536, 2, 2162710, 0, 0, 2228246, 393216, 2, 2293782, 327680, 1, 2359318, 131072, 2, 2555926, 65536, 0, 23, 65536, 1, 65559, 327680, 1, 131095, 131072, 2, 720919, 0, 0, 786455, 0, 2, 983063, 131072, 0, 1048599, 327680, 2, 1114135, 65536, 2, 2097175, 0, 0, 2162711, 393216, 2, 2228247, 327680, 1, 2293783, 131072, 2, 2555927, 65536, 0, 24, 131072, 1, 65560, 131072, 2, 655384, 0, 0, 720920, 393216, 2, 786456, 65536, 2, 1048600, 65536, 0, 1114136, 65536, 2, 2031640, 0, 0, 2097176, 393216, 2, 2162712, 327680, 1, 2228248, 131072, 2, 2555928, 65536, 0, 589849, 0, 0, 655385, 393216, 2, 720921, 65536, 1, 786457, 65536, 2, 1048601, 65536, 0, 1114137, 65536, 2, 1966105, 0, 0, 2031641, 393216, 2, 2097177, 327680, 1, 2162713, 131072, 2, 2490393, 0, 0, 2555929, 393216, 2, 524314, 0, 0, 589850, 393216, 2, 655386, 65536, 1, 720922, 65536, 1, 786458, 65536, 2, 1048602, 65536, 0, 1114138, 65536, 2, 1900570, 0, 0, 1966106, 393216, 2, 2031642, 327680, 1, 2097178, 131072, 2, 2490394, 65536, 0, 2555930, 65536, 1, 458779, 0, 0, 524315, 393216, 2, 589851, 65536, 1, 655387, 65536, 1, 720923, 65536, 1, 786459, 393216, 1, 851995, 0, 2, 1048603, 65536, 0, 1114139, 65536, 2, 1835035, 0, 0, 1900571, 393216, 2, 1966107, 327680, 1, 2031643, 131072, 2, 2490395, 65536, 0, 2555931, 65536, 1, 393244, 0, 0, 458780, 393216, 2, 524316, 65536, 1, 589852, 65536, 1, 655388, 65536, 1, 720924, 65536, 1, 786460, 65536, 1, 851996, 65536, 2, 1048604, 65536, 0, 1114140, 65536, 2, 1769500, 0, 0, 1835036, 393216, 2, 1900572, 65536, 1, 1966108, 65536, 2, 2490396, 65536, 0, 2555932, 65536, 1, 327709, 0, 0, 393245, 393216, 2, 458781, 65536, 1, 524317, 65536, 1, 589853, 65536, 1, 655389, 65536, 1, 720925, 65536, 1, 786461, 65536, 1, 851997, 65536, 2, 1048605, 65536, 0, 1114141, 65536, 2, 1769501, 65536, 0, 1835037, 65536, 1, 1900573, 65536, 1, 1966109, 65536, 2, 2490397, 65536, 0, 2555933, 65536, 1, 262174, 0, 0, 327710, 393216, 2, 393246, 65536, 1, 458782, 65536, 1, 524318, 65536, 1, 589854, 65536, 1, 655390, 65536, 1, 720926, 65536, 1, 786462, 65536, 1, 851998, 65536, 2, 1048606, 65536, 0, 1114142, 65536, 2, 1769502, 65536, 0, 1835038, 65536, 1, 1900574, 65536, 1, 1966110, 65536, 2, 2490398, 65536, 0, 2555934, 65536, 1, 196639, 0, 0, 262175, 393216, 2, 327711, 65536, 1, 393247, 65536, 1, 458783, 65536, 1, 524319, 65536, 1, 589855, 65536, 1, 655391, 65536, 1, 720927, 65536, 1, 786463, 327680, 1, 851999, 131072, 2, 1048607, 65536, 0, 1114143, 393216, 1, 1179679, 0, 2, 1769503, 65536, 0, 1835039, 65536, 1, 1900575, 65536, 1, 1966111, 65536, 2, 2490399, 65536, 0, 2555935, 65536, 1, 131104, 0, 0, 196640, 393216, 2, 262176, 65536, 1, 327712, 65536, 1, 393248, 65536, 1, 458784, 65536, 1, 524320, 65536, 1, 589856, 65536, 1, 655392, 65536, 1, 720928, 65536, 1, 786464, 65536, 2, 1048608, 65536, 0, 1114144, 65536, 1, 1179680, 65536, 2, 1769504, 65536, 0, 1835040, 65536, 1, 1900576, 65536, 1, 1966112, 65536, 2, 2490400, 131072, 0, 2555936, 131072, 1, 65569, 0, 0, 131105, 393216, 2, 196641, 65536, 1, 262177, 65536, 1, 327713, 65536, 1, 393249, 65536, 1, 458785, 65536, 1, 524321, 65536, 1, 589857, 65536, 1, 655393, 65536, 1, 720929, 65536, 1, 786465, 65536, 2, 1048609, 65536, 0, 1114145, 65536, 1, 1179681, 65536, 2, 1769505, 65536, 0, 1835041, 65536, 1, 1900577, 65536, 1, 1966113, 65536, 2, 34, 0, 0, 65570, 393216, 2, 131106, 65536, 1, 196642, 65536, 1, 262178, 65536, 1, 327714, 65536, 1, 393250, 65536, 1, 458786, 65536, 1, 524322, 65536, 1, 589858, 65536, 1, 655394, 65536, 1, 720930, 65536, 1, 786466, 65536, 2, 1048610, 131072, 0, 1114146, 327680, 4, 1179682, 131072, 2, 1769506, 65536, 0, 1835042, 65536, 1, 1900578, 65536, 1, 1966114, 65536, 2, 35, 393216, 2, 65571, 65536, 1, 131107, 65536, 1, 196643, 65536, 1, 262179, 65536, 1, 327715, 65536, 1, 393251, 65536, 1, 458787, 65536, 1, 524323, 65536, 1, 589859, 65536, 1, 655395, 65536, 1, 720931, 65536, 1, 786467, 65536, 2, 1114147, 131072, 3, 1703971, 0, 0, 1769507, 393216, 2, 1835043, 65536, 1, 1900579, 65536, 1, 1966115, 65536, 2, 36, 65536, 1, 65572, 65536, 1, 131108, 65536, 1, 196644, 65536, 1, 262180, 65536, 1, 327716, 65536, 1, 393252, 327680, 1, 458788, 131072, 1, 524324, 131072, 1, 589860, 131072, 1, 655396, 131072, 1, 720932, 131072, 1, 786468, 131072, 2, 1638436, 0, 0, 1703972, 393216, 2, 1769508, 65536, 1, 1835044, 65536, 1, 1900580, 65536, 1, 1966116, 65536, 2, 2555940, 0, 0, 37, 65536, 1, 65573, 65536, 1, 131109, 65536, 1, 196645, 65536, 1, 262181, 65536, 1, 327717, 327680, 1, 393253, 131072, 2, 1572901, 0, 0, 1638437, 393216, 2, 1703973, 65536, 1, 1769509, 65536, 1, 1835045, 65536, 1, 1900581, 65536, 1, 1966117, 65536, 2, 2490405, 0, 0, 2555941, 393216, 2, 38, 65536, 1, 65574, 65536, 1, 131110, 327680, 1, 196646, 131072, 1, 262182, 131072, 1, 327718, 131072, 2, 1507366, 0, 0, 1572902, 393216, 2, 1638438, 65536, 1, 1703974, 65536, 1, 1769510, 65536, 1, 1835046, 65536, 1, 1900582, 65536, 1, 1966118, 65536, 2, 2490406, 65536, 0, 2555942, 65536, 1, 39, 131072, 1, 65575, 131072, 1, 131111, 131072, 2, 524327, 0, 0, 589863, 0, 1, 655399, 0, 2, 1441831, 0, 0, 1507367, 393216, 2, 1572903, 65536, 1, 1638439, 65536, 1, 1703975, 65536, 1, 1769511, 65536, 1, 1835047, 65536, 1, 1900583, 327680, 1, 1966119, 131072, 2, 2490407, 65536, 0, 2555943, 65536, 1)
 
-[node name="TallAreaEnter4" type="Area2D" parent="." instance=ExtResource("6_2f4ng")]
+[node name="TallAreaEnter4" type="Area2D" parent="." instance=ExtResource("6_c35lj")]
 position = Vector2(1135, 1716)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("7_c35lj")
+script = ExtResource("7_v3sy3")
 area = "earth"
 
-[node name="TallAreaEnter3" type="Area2D" parent="." instance=ExtResource("6_2f4ng")]
+[node name="TallAreaEnter3" type="Area2D" parent="." instance=ExtResource("6_c35lj")]
 position = Vector2(141, 2208)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("7_c35lj")
+script = ExtResource("7_v3sy3")
 
-[node name="Grass16" type="Polygon2D" parent="." instance=ExtResource("8_v3sy3")]
+[node name="Grass16" type="Polygon2D" parent="." instance=ExtResource("8_vtrah")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2505, 1727)
 rotation = -0.785398
 scale = Vector2(1, 1.05376)
-skew = -0.187358
+skew = -0.384124
 polygon = PackedVector2Array(54.2798, 0.689697, 33.6245, -77.6504, 26.3447, -18.3418, -16.6792, -38.3574, 27.4604, 0.680176)
-script = ExtResource("9_vtrah")
+script = ExtResource("9_pn6wl")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass33" type="Polygon2D" parent="." instance=ExtResource("8_v3sy3")]
+[node name="Grass33" type="Polygon2D" parent="." instance=ExtResource("8_vtrah")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1937, 516)
 rotation = -0.785398
 scale = Vector2(1, 1.05376)
-skew = -0.187358
+skew = -0.384124
 polygon = PackedVector2Array(54.2798, 0.689697, 33.6245, -77.6504, 26.3447, -18.3418, -16.6792, -38.3574, 27.4604, 0.680176)
-script = ExtResource("9_vtrah")
+script = ExtResource("9_pn6wl")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass17" type="Polygon2D" parent="." instance=ExtResource("8_v3sy3")]
+[node name="Grass17" type="Polygon2D" parent="." instance=ExtResource("8_vtrah")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1877, 1835)
 rotation = -0.0331422
 scale = Vector2(1, 1.05376)
-skew = -0.187358
+skew = -0.384124
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
-script = ExtResource("9_vtrah")
+script = ExtResource("9_pn6wl")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass32" type="Polygon2D" parent="." instance=ExtResource("8_v3sy3")]
+[node name="Grass32" type="Polygon2D" parent="." instance=ExtResource("8_vtrah")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2011, 503)
 rotation = -0.818665
 scale = Vector2(1, 1.05376)
-skew = -0.187358
+skew = -0.384124
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
-script = ExtResource("9_vtrah")
+script = ExtResource("9_pn6wl")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass68" type="Polygon2D" parent="." instance=ExtResource("10_pn6wl")]
+[node name="Grass68" type="Polygon2D" parent="." instance=ExtResource("10_ql7yx")]
 z_index = 7
-material = SubResource("ShaderMaterial_h06rn")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(1637, 614)
 rotation = -0.787684
-skew = -0.187358
-polygon = PackedVector2Array(0, 0, 16.5281, -86.9244, 33.9583, -27.3655, 50.492, -76.1672, 67.07, -17.1273, 84.3438, -82.981, 102.206, -18.0414, 120.726, -67.6365, 138.053, -21.6975, 156.939, -86.0409, 175.129, -20.0826, 191.452, -63.9605, 208.668, -15.4191, 228.055, -70.4856, 247.947, -26.1339, 266.964, -80.7211, 284.14, -25.8204, 303.301, -65.786, 319.793, -21.6434, 337.196, -84.6998, 356.064, -28.3363, 373.165, -71.5769, 391.68, -29.6001, 409.383, -62.2143, 428.302, -28.9561, 446.767, -76.5273, 466.499, -24.4557, 484.694, -87.6097, 502.35, -25.3571, 519.774, -81.6209, 536.489, 0)
-script = ExtResource("9_vtrah")
+skew = -0.384124
+polygon = PackedVector2Array(0, 0, 16.1159, -76.3814, 34.8273, -19.6366, 51.4652, -72.0063, 68.3052, -25.6357, 84.4213, -72.8328, 103.149, -17.9324, 119.213, -72.5008, 138.044, -27.3057, 157.633, -79.9107, 176.838, -24.2556, 193.679, -63.8717, 210.121, -18.4951, 230.116, -62.0855, 246.414, -24.9006, 265.007, -85.2303, 283.391, -16.781, 302.236, -73.9221, 322.063, -27.1936, 339.308, -67.8954, 356.793, -25.7772, 376.24, -82.5584, 393.534, -15.094, 410.529, -86.6983, 428.5, -26.5229, 447.128, -77.5514, 465.989, -19.0751, 482.78, -80.6369, 499.942, -26.7872, 517.303, -87.2339, 534.075, -26.2465, 552.166, -76.4805, 569.117, 0)
+script = ExtResource("9_pn6wl")
 auto = true
 size = 535.821
 height = 74.766
 
-[node name="Grass69" type="Polygon2D" parent="." instance=ExtResource("10_pn6wl")]
+[node name="Grass69" type="Polygon2D" parent="." instance=ExtResource("10_ql7yx")]
 z_index = 7
-material = SubResource("ShaderMaterial_h06rn")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(2215, 40)
 rotation = -0.787684
-skew = -0.187358
-polygon = PackedVector2Array(0, 0, 16.2556, -80.6008, 35.4638, -22.0745, 52.5659, -93.0035, 69.1293, -33.3064, 88.4127, -75.0941, 105.285, -35.7047, 122.223, -83.67, 139.773, -19.8372, 159.717, -84.4343, 179.533, -29.0837, 198.543, -95.109, 215.366, -25.5372, 231.59, -76.9899, 250.867, -35.9271, 268.225, -75.0694, 287.233, 0)
-script = ExtResource("9_vtrah")
+skew = -0.384124
+polygon = PackedVector2Array(0, 0, 19.1217, -86.226, 36.6374, -29.222, 54.1456, -72.3383, 73.8141, -25.1616, 91.4174, -72.7365, 109.208, -27.2265, 126.182, -82.2811, 144.105, -27.7993, 162.293, -97.5362, 178.644, -31.2435, 198.313, -78.8456, 217.517, -31.7975, 237.362, -88.5468, 254.785, -35.1226, 270.859, -87.7771, 289.058, 0)
+script = ExtResource("9_pn6wl")
 auto = true
 size = 281.654
 height = 90.266
 
-[node name="Grass52" type="Polygon2D" parent="." instance=ExtResource("10_pn6wl")]
+[node name="Grass52" type="Polygon2D" parent="." instance=ExtResource("10_ql7yx")]
 z_index = 7
-material = SubResource("ShaderMaterial_h06rn")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(1728, 1024)
-skew = -0.187358
+skew = -0.384124
 polygon = PackedVector2Array(0, 0, 18.5876, -43.0454, 35.7162, -18.452, 52.6413, -41.2804, 69.4122, -15.2736, 86.7245, -52.2807, 106.352, -19.0448, 126.031, -49.6739, 144.402, -9.61134, 163.951, -53.1976, 182.317, -16.9457, 199.529, -54.2668, 217.965, -16.1042, 237.771, -54.7259, 255.915, -14.0787, 272.807, -41.6707, 291.542, -18.0463, 309.649, -48.5295, 327.914, 0)
-script = ExtResource("9_vtrah")
+script = ExtResource("9_pn6wl")
 size = 322.578
 height = 47.674
 
-[node name="ButtonPrompts34" type="Sprite2D" parent="." instance=ExtResource("11_ql7yx")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(2430, 1376)
-scale = Vector2(-1, 1)
-texture = ExtResource("12_dygnq")
-vframes = 14
-frame = 9
-
-[node name="ButtonPrompts37" type="Sprite2D" parent="." instance=ExtResource("11_ql7yx")]
-modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
-z_index = 6
-position = Vector2(2446, 604)
-rotation = -1.5708
-scale = Vector2(-0.6, 0.6)
-texture = ExtResource("12_dygnq")
-vframes = 14
-frame = 7
-
-[node name="HaloLineart14" type="Sprite2D" parent="." instance=ExtResource("13_nwpgs")]
+[node name="HaloLineart14" type="Sprite2D" parent="." instance=ExtResource("11_dygnq")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
 position = Vector2(2415, 446.5)
-texture = ExtResource("14_cm7yi")
+texture = ExtResource("12_nwpgs")
 
-[node name="BeetleLineart17" type="Sprite2D" parent="." instance=ExtResource("15_lchiy")]
+[node name="BeetleLineart17" type="Sprite2D" parent="." instance=ExtResource("13_cm7yi")]
 modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
 z_index = 6
 position = Vector2(2470, 471.5)
-texture = ExtResource("16_67dq5")
+texture = ExtResource("14_lchiy")
 hframes = 5
 vframes = 5
 frame = 4
 
-[node name="Wall34" type="Polygon2D" parent="." instance=ExtResource("17_gt5tm")]
+[node name="Wall34" type="Polygon2D" parent="." instance=ExtResource("15_67dq5")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(2405, 950)
@@ -581,7 +562,7 @@ scale = Vector2(-1, 1)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-632, -1022, 2.0116, -795.414, -68, -698, -115, -700, -144, -719, -151, -740, -175, -727, -163, -697, -169, -673, -196, -662, -188, -638, -205, -612, -192, -591, -169, -606, -143, -607, -119, -585, -114, -610, -98, -623, -22, -640, 255, -705, 1252, -649, 1194, -270, 1177, -270, 1167, -284, 1171, -302, 1162, -294, 1150, -295, 1139, -285, 1119, -281, 1108, -297, 1109, -323, 1093, -315, 1078, -333, 1065, -324, 1039, -332, 1049, -316, 1042, -304, 1051, -297, 1050, -284, 1036, -275, 1043, -272, 1043, -250, 1053, -249, 1060, -241, 1060, -226, 1091, -219, 1108, -197, 1107, -154, 1220, 40, 839, 145, 228, 85, 203, 93, 185, 83, 179, 64, 152, 67, 125, 51, 115, 30, 89, 24, 76, -5, 81, -34, 102, -49, 89, -80, 96, -108, 120.86, -126.081, 104, -190, 45, -161, 49, -144, 39, -124, 16, -120, 11, -106, -11, -100, -31, -106, -38, -119, -64, -122, -79, -131, -85, -144, -107, -147, -117, -158, -120, -139, -143, -124, -175, -127, -190, -101, -235, -80, -280, -87, -297, -113, -439, -98, -792, -75, -822, -200, -839, -246, -840, -278, -825, -300, -803, -305, -804, -330, -796, -360, -774, -370, -750, -367, -738, -388, -723, -400, -705, -402, -718, -418, -722, -437, -750, -439, -761, -454, -768, -473, -786, -474, -802, -483, -810, -499, -805, -519, -812, -535, -815, -551, -810, -566, -793, -574, -776, -573, -775, -588, -761, -597, -744, -596, -738, -612, -728, -622, -713, -623, -711.239, -631.674, -702, -641, -713, -647, -719, -658, -733, -661, -739, -674, -739, -691, -752, -705, -757, -730, -744, -751, -724, -755, -715, -774, -695, -784, -672, -783, -664, -802, -634, -804)
 
-[node name="Wall50" type="Polygon2D" parent="." instance=ExtResource("17_gt5tm")]
+[node name="Wall50" type="Polygon2D" parent="." instance=ExtResource("15_67dq5")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(2375, 1348)
@@ -595,3 +576,23 @@ z_index = 26
 material = SubResource("ShaderMaterial_ddx3t")
 position = Vector2(2352, 2458)
 polygon = PackedVector2Array(268, 112, 268, 85, 231, 91, 222, 113)
+
+[node name="ButtonPrompts34" type="Sprite2D" parent="." instance=ExtResource("16_q03cv")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+position = Vector2(2430, 1376)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("17_0wtbj")
+vframes = 14
+frame = 9
+
+[node name="ButtonPrompts37" type="Sprite2D" parent="." instance=ExtResource("16_q03cv")]
+modulate = Color(0.192157, 0.0588235, 0.0666667, 1)
+z_index = 6
+position = Vector2(2446, 604)
+rotation = 1.57079
+scale = Vector2(0.6, -0.6)
+texture = ExtResource("17_0wtbj")
+vframes = 14
+frame = 7
