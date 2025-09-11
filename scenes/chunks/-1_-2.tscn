@@ -1,25 +1,25 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0p7km851h81m"]
+[gd_scene load_steps=21 format=3 uid="uid://bjbmav7e1y2sw"]
 
-[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_ajpqn"]
-[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ndj62"]
-[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_xy1cg"]
-[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_rsw0q"]
-[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_ikmu3"]
-[ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="6_n2y6l"]
-[ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="7_6tfh8"]
-[ext_resource type="PackedScene" uid="uid://bjbxlo1ax7qby" path="res://scenes/TallAreaEnter.tscn" id="9_qudqu"]
-[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="10_qp4bg"]
-[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="11_ghj44"]
-[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="12_msjec"]
-[ext_resource type="PackedScene" uid="uid://chf7r1j18ecx0" path="res://scenes/BGGrass.tscn" id="13_ex1w3"]
-[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="14_jclck"]
+[ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_h06rn"]
+[ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_ajpqn"]
+[ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="3_ndj62"]
+[ext_resource type="Texture2D" uid="uid://c1uya8petvacw" path="res://resources/sprites/tileset.png" id="4_xy1cg"]
+[ext_resource type="Texture2D" uid="uid://tbyx0te77x80" path="res://resources/sprites/squaretiles.png" id="5_rsw0q"]
+[ext_resource type="PackedScene" uid="uid://djj1tl6m51kop" path="res://scenes/Leaf.tscn" id="6_ikmu3"]
+[ext_resource type="Script" uid="uid://0b564oahxwt0" path="res://scenes/scripts/Destructible.gd" id="7_n2y6l"]
+[ext_resource type="PackedScene" uid="uid://bjbxlo1ax7qby" path="res://scenes/TallAreaEnter.tscn" id="8_6tfh8"]
+[ext_resource type="Script" uid="uid://d0whlga2q2bek" path="res://scenes/scripts/AreaEnter.gd" id="9_6lssv"]
+[ext_resource type="PackedScene" uid="uid://dweprnk0mns48" path="res://scenes/FGGrass.tscn" id="10_qudqu"]
+[ext_resource type="Script" uid="uid://deldt3bncn3wy" path="res://scenes/scripts/Grass.gd" id="11_qp4bg"]
+[ext_resource type="PackedScene" uid="uid://chf7r1j18ecx0" path="res://scenes/BGGrass.tscn" id="12_ghj44"]
+[ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="13_msjec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apttd"]
-shader = ExtResource("3_xy1cg")
+shader = ExtResource("3_ndj62")
 shader_parameter/type = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atgph"]
-texture = ExtResource("4_rsw0q")
+texture = ExtResource("4_xy1cg")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -390,7 +390,7 @@ texture_region_size = Vector2i(64, 64)
 8:4/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx18x"]
-texture = ExtResource("5_ikmu3")
+texture = ExtResource("5_rsw0q")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, 32, 32, 32, 32, -28, -28, -28)
@@ -411,206 +411,234 @@ sources/0 = SubResource("TileSetAtlasSource_atgph")
 sources/1 = SubResource("TileSetAtlasSource_xx18x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7kl65"]
-shader = ExtResource("3_xy1cg")
+shader = ExtResource("3_ndj62")
 shader_parameter/type = 1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_imwpe"]
-shader = ExtResource("3_xy1cg")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ex1w3"]
+shader = ExtResource("3_ndj62")
 shader_parameter/type = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awoh5"]
-shader = ExtResource("3_xy1cg")
+shader = ExtResource("3_ndj62")
 shader_parameter/type = 1
 
 [node name="(-1, -2)" type="Node2D"]
-script = ExtResource("1_ajpqn")
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = ExtResource("1_h06rn")
 
-[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ndj62")]
+[node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_ajpqn")]
 z_index = 25
 material = SubResource("ShaderMaterial_apttd")
 tile_set = SubResource("TileSet_j6121")
 format = 2
 layer_0/tile_data = PackedInt32Array(786432, 131072, 0, 851968, 327680, 2, 917504, 65536, 1, 983040, 65536, 1, 1048576, 65536, 1, 1114112, 65536, 1, 1179648, 65536, 1, 1245184, 65536, 1, 1310720, 65536, 1, 1376256, 65536, 1, 1441792, 65536, 1, 1507328, 65536, 1, 1572864, 65536, 2, 2555904, 65536, 0, 851969, 65536, 0, 917505, 65536, 1, 983041, 65536, 1, 1048577, 65536, 1, 1114113, 65536, 1, 1179649, 65536, 1, 1245185, 65536, 1, 1310721, 65536, 1, 1376257, 65536, 1, 1441793, 65536, 1, 1507329, 65536, 1, 1572865, 65536, 2, 2555905, 65536, 0, 851970, 65536, 0, 917506, 65536, 1, 983042, 65536, 1, 1048578, 65536, 1, 1114114, 65536, 1, 1179650, 65536, 1, 1245186, 65536, 1, 1310722, 65536, 1, 1376258, 65536, 1, 1441794, 65536, 1, 1507330, 65536, 1, 1572866, 65536, 2, 2555906, 65536, 0, 851971, 65536, 0, 917507, 65536, 1, 983043, 65536, 1, 1048579, 65536, 1, 1114115, 65536, 1, 1179651, 65536, 1, 1245187, 65536, 1, 1310723, 65536, 1, 1376259, 65536, 1, 1441795, 65536, 1, 1507331, 65536, 1, 1572867, 65536, 2, 2555907, 65536, 0, 851972, 65536, 0, 917508, 65536, 1, 983044, 65536, 1, 1048580, 65536, 1, 1114116, 65536, 1, 1179652, 65536, 1, 1245188, 65536, 1, 1310724, 65536, 1, 1376260, 65536, 1, 1441796, 65536, 1, 1507332, 65536, 1, 1572868, 65536, 2, 2555908, 65536, 0, 851973, 65536, 0, 917509, 65536, 1, 983045, 65536, 1, 1048581, 65536, 1, 1114117, 65536, 1, 1179653, 65536, 1, 1245189, 65536, 1, 1310725, 65536, 1, 1376261, 65536, 1, 1441797, 65536, 1, 1507333, 65536, 1, 1572869, 65536, 2, 2555909, 65536, 0, 851974, 65536, 0, 917510, 65536, 1, 983046, 65536, 1, 1048582, 65536, 1, 1114118, 65536, 1, 1179654, 65536, 1, 1245190, 65536, 1, 1310726, 65536, 1, 1376262, 65536, 1, 1441798, 65536, 1, 1507334, 65536, 1, 1572870, 65536, 2, 2555910, 65536, 0, 851975, 65536, 0, 917511, 65536, 1, 983047, 65536, 1, 1048583, 65536, 1, 1114119, 65536, 1, 1179655, 65536, 1, 1245191, 65536, 1, 1310727, 65536, 1, 1376263, 65536, 1, 1441799, 65536, 1, 1507335, 65536, 1, 1572871, 65536, 2, 2555911, 65536, 0, 851976, 65536, 0, 917512, 65536, 1, 983048, 65536, 1, 1048584, 65536, 1, 1114120, 65536, 1, 1179656, 65536, 1, 1245192, 65536, 1, 1310728, 65536, 1, 1376264, 65536, 1, 1441800, 65536, 1, 1507336, 65536, 1, 1572872, 65536, 2, 2555912, 65536, 0, 851977, 65536, 0, 917513, 65536, 1, 983049, 65536, 1, 1048585, 65536, 1, 1114121, 65536, 1, 1179657, 65536, 1, 1245193, 65536, 1, 1310729, 65536, 1, 1376265, 65536, 1, 1441801, 65536, 1, 1507337, 65536, 1, 1572873, 65536, 2, 2555913, 65536, 0, 851978, 65536, 0, 917514, 65536, 1, 983050, 65536, 1, 1048586, 65536, 1, 1114122, 65536, 1, 1179658, 65536, 1, 1245194, 65536, 1, 1310730, 65536, 1, 1376266, 65536, 1, 1441802, 65536, 1, 1507338, 65536, 1, 1572874, 65536, 2, 2555914, 65536, 0, 851979, 65536, 0, 917515, 65536, 1, 983051, 65536, 1, 1048587, 65536, 1, 1114123, 65536, 1, 1179659, 65536, 1, 1245195, 65536, 1, 1310731, 65536, 1, 1376267, 65536, 1, 1441803, 65536, 1, 1507339, 65536, 1, 1572875, 65536, 2, 2555915, 65536, 0, 851980, 65536, 0, 917516, 65536, 1, 983052, 65536, 1, 1048588, 65536, 1, 1114124, 65536, 1, 1179660, 65536, 1, 1245196, 65536, 1, 1310732, 65536, 1, 1376268, 65536, 1, 1441804, 65536, 1, 1507340, 65536, 1, 1572876, 65536, 2, 2555916, 65536, 0, 851981, 65536, 0, 917517, 65536, 1, 983053, 65536, 1, 1048589, 65536, 1, 1114125, 65536, 1, 1179661, 65536, 1, 1245197, 65536, 1, 1310733, 65536, 1, 1376269, 65536, 1, 1441805, 65536, 1, 1507341, 65536, 1, 1572877, 65536, 2, 2555917, 65536, 0, 851982, 65536, 0, 917518, 65536, 1, 983054, 65536, 1, 1048590, 65536, 1, 1114126, 65536, 1, 1179662, 65536, 1, 1245198, 65536, 1, 1310734, 65536, 1, 1376270, 65536, 1, 1441806, 65536, 1, 1507342, 65536, 1, 1572878, 65536, 2, 2555918, 65536, 0, 851983, 65536, 0, 917519, 65536, 1, 983055, 65536, 1, 1048591, 65536, 1, 1114127, 65536, 1, 1179663, 65536, 1, 1245199, 65536, 1, 1310735, 65536, 1, 1376271, 65536, 1, 1441807, 65536, 1, 1507343, 65536, 1, 1572879, 65536, 2, 2555919, 65536, 0, 851984, 65536, 0, 917520, 65536, 1, 983056, 65536, 1, 1048592, 65536, 1, 1114128, 65536, 1, 1179664, 65536, 1, 1245200, 65536, 1, 1310736, 65536, 1, 1376272, 65536, 1, 1441808, 65536, 1, 1507344, 65536, 1, 1572880, 65536, 2, 2555920, 65536, 0, 851985, 65536, 0, 917521, 65536, 1, 983057, 65536, 1, 1048593, 65536, 1, 1114129, 65536, 1, 1179665, 65536, 1, 1245201, 65536, 1, 1310737, 65536, 1, 1376273, 65536, 1, 1441809, 65536, 1, 1507345, 65536, 1, 1572881, 65536, 2, 2555921, 65536, 0, 851986, 65536, 0, 917522, 65536, 1, 983058, 65536, 1, 1048594, 65536, 1, 1114130, 65536, 1, 1179666, 65536, 1, 1245202, 65536, 1, 1310738, 65536, 1, 1376274, 65536, 1, 1441810, 65536, 1, 1507346, 65536, 1, 1572882, 393216, 1, 1638418, 0, 2, 2555922, 65536, 0, 851987, 65536, 0, 917523, 65536, 1, 983059, 65536, 1, 1048595, 65536, 1, 1114131, 65536, 1, 1179667, 65536, 1, 1245203, 65536, 1, 1310739, 65536, 1, 1376275, 65536, 1, 1441811, 65536, 1, 1507347, 65536, 1, 1572883, 65536, 1, 1638419, 65536, 2, 2555923, 65536, 0, 851988, 65536, 0, 917524, 65536, 1, 983060, 65536, 1, 1048596, 65536, 1, 1114132, 65536, 1, 1179668, 65536, 1, 1245204, 65536, 1, 1310740, 65536, 1, 1376276, 65536, 1, 1441812, 65536, 1, 1507348, 65536, 1, 1572884, 65536, 1, 1638420, 65536, 2, 2555924, 65536, 0, 851989, 65536, 0, 917525, 65536, 1, 983061, 65536, 1, 1048597, 65536, 1, 1114133, 65536, 1, 1179669, 65536, 1, 1245205, 65536, 1, 1310741, 65536, 1, 1376277, 65536, 1, 1441813, 65536, 1, 1507349, 65536, 1, 1572885, 65536, 1, 1638421, 65536, 2, 2555925, 65536, 0, 851990, 65536, 0, 917526, 65536, 1, 983062, 65536, 1, 1048598, 65536, 1, 1114134, 65536, 1, 1179670, 65536, 1, 1245206, 65536, 1, 1310742, 65536, 1, 1376278, 65536, 1, 1441814, 65536, 1, 1507350, 65536, 1, 1572886, 65536, 1, 1638422, 65536, 2, 2555926, 65536, 0, 851991, 65536, 0, 917527, 65536, 1, 983063, 65536, 1, 1048599, 65536, 1, 1114135, 65536, 1, 1179671, 65536, 1, 1245207, 65536, 1, 1310743, 65536, 1, 1376279, 65536, 1, 1441815, 65536, 1, 1507351, 65536, 1, 1572887, 65536, 1, 1638423, 65536, 2, 2555927, 65536, 0, 851992, 131072, 0, 917528, 327680, 2, 983064, 65536, 1, 1048600, 65536, 1, 1114136, 65536, 1, 1179672, 65536, 1, 1245208, 65536, 1, 1310744, 65536, 1, 1376280, 65536, 1, 1441816, 65536, 1, 1507352, 65536, 1, 1572888, 65536, 1, 1638424, 65536, 2, 2555928, 65536, 0, 917529, 131072, 0, 983065, 327680, 2, 1048601, 65536, 1, 1114137, 65536, 1, 1179673, 65536, 1, 1245209, 65536, 1, 1310745, 65536, 1, 1376281, 65536, 1, 1441817, 65536, 1, 1507353, 65536, 1, 1572889, 65536, 1, 1638425, 65536, 2, 2555929, 65536, 0, 983066, 131072, 0, 1048602, 327680, 2, 1114138, 65536, 1, 1179674, 65536, 1, 1245210, 65536, 1, 1310746, 65536, 1, 1376282, 65536, 1, 1441818, 65536, 1, 1507354, 65536, 1, 1572890, 65536, 1, 1638426, 65536, 2, 2555930, 65536, 0, 1048603, 131072, 0, 1114139, 327680, 2, 1179675, 65536, 1, 1245211, 65536, 1, 1310747, 65536, 1, 1376283, 65536, 1, 1441819, 65536, 1, 1507355, 65536, 1, 1572891, 65536, 1, 1638427, 393216, 1, 1703963, 0, 2, 2555931, 65536, 0, 1114140, 131072, 0, 1179676, 327680, 2, 1245212, 65536, 1, 1310748, 65536, 1, 1376284, 65536, 1, 1441820, 65536, 1, 1507356, 65536, 1, 1572892, 65536, 1, 1638428, 65536, 1, 1703964, 65536, 2, 2555932, 65536, 0, 1179677, 131072, 0, 1245213, 327680, 2, 1310749, 65536, 1, 1376285, 65536, 1, 1441821, 65536, 1, 1507357, 65536, 1, 1572893, 65536, 1, 1638429, 65536, 1, 1703965, 65536, 2, 2555933, 65536, 0, 1245214, 131072, 0, 1310750, 327680, 2, 1376286, 65536, 1, 1441822, 65536, 1, 1507358, 65536, 1, 1572894, 65536, 1, 1638430, 65536, 1, 1703966, 65536, 2, 2555934, 65536, 0, 1310751, 131072, 0, 1376287, 327680, 2, 1441823, 65536, 1, 1507359, 65536, 1, 1572895, 65536, 1, 1638431, 65536, 1, 1703967, 65536, 2, 2555935, 65536, 0, 1376288, 131072, 0, 1441824, 327680, 2, 1507360, 65536, 1, 1572896, 65536, 1, 1638432, 65536, 1, 1703968, 393216, 1, 1769504, 0, 2, 2555936, 65536, 0, 1441825, 131072, 0, 1507361, 327680, 2, 1572897, 65536, 1, 1638433, 65536, 1, 1703969, 65536, 1, 1769505, 65536, 2, 2555937, 65536, 0, 1507362, 131072, 0, 1572898, 327680, 2, 1638434, 65536, 1, 1703970, 65536, 1, 1769506, 393216, 1, 1835042, 0, 2, 2555938, 65536, 0, 1572899, 131072, 0, 1638435, 327680, 2, 1703971, 65536, 1, 1769507, 65536, 1, 1835043, 65536, 2, 2555939, 65536, 0, 1638436, 131072, 0, 1703972, 327680, 2, 1769508, 65536, 1, 1835044, 393216, 1, 1900580, 0, 1, 1966116, 0, 2, 2555940, 65536, 0, 1703973, 131072, 0, 1769509, 327680, 2, 1835045, 65536, 1, 1900581, 65536, 1, 1966117, 65536, 2, 2555941, 65536, 0, 1769510, 131072, 0, 1835046, 327680, 2, 1900582, 65536, 1, 1966118, 65536, 2, 2555942, 65536, 0, 1835047, 131072, 0, 1900583, 327680, 2, 1966119, 393216, 1, 2031655, 0, 2, 2555943, 65536, 0)
 
-[node name="Leaf6" type="StaticBody2D" parent="." instance=ExtResource("6_n2y6l")]
+[node name="Leaf6" type="StaticBody2D" parent="." instance=ExtResource("6_ikmu3")]
 z_index = 24
 position = Vector2(2368, 2240)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("7_6tfh8")
+script = ExtResource("7_n2y6l")
 sound = "Bush"
 waving_amp = 0.05
 freq = 0.1
 skew_base = -0.100198
 
-[node name="Leaf7" type="StaticBody2D" parent="." instance=ExtResource("6_n2y6l")]
+[node name="Leaf7" type="StaticBody2D" parent="." instance=ExtResource("6_ikmu3")]
 z_index = 24
 position = Vector2(1088, 2240)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("7_6tfh8")
+script = ExtResource("7_n2y6l")
 sound = "Bush"
 waving_amp = 0.05
 freq = 0.1
 skew_base = -0.100198
 
-[node name="Leaf8" type="StaticBody2D" parent="." instance=ExtResource("6_n2y6l")]
+[node name="Leaf8" type="StaticBody2D" parent="." instance=ExtResource("6_ikmu3")]
 z_index = 24
 position = Vector2(448, 2240)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("7_6tfh8")
+script = ExtResource("7_n2y6l")
 sound = "Bush"
 waving_amp = 0.05
 freq = 0.1
 skew_base = -0.100198
 
-[node name="Leaf9" type="StaticBody2D" parent="." instance=ExtResource("6_n2y6l")]
+[node name="Leaf9" type="StaticBody2D" parent="." instance=ExtResource("6_ikmu3")]
 z_index = 24
 position = Vector2(1728, 2240)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("7_6tfh8")
+script = ExtResource("7_n2y6l")
 sound = "Bush"
 waving_amp = 0.05
 freq = 0.1
 skew_base = -0.100198
 
-[node name="TallAreaEnter6" type="Area2D" parent="." instance=ExtResource("9_qudqu")]
+[node name="TallAreaEnter6" type="Area2D" parent="." instance=ExtResource("8_6tfh8")]
 position = Vector2(1432, 18)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("10_qp4bg")
+script = ExtResource("9_6lssv")
 area = "earth"
 
-[node name="TallAreaEnter7" type="Area2D" parent="." instance=ExtResource("9_qudqu")]
+[node name="TallAreaEnter7" type="Area2D" parent="." instance=ExtResource("8_6tfh8")]
 position = Vector2(135, 18)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("10_qp4bg")
+script = ExtResource("9_6lssv")
 area = "olympus"
 
-[node name="Grass35" type="Polygon2D" parent="." instance=ExtResource("11_ghj44")]
+[node name="Grass35" type="Polygon2D" parent="." instance=ExtResource("10_qudqu")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1457, 1001)
 rotation = 0.804882
 scale = Vector2(1, 1.05376)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(325.396, 2.08643, 301.023, -170.206, 236.776, -53.8207, 78.0864, -173.106, 127.135, -46.3508, 2.89697, -58.6143, 96.7266, 0.685059)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass36" type="Polygon2D" parent="." instance=ExtResource("11_ghj44")]
+[node name="Grass36" type="Polygon2D" parent="." instance=ExtResource("10_qudqu")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1749, 1238)
 rotation = 0.804882
 scale = Vector2(1, 1.05376)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(54.2798, 0.689697, 33.6245, -77.6504, 26.3447, -18.3418, -16.6792, -38.3574, 27.4604, 0.680176)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass37" type="Polygon2D" parent="." instance=ExtResource("11_ghj44")]
+[node name="Grass37" type="Polygon2D" parent="." instance=ExtResource("10_qudqu")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2084, 1537)
 rotation = 0.824889
 scale = Vector2(1, 1.05376)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass50" type="Polygon2D" parent="." instance=ExtResource("11_ghj44")]
+[node name="Grass50" type="Polygon2D" parent="." instance=ExtResource("10_qudqu")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(842, 973)
 scale = Vector2(1, 1.05376)
-skew = -0.217364
+skew = -0.359615
 polygon = PackedVector2Array(325.396, 2.08643, 286.029, -124.699, 247.797, -49.9111, 164.767, -109.635, 181.838, -43.7664, 71.1416, -58.5854, 152.983, -14.3802, 104.204, -11.6428, 177.512, -1.13135)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 398.474
 height = 171.536
 spacing = 33.964
 
-[node name="Grass38" type="Polygon2D" parent="." instance=ExtResource("11_ghj44")]
+[node name="Grass38" type="Polygon2D" parent="." instance=ExtResource("10_qudqu")]
 z_index = 26
 material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(1635, 1376)
 rotation = 0.804882
 scale = Vector2(1, 1.05376)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(397.354, -2.1106, 320.513, -192.387, 312.466, -75.6135, 205.271, -197.447, 243.149, -64.6428, 110.841, -150.844, 176.056, -40.5312, 19.0337, -96.1914, 104.703, -33.1643, -39.332, -33.7554, 55.9746, -0.679932)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 693.734
 height = 125.688
 spacing = 30.569
 
-[node name="Grass61" type="Polygon2D" parent="." instance=ExtResource("13_ex1w3")]
+[node name="Grass61" type="Polygon2D" parent="." instance=ExtResource("12_ghj44")]
 z_index = 7
-material = SubResource("ShaderMaterial_imwpe")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(1312, 2496)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(0, 0, 16.3515, -50.8478, 36.2483, -18.3744, 55.0119, -45.8843, 74.1686, -16.7534, 91.9341, -50.8216, 108.016, -18.1552, 127.656, -51.3802, 146.867, -10.1977, 165.914, -43.6606, 184.906, -9.71463, 202.242, -40.4152, 218.865, -18.0126, 235.213, -43.3922, 254.341, -12.7636, 272.829, -40.5528, 290.204, 0)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 256.964
 height = 47.674
 
-[node name="Grass70" type="Polygon2D" parent="." instance=ExtResource("13_ex1w3")]
+[node name="Grass70" type="Polygon2D" parent="." instance=ExtResource("12_ghj44")]
 z_index = 7
-material = SubResource("ShaderMaterial_imwpe")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(2202, 1511)
 rotation = 0.783462
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(0, 0, 17.7385, -62.5431, 36.4455, -21.7481, 55.3829, -89.3425, 75.246, -28.1624, 91.9725, -82.6922, 108.853, -16.2534, 127.607, -69.7878, 144.564, -27.095, 163.229, -70.4407, 180.251, -28.2006, 196.754, -60.7957, 216.084, -20.1947, 233.764, -71.2105, 250.791, -22.5911, 269.21, -73.0016, 285.654, -25.0849, 304.484, -88.1459, 322.962, -18.3682, 341.89, -78.7277, 359.335, -28.518, 378.836, -81.9099, 398.706, -17.4252, 417.965, -88.8433, 437.242, -20.2884, 453.764, -65.2418, 473.044, -25.875, 489.781, -71.0253, 508.109, -29.0184, 527.02, -71.2838, 544.782, 0)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 535.821
 height = 74.766
 
-[node name="Grass71" type="Polygon2D" parent="." instance=ExtResource("13_ex1w3")]
+[node name="Grass71" type="Polygon2D" parent="." instance=ExtResource("12_ghj44")]
 z_index = 7
-material = SubResource("ShaderMaterial_imwpe")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(1633, 944)
 rotation = 0.783462
-skew = -0.225716
-polygon = PackedVector2Array(0, 0, 16.152, -70.8932, 34.801, -16.5714, 54.1936, -52.4795, 71.6865, -20.8333, 91.0443, -61.6584, 107.8, -15.8415, 124.683, -55.3326, 143.806, -13.5446, 161.166, -72.9696, 179.385, -16.2593, 196.77, -58.1574, 213.707, -24.1403, 231.028, -71.2687, 250.612, -18.2156, 269.782, -51.0096, 289.061, -15.4585, 308.033, -72.3985, 326.375, -17.0336, 343.39, -73.3758, 360.626, -14.6594, 378.786, -73.3995, 395.573, 0)
-script = ExtResource("12_msjec")
+skew = -0.359615
+polygon = PackedVector2Array(0, 0, 16.0258, -69.6986, 34.982, -16.4071, 53.0395, -60.4407, 72.5238, -21.4671, 89.2389, -57.1272, 105.431, -16.8409, 122.454, -59.0713, 140.902, -16.462, 158.552, -52.2728, 175.996, -21.8224, 194.196, -51.9898, 210.633, -16.1441, 228.711, -56.346, 248.173, -22.39, 266.275, -58.8762, 285.732, -13.1395, 304.466, -66.6442, 321.937, -12.4441, 338.734, -60.9722, 356.183, -17.5752, 374.987, -61.0716, 394.67, 0)
+script = ExtResource("11_qp4bg")
 auto = true
 size = 393.488
 height = 61.849
 
-[node name="Grass88" type="Polygon2D" parent="." instance=ExtResource("13_ex1w3")]
+[node name="Grass88" type="Polygon2D" parent="." instance=ExtResource("12_ghj44")]
 z_index = 7
-material = SubResource("ShaderMaterial_imwpe")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(449, 836)
 rotation = -0.000757313
-skew = -0.28037
-polygon = PackedVector2Array(0, 0, 16.7383, -86.9435, 33.4235, -29.3829, 51.9879, -61.4831, 71.52, -20.9525, 90.7027, -84.1794, 109.053, -25.2559, 127.155, -71.8626, 146.53, -21.6137, 163.223, -78.1148, 180.158, -20.1419, 197.992, -66.1483, 217.204, -16.5019, 233.48, -72.0367, 250.28, -16.2392, 267.902, -69.3578, 284.617, -19.7216, 300.81, -85.2012, 317.817, -22.3399, 337.111, -83.6095, 356.304, -25.7486, 375.978, -70.9858, 394.332, -18.4901, 410.87, -79.9719, 428.478, -26.821, 445.057, -59.9036, 463.354, -24.2669, 480.471, -81.0306, 496.503, -24.5897, 514.699, -84.4652, 531.129, -25.4808, 549.877, -79.0692, 566.283, 0)
-script = ExtResource("12_msjec")
+skew = -0.359615
+polygon = PackedVector2Array(0, 0, 16.8924, -66.041, 36.4681, -29.7838, 54.8834, -74.7916, 74.0767, -18.424, 90.4345, -61.1999, 108.062, -27.6981, 127.22, -70.7107, 146.304, -22.64, 164.201, -63.7761, 181.054, -27.311, 199.989, -65.748, 217.025, -21.3593, 235.557, -76.7212, 253.536, -17.6753, 273.222, -68.8587, 291.793, -21.6276, 307.878, -66.5321, 324.07, -23.4524, 342.913, -88.0639, 362.22, -27.5712, 381.921, -87.6849, 399.487, -22.9912, 416.652, -62.4844, 433.294, -27.3237, 450.139, -60.2956, 466.287, -16.8464, 486.169, -84.9425, 504.39, -21.1994, 522.768, -88.7813, 541.489, 0)
+script = ExtResource("11_qp4bg")
 auto = true
 size = 535.821
 height = 74.766
 
-[node name="Grass62" type="Polygon2D" parent="." instance=ExtResource("13_ex1w3")]
+[node name="Grass62" type="Polygon2D" parent="." instance=ExtResource("12_ghj44")]
 z_index = 7
-material = SubResource("ShaderMaterial_imwpe")
+material = SubResource("ShaderMaterial_ex1w3")
 position = Vector2(480, 2496)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(0, 0, 22.7741, -70.6237, 43.8937, -20.4137, 63.2471, -73.6812, 85.4597, -16.2923, 104.45, -68.3517, 123.596, -26.0898, 144.38, -53.3535, 165.568, -24.9404, 187.768, -53.2099, 208.745, -18.967, 231.144, -69.0363, 252.817, -16.4938, 275.572, -66.4854, 297.664, -20.2904, 319.781, -58.1851, 341.069, -17.0525, 360.408, -75.3342, 380.953, -19.4148, 400.206, -58.7418, 421.367, -23.7101, 443.112, -74.5257, 465.719, -22.3621, 485.813, -76.2059, 507.87, -19.7961, 530.016, -64.2711, 550.914, -23.5788, 572.809, -56.4874, 594.632, -24.9316, 614.912, -54.2672, 634.028, 0)
-script = ExtResource("12_msjec")
+script = ExtResource("11_qp4bg")
 size = 601.435
 height = 66.43
 spacing = 18.824
 
-[node name="Wall49" type="Polygon2D" parent="." instance=ExtResource("14_jclck")]
+[node name="Wall49" type="Polygon2D" parent="." instance=ExtResource("13_msjec")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(1211, 767)
@@ -618,7 +646,7 @@ scale = Vector2(-1, 1)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-237, 79, -233, 35, -198, 9, -158, 4, -161, -34, -125, -58, -91, -56, -84, -99, -48, -107, -5, -95, 0, -58, 36, -53, 50, -16, 66, -38, 96, -48, 101, -75, 132, -86, 162, -75, 157, -44, 184, -32, 193, -7, 221, -10, 237, 4, 241, 26, 265, 31, 277, 48, 275, 82)
 
-[node name="Wall15" type="Polygon2D" parent="." instance=ExtResource("14_jclck")]
+[node name="Wall15" type="Polygon2D" parent="." instance=ExtResource("13_msjec")]
 z_index = 5
 material = SubResource("ShaderMaterial_awoh5")
 position = Vector2(1962, 2246)

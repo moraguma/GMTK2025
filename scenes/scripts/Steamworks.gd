@@ -103,3 +103,8 @@ func request_player_name(steam_id: int) -> String:
 	if name == "":
 		return "???"
 	return name
+
+
+## Open Steam overlay on specified webpage
+func go_to_store(app_id: int) -> void:
+	Steam.activateGameOverlayToStore(app_id)

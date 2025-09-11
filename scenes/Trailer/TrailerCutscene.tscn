@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpatqrvmegbw2"]
+[gd_scene load_steps=33 format=3 uid="uid://dpatqrvmegbw2"]
 
 [ext_resource type="Script" uid="uid://ddhcngu5wyfdw" path="res://scenes/scripts/IntroCutscene.gd" id="1_nb7gi"]
 [ext_resource type="Texture2D" uid="uid://wgu80mbigr0u" path="res://resources/sprites/cutscenes/FINAL/1/CENA-1-BG.png" id="2_vukn2"]
@@ -20,8 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://bcnvrexy1yfld" path="res://resources/sprites/cutscenes/INTRO/5/CENA-5-BG.png" id="20_sn7hr"]
 [ext_resource type="PackedScene" uid="uid://dselgy4gp3uyg" path="res://addons/jam_essentials/scenes/components/RandomPitchAudioStreamPlayer.tscn" id="21_uabs4"]
 [ext_resource type="AudioStream" uid="uid://d3ieljljf1rhw" path="res://resources/sfx/Cutscenes/Loop/Sisyphus - sfx_cutscene_loop_thunder_earthquake.wav" id="22_14pu0"]
+[ext_resource type="AudioStream" uid="uid://cn76ivv4gh2ee" path="res://resources/sfx/Cutscenes/Trailer/Small Hit.wav" id="22_cghb2"]
 [ext_resource type="PackedScene" uid="uid://dmi8mk33prchr" path="res://scenes/Tutorial.tscn" id="23_82mrt"]
+[ext_resource type="AudioStream" uid="uid://be1cgqvi1hlvj" path="res://resources/sfx/Cutscenes/Trailer/Big Hit.wav" id="23_vukn2"]
 [ext_resource type="PackedScene" uid="uid://df7ucuklm5ixu" path="res://scenes/ButtonPrompts.tscn" id="24_bns5n"]
+[ext_resource type="AudioStream" uid="uid://drlbn7qnf3178" path="res://resources/sfx/Cutscenes/Trailer/Forevermore.wav" id="24_vmthm"]
 
 [sub_resource type="Animation" id="Animation_vukn2"]
 resource_name = "0"
@@ -238,12 +241,9 @@ tracks/10/path = NodePath("Sound/BigThunder")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(13),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 tracks/11/type = "method"
 tracks/11/imported = false
@@ -275,6 +275,20 @@ tracks/11/keys = {
 }, {
 "args": [],
 "method": &"squish"
+}]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sound/Forevermore")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(13),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -1098,7 +1112,34 @@ _data = {
 }
 
 [node name="Cutscene" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(960, 540)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("1_nb7gi")
 next_scene_path = "res://scenes/WorldLoader.tscn"
 
@@ -1108,12 +1149,68 @@ libraries = {
 }
 
 [node name="0" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="1" type="Sprite2D" parent="0"]
 texture = ExtResource("2_vukn2")
 
 [node name="Squisher" type="Node2D" parent="0"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(-544, 480)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("9_deegp")
 metadata/_custom_type_script = "uid://cvt0t77v3gd8y"
 
@@ -1151,7 +1248,35 @@ visible_characters_behavior = 1
 visible_ratio = 0.0
 
 [node name="1" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="0" type="Sprite2D" parent="1"]
 texture = ExtResource("7_s0o3t")
@@ -1161,7 +1286,34 @@ position = Vector2(64, 0)
 texture = ExtResource("8_owjtr")
 
 [node name="Squisher" type="Node2D" parent="1"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(512, 544)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("9_deegp")
 
 [node name="2" type="Sprite2D" parent="1/Squisher"]
@@ -1169,6 +1321,35 @@ position = Vector2(-512, -544)
 texture = ExtResource("10_nsp7w")
 
 [node name="LittleGuy" type="Node2D" parent="1"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="5" type="Sprite2D" parent="1/LittleGuy"]
 texture = ExtResource("11_8sjnn")
@@ -1327,7 +1508,35 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="2" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="0" type="Sprite2D" parent="2"]
 texture = ExtResource("20_sn7hr")
@@ -1395,13 +1604,68 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="3" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="0" type="Sprite2D" parent="3"]
 texture = ExtResource("16_2yyn3")
 
 [node name="Squisher" type="Node2D" parent="3"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(384, 576)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("9_deegp")
 metadata/_custom_type_script = "uid://cvt0t77v3gd8y"
 
@@ -1432,7 +1696,35 @@ visible_characters_behavior = 1
 visible_ratio = 0.0
 
 [node name="4" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Polygon2D" type="Polygon2D" parent="4"]
 color = Color(0, 0, 0, 1)
@@ -1483,7 +1775,35 @@ visible = false
 texture = ExtResource("18_bvhbw")
 
 [node name="Skip" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(-960, -562)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Tutorial" parent="Skip" instance=ExtResource("23_82mrt")]
 visible = false
@@ -1502,16 +1822,16 @@ frame = 12
 [node name="Sound" type="Node" parent="."]
 
 [node name="LittleThunder" parent="Sound" instance=ExtResource("21_uabs4")]
-stream = ExtResource("22_14pu0")
-volume_db = -10.0
-pitch_scale = 16.0
-randomize_pitch = 2.0
+stream = ExtResource("22_cghb2")
+randomize_pitch = 0.3
 
 [node name="MediumThunder" parent="Sound" instance=ExtResource("21_uabs4")]
-stream = ExtResource("22_14pu0")
-volume_db = -5.0
-pitch_scale = 12.0
-randomize_pitch = 1.0
+stream = ExtResource("23_vukn2")
+randomize_pitch = 0.5
+
+[node name="Forevermore" parent="Sound" instance=ExtResource("21_uabs4")]
+stream = ExtResource("24_vmthm")
+randomize_pitch = 0.0
 
 [node name="BigThunder" parent="Sound" instance=ExtResource("21_uabs4")]
 stream = ExtResource("22_14pu0")

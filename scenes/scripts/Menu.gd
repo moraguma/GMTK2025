@@ -14,6 +14,7 @@ const Y_TO_RECENTER_WORLD = 1920
 const DUNG_ROLL_ANIM_TRANSMISSION = 0.0095
 
 
+var on_main = true
 var selecting_campaign = false
 var selected_campaign = -1
 
@@ -63,6 +64,9 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("back") or Input.is_action_just_pressed("menu"):
 			show_main()
 			campaign_animation_player.play("disappear")
+	
+	if on_main and Input.is_action_just_pressed("reset"):
+		$Soulchain._pressed()
 
 
 func _process(delta: float) -> void:
@@ -74,6 +78,7 @@ func _process(delta: float) -> void:
 
 
 func play():
+	on_main = false
 	campaign_select.show()
 	SoundController.play_sfx("Click")
 	$Campaign/Buttons/Play.grab_focus()
@@ -84,6 +89,7 @@ func play():
 
 
 func show_credits():
+	on_main = false
 	$Credits/Back.grab_focus()
 	
 	credits.show()
@@ -92,6 +98,7 @@ func show_credits():
 
 
 func show_main():
+	on_main = true
 	$Main/Buttons/Play.grab_focus()
 	
 	main.show()
@@ -104,11 +111,13 @@ func show_main():
 
 
 func go_to_options() -> void:
+	on_main = false
 	options.activate()
 	
 	await options.closed_menu
 	
 	$Main/Buttons/Options.grab_focus()
+	on_main = true
 
 
 func exit() -> void:

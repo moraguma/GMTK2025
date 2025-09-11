@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cp41udqhsw43d"]
+[gd_scene load_steps=61 format=3 uid="uid://cp41udqhsw43d"]
 
 [ext_resource type="Shader" uid="uid://uoctqlloabcs" path="res://resources/shaders/Gradient.gdshader" id="1_11y2r"]
 [ext_resource type="Script" uid="uid://b1pgbc1rx8r1m" path="res://scenes/scripts/Menu.gd" id="1_jmdev"]
@@ -18,9 +18,12 @@
 [ext_resource type="Script" uid="uid://b5iuchxgfwpf" path="res://scenes/scripts/SoulchainButton.gd" id="19_7t7qg"]
 [ext_resource type="Texture2D" uid="uid://d14n4lhfxq5cr" path="res://resources/sprites/ui/steam_release.png" id="19_l3wcu"]
 [ext_resource type="PackedScene" uid="uid://bfcunsevfo48a" path="res://addons/jam_essentials/scenes/ui/LocalizableLabel.tscn" id="19_r54wa"]
+[ext_resource type="PackedScene" uid="uid://bytw8x327a2uj" path="res://addons/jam_essentials/scenes/ui/InputDisplay.tscn" id="19_uwbky"]
 [ext_resource type="Texture2D" uid="uid://cqexjvwajw0cx" path="res://resources/sprites/ui/steam_release_pressed.png" id="20_i7htd"]
+[ext_resource type="Shader" uid="uid://byac5n2eds8p5" path="res://resources/shaders/SpriteOutline.gdshader" id="20_r54wa"]
 [ext_resource type="Theme" uid="uid://cyuafkmqgdlvi" path="res://addons/jam_essentials/resources/themes/GeneralUI.tres" id="20_uds2g"]
 [ext_resource type="Script" uid="uid://ns6ihlurcr1e" path="res://scenes/scripts/LevelSelect.gd" id="21_jvsdq"]
+[ext_resource type="Texture2D" uid="uid://biqemmwkbjpfa" path="res://addons/jam_essentials/resources/kenney/Keyboard & Mouse/Default/keyboard_question.png" id="21_uds2g"]
 [ext_resource type="PackedScene" uid="uid://x8gfn3tnklhh" path="res://scenes/Options.tscn" id="22_dek3k"]
 [ext_resource type="Texture2D" uid="uid://7vdxtfwwgmif" path="res://resources/sprites/hades_concept.png" id="22_m74h7"]
 [ext_resource type="Script" uid="uid://cl6uc5kjayljx" path="res://addons/jam_essentials/scenes/ui/scripts/LocalizableButton.gd" id="23_gut0v"]
@@ -97,6 +100,12 @@ shader_parameter/type = 2
 [sub_resource type="Curve" id="Curve_4umqm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.932584), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gut0v"]
+shader = ExtResource("20_r54wa")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 4.0
+shader_parameter/outline_color = Color(0.137255, 0.419608, 0.694118, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5fdov"]
 noise_type = 2
@@ -872,7 +881,34 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btpd2"]
 
 [node name="Menu" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(960, 540)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("1_jmdev")
 
 [node name="BG" type="ColorRect" parent="."]
@@ -1025,14 +1061,128 @@ rotation = -0.785398
 texture = ExtResource("6_aaywf")
 
 [node name="WorldBits" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Base" type="Node2D" parent="WorldBits"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(-160, 800)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="WorldBit" parent="WorldBits/Base" instance=ExtResource("4_o0tnf")]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="WorldBit2" parent="WorldBits/Base" instance=ExtResource("4_o0tnf")]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(1920, -1920)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1059,6 +1209,35 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_4umqm")
 
 [node name="Main" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Logo" type="Sprite2D" parent="Main"]
 position = Vector2(-384, -256)
@@ -1109,7 +1288,35 @@ text = "Exit"
 localization_code = "Exit"
 
 [node name="Credits" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Code" type="RichTextLabel" parent="Credits"]
 offset_left = -896.0
@@ -1191,8 +1398,47 @@ texture_hover = ExtResource("20_i7htd")
 texture_focused = ExtResource("20_i7htd")
 script = ExtResource("19_7t7qg")
 
+[node name="InputDisplay" parent="Soulchain" instance=ExtResource("19_uwbky")]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_gut0v")
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 128.0
+texture = ExtResource("21_uds2g")
+action = "reset"
+
 [node name="Campaign" type="Node2D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
 z_index = 31
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+script = null
 
 [node name="Fog" type="ColorRect" parent="Campaign"]
 modulate = Color(1, 1, 1, 0)
@@ -1209,7 +1455,34 @@ libraries = {
 }
 
 [node name="ZeusContainer" type="Node2D" parent="Campaign"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(-928, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("21_jvsdq")
 deselected_modulate = Color(1, 1, 1, 0.501961)
 
@@ -1244,7 +1517,34 @@ scale = Vector2(1, -1)
 texture = ExtResource("23_uwbky")
 
 [node name="HadesContainer" type="Node2D" parent="Campaign"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 position = Vector2(928, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("21_jvsdq")
 deselected_vector = Vector2(256, 0)
 deselected_modulate = Color(1, 1, 1, 0.501961)

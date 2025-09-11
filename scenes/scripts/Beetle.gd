@@ -227,7 +227,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("map") and not aiming:
+	if (Input.is_action_just_pressed("map") or ((Input.is_action_just_pressed("back") or Input.is_action_just_pressed("menu")) and is_map_open)) and not aiming:
 		if is_map_open:
 			SoundController.play_sfx("MapClose")
 			if not finished:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjv47nf71uln7"]
+[gd_scene load_steps=5 format=3 uid="uid://bg33q0b1rp40c"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_qsqrj"]
 [ext_resource type="PackedScene" uid="uid://blrm24a60bouc" path="res://scenes/Wall.tscn" id="2_v3hgh"]
@@ -9,6 +9,34 @@ shader = ExtResource("3_t0nxu")
 shader_parameter/type = 1
 
 [node name="(8, -7)" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("1_qsqrj")
 
 [node name="Wall60" type="Polygon2D" parent="." instance=ExtResource("2_v3hgh")]

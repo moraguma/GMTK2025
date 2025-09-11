@@ -71,3 +71,11 @@ func get_player_name(steam_id: int) -> String:
 	if steamworks:
 		return steamworks.request_player_name(steam_id)
 	return ""
+
+
+## Opens store page either through Steam if available or through OS
+func go_to_store(app_id: int, url: String) -> void:
+	if steamworks:
+		steamworks.go_to_store(app_id)
+	else:
+		OS.shell_open(url)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dji85e2v816i2"]
+[gd_scene load_steps=18 format=3 uid="uid://cyk446pq2djde"]
 
 [ext_resource type="Script" uid="uid://qjm6ol5fhv6x" path="res://scenes/scripts/Chunk.gd" id="1_4e2yv"]
 [ext_resource type="PackedScene" uid="uid://cr8341ym5aycm" path="res://scenes/Tiles.tscn" id="2_5exhy"]
@@ -417,6 +417,34 @@ shader = ExtResource("3_3rpbc")
 shader_parameter/type = 1
 
 [node name="(-2, -1)" type="Node2D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
 script = ExtResource("1_4e2yv")
 
 [node name="Tiles" type="TileMap" parent="." instance=ExtResource("2_5exhy")]
@@ -438,7 +466,7 @@ material = SubResource("ShaderMaterial_7kl65")
 position = Vector2(2168, 216)
 rotation = 0.0180124
 scale = Vector2(1, 1.05376)
-skew = -0.225716
+skew = -0.359615
 polygon = PackedVector2Array(364.912, 2.10889, 275.178, -187.699, 271.093, -47.823, 134.95, -149.83, 190.712, -40.2561, 59.9658, -84.7256, 136.114, -13.2717, 7.99512, -29.1389, 96.7266, 0.685059)
 script = ExtResource("9_0m36f")
 size = 398.474
